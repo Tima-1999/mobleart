@@ -159,7 +159,7 @@
         <div class="header-actions">
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span data-tr="Siteye Dön" data-tk=" Saýta gaýdyp bar">Siteye Dön</span></a>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span data-tr="Siteye Dön" data-tk="Saýta gaýdyp bar">Siteye Dön</span></a>
         </div>
     </header>
 
@@ -208,6 +208,64 @@
                     </thead>
                     <tbody id="adminProductsList">
                         <tr><td colspan="3" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sargytlar we Müşderiler Bölümi (Sipariş ve Müşteri Takibi) -->
+        <div class="admin-card">
+            <h2><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></h2>
+            
+            <!-- Sargyt Goş Formy -->
+            <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label data-tr="Müşteri Adı" data-tk="Müşderiniň ady">Müşteri Adı</label>
+                        <input type="text" id="custName" placeholder="Aman Amanow" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label data-tr="Telefon" data-tk="Telefon belgisi">Telefon</label>
+                        <input type="text" id="custPhone" placeholder="+993 65..." required>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label data-tr="Mobilya / Ürün" data-tk="Sargyt eden mebeli">Mobilya / Ürün</label>
+                        <input type="text" id="orderItem" placeholder="Lüks Mutfak Dolabı" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label data-tr="Toplam Fiyat (TMT)" data-tk="Umumy bahasy (Manat)">Toplam Fiyat (TMT)</label>
+                        <input type="number" id="orderPrice" placeholder="15000" required>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Ödenen (Kapora)" data-tk="Alnan pul (Preoplata)">Ödenen (Kapora)</label>
+                        <input type="number" id="orderPaid" placeholder="10000" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Durum" data-tk="Ýagdaýy">Durum</label>
+                        <input type="text" id="orderStatus" placeholder="Hazırlanıyor / Taýýarlanýar" value="Hazırlanıyor / Taýýarlanýar" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn"><i class="fas fa-plus"></i> <span data-tr="Siparişi Kaydet" data-tk="Sargydy ýazga al">Siparişi Kaydet</span></button>
+            </form>
+
+            <!-- Sargytlar Tablisasy -->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-tr="Müşteri" data-tk="Müşderi">Müşteri</th>
+                            <th data-tr="Ürün" data-tk="Önüm">Ürün</th>
+                            <th data-tr="Toplam/Ödenen/Kalan" data-tk="Umumy/Alnan/Galgan">Toplam/Ödenen/Kalan</th>
+                            <th data-tr="Durum" data-tk="Ýagdaýy">Durum</th>
+                            <th data-tr="İşlem" data-tk="Hereket">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersList">
+                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -357,7 +415,7 @@
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
             const image = prodImageInput.value;
-            const description = document.getElementById('prodDesc').value; // Düzedildi
+            const description = document.getElementById('prodDesc').value;
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
@@ -390,6 +448,85 @@
                     await deleteDoc(doc(db, "products", id));
                     alert("Silindi!");
                     fetchAdminProducts();
+                } catch (error) {
+                    alert("Hata oluştu.");
+                }
+            }
+        }
+
+        // Sargytlar we Müşderiler Üçin Firebase Funksiýalary
+        const orderForm = document.getElementById('addOrderForm');
+        const ordersListContainer = document.getElementById('adminOrdersList');
+
+        async function fetchAdminOrders() {
+            try {
+                const querySnapshot = await getDocs(collection(db, "orders"));
+                if (querySnapshot.empty) {
+                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Kayıtlı sipariş yok. / Hasaba alnan sargyt ýok.</td></tr>`;
+                    return;
+                }
+
+                ordersListContainer.innerHTML = "";
+                querySnapshot.forEach((documentSnap) => {
+                    const ord = documentSnap.data();
+                    const id = documentSnap.id;
+                    const kalan = Number(ord.price) - Number(ord.paid);
+                    
+                    ordersListContainer.innerHTML += `
+                        <tr>
+                            <td><strong>${ord.name}</strong><br><small style="color:var(--text-muted);">${ord.phone}</small></td>
+                            <td>${ord.item}</td>
+                            <td>
+                                <span style="color:var(--accent-color);">${ord.price} TMT</span><br>
+                                <small style="color:#22c55e;">Alnan: ${ord.paid} TMT</small><br>
+                                <small style="color:#ef4444;">Galgan: ${kalan} TMT</small>
+                            </td>
+                            <td>${ord.status}</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteOrder('${id}')"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error("Ýalňyşlyk:", error);
+            }
+        }
+
+        fetchAdminOrders();
+
+        orderForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const item = document.getElementById('orderItem').value;
+            const price = document.getElementById('orderPrice').value;
+            const paid = document.getElementById('orderPaid').value;
+            const status = document.getElementById('orderStatus').value;
+
+            try {
+                await addDoc(collection(db, "orders"), {
+                    name: name,
+                    phone: phone,
+                    item: item,
+                    price: price,
+                    paid: paid,
+                    status: status,
+                    createdAt: new Date()
+                });
+                alert(currentLang === 'tk' ? "Sargyt üstünlikli goşuldy!" : "Sipariş başarıyla eklendi!");
+                orderForm.reset();
+                fetchAdminOrders();
+            } catch (error) {
+                alert("Hata oluştu / Ýalňyşlyk ýüze çykdy.");
+            }
+        });
+
+        window.deleteOrder = async function(id) {
+            if (confirm("Bu sargydy pozmak isleýärsiňizmi? / Bu siparişi silmek istediğinize emin misiniz?")) {
+                try {
+                    await deleteDoc(doc(db, "orders", id));
+                    fetchAdminOrders();
                 } catch (error) {
                     alert("Hata oluştu.");
                 }
