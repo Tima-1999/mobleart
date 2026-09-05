@@ -226,7 +226,7 @@
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label data-tr="Telefon" data-tk="Telefon belgisi">Telefon</label>
-                        <input type="text" id="custPhone" placeholder="+993 65..." required>
+                        <input type="text" id="custPhone" placeholder="+90 555..." required>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -235,7 +235,7 @@
                         <input type="text" id="orderItem" placeholder="Lüks Mutfak Dolabı" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label data-tr="Toplam Fiyat (TMT)" data-tk="Umumy bahasy (Manat)">Toplam Fiyat (TMT)</label>
+                        <label data-tr="Toplam Fiyat (TL)" data-tk="Umumy bahasy (TL)">Toplam Fiyat (TL)</label>
                         <input type="number" id="orderPrice" placeholder="15000" required>
                     </div>
                 </div>
@@ -381,7 +381,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Henüz kayıtlı ürün yok.</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">${currentLang === 'tk' ? 'Heniz bellige alnan önüm ýok.' : 'Henüz kayıtlı ürün yok.'}</td></tr>`;
                     return;
                 }
 
@@ -398,7 +398,7 @@
                             </td>
                             <td><strong>${prod.title}</strong></td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> ${currentLang === 'tk' ? 'Poz' : 'Sil'}</button>
                             </td>
                         </tr>
                     `;
@@ -419,7 +419,7 @@
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> İşleniyor...`;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${currentLang === 'tk' ? 'Işlenilýär...' : 'İşleniyor...'}`;
 
             try {
                 await addDoc(collection(db, "products"), {
@@ -438,15 +438,16 @@
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
+                submitBtn.innerHTML = `<i class="fas fa-upload"></i> ${currentLang === 'tk' ? 'Önümi çap et' : 'Ürünü Yayınla'}`;
             }
         });
 
         window.deleteProduct = async function(id) {
-            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+            const confirmMsg = currentLang === 'tk' ? "Bu önümi pozmak isleýärsiňizmi?" : "Bu ürünü silmek istediğinize emin misiniz?";
+            if (confirm(confirmMsg)) {
                 try {
                     await deleteDoc(doc(db, "products", id));
-                    alert("Silindi!");
+                    alert(currentLang === 'tk' ? "Pozuldy!" : "Silindi!");
                     fetchAdminProducts();
                 } catch (error) {
                     alert("Hata oluştu.");
@@ -462,7 +463,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
                 if (querySnapshot.empty) {
-                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Kayıtlı sipariş yok. / Hasaba alnan sargyt ýok.</td></tr>`;
+                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">${currentLang === 'tk' ? 'Hasaba alnan sargyt ýok.' : 'Kayıtlı sipariş yok.'}</td></tr>`;
                     return;
                 }
 
@@ -477,9 +478,9 @@
                             <td><strong>${ord.name}</strong><br><small style="color:var(--text-muted);">${ord.phone}</small></td>
                             <td>${ord.item}</td>
                             <td>
-                                <span style="color:var(--accent-color);">${ord.price} TMT</span><br>
-                                <small style="color:#22c55e;">Alnan: ${ord.paid} TMT</small><br>
-                                <small style="color:#ef4444;">Galgan: ${kalan} TMT</small>
+                                <span style="color:var(--accent-color);">${ord.price} TL</span><br>
+                                <small style="color:#22c55e;">${currentLang === 'tk' ? 'Alnan' : 'Ödenen'}: ${ord.paid} TL</small><br>
+                                <small style="color:#ef4444;">${currentLang === 'tk' ? 'Galgan' : 'Kalan'}: ${kalan} TL</small>
                             </td>
                             <td>${ord.status}</td>
                             <td>
@@ -523,7 +524,8 @@
         });
 
         window.deleteOrder = async function(id) {
-            if (confirm("Bu sargydy pozmak isleýärsiňizmi? / Bu siparişi silmek istediğinize emin misiniz?")) {
+            const confirmMsg = currentLang === 'tk' ? "Bu sargydy pozmak isleýärsiňizmi?" : "Bu siparişi silmek istediğinize emin misiniz?";
+            if (confirm(confirmMsg)) {
                 try {
                     await deleteDoc(doc(db, "orders", id));
                     fetchAdminOrders();
