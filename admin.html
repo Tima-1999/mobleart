@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Admin Paneli</title>
+    <title id="pageTitle">MobleArt | Admin Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         .admin-container { max-width: 650px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px; }
         .success-msg { color: #27ae60; font-weight: 500; margin-top: 10px; display: none; }
         #adminContent { display: none; text-align: left; }
         .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 15px; font-size: 15px; transition: 0.3s; }
         .google-btn:hover { background: #c23321; }
         .divider { margin: 15px 0; color: #777; font-size: 14px; text-align: center; }
         
-        /* Surat saýlaýjy we önüm sanawy üçin styllar */
+        /* Dil Saylagy Stili */
+        .lang-switch { display: flex; gap: 5px; }
+        .lang-btn { background: #eee; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
+        .lang-btn.active { background: #b5838d; color: #fff; }
+
         .file-upload-box { border: 2px dashed #b5838d; padding: 15px; border-radius: 8px; text-align: center; background: #fdfbf7; cursor: pointer; margin-bottom: 15px; }
         .file-upload-box input { display: none; }
         .preview-img { max-width: 100px; max-height: 100px; margin-top: 10px; display: none; border-radius: 6px; }
@@ -30,30 +35,36 @@
 
     <div class="admin-container">
         <div class="admin-header">
-            <h2>Admin Paneli</h2>
-            <a href="index.html" class="btn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Saýta Gaýt</a>
+            <h2 id="panelTitle">Admin Paneli</h2>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLanguage('tr')">TR</button>
+                    <button class="lang-btn" onclick="setLanguage('tk')">TM</button>
+                </div>
+                <a href="index.html" class="btn" id="backBtn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Ana Sayfa</a>
+            </div>
         </div>
 
         <!-- Giriş Bölümi -->
         <div id="loginSection" style="text-align: left;">
-            <p style="margin-bottom: 15px; color: #666; text-align: center;">Admin paneline girmek üçin aşakdakylardan birini ulanyň:</p>
+            <p id="loginDesc" style="margin-bottom: 15px; color: #666; text-align: center;">Yönetim paneline girmek için giriş yapın:</p>
             
             <button id="googleLoginBtn" class="google-btn">
-                <i class="fab fa-google"></i> Google Bilen Giriş Et
+                <i class="fab fa-google"></i> <span id="googleText">Google ile Giriş Yap</span>
             </button>
 
-            <div class="divider">ýa-da Email / Parol bilen</div>
+            <div class="divider" id="orText">veya e-posta ile</div>
 
             <form id="emailLoginForm">
                 <div class="form-group">
-                    <label>Email Salgysy</label>
+                    <label id="emailLabel">E-posta Adresi</label>
                     <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
                 </div>
                 <div class="form-group">
-                    <label>Parol</label>
+                    <label id="passLabel">Parola</label>
                     <input type="password" id="loginPassword" placeholder="********" required>
                 </div>
-                <button type="submit" class="btn" style="width: 100%; background: #333;">Email bilen Giriş</button>
+                <button type="submit" class="btn" id="emailLoginBtn" style="width: 100%; background: #333;">E-posta ile Giriş</button>
             </form>
         </div>
 
@@ -61,40 +72,38 @@
         <div id="adminContent">
             <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500; text-align: center;"></p>
             
-            <h3 style="margin-bottom: 15px; color: #444;">Täze Önüm Goş</h3>
+            <h3 id="addProductTitle" style="margin-bottom: 15px; color: #444;">Yeni Ürün Ekle</h3>
             <form id="addProductForm">
                 <div class="form-group">
-                    <label>Önüm Ady</label>
-                    <input type="text" id="prodTitle" placeholder="Mysal: Lüks Mutfak Dolaby" required>
+                    <label id="prodNameLabel">Ürün Adı</label>
+                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
                 
-                <!-- Galereýadan Surat Saýlaýan Düwme -->
                 <div class="form-group">
-                    <label>Surat Saýla (Galereýadan)</label>
+                    <label id="prodImgLabel">Görsel Seç (Galeriden)</label>
                     <label class="file-upload-box" for="prodImageFile">
-                        <span id="fileLabel"><i class="fas fa-cloud-upload-alt"></i> Surat Sahypadan Saýla (Basň)</span>
+                        <span id="fileLabel"><i class="fas fa-cloud-upload-alt"></i> Bilgisayardan/Telefondan Seç</span>
                         <input type="file" id="prodImageFile" accept="image/*" required>
                     </label>
-                    <img id="imagePreview" class="preview-img" alt="Önüm suraty">
+                    <img id="imagePreview" class="preview-img" alt="Önizleme">
                 </div>
 
                 <div class="form-group">
-                    <label>Baha ýa-da Beýan</label>
-                    <input type="text" id="prodDesc" placeholder="Mysal: 15.000 TL-den başlaýan bahalarla" required>
+                    <label id="prodDescLabel">Açıklama veya Fiyat</label>
+                    <input type="text" id="prodDesc" placeholder="Örn: 15.000 TL'den başlayan fiyatlarla" required>
                 </div>
-                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">Önümi Saýta Goş</button>
-                <p id="successMsg" class="success-msg">Önüm üstünlikli goşuldy!</p>
+                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">Ürünü Siteye Ekle</button>
+                <p id="successMsg" class="success-msg">Ürün başarıyla eklendi!</p>
             </form>
 
-            <!-- Önümleri dolandyrmak (Pozmak) bölümi -->
             <div class="manage-section">
-                <h3 style="margin-bottom: 15px; color: #444; text-align: left;">Bar Olan Önümleri Dolandyr (Poz)</h3>
+                <h3 id="manageTitle" style="margin-bottom: 15px; color: #444; text-align: left;">Mevcut Ürünleri Yönet (Sil)</h3>
                 <div id="adminProductList">
-                    <p style="color: #777; font-size: 14px;">Önümler ýüklenýär...</p>
+                    <p id="loadingText" style="color: #777; font-size: 14px;">Ürünler yükleniyor...</p>
                 </div>
             </div>
 
-            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; margin-top: 25px; cursor: pointer; width: 100%;">Çykyş Et</button>
+            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; margin-top: 25px; cursor: pointer; width: 100%;">Çıkış Yap</button>
         </div>
     </div>
 
@@ -128,7 +137,88 @@
 
         let base64Image = "";
 
-        // Surat saýlanynda ony Base64 koduna öwürmek we preview etmek
+        // Dil Sözlügi (Türkçe / Türkmençe)
+        const translations = {
+            tr: {
+                pageTitle: "MobleArt | Admin Paneli",
+                panelTitle: "Yönetim Paneli",
+                backBtn: "Siteye Dön",
+                loginDesc: "Yönetim paneline girmek için giriş yapın:",
+                googleText: "Google ile Giriş Yap",
+                orText: "veya e-posta ile",
+                emailLabel: "E-posta Adresi",
+                passLabel: "Parola",
+                emailLoginBtn: "E-posta ile Giriş",
+                addProductTitle: "Yeni Ürün Ekle",
+                prodNameLabel: "Ürün Adı",
+                prodImgLabel: "Görsel Seç (Galeriden)",
+                fileLabelText: "Bilgisayardan/Telefondan Seç",
+                prodDescLabel: "Açıklama veya Fiyat",
+                submitBtn: "Ürünü Siteye Ekle",
+                successMsg: "Ürün başarıyla eklendi!",
+                manageTitle: "Mevcut Ürünleri Yönet (Sil)",
+                loadingText: "Ürünler yükleniyor...",
+                logoutBtn: "Çıkış Yap",
+                deleteBtn: "Sil",
+                confirmDelete: "Bu ürünü silmek istiyor musunuz?",
+                successDelete: "Ürün başarıyla silindi!"
+            },
+            tk: {
+                pageTitle: "MobleArt | Admin Paneli",
+                panelTitle: "Admin Paneli",
+                backBtn: "Saýta Gaýt",
+                loginDesc: "Admin paneline girmek üçin giriň:",
+                googleText: "Google Bilen Giriş Et",
+                orText: "ýa-da email bilen",
+                emailLabel: "Email Salgysy",
+                passLabel: "Parol",
+                emailLoginBtn: "Email bilen Giriş",
+                addProductTitle: "Täze Önüm Goş",
+                prodNameLabel: "Önüm Ady",
+                prodImgLabel: "Surat Saýla (Galereýadan)",
+                fileLabelText: "Kompýuterden/ Telefondan Saýla",
+                prodDescLabel: "Baha ýa-da Beýan",
+                submitBtn: "Önümi Saýta Goş",
+                successMsg: "Önüm üstünlikli goşuldy!",
+                manageTitle: "Bar Olan Önümleri Dolandyr (Poz)",
+                loadingText: "Önümler ýüklenýär...",
+                logoutBtn: "Çykyş Et",
+                deleteBtn: "Poz",
+                confirmDelete: "Bu önümi pozmak isleýärsiňizmi?",
+                successDelete: "Önüm üstünlikli pozuldy!"
+            }
+        };
+
+        let currentLang = 'tr';
+
+        window.setLanguage = function(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const t = translations[lang];
+            document.getElementById('pageTitle').textContent = t.pageTitle;
+            document.getElementById('panelTitle').textContent = t.panelTitle;
+            document.getElementById('backBtn').textContent = t.backBtn;
+            document.getElementById('loginDesc').textContent = t.loginDesc;
+            document.getElementById('googleText').textContent = t.googleText;
+            document.getElementById('orText').textContent = t.orText;
+            document.getElementById('emailLabel').textContent = t.emailLabel;
+            document.getElementById('passLabel').textContent = t.passLabel;
+            document.getElementById('emailLoginBtn').textContent = t.emailLoginBtn;
+            document.getElementById('addProductTitle').textContent = t.addProductTitle;
+            document.getElementById('prodNameLabel').textContent = t.prodNameLabel;
+            document.getElementById('prodImgLabel').textContent = t.prodImgLabel;
+            document.getElementById('fileLabel').innerHTML = `<i class="fas fa-cloud-upload-alt"></i> ${t.fileLabelText}`;
+            document.getElementById('prodDescLabel').textContent = t.prodDescLabel;
+            document.getElementById('submitBtn').textContent = t.submitBtn;
+            document.getElementById('successMsg').textContent = t.successMsg;
+            document.getElementById('manageTitle').textContent = t.manageTitle;
+            document.getElementById('loadingText').textContent = t.loadingText;
+            document.getElementById('logoutBtn').textContent = t.logoutBtn;
+        }
+
+        // Surat saýlanynda
         document.getElementById('prodImageFile').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -165,7 +255,7 @@
             if (user) {
                 loginSection.style.display = 'none';
                 adminContent.style.display = 'block';
-                userInfo.textContent = `Hoş geldiňiz: ${user.email}`;
+                userInfo.textContent = `Giriş edildi: ${user.email}`;
                 loadAdminProducts();
             } else {
                 loginSection.style.display = 'block';
@@ -181,11 +271,11 @@
             const submitBtn = document.getElementById('submitBtn');
 
             if (!base64Image) {
-                alert("Haýyş edýäris, surat saýlaň!");
+                alert(currentLang === 'tr' ? "Lütfen bir görsel seçin!" : "Haýyş edýäris, surat saýlaň!");
                 return;
             }
 
-            submitBtn.textContent = "Ýüklenýär...";
+            submitBtn.textContent = currentLang === 'tr' ? "Yükleniyor..." : "Ýüklenýär...";
             submitBtn.disabled = true;
 
             try {
@@ -199,26 +289,26 @@
                 document.getElementById('successMsg').style.display = 'block';
                 document.getElementById('addProductForm').reset();
                 document.getElementById('imagePreview').style.display = 'none';
-                document.getElementById('fileLabel').innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Surat Sahypadan Saýla (Basň)';
+                document.getElementById('fileLabel').innerHTML = `<i class="fas fa-cloud-upload-alt"></i> ${translations[currentLang].fileLabelText}`;
                 base64Image = "";
                 
                 loadAdminProducts();
                 setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
             } catch (error) {
-                alert("Ýalňyşlyk: " + error.message);
+                alert("Hata: " + error.message);
             } finally {
-                submitBtn.textContent = "Önümi Saýta Goş";
+                submitBtn.textContent = translations[currentLang].submitBtn;
                 submitBtn.disabled = false;
             }
         });
 
-        // Admin panelde önümleri görkezmek we pozmak
+        // Önümleri görkezmek we pozmak
         async function loadAdminProducts() {
             const listContainer = document.getElementById('adminProductList');
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<p style="color: #777; font-size: 14px;">Häzirlikçe önüm ýok.</p>`;
+                    listContainer.innerHTML = `<p style="color: #777; font-size: 14px;">${currentLang === 'tr' ? "Henüz ürün yok." : "Häzirlikçe önüm ýok."}</p>`;
                     return;
                 }
 
@@ -226,13 +316,14 @@
                 querySnapshot.forEach((docSnap) => {
                     const prod = docSnap.data();
                     const prodId = docSnap.id;
+                    const t = translations[currentLang];
                     listContainer.innerHTML += `
                         <div class="admin-product-item">
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <img src="${prod.image}" alt="">
                                 <span style="font-size: 14px; font-weight: 500; color: #333;">${prod.title}</span>
                             </div>
-                            <button class="delete-btn" onclick="deleteProduct('${prodId}')">Poz</button>
+                            <button class="delete-btn" onclick="deleteProduct('${prodId}')">${t.deleteBtn}</button>
                         </div>
                     `;
                 });
@@ -241,15 +332,15 @@
             }
         }
 
-        // Önümi pozmak funksiýasy
         window.deleteProduct = async function(id) {
-            if (confirm("Bu önümi pozmak isleýärsiňizmi?")) {
+            const t = translations[currentLang];
+            if (confirm(t.confirmDelete)) {
                 try {
                     await deleteDoc(doc(db, "products", id));
-                    alert("Önüm üstünlikli pozuldy!");
+                    alert(t.successDelete);
                     loadAdminProducts();
                 } catch (error) {
-                    alert("Pozmakda ýalňyşlyk boldy: " + error.message);
+                    alert("Hata: " + error.message);
                 }
             }
         };
