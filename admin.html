@@ -77,14 +77,14 @@
         .back-home { color: var(--text-muted); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; }
         .back-home:hover { color: var(--accent-color); }
 
-        .admin-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .admin-container { max-width: 950px; margin: 40px auto; padding: 0 20px; }
         .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; margin-bottom: 40px; }
         .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
         .admin-card h2 i { color: var(--accent-color); }
 
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 500; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
         
         .image-input-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .file-upload-btn { background: var(--border-color); color: var(--text-color); padding: 12px 18px; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
@@ -164,13 +164,47 @@
     </header>
 
     <div class="admin-container">
-        <!-- Önüm Goşmak Formy -->
+        <!-- 1. Täze Önüm / Mebel we Ammar Goşmak Formy -->
         <div class="admin-card">
-            <h2><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></h2>
+            <h2><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Mobilya ve Stok Ekle" data-tk="Täze Mebel we Ammar Goş">Yeni Mobilya ve Stok Ekle</span></h2>
             <form id="addProductForm">
-                <div class="form-group">
-                    <label data-tr="Ürün Başlığı" data-tk="Önümiň ady">Ürün Başlığı</label>
-                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Mobilya Adı" data-tk="Mebeliň ady">Mobilya Adı</label>
+                        <input type="text" id="prodTitle" placeholder="Örn: Lüks Myhmanhana Stoly" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Kategori" data-tk="Kategoriýasy">Kategori</label>
+                        <select id="prodCategory" required>
+                            <option value="Stol / Masa">Stol / Masa</option>
+                            <option value="Oturgyç / Sandalye">Oturgyç / Sandalye</option>
+                            <option value="Aşhana / Mutfak">Aşhana / Mutfak</option>
+                            <option value="Yatak / Ýatylýan oturgyç">Yatak / Ýatylýan oturgyç</option>
+                            <option value="Beýleki / Diğer">Beýleki / Diğer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Fiyat (TL)" data-tk="Bahasy (TL)">Fiyat (TL)</label>
+                        <input type="number" id="prodPrice" placeholder="4500" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Stok Adedi (Ammardaky sany)" data-tk="Ammardaky mukdary (Sany)">Stok Adedi</label>
+                        <input type="number" id="prodStock" placeholder="3" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Malzeme / Renk" data-tk="Materialy / Reňki">Malzeme / Renk</label>
+                        <input type="text" id="prodMaterial" placeholder="MDF, Goýy goňur / Koyu kahverengi" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label data-tr="Ölçü / Boyut" data-tk="Ölçegi">Ölçü / Boyut</label>
+                        <input type="text" id="prodSize" placeholder="200x100 sm" required>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -185,39 +219,40 @@
                 </div>
 
                 <div class="form-group">
-                    <label data-tr="Açıklama" data-tk="Düşündiriş">Açıklama</label>
-                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
+                    <label data-tr="Açıklama / Detay" data-tk="Düşündiriş / Jikme-jiklik">Açıklama / Detay</label>
+                    <textarea id="prodDesc" rows="3" placeholder="Ýokary hilli laklanan..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span data-tr="Ürünü Yayınla" data-tk="Önümi çap et">Ürünü Yayınla</span></button>
+                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span data-tr="Mobilyayı Kaydet" data-tk="Mebeli ýazga al">Mobilyayı Kaydet</span></button>
                 <div id="statusMessage"></div>
             </form>
         </div>
 
-        <!-- Bar bolan önümleri dolandyrmak -->
+        <!-- 2. Mebeller we Ammar Tablisasy -->
         <div class="admin-card">
-            <h2><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></h2>
+            <h2><i class="fas fa-boxes"></i> <span data-tr="Mevcut Mobilyalar ve Stok Durumu" data-tk="Bar bolan Mebeller we Ammar Ýagdaýy">Mevcut Mobilyalar ve Stok Durumu</span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th data-tr="Görsel" data-tk="Surat">Görsel</th>
-                            <th data-tr="Başlık" data-tk="Ady">Başlık</th>
+                            <th data-tr="Mobilya Bilgileri" data-tk="Mebel Maglumatlary">Mobilya Bilgileri</th>
+                            <th data-tr="Fiyat / Stok" data-tk="Bahasy / Ammar">Fiyat / Stok</th>
+                            <th data-tr="Detaylar (Ölçü/Mat.)" data-tk="Jikme-jiklik (Ölçeg/Mat.)">Detaylar</th>
                             <th data-tr="İşlem" data-tk="Hereket">İşlem</th>
                         </tr>
                     </thead>
                     <tbody id="adminProductsList">
-                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
+                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Sargytlar we Müşderiler Bölümi (Sipariş ve Müşteri Takibi) -->
+        <!-- 3. Sargytlar we Müşderiler Bölümi -->
         <div class="admin-card">
             <h2><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></h2>
             
-            <!-- Sargyt Goş Formy -->
             <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
@@ -232,17 +267,17 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label data-tr="Mobilya / Ürün" data-tk="Sargyt eden mebeli">Mobilya / Ürün</label>
-                        <input type="text" id="orderItem" placeholder="Lüks Mutfak Dolabı" required>
+                        <input type="text" id="orderItem" placeholder="Lüks Myhmanhana Stoly" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
                         <label data-tr="Toplam Fiyat (TL)" data-tk="Umumy bahasy (TL)">Toplam Fiyat (TL)</label>
-                        <input type="number" id="orderPrice" placeholder="15000" required>
+                        <input type="number" id="orderPrice" placeholder="4500" required>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label data-tr="Ödenen (Kapora)" data-tk="Alnan pul (Preoplata)">Ödenen (Kapora)</label>
-                        <input type="number" id="orderPaid" placeholder="10000" required>
+                        <input type="number" id="orderPaid" placeholder="3000" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label data-tr="Durum" data-tk="Ýagdaýy">Durum</label>
@@ -252,7 +287,6 @@
                 <button type="submit" class="btn"><i class="fas fa-plus"></i> <span data-tr="Siparişi Kaydet" data-tk="Sargydy ýazga al">Siparişi Kaydet</span></button>
             </form>
 
-            <!-- Sargytlar Tablisasy -->
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -320,7 +354,6 @@
             });
         }
 
-        // Modal Açma Funksiýasy
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -381,7 +414,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">${currentLang === 'tk' ? 'Heniz bellige alnan önüm ýok.' : 'Henüz kayıtlı ürün yok.'}</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">${currentLang === 'tk' ? 'Heniz bellige alnan mebel ýok.' : 'Henüz kayıtlı mobilya yok.'}</td></tr>`;
                     return;
                 }
 
@@ -396,7 +429,18 @@
                                     <img src="${prod.image}" class="prod-thumb" alt="">
                                 </div>
                             </td>
-                            <td><strong>${prod.title}</strong></td>
+                            <td>
+                                <strong>${prod.title}</strong><br>
+                                <small style="color:var(--accent-color);">${prod.category || '-'}</small>
+                            </td>
+                            <td>
+                                <span style="color:var(--accent-color); font-weight:600;">${prod.price || 0} TL</span><br>
+                                <small style="color:#22c55e;">${currentLang === 'tk' ? 'Ammarda' : 'Stok'}: ${prod.stock || 0} sany</small>
+                            </td>
+                            <td>
+                                <small><strong>Mat:</strong> ${prod.material || '-'}</small><br>
+                                <small><strong>Ölçeg:</strong> ${prod.size || '-'}</small>
+                            </td>
                             <td>
                                 <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> ${currentLang === 'tk' ? 'Poz' : 'Sil'}</button>
                             </td>
@@ -405,7 +449,7 @@
                 });
             } catch (error) {
                 console.error("Ýalňyşlyk:", error);
-                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+                listContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
@@ -414,6 +458,11 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
+            const category = document.getElementById('prodCategory').value;
+            const price = document.getElementById('prodPrice').value;
+            const stock = document.getElementById('prodStock').value;
+            const material = document.getElementById('prodMaterial').value;
+            const size = document.getElementById('prodSize').value;
             const image = prodImageInput.value;
             const description = document.getElementById('prodDesc').value;
             const submitBtn = document.getElementById('submitBtn');
@@ -424,12 +473,17 @@
             try {
                 await addDoc(collection(db, "products"), {
                     title: title,
+                    category: category,
+                    price: price,
+                    stock: stock,
+                    material: material,
+                    size: size,
                     image: image,
                     description: description,
                     createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
-                statusMsg.innerHTML = currentLang === 'tk' ? "✓ Önüm üstünlikli goşuldy!" : "✓ Ürün başarıyla eklendi!";
+                statusMsg.innerHTML = currentLang === 'tk' ? "✓ Mebel üstünlikli goşuldy!" : "✓ Mobilya başarıyla eklendi!";
                 form.reset();
                 fetchAdminProducts();
             } catch (error) {
@@ -438,12 +492,12 @@
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-upload"></i> ${currentLang === 'tk' ? 'Önümi çap et' : 'Ürünü Yayınla'}`;
+                submitBtn.innerHTML = `<i class="fas fa-upload"></i> ${currentLang === 'tk' ? 'Mebeli ýazga al' : 'Mobilyayı Kaydet'}`;
             }
         });
 
         window.deleteProduct = async function(id) {
-            const confirmMsg = currentLang === 'tk' ? "Bu önümi pozmak isleýärsiňizmi?" : "Bu ürünü silmek istediğinize emin misiniz?";
+            const confirmMsg = currentLang === 'tk' ? "Bu mebeli pozmak isleýärsiňizmi?" : "Bu mobilyayı silmek istediğinize emin misiniz?";
             if (confirm(confirmMsg)) {
                 try {
                     await deleteDoc(doc(db, "products", id));
