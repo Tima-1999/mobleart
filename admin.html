@@ -78,7 +78,7 @@
 
         .admin-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; margin-bottom: 40px; }
-        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
+        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; justify-content: space-between; }
         .admin-card h2 i { color: var(--accent-color); }
 
         .form-group { margin-bottom: 20px; }
@@ -94,6 +94,8 @@
         .btn:hover { background: var(--accent-hover); }
         .btn-danger { background: #ef4444; color: #fff; padding: 6px 12px; font-size: 12px; }
         .btn-danger:hover { background: #dc2626; }
+        .btn-success { background: #22c55e; color: #fff; padding: 8px 15px; font-size: 13px; }
+        .btn-success:hover { background: #16a34a; }
 
         .table-responsive { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
@@ -119,7 +121,6 @@
         }
         #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
 
-        /* Login Screen Overlay */
         #loginOverlay {
             position: fixed;
             top: 0;
@@ -148,7 +149,6 @@
             font-size: 24px;
         }
 
-        /* Lightbox Modal */
         .modal {
             display: none;
             position: fixed;
@@ -217,7 +217,7 @@
 
     <div class="admin-container">
         <div class="admin-card">
-            <h2><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></h2>
+            <h2><span><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></span></h2>
             <form id="addProductForm">
                 <div class="form-group">
                     <label data-tr="Ürün Başlığı" data-tk="Önümiň ady">Ürün Başlığı</label>
@@ -246,7 +246,7 @@
         </div>
 
         <div class="admin-card">
-            <h2><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></h2>
+            <h2><span><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -264,7 +264,10 @@
         </div>
 
         <div class="admin-card">
-            <h2><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></h2>
+            <h2>
+                <span><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></span>
+                <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span data-tr="Excel'e Aktar" data-tk="Excel-e Ýükle">Excel'e Aktar</span></button>
+            </h2>
             
             <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -301,7 +304,7 @@
             </form>
 
             <div class="table-responsive">
-                <table>
+                <table id="ordersTable">
                     <thead>
                         <tr>
                             <th data-tr="Müşteri" data-tk="Müşderi">Müşteri</th>
@@ -365,7 +368,6 @@
             });
         }
 
-        // Modal Açma Funksiýasy
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -410,7 +412,6 @@
         const loginError = document.getElementById('loginError');
         const logoutBtn = document.getElementById('logoutBtn');
 
-        // Ulanyjynyň giriş ýagdaýyny barlamak
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginOverlay.style.display = 'none';
@@ -421,7 +422,6 @@
             }
         });
 
-        // Giriş etmek (Login)
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -443,7 +443,6 @@
             }
         });
 
-        // Çykyş etmek (Logout)
         logoutBtn.addEventListener('click', async () => {
             try {
                 await signOut(auth);
@@ -547,7 +546,6 @@
             }
         }
 
-        // Sargytlar we Müşderiler Üçin Firebase Funksiýalary
         const orderForm = document.getElementById('addOrderForm');
         const ordersListContainer = document.getElementById('adminOrdersList');
 
@@ -624,6 +622,31 @@
                 }
             }
         }
+
+        // Excel-e ýüklemek (Export to Excel) funksiýasy
+        document.getElementById('exportExcelBtn').addEventListener('click', () => {
+            const table = document.getElementById('ordersTable');
+            let csv = [];
+            let rows = table.querySelectorAll('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                let row = [], cols = rows[i].querySelectorAll('td, th');
+
+                for (let j = 0; j < cols.length - 1; j++) { // Soňky "İşlem" sütünini almaz ýaly -1 goýuldy
+                    let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/;/g, ",");
+                    row.push('"' + data + '"');
+                }
+                csv.push(row.join(';'));
+            }
+
+            let csvFile = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            let downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.download = 'MobleArt_Sargytlar.csv';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
     </script>
 </body>
 </html>
