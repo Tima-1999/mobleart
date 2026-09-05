@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık</title>
+    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
+    
+    <!-- Google Search Console Tassyklama Kody -->
+    <meta name="google-site-verification" content="VkocFZJq4Gmpon1rgXuwIeYqjnYJMXUIeifvE_teAxk" />
+
+    <!-- Google Gözleginde Çykmagy Üçin SEO Meta Taglary -->
+    <meta name="description" content="İstanbul'da kişiye özel tasarım mobilya, lüks mutfak dolabı, yatak odası ve TV ünitesi imalatı. MobleArt ile hayalinizdeki evi tasarlayın. Ücretsiz keşif ve ölçü avantajı!">
+    <meta name="keywords" content="özel tasarım mobilya, lüks mutfak dolabı istanbul, mobilya imalatı, yatak odası takımı, tv ünitesi, mobleart, iç mimarlık istanbul">
+    <meta name="author" content="MobleArt">
+    <meta name="robots" content="index, follow">
+
+    <!-- Google Fonts we Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -58,7 +69,7 @@
     <section class="features" id="ustunlukler">
         <div class="container">
             <div class="section-header">
-                <span class="sub-title">Güven ve Kalite</span>
+                <span class="sub-title">Güven dan Kalite</span>
                 <h2 class="section-title">Neden Bizimle Çalışmalısınız?</h2>
             </div>
             <div class="features-grid">
@@ -168,7 +179,6 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    // Eger onum yok bolsa, hiç hili ýazgy görkezmän diňe boş goýýar ýa-da ýüklenýär ýazgysyny aýryp arassa saklaýar
                     grid.innerHTML = "";
                     return;
                 }
