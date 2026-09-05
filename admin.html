@@ -134,6 +134,34 @@
             border-color: var(--accent-color);
             outline: none;
         }
+
+        /* Surat Ýükleýän Bölüm Üçin Stil */
+        .image-input-box {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .file-upload-btn {
+            background: var(--border-color);
+            color: var(--text-color);
+            padding: 12px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .file-upload-btn:hover {
+            background: var(--accent-color);
+            color: #111;
+        }
+        #imageFile {
+            display: none;
+        }
+
         .btn {
             background: var(--accent-color);
             color: #111;
@@ -211,14 +239,25 @@
                     <label>Ürün Başlığı</label>
                     <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
+                
+                <!-- Surat Girizmek (URL ýa-da Faýl saýlamak düwmeleri) -->
                 <div class="form-group">
-                    <label>Görsel Bağlantısı (Image URL)</label>
-                    <input type="url" id="prodImage" placeholder="https://images.unsplash.com/..." required>
+                    <label>Görsel (Surat URL-i ýa-da Kompýuterden Surat Saýla)</label>
+                    <div class="image-input-box">
+                        <input type="url" id="prodImage" placeholder="https://images.unsplash.com/... (URL ýazyp bilersiňiz)" style="flex: 1;" required>
+                        <label for="imageFile" class="file-upload-btn">
+                            <i class="fas fa-image"></i> Surat Saýla
+                        </label>
+                        <input type="file" id="imageFile" accept="image/*">
+                    </div>
+                    <small style="color: var(--text-muted); font-size: 11px; margin-top: 4px; display: block;">Kompýuterden surat saýlasaňyz awtomatiki ýüklenere taýýarlanar.</small>
                 </div>
+
                 <div class="form-group">
                     <label>Açıklama</label>
                     <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
+                
                 <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> Ürünü Yayınla</button>
                 <div id="statusMessage"></div>
             </form>
@@ -246,7 +285,7 @@
 
     <!-- Scriptler -->
     <script>
-        // Dark/Light Mode Logika (Admin üçin hem)
+        // Dark/Light Mode Logika
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
@@ -274,7 +313,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, addCollection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -292,6 +331,22 @@
         const form = document.getElementById('addProductForm');
         const statusMsg = document.getElementById('statusMessage');
         const listContainer = document.getElementById('adminProductsList');
+        const imageFileInput = document.getElementById('imageFile');
+        const prodImageInput = document.getElementById('prodImage');
+
+        // Kompýuterden surat saýlanynda ony Base64 (tekst) görnüşine öwrüp URL inputyna ýazýar
+        imageFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    prodImageInput.value = event.target.result; // Base64 surat kody
+                    statusMsg.style.color = "#22c55e";
+                    statusMsg.innerHTML = "✓ Surat üstünlikli saýlandy!";
+                }
+                reader.readAsDataURL(file);
+            }
+        });
 
         // Önümleri çykarmak we sanawda görkezmek
         async function fetchAdminProducts() {
@@ -328,7 +383,7 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
-            const image = document.getElementById('prodImage').value;
+            const image = prodImageInput.value;
             const description = document.getElementById('prodDesc').value;
             const submitBtn = document.getElementById('submitBtn');
 
@@ -356,7 +411,7 @@
             }
         });
 
-        // Önümi pozmak (Global funksiýa hökmünde goşulýar)
+        // Önümi pozmak
         window.deleteProduct = async function(id) {
             if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
                 try {
