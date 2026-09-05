@@ -101,7 +101,6 @@
         th, td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 14px; color: var(--text-color); vertical-align: middle; }
         th { color: var(--text-muted); font-weight: 600; background: var(--input-bg); }
         
-        /* Admin Surat Görnüş Düzetmesi (Gysylmaz ýaly) */
         .prod-thumb-container {
             width: 70px;
             height: 70px;
@@ -112,6 +111,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid var(--border-color);
+            cursor: pointer;
         }
         .prod-thumb {
             width: 100%;
@@ -119,6 +119,37 @@
             object-fit: cover;
         }
         #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
+
+        /* Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover { color: var(--accent-color); }
     </style>
 </head>
 <body>
@@ -154,7 +185,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label data-tr="Açıklama" data-tk="Düýндiriş / Düşündiriş">Açıklama</label>
+                    <label data-tr="Açıklama" data-tk="Düşündiriş">Açıklama</label>
                     <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
                 
@@ -181,6 +212,12 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
     </div>
 
     <!-- Scriptler -->
@@ -223,6 +260,26 @@
                     el.innerText = el.getAttribute(`data-${lang}`);
                 }
             });
+        }
+
+        // Modal Açma Funksiýasy
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.querySelector('.close-modal');
+
+        function openModal(imgSrc) {
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 
@@ -277,7 +334,7 @@
                     listContainer.innerHTML += `
                         <tr>
                             <td>
-                                <div class="prod-thumb-container">
+                                <div class="prod-thumb-container" onclick="openModal('${prod.image}')">
                                     <img src="${prod.image}" class="prod-thumb" alt="">
                                 </div>
                             </td>
@@ -300,7 +357,7 @@
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
             const image = prodImageInput.value;
-            const description = document.getElementById('prodDesc'].value;
+            const description = document.getElementById('prodDesc').value; // Düzedildi
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
