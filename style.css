@@ -1,0 +1,395 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color: #fcfcfc;
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    padding-bottom: 50px; /* Mobil bar üçin boşluk */
+}
+/* Header */
+header {
+    background: #fff;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c2c2c;
+    letter-spacing: 1px;
+}
+.logo span {
+    color: #b5838d;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 15px;
+}
+nav a:hover {
+    color: #b5838d;
+}
+.header-phone {
+    background: #f4efe9;
+    color: #b5838d;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.header-phone:hover {
+    background: #b5838d;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+.hero-content {
+    max-width: 800px;
+}
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #f1f1f1;
+}
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn {
+    background-color: #b5838d;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(181, 131, 141, 0.3);
+}
+.btn:hover {
+    background-color: #a3707b;
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    box-shadow: none;
+}
+.btn-outline:hover {
+    background: white;
+    color: #333;
+}
+
+/* Products Section */
+.container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.product-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+.product-info {
+    padding: 25px;
+}
+.product-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c2c2c;
+}
+.product-info p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Why Us Section */
+.features {
+    background: #f4efe9;
+    padding: 70px 20px;
+    margin-top: 60px;
+}
+.features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.feature-box i {
+    font-size: 40px;
+    color: #b5838d;
+    margin-bottom: 15px;
+}
+.feature-box h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #2c2c2c;
+}
+.feature-box p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.testimonial-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border-left: 4px solid #b5838d;
+}
+.testimonial-card p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.testimonial-card h5 {
+    color: #2c2c2c;
+    font-size: 16px;
+}
+.stars {
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+/* FAQ Section */
+.faq-section {
+    background: #fff;
+    padding: 70px 20px;
+    margin-top: 40px;
+}
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+.faq-item h4 {
+    font-size: 18px;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+}
+.faq-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Contact / Quote Form Section */
+.contact-section {
+    background: #f9f9f9;
+    padding: 70px 20px;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+.form-group input:focus, .form-group select:focus {
+    border-color: #b5838d;
+    box-shadow: 0 0 5px rgba(181, 131, 141, 0.2);
+}
+
+/* WhatsApp Floating Button (Kompýuter üçin sag aşakda) */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.whatsapp-float:hover {
+    background-color: #20ba5a;
+    transform: scale(1.1);
+}
+
+/* Mobil Aşaky Ýörite Menýu (Default ýagdaýda gizlin, diňe telefon ekranlarynda çykar) */
+.mobile-bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+.mob-btn {
+    flex: 1;
+    text-align: center;
+    padding: 14px 0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.call-btn {
+    background: #2c2c2c;
+    color: white;
+}
+.wa-btn {
+    background: #25d366;
+    color: white;
+}
+
+/* Telefonlar üçin uýgunlaşdyryş (Responsive) */
+@media (max-width: 768px) {
+    header nav {
+        display: none; /* Telefonda ýokarky menýu gizlenýär, aşakdaky bar işleýär */
+    }
+    .header-cta {
+        display: none;
+    }
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .mobile-bottom-bar {
+        display: flex; /* Telefonda aşaky menýu açylýar */
+    }
+    .whatsapp-float {
+        bottom: 80px; /* Aşaky bar bilen gabat gelmez ýaly ýokaryk galýar */
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* Footer */
+footer {
+    background: #2c2c2c;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 14px;
+}
+.social-links {
+    margin-bottom: 15px;
+}
+.social-links a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.social-links a:hover {
+    color: #b5838d;
+}
