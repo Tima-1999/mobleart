@@ -54,170 +54,71 @@
             background: var(--header-bg);
             border-bottom: 1px solid var(--border-color);
         }
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-color);
-        }
+        .logo { font-size: 22px; font-weight: 700; color: var(--text-color); }
         .logo span { color: var(--accent-color); }
         
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .theme-toggle {
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        
+        .control-btn {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--accent-color);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 15px;
-        }
-        .back-home {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
         }
+        .control-btn:hover { background: var(--accent-color); color: #111; }
+
+        .back-home { color: var(--text-muted); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; }
         .back-home:hover { color: var(--accent-color); }
 
-        .admin-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .admin-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        .admin-card h2 {
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .admin-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; margin-bottom: 40px; }
+        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; }
         .admin-card h2 i { color: var(--accent-color); }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 8px;
-            color: var(--text-color);
-            font-weight: 500;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent-color);
-            outline: none;
-        }
-
-        /* Surat Ýükleýän Bölüm Üçin Stil */
-        .image-input-box {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .file-upload-btn {
-            background: var(--border-color);
-            color: var(--text-color);
-            padding: 12px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        .file-upload-btn:hover {
-            background: var(--accent-color);
-            color: #111;
-        }
-        #imageFile {
-            display: none;
-        }
-
-        .btn {
-            background: var(--accent-color);
-            color: #111;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
-        .btn:hover { background: var(--accent-hover); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 500; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
         
-        .btn-danger {
-            background: #ef4444;
-            color: #fff;
-            padding: 6px 12px;
-            font-size: 12px;
-        }
+        .image-input-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .file-upload-btn { background: var(--border-color); color: var(--text-color); padding: 12px 18px; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
+        .file-upload-btn:hover { background: var(--accent-color); color: #111; }
+        #imageFile { display: none; }
+
+        .btn { background: var(--accent-color); color: #111; padding: 12px 25px; border-radius: 5px; font-weight: 600; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .btn:hover { background: var(--accent-hover); }
+        .btn-danger { background: #ef4444; color: #fff; padding: 6px 12px; font-size: 12px; }
         .btn-danger:hover { background: #dc2626; }
 
-        /* Ürünler Tablosu */
-        .table-responsive {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            margin-top: 10px;
-        }
-        th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-            color: var(--text-color);
-        }
-        th {
-            color: var(--text-muted);
-            font-weight: 600;
-            background: var(--input-bg);
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
+        th, td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 14px; color: var(--text-color); vertical-align: middle; }
+        th { color: var(--text-muted); font-weight: 600; background: var(--input-bg); }
+        
+        /* Admin Surat Görnüş Düzetmesi (Gysylmaz ýaly) */
+        .prod-thumb-container {
+            width: 70px;
+            height: 70px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
         }
         .prod-thumb {
-            width: 50px;
-            height: 50px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 4px;
         }
-        #statusMessage {
-            margin-top: 15px;
-            font-size: 14px;
-            font-weight: 500;
-        }
+        #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -225,58 +126,57 @@
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
-            <button class="theme-toggle" id="themeToggleBtn" title="Rejimi Üýtget"><i class="fas fa-moon" id="themeIcon"></i></button>
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Siteye Dön</a>
+            <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
+            <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span data-tr="Siteye Dön" data-tk=" Saýta gaýdyp bar">Siteye Dön</span></a>
         </div>
     </header>
 
     <div class="admin-container">
         <!-- Önüm Goşmak Formy -->
         <div class="admin-card">
-            <h2><i class="fas fa-plus-circle"></i> Yeni Ürün / Tasarım Ekle</h2>
+            <h2><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></h2>
             <form id="addProductForm">
                 <div class="form-group">
-                    <label>Ürün Başlığı</label>
+                    <label data-tr="Ürün Başlığı" data-tk="Önümiň ady">Ürün Başlığı</label>
                     <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
                 
-                <!-- Surat Girizmek (URL ýa-da Faýl saýlamak düwmeleri) -->
                 <div class="form-group">
-                    <label>Görsel (Surat URL-i ýa-da Kompýuterden Surat Saýla)</label>
+                    <label data-tr="Görsel (URL veya Bilgisayardan Seç)" data-tk="Surat (URL ýa-da kompýuterden saýla)">Görsel (URL veya Bilgisayardan Seç)</label>
                     <div class="image-input-box">
-                        <input type="url" id="prodImage" placeholder="https://images.unsplash.com/... (URL ýazyp bilersiňiz)" style="flex: 1;" required>
+                        <input type="url" id="prodImage" placeholder="https://..." style="flex: 1;" required>
                         <label for="imageFile" class="file-upload-btn">
-                            <i class="fas fa-image"></i> Surat Saýla
+                            <i class="fas fa-image"></i> <span data-tr="Surat Seç" data-tk="Surat saýla">Surat Seç</span>
                         </label>
                         <input type="file" id="imageFile" accept="image/*">
                     </div>
-                    <small style="color: var(--text-muted); font-size: 11px; margin-top: 4px; display: block;">Kompýuterden surat saýlasaňyz awtomatiki ýüklenere taýýarlanar.</small>
                 </div>
 
                 <div class="form-group">
-                    <label>Açıklama</label>
+                    <label data-tr="Açıklama" data-tk="Düýндiriş / Düşündiriş">Açıklama</label>
                     <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> Ürünü Yayınla</button>
+                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span data-tr="Ürünü Yayınla" data-tk="Önümi çap et">Ürünü Yayınla</span></button>
                 <div id="statusMessage"></div>
             </form>
         </div>
 
-        <!-- Bar bolan önümleri dolandyrmak we pozmak -->
+        <!-- Bar bolan önümleri dolandyrmak -->
         <div class="admin-card">
-            <h2><i class="fas fa-boxes"></i> Mevcut Ürünleri Yönet</h2>
+            <h2><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Görsel</th>
-                            <th>Başlık</th>
-                            <th>İşlem</th>
+                            <th data-tr="Görsel" data-tk="Surat">Görsel</th>
+                            <th data-tr="Başlık" data-tk="Ady">Başlık</th>
+                            <th data-tr="İşlem" data-tk="Hereket">İşlem</th>
                         </tr>
                     </thead>
                     <tbody id="adminProductsList">
-                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Yükleniyor...</td></tr>
+                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -285,29 +185,44 @@
 
     <!-- Scriptler -->
     <script>
-        // Dark/Light Mode Logika
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langText = document.getElementById('langText');
 
+        let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
         const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
+
         htmlElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
+        updateThemeIcon(savedTheme);
+        setLanguage(currentLang);
 
         toggleBtn.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             htmlElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('mobleart_theme', newTheme);
-            updateIcon(newTheme);
+            updateThemeIcon(newTheme);
         });
 
-        function updateIcon(theme) {
-            if (theme === 'light') {
-                themeIcon.className = 'fas fa-sun';
-            } else {
-                themeIcon.className = 'fas fa-moon';
-            }
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'tr' ? 'tk' : 'tr';
+            localStorage.setItem('mobleart_lang', currentLang);
+            setLanguage(currentLang);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function setLanguage(lang) {
+            langText.innerText = lang.toUpperCase() === 'TR' ? 'TURKMENÇE' : 'TÜRKÇE';
+            document.querySelectorAll('[data-tr]').forEach(el => {
+                if (el.getAttribute(`data-${lang}`)) {
+                    el.innerText = el.getAttribute(`data-${lang}`);
+                }
+            });
         }
     </script>
 
@@ -334,21 +249,19 @@
         const imageFileInput = document.getElementById('imageFile');
         const prodImageInput = document.getElementById('prodImage');
 
-        // Kompýuterden surat saýlanynda ony Base64 (tekst) görnüşine öwrüp URL inputyna ýazýar
         imageFileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    prodImageInput.value = event.target.result; // Base64 surat kody
+                    prodImageInput.value = event.target.result;
                     statusMsg.style.color = "#22c55e";
-                    statusMsg.innerHTML = "✓ Surat üstünlikli saýlandy!";
+                    statusMsg.innerHTML = currentLang === 'tk' ? "✓ Surat üstünlikli saýlandy!" : "✓ Görsel başarıyla seçildi!";
                 }
                 reader.readAsDataURL(file);
             }
         });
 
-        // Önümleri çykarmak we sanawda görkezmek
         async function fetchAdminProducts() {
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
@@ -363,7 +276,11 @@
                     const id = documentSnap.id;
                     listContainer.innerHTML += `
                         <tr>
-                            <td><img src="${prod.image}" class="prod-thumb" alt=""></td>
+                            <td>
+                                <div class="prod-thumb-container">
+                                    <img src="${prod.image}" class="prod-thumb" alt="">
+                                </div>
+                            </td>
                             <td><strong>${prod.title}</strong></td>
                             <td>
                                 <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
@@ -373,22 +290,21 @@
                 });
             } catch (error) {
                 console.error("Ýalňyşlyk:", error);
-                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Ürünler yüklenirken hata oluştu.</td></tr>`;
+                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
         fetchAdminProducts();
 
-        // Firebase-e täze önüm goşmak
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
             const image = prodImageInput.value;
-            const description = document.getElementById('prodDesc').value;
+            const description = document.getElementById('prodDesc'].value;
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Ekleniyor...`;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> İşleniyor...`;
 
             try {
                 await addDoc(collection(db, "products"), {
@@ -398,29 +314,27 @@
                     createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
-                statusMsg.innerHTML = "✓ Ürün başarıyla eklendi!";
+                statusMsg.innerHTML = currentLang === 'tk' ? "✓ Önüm üstünlikli goşuldy!" : "✓ Ürün başarıyla eklendi!";
                 form.reset();
                 fetchAdminProducts();
             } catch (error) {
                 console.error("Ýalňyşlyk:", error);
                 statusMsg.style.color = "#ef4444";
-                statusMsg.innerHTML = "✕ Ürün eklenirken hata oluştu!";
+                statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
             }
         });
 
-        // Önümi pozmak
         window.deleteProduct = async function(id) {
             if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
-                    alert("Ürün silindi!");
+                    alert("Silindi!");
                     fetchAdminProducts();
                 } catch (error) {
-                    console.error("Pozuş hatasy:", error);
-                    alert("Silinirken hata oluştu.");
+                    alert("Hata oluştu.");
                 }
             }
         }
