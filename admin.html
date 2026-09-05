@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobleArt | Yönetim Paneli (Admin)</title>
     
-    <!-- Google Fonts we Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -120,6 +119,35 @@
         }
         #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
 
+        /* Login Screen Overlay */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
         /* Lightbox Modal */
         .modal {
             display: none;
@@ -154,17 +182,40 @@
 </head>
 <body>
 
+    <div id="loginOverlay">
+        <div class="login-box">
+            <h2>Moble<span>Art</span> <span data-tr="Yönetici Girişi" data-tk="Admin Girişi">Admin Girişi</span></h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label data-tr="E-Posta Adresi" data-tk="E-poçta salgysy">E-Posta Adresi</label>
+                    <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
+                </div>
+                <div class="form-group">
+                    <label data-tr="Şifre" data-tk="Parol">Şifre</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> <span data-tr="Giriş Yap" data-tk="Girmek">Giriş Yap</span>
+                </button>
+                <div id="loginError" style="color: #ef4444; margin-top: 10px; font-size: 13px; text-align: center;"></div>
+            </form>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" class="back-home" style="justify-content: center;"><i class="fas fa-arrow-left"></i> <span data-tr="Siteye Dön" data-tk="Saýta gaýdyp bar">Siteye Dön</span></a>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+            <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span data-tr="Çıkış" data-tk="Çykmak">Çıkış</span></button>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span data-tr="Siteye Dön" data-tk="Saýta gaýdyp bar">Siteye Dön</span></a>
         </div>
     </header>
 
     <div class="admin-container">
-        <!-- Önüm Goşmak Formy -->
         <div class="admin-card">
             <h2><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></h2>
             <form id="addProductForm">
@@ -194,7 +245,6 @@
             </form>
         </div>
 
-        <!-- Bar bolan önümleri dolandyrmak -->
         <div class="admin-card">
             <h2><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></h2>
             <div class="table-responsive">
@@ -213,11 +263,9 @@
             </div>
         </div>
 
-        <!-- Sargytlar we Müşderiler Bölümi (Sipariş ve Müşteri Takibi) -->
         <div class="admin-card">
             <h2><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></h2>
             
-            <!-- Sargyt Goş Formy -->
             <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
@@ -252,7 +300,6 @@
                 <button type="submit" class="btn"><i class="fas fa-plus"></i> <span data-tr="Siparişi Kaydet" data-tk="Sargydy ýazga al">Siparişi Kaydet</span></button>
             </form>
 
-            <!-- Sargytlar Tablisasy -->
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -272,13 +319,11 @@
         </div>
     </div>
 
-    <!-- Lightbox Modal -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Scriptler -->
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -344,6 +389,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -357,6 +403,54 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Ulanyjynyň giriş ýagdaýyny barlamak
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginOverlay.style.display = 'none';
+                fetchAdminProducts();
+                fetchAdminOrders();
+            } else {
+                loginOverlay.style.display = 'flex';
+            }
+        });
+
+        // Giriş etmek (Login)
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                loginError.innerText = "";
+                loginForm.reset();
+            } catch (error) {
+                loginError.innerText = currentLang === 'tk' ? "E-poçta ýa-da parol ýalňyş!" : "E-posta veya şifre hatalı!";
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> ${currentLang === 'tk' ? 'Girmek' : 'Giriş Yap'}`;
+            }
+        });
+
+        // Çykyş etmek (Logout)
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error("Çykyşda ýalňyşlyk:", error);
+            }
+        });
 
         const form = document.getElementById('addProductForm');
         const statusMsg = document.getElementById('statusMessage');
@@ -408,8 +502,6 @@
                 listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
-
-        fetchAdminProducts();
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -493,8 +585,6 @@
                 console.error("Ýalňyşlyk:", error);
             }
         }
-
-        fetchAdminOrders();
 
         orderForm.addEventListener('submit', async (e) => {
             e.preventDefault();
