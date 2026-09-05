@@ -3,115 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Özel Tasarım Mobilya</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Header (Kellelik Bölüm) -->
     <header>
         <div class="logo">Moble<span>Art</span></div>
-        <nav>
-            <a href="#">Anasayfa</a>
-            <a href="#urunler">Ürünler</a>
-            <a href="#teklif">Teklif Al</a>
-            <a href="admin.html" style="color: #b5838d; font-weight: 600;"><i class="fas fa-lock"></i> Admin</a>
+        <nav class="nav-links">
+            <a href="#">Baş Sahypa</a>
+            <a href="#urunler">Koleksiýa</a>
+            <a href="#ustunlukler">Näme Üçin Biz?</a>
+            <a href="#teklif">Bahalandyryş</a>
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
         </nav>
         <div class="header-cta">
-            <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
+            <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
         </div>
     </header>
 
+    <!-- Hero (Esasy Başlangyç Banner) -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Evinize Değer Katan Özel Tasarımlar</h1>
-            <p>Mutfağınızdan yatak odanıza kadar hayalinizdeki mobilyaları kişiye özel ölçü ve lüks işçilikle üretiyoruz.</p>
+            <span class="hero-badge"><i class="fas fa-star"></i> Lüks we Şahsylaşdyrylan Dizaýn</span>
+            <h1>Öýüňize Gymmatlyk Goşýan Senetçilik</h1>
+            <p>Aşhanada, ýatarky otagda we myhman otagda islenýän ölçeglere görgülü hususy taslamalary ýokary hilli işçilik bilen öndürýäris.</p>
             <div class="hero-buttons">
-                <a href="#teklif" class="btn"><i class="fas fa-hammer"></i> Hemen Projelendirelim</a>
-                <a href="https://wa.me/905077079354?text=Merhaba,%20genel%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp'tan Yaz</a>
+                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> Mugt Maslahat Al</a>
+                <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Söhbetdeşlik</a>
             </div>
         </div>
     </section>
 
-    <!-- Dinamik Önümler Galereýasy (Firebase-den çekilýär) -->
+    <!-- Dinamik Önümler Galereýasy -->
     <div class="container" id="urunler">
-        <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
+        <div class="section-header">
+            <span class="sub-title">Biziň Önümlerimiz</span>
+            <h2 class="section-title">Hususy Öndürilen Koleksiýalar</h2>
+            <p style="color: #666; font-size: 15px;">Firebase bazasyndan awtomatiki ýüklenýän iň täze işlerimiz</p>
+        </div>
         <div class="products-grid" id="dynamicProductsGrid">
-            <!-- Firebase-den önümler şu ýere awtomatiki ýüklenýär -->
-            <p style="text-align: center; color: #777; grid-column: 1/-1;">Önümler ýüklenýär...</p>
+            <div class="loading-box" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #777;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px;"></i>
+                <p>Önümler ýüklenýär...</p>
+            </div>
         </div>
     </div>
 
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-box">
-                <i class="fas fa-ruler-combined"></i>
-                <h4>Ücretsiz Keşif & Ölçü</h4>
-                <p>Evinize gelerek tam ölçü alıyor ve mekânınıza en uygun projeyi çiziyoruz.</p>
+    <!-- Aýratynlyklar / Üstünlikler -->
+    <section class="features" id="ustunlukler">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">Arassalyk we Ynam</span>
+                <h2 class="section-title">Näme Üçin Biz Bilan İşleşmeli?</h2>
             </div>
-            <div class="feature-box">
-                <i class="fas fa-medal"></i>
-                <h4>1. Sınıf Malzeme</h4>
-                <p>Uzun ömürlü, kaliteli ve sağlığa zararsız birinci sınıf ham maddeler kullanıyoruz.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-truck"></i>
-                <h4>Zamanında Teslimat</h4>
-                <p>Söz verdiğimiz tarihte üretim, montaj ve teslimat garantisi sunuyoruz.</p>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h4>Mugt Gözegçilik & Ölçeg</h4>
+                    <p>Öýüňize gelip takyk ölçeg alýarys we meýdançaňyza laýyk 3D taslama düzýäris.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h4>1-nji Derejeli Hilli Haryt</h4>
+                    <p>Uzak ömürli, berk we saglyga howpsuz ýokary hilli çig mal serişdelerini ulanýarys.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Wagtly-Wagtyna Gowşuryş</h4>
+                    <p>Bellenen wagtda önümçilik, gurnamak (montaj) we öýe eltip beriş kepilligi.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Baha Soralýan Forma Bölümi -->
     <section class="contact-section" id="teklif">
-        <div class="contact-form">
-            <h2 class="section-title" style="font-size: 26px; margin-bottom: 20px;">Hemen Fiyat Teklifi Alın</h2>
-            <form id="quoteForm">
-                <div class="form-group">
-                    <label>Adınız Soyadınız</label>
-                    <input type="text" id="name" placeholder="Adınızı girin" required>
+        <div class="contact-container">
+            <div class="contact-text">
+                <h2>Öz Hyýalyňdaky Öýüňi Bilelikde Döredeliň</h2>
+                <p>Formany dolduryň, size gyssagly jaň edip baha we taslama barada maglumat bereliň.</p>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Stambul / Türkiýe</span>
                 </div>
-                <div class="form-group">
-                    <label>Telefon Numaranız</label>
-                    <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+90 507 707 93 54</span>
                 </div>
-                <div class="form-group">
-                    <label>İstediğiniz Mobilya Türü</label>
-                    <select id="service">
-                        <option>Mutfak Dolabı</option>
-                        <option>Yatak Odası</option>
-                        <option>TV Ünitesi / Salon</option>
-                        <option>Özel Ölçü Mobilya</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Teklif İste (WhatsApp)</button>
-            </form>
+            </div>
+            <div class="contact-form-box">
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label>Adyňyz we Familiýaňyz</label>
+                        <input type="text" id="name" placeholder="Adyňyzy ýazyň" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon Belgiňiz</label>
+                        <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Islän Mebel Görnüşiňiz</label>
+                        <select id="service">
+                            <option>Lüks Aşhana Dolaby</option>
+                            <option>Ýatargy Otag Toplumy</option>
+                            <option>TV Stendi & Myhman Otag</option>
+                            <option>Hususy Ölçegli Mebel</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Bahalandyryş Al (WhatsApp)</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Mobil Aşaky Menýu -->
+    <!-- Mobil Aşaky Actions Menýu -->
     <div class="mobile-bottom-bar">
         <a href="tel:+905077079354" class="mob-btn call-btn">
-            <i class="fas fa-phone-alt"></i> Hemen Ara
+            <i class="fas fa-phone-alt"></i> Jaň Et
         </a>
         <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank">
             <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
     </div>
 
-    <!-- Sag Aşakda Aýlanýan WhatsApp Düwmesi -->
+    <!-- Ýüzýän WhatsApp Düwmesi -->
     <a href="https://wa.me/905077079354" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Footer -->
     <footer>
-        <div class="social-links">
-            <a href="admin.html"><i class="fas fa-user-shield"></i> Admin Paneli</a>
+        <div class="footer-content">
+            <div class="footer-logo">Moble<span>Art</span></div>
+            <p>&copy; 2026 MobleArt. Ähli hukuklar goralandyr. | Stambul</p>
+            <a href="admin.html" class="footer-admin"><i class="fas fa-user-shield"></i> Admin Paneli</a>
         </div>
-        <p>&copy; 2026 MobleArt. Tüm Hakları Saklıdır. | İstanbul / Türkiye</p>
     </footer>
 
-    <!-- Firebase we Baş Sahypa Logikasy -->
+    <!-- Firebase Önüm Çekiji Logika -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -129,13 +163,16 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Firestore-dan önümleri alyp saýta ýazmak
         async function loadProducts() {
             const grid = document.getElementById('dynamicProductsGrid');
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    grid.innerHTML = `<p style="text-align: center; color: #777; grid-column: 1/-1;">Häzirlikçe önüm goşulmady. Admin paneli arkaly goşup bilersiňiz.</p>`;
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #faf8f5; border-radius: 12px;">
+                            <p style="color: #777; margin-bottom: 10px;">Häzirlikçe hiç hili önüm goşulmady.</p>
+                            <a href="admin.html" style="color: #b5838d; font-weight: 600; text-decoration: underline;">Admin Paneline girip önüm goşuň</a>
+                        </div>`;
                     return;
                 }
 
@@ -144,18 +181,22 @@
                     const prod = doc.data();
                     grid.innerHTML += `
                         <div class="product-card">
-                            <img src="${prod.image}" alt="${prod.title}" class="product-img">
+                            <div class="product-img-container">
+                                <img src="${prod.image}" alt="${prod.title}" class="product-img">
+                            </div>
                             <div class="product-info">
                                 <h3>${prod.title}</h3>
-                                <p>${prod.description}</p>
-                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20hakkında%20bilgi%20almak%20istiyorum." class="btn" style="padding: 8px 15px; font-size: 14px;" target="_blank">WhatsApp Bilgi</a>
+                                <p class="product-desc">${prod.description}</p>
+                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Maglumat Al
+                                </a>
                             </div>
                         </div>
                     `;
                 });
             } catch (error) {
                 console.error("Ýalňyşlyk:", error);
-                grid.innerHTML = `<p style="text-align: center; color: red; grid-column: 1/-1;">Maglumatlar yüklenende ýalňyşlyk boldy.</p>`;
+                grid.innerHTML = `<p style="text-align: center; color: red; grid-column: 1/-1;">Maglumatlar ýüklenende ýalňyşlyk ýüze çykdy.</p>`;
             }
         }
 
