@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +10,51 @@
 
     <!-- SEO Meta Taglary -->
     <meta name="description" content="İstanbul'da kişiye özel tasarım mobilya, lüks mutfak dolabı, yatak odası ve TV ünitesi imalatı. MobleArt ile hayalinizdeki evi tasarlayın. Ücretsiz keşif ve ölçü avantajı!">
-    <meta name="keywords" content="özel tasarım mobilya, lüks mutfak dolabı istanbul, mobilya imalatı, yatak odası takımı, tv ünitesi, mobleart, iç mimarlık istanbul">
-    <meta name="author" content="MobleArt">
-    <meta name="robots" content="index, follow">
-
+    
     <!-- Google Fonts we Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Rejim Üýtgeýän Reňkler (CSS Variables) */
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #161616;
+            --text-color: #e5e5e5;
+            --text-muted: #aaa;
+            --border-color: #262626;
+            --header-bg: rgba(15, 15, 15, 0.95);
+            --accent-color: #d4af37;
+            --accent-hover: #e6c555;
+            --feature-bg: #1a1a1a;
+            --footer-bg: #080808;
+            --input-bg: #0f0f0f;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #222222;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+            --header-bg: rgba(248, 249, 250, 0.95);
+            --accent-color: #b89728;
+            --accent-hover: #997c1d;
+            --feature-bg: #ffffff;
+            --footer-bg: #f1f3f5;
+            --input-bg: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
         body {
-            background-color: #0f0f0f;
-            color: #e5e5e5;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
         }
         header {
@@ -35,9 +62,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: rgba(15, 15, 15, 0.95);
+            background: var(--header-bg);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,11 +72,11 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-color);
             letter-spacing: 1px;
         }
         .logo span {
-            color: #d4af37;
+            color: var(--accent-color);
         }
         .nav-links {
             display: flex;
@@ -58,13 +85,12 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: #ccc;
+            color: var(--text-muted);
             font-weight: 500;
             font-size: 15px;
-            transition: 0.3s;
         }
         .nav-links a:hover {
-            color: #d4af37;
+            color: var(--accent-color);
         }
         .social-icons {
             display: flex;
@@ -72,20 +98,40 @@
             align-items: center;
         }
         .social-icons a {
-            color: #ccc;
+            color: var(--text-muted);
             font-size: 18px;
-            transition: 0.3s;
         }
         .social-icons a:hover {
-            color: #d4af37;
+            color: var(--accent-color);
         }
+        
+        /* Rejim Çalyşdyryjy Düwme (Theme Toggle Button) */
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .theme-toggle:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
         .header-cta {
             display: flex;
             align-items: center;
             gap: 15px;
         }
         .header-phone {
-            color: #fff;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 600;
             font-size: 15px;
@@ -101,7 +147,7 @@
         .hero {
             position: relative;
             height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,12 +159,12 @@
             max-width: 800px;
         }
         .hero-badge {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.2);
             border: 1px solid #d4af37;
             padding: 6px 18px;
             border-radius: 20px;
             font-size: 13px;
-            color: #d4af37;
+            color: #ffd700;
             display: inline-block;
             margin-bottom: 20px;
             font-weight: 500;
@@ -133,7 +179,7 @@
         .hero p {
             font-size: 17px;
             margin-bottom: 30px;
-            color: #bbb;
+            color: #ddd;
         }
         .hero-buttons {
             display: flex;
@@ -142,7 +188,7 @@
             flex-wrap: wrap;
         }
         .btn {
-            background: #d4af37;
+            background: var(--accent-color);
             color: #111;
             padding: 12px 28px;
             border-radius: 5px;
@@ -152,9 +198,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover {
-            background: #e6c555;
+            background: var(--accent-hover);
         }
         .btn-outline {
             background: transparent;
@@ -177,7 +225,7 @@
             margin-bottom: 50px;
         }
         .sub-title {
-            color: #d4af37;
+            color: var(--accent-color);
             font-weight: 600;
             font-size: 14px;
             text-transform: uppercase;
@@ -188,7 +236,7 @@
         .section-title {
             font-size: 34px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-color);
         }
         
         /* Products Grid */
@@ -198,15 +246,15 @@
             gap: 30px;
         }
         .product-card {
-            background: #161616;
-            border: 1px solid #262626;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
             transition: 0.3s;
         }
         .product-card:hover {
             transform: translateY(-5px);
-            border-color: #d4af37;
+            border-color: var(--accent-color);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
         }
         .product-img-container {
@@ -230,11 +278,11 @@
         .product-info h3 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #fff;
+            color: var(--text-color);
         }
         .product-desc {
             font-size: 14px;
-            color: #aaa;
+            color: var(--text-muted);
             margin-bottom: 20px;
             line-height: 1.5;
         }
@@ -252,10 +300,10 @@
 
         /* Features Section */
         .features {
-            background: #141414;
+            background: var(--feature-bg);
             padding: 80px 0;
-            border-top: 1px solid #222;
-            border-bottom: 1px solid #222;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
         .features-grid {
             display: grid;
@@ -266,27 +314,27 @@
             text-align: center;
             padding: 35px 25px;
             border-radius: 8px;
-            background: #1a1a1a;
-            border: 1px solid #262626;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
         .feature-icon {
             font-size: 36px;
-            color: #d4af37;
+            color: var(--accent-color);
             margin-bottom: 15px;
         }
         .feature-box h4 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #fff;
+            color: var(--text-color);
         }
         .feature-box p {
             font-size: 14px;
-            color: #999;
+            color: var(--text-muted);
         }
 
-        /* Contact / Quote Section */
+        /* Contact Section */
         .contact-section {
-            background: #0f0f0f;
+            background: var(--bg-color);
             padding: 80px 20px;
         }
         .contact-container {
@@ -300,10 +348,10 @@
         .contact-text h2 {
             font-size: 32px;
             margin-bottom: 15px;
-            color: #fff;
+            color: var(--text-color);
         }
         .contact-text p {
-            color: #aaa;
+            color: var(--text-muted);
             margin-bottom: 25px;
             font-size: 15px;
         }
@@ -313,15 +361,15 @@
             gap: 15px;
             margin-bottom: 15px;
             font-size: 15px;
-            color: #ccc;
+            color: var(--text-color);
         }
         .contact-info-item i {
-            color: #d4af37;
+            color: var(--accent-color);
             font-size: 18px;
         }
         .contact-form-box {
-            background: #161616;
-            border: 1px solid #262626;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 10px;
         }
@@ -332,39 +380,39 @@
             display: block;
             font-size: 13px;
             margin-bottom: 8px;
-            color: #ccc;
+            color: var(--text-color);
         }
         .form-group input, .form-group select {
             width: 100%;
             padding: 12px;
-            background: #0f0f0f;
-            border: 1px solid #333;
-            color: #fff;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
             border-radius: 5px;
             font-size: 14px;
         }
         .form-group input:focus, .form-group select:focus {
-            border-color: #d4af37;
+            border-color: var(--accent-color);
             outline: none;
         }
 
         /* Footer */
         footer {
-            background: #080808;
-            color: #777;
+            background: var(--footer-bg);
+            color: var(--text-muted);
             text-align: center;
             padding: 50px 20px;
-            border-top: 1px solid #1c1c1c;
+            border-top: 1px solid var(--border-color);
             margin-bottom: 60px;
         }
         .footer-logo {
             font-size: 22px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-color);
             margin-bottom: 10px;
         }
         .footer-logo span {
-            color: #d4af37;
+            color: var(--accent-color);
         }
         .footer-social {
             display: flex;
@@ -373,33 +421,31 @@
             margin: 20px 0;
         }
         .footer-social a {
-            color: #fff;
+            color: var(--text-color);
             font-size: 18px;
-            background: #1a1a1a;
+            background: var(--card-bg);
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid #333;
-            transition: 0.3s;
+            border: 1px solid var(--border-color);
         }
         .footer-social a:hover {
-            background: #d4af37;
+            background: var(--accent-color);
             color: #111;
         }
         .admin-link-container {
             margin-top: 25px;
         }
         .admin-link {
-            color: #555;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 13px;
-            transition: 0.3s;
         }
         .admin-link:hover {
-            color: #d4af37;
+            color: var(--accent-color);
         }
 
         .mobile-bottom-bar {
@@ -408,8 +454,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #161616;
-            border-top: 1px solid #262626;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
             z-index: 1001;
             grid-template-columns: 1fr 1fr;
         }
@@ -425,8 +471,8 @@
             gap: 8px;
         }
         .call-btn {
-            background: #1a1a1a;
-            color: #fff;
+            background: var(--card-bg);
+            color: var(--text-color);
         }
         .wa-btn {
             background: #25d366;
@@ -434,25 +480,11 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
-            }
-            .nav-links, .header-phone {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 28px;
-            }
-            .hero p {
-                font-size: 14px;
-            }
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .mobile-bottom-bar {
-                display: grid;
-            }
+            header { padding: 15px 20px; }
+            .nav-links, .header-phone { display: none; }
+            .hero h1 { font-size: 28px; }
+            .contact-container { grid-template-columns: 1fr; gap: 30px; }
+            .mobile-bottom-bar { display: grid; }
         }
     </style>
 </head>
@@ -470,6 +502,8 @@
         <div class="social-icons">
             <a href="https://www.instagram.com/mobleart.tr" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/905077079354" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <!-- Rejim Düwmesi -->
+            <button class="theme-toggle" id="themeToggleBtn" title="Rejimi Üýtget"><i class="fas fa-moon" id="themeIcon"></i></button>
         </div>
         <div class="header-cta">
             <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
@@ -494,11 +528,11 @@
         <div class="section-header">
             <span class="sub-title">Ürünlerimiz</span>
             <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
-            <p style="color: #999; font-size: 15px; margin-top: 5px;">Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız</p>
+            <p style="color: var(--text-muted); font-size: 15px; margin-top: 5px;">Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız</p>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
-            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #888;">
-                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: #d4af37;"></i>
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: var(--accent-color);"></i>
                 <p>Ürünler yükleniyor...</p>
             </div>
         </div>
@@ -537,18 +571,9 @@
             <div class="contact-text">
                 <h2>Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
                 <p>Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
-                <div class="contact-info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>İstanbul / Türkiye</span>
-                </div>
-                <div class="contact-info-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+90 507 707 93 54</span>
-                </div>
-                <div class="contact-info-item">
-                    <i class="fab fa-instagram"></i>
-                    <span>@mobleart.tr</span>
-                </div>
+                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
+                <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
             </div>
             <div class="contact-form-box">
                 <form id="quoteForm">
@@ -577,12 +602,8 @@
 
     <!-- Mobil Alt Menü -->
     <div class="mobile-bottom-bar">
-        <a href="tel:+905077079354" class="mob-btn call-btn">
-            <i class="fas fa-phone-alt"></i> Ara
-        </a>
-        <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
+        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> Ara</a>
+        <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <!-- Footer -->
@@ -598,7 +619,34 @@
         </div>
     </footer>
 
-    <!-- Firebase Ürün Çekici Logika -->
+    <!-- Scriptler -->
+    <script>
+        // Dark/Light Mode Logika
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mobleart_theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'light') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -622,10 +670,10 @@
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
                     grid.innerHTML = `
-                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #161616; border: 1px dashed #333; border-radius: 10px;">
-                            <i class="fas fa-box-open" style="font-size: 36px; color: #d4af37; margin-bottom: 15px;"></i>
-                            <h3 style="color: #fff; margin-bottom: 8px; font-size: 18px;">Henüz Ürün Eklenmemiş</h3>
-                            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">Admin paneline girerek ilk mobilya tasarımlarınızı yükleyebilirsiniz.</p>
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 10px;">
+                            <i class="fas fa-box-open" style="font-size: 36px; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <h3 style="color: var(--text-color); margin-bottom: 8px; font-size: 18px;">Henüz Ürün Eklenmemiş</h3>
+                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Admin paneline girerek ilk mobilya tasarımlarınızı yükleyebilirsiniz.</p>
                             <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> Ürün Ekle</a>
                         </div>
                     `;
@@ -652,19 +700,17 @@
                 });
             } catch (error) {
                 console.error("Hata:", error);
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 30px;">Ürünler yüklenirken bir hata oluştu.</p>`;
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px;">Ürünler yüklenirken bir hata oluştu.</p>`;
             }
         }
 
         loadProducts();
 
-        // WhatsApp Teklif Formu
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
-
             const text = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediği Hizmet:* ${encodeURIComponent(service)}`;
             window.open(`https://wa.me/905077079354?text=${text}`, '_blank');
         });
