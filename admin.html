@@ -7,13 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .admin-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+        .admin-container { max-width: 650px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .success-msg { color: #27ae60; font-weight: 500; margin-top: 10px; display: none; }
         #adminContent { display: none; text-align: left; }
         .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 15px; font-size: 15px; transition: 0.3s; }
         .google-btn:hover { background: #c23321; }
-        .divider { margin: 15px 0; color: #777; font-size: 14px; }
+        .divider { margin: 15px 0; color: #777; font-size: 14px; text-align: center; }
+        
+        /* Surat saýlaýjy we önüm sanawy üçin styllar */
+        .file-upload-box { border: 2px dashed #b5838d; padding: 15px; border-radius: 8px; text-align: center; background: #fdfbf7; cursor: pointer; margin-bottom: 15px; }
+        .file-upload-box input { display: none; }
+        .preview-img { max-width: 100px; max-height: 100px; margin-top: 10px; display: none; border-radius: 6px; }
+        
+        .manage-section { margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; }
+        .admin-product-item { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px 15px; border-radius: 6px; margin-bottom: 10px; }
+        .admin-product-item img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
+        .delete-btn { background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; }
     </style>
 </head>
 <body style="background-color: #f4efe9;">
@@ -24,7 +34,7 @@
             <a href="index.html" class="btn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Saýta Gaýt</a>
         </div>
 
-        <!-- Giriş Bölümi (Google + Email/Password) -->
+        <!-- Giriş Bölümi -->
         <div id="loginSection" style="text-align: left;">
             <p style="margin-bottom: 15px; color: #666; text-align: center;">Admin paneline girmek üçin aşakdakylardan birini ulanyň:</p>
             
@@ -32,7 +42,7 @@
                 <i class="fab fa-google"></i> Google Bilen Giriş Et
             </button>
 
-            <div class="divider" style="text-align: center;">ýa-da Email / Parol bilen</div>
+            <div class="divider">ýa-da Email / Parol bilen</div>
 
             <form id="emailLoginForm">
                 <div class="form-group">
@@ -47,33 +57,51 @@
             </form>
         </div>
 
-        <!-- Diňe Giriş Edilenden Soň Görkeziljek Önüm Goşma Formasy -->
+        <!-- Giriş Edilenden Soňky Panel -->
         <div id="adminContent">
-            <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500;"></p>
+            <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500; text-align: center;"></p>
+            
+            <h3 style="margin-bottom: 15px; color: #444;">Täze Önüm Goş</h3>
             <form id="addProductForm">
                 <div class="form-group">
                     <label>Önüm Ady</label>
                     <input type="text" id="prodTitle" placeholder="Mysal: Lüks Mutfak Dolaby" required>
                 </div>
+                
+                <!-- Galereýadan Surat Saýlaýan Düwme -->
                 <div class="form-group">
-                    <label>Surat Salgysy (URL)</label>
-                    <input type="text" id="prodImg" placeholder="https://images.unsplash.com/..." required>
+                    <label>Surat Saýla (Galereýadan)</label>
+                    <label class="file-upload-box" for="prodImageFile">
+                        <span id="fileLabel"><i class="fas fa-cloud-upload-alt"></i> Surat Sahypadan Saýla (Basň)</span>
+                        <input type="file" id="prodImageFile" accept="image/*" required>
+                    </label>
+                    <img id="imagePreview" class="preview-img" alt="Önüm suraty">
                 </div>
+
                 <div class="form-group">
                     <label>Baha ýa-da Beýan</label>
                     <input type="text" id="prodDesc" placeholder="Mysal: 15.000 TL-den başlaýan bahalarla" required>
                 </div>
-                <button type="submit" class="btn" style="width: 100%;">Önümi Saýta Goş</button>
+                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">Önümi Saýta Goş</button>
                 <p id="successMsg" class="success-msg">Önüm üstünlikli goşuldy!</p>
             </form>
-            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; margin-top: 20px; cursor: pointer;">Çykyş Et</button>
+
+            <!-- Önümleri dolandyrmak (Pozmak) bölümi -->
+            <div class="manage-section">
+                <h3 style="margin-bottom: 15px; color: #444; text-align: left;">Bar Olan Önümleri Dolandyr (Poz)</h3>
+                <div id="adminProductList">
+                    <p style="color: #777; font-size: 14px;">Önümler ýüklenýär...</p>
+                </div>
+            </div>
+
+            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; margin-top: 25px; cursor: pointer; width: 100%;">Çykyş Et</button>
         </div>
     </div>
 
     <!-- Firebase SDK we Logika -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
         const firebaseConfig = {
@@ -98,13 +126,28 @@
         const logoutBtn = document.getElementById('logoutBtn');
         const userInfo = document.getElementById('userInfo');
 
+        let base64Image = "";
+
+        // Surat saýlanynda ony Base64 koduna öwürmek we preview etmek
+        document.getElementById('prodImageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('fileLabel').textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    base64Image = event.target.result;
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = base64Image;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // Google Giriş
         googleLoginBtn.addEventListener('click', async () => {
-            try {
-                await signInWithPopup(auth, provider);
-            } catch (error) {
-                alert("Giriş ýalňyşlygy (Popup bloklanan bolar): " + error.message);
-            }
+            try { await signInWithPopup(auth, provider); } 
+            catch (error) { alert("Giriş ýalňyşlygy: " + error.message); }
         });
 
         // Email / Parol Giriş
@@ -112,24 +155,18 @@
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (error) {
-                alert("Giriş ýalňyşlygy: E-mail ýa-da parol ýalňyş!");
-            }
+            try { await signInWithEmailAndPassword(auth, email, password); } 
+            catch (error) { alert("Giriş ýalňyşlygy: E-mail ýa-da parol ýalňyş!"); }
         });
 
-        // Çykyş Et
-        logoutBtn.addEventListener('click', async () => {
-            await signOut(auth);
-        });
+        logoutBtn.addEventListener('click', async () => { await signOut(auth); });
 
-        // Auth status barlag
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginSection.style.display = 'none';
                 adminContent.style.display = 'block';
                 userInfo.textContent = `Hoş geldiňiz: ${user.email}`;
+                loadAdminProducts();
             } else {
                 loginSection.style.display = 'block';
                 adminContent.style.display = 'none';
@@ -140,24 +177,82 @@
         document.getElementById('addProductForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
-            const img = document.getElementById('prodImg').value;
             const desc = document.getElementById('prodDesc').value;
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (!base64Image) {
+                alert("Haýyş edýäris, surat saýlaň!");
+                return;
+            }
+
+            submitBtn.textContent = "Ýüklenýär...";
+            submitBtn.disabled = true;
 
             try {
                 await addDoc(collection(db, "products"), {
                     title: title,
-                    image: img,
+                    image: base64Image,
                     description: desc,
                     createdAt: new Date()
                 });
 
                 document.getElementById('successMsg').style.display = 'block';
                 document.getElementById('addProductForm').reset();
+                document.getElementById('imagePreview').style.display = 'none';
+                document.getElementById('fileLabel').innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Surat Sahypadan Saýla (Basň)';
+                base64Image = "";
+                
+                loadAdminProducts();
                 setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
             } catch (error) {
                 alert("Ýalňyşlyk: " + error.message);
+            } finally {
+                submitBtn.textContent = "Önümi Saýta Goş";
+                submitBtn.disabled = false;
             }
         });
+
+        // Admin panelde önümleri görkezmek we pozmak
+        async function loadAdminProducts() {
+            const listContainer = document.getElementById('adminProductList');
+            try {
+                const querySnapshot = await getDocs(collection(db, "products"));
+                if (querySnapshot.empty) {
+                    listContainer.innerHTML = `<p style="color: #777; font-size: 14px;">Häzirlikçe önüm ýok.</p>`;
+                    return;
+                }
+
+                listContainer.innerHTML = "";
+                querySnapshot.forEach((docSnap) => {
+                    const prod = docSnap.data();
+                    const prodId = docSnap.id;
+                    listContainer.innerHTML += `
+                        <div class="admin-product-item">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="${prod.image}" alt="">
+                                <span style="font-size: 14px; font-weight: 500; color: #333;">${prod.title}</span>
+                            </div>
+                            <button class="delete-btn" onclick="deleteProduct('${prodId}')">Poz</button>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Önümi pozmak funksiýasy
+        window.deleteProduct = async function(id) {
+            if (confirm("Bu önümi pozmak isleýärsiňizmi?")) {
+                try {
+                    await deleteDoc(doc(db, "products", id));
+                    alert("Önüm üstünlikli pozuldy!");
+                    loadAdminProducts();
+                } catch (error) {
+                    alert("Pozmakda ýalňyşlyk boldy: " + error.message);
+                }
+            }
+        };
     </script>
 </body>
 </html>
