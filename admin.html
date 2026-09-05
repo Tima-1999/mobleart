@@ -1,117 +1,280 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">MobleArt | Admin Paneli</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>MobleArt | Yönetim Paneli (Admin)</title>
+    
+    <!-- Google Fonts we Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
     <style>
-        .admin-container { max-width: 650px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 10px; }
-        .success-msg { color: #27ae60; font-weight: 500; margin-top: 10px; display: none; }
-        #adminContent { display: none; text-align: left; }
-        .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 15px; font-size: 15px; transition: 0.3s; }
-        .google-btn:hover { background: #c23321; }
-        .divider { margin: 15px 0; color: #777; font-size: 14px; text-align: center; }
-        
-        /* Dil Saylagy Stili */
-        .lang-switch { display: flex; gap: 5px; }
-        .lang-btn { background: #eee; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
-        .lang-btn.active { background: #b5838d; color: #fff; }
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #161616;
+            --text-color: #e5e5e5;
+            --text-muted: #aaa;
+            --border-color: #262626;
+            --header-bg: rgba(15, 15, 15, 0.95);
+            --accent-color: #d4af37;
+            --accent-hover: #e6c555;
+            --input-bg: #0f0f0f;
+        }
 
-        .file-upload-box { border: 2px dashed #b5838d; padding: 15px; border-radius: 8px; text-align: center; background: #fdfbf7; cursor: pointer; margin-bottom: 15px; }
-        .file-upload-box input { display: none; }
-        .preview-img { max-width: 100px; max-height: 100px; margin-top: 10px; display: none; border-radius: 6px; }
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #222222;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+            --header-bg: rgba(248, 249, 250, 0.95);
+            --accent-color: #b89728;
+            --accent-hover: #997c1d;
+            --input-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 50px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .logo span { color: var(--accent-color); }
         
-        .manage-section { margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; }
-        .admin-product-item { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px 15px; border-radius: 6px; margin-bottom: 10px; }
-        .admin-product-item img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; }
-        .delete-btn { background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .back-home {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-home:hover { color: var(--accent-color); }
+
+        .admin-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .admin-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .admin-card h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-card h2 i { color: var(--accent-color); }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+        .btn {
+            background: var(--accent-color);
+            color: #111;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        
+        .btn-danger {
+            background: #ef4444;
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        .btn-danger:hover { background: #dc2626; }
+
+        /* Ürünler Tablosu */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        th {
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--input-bg);
+        }
+        .prod-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        #statusMessage {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
     </style>
 </head>
-<body style="background-color: #f4efe9;">
+<body>
+
+    <header>
+        <div class="logo">Moble<span>Art</span> Admin</div>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggleBtn" title="Rejimi Üýtget"><i class="fas fa-moon" id="themeIcon"></i></button>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Siteye Dön</a>
+        </div>
+    </header>
 
     <div class="admin-container">
-        <div class="admin-header">
-            <h2 id="panelTitle">Admin Paneli</h2>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <div class="lang-switch">
-                    <button class="lang-btn active" onclick="setLanguage('tr')">TR</button>
-                    <button class="lang-btn" onclick="setLanguage('tk')">TM</button>
-                </div>
-                <a href="index.html" class="btn" id="backBtn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Ana Sayfa</a>
-            </div>
-        </div>
-
-        <!-- Giriş Bölümi -->
-        <div id="loginSection" style="text-align: left;">
-            <p id="loginDesc" style="margin-bottom: 15px; color: #666; text-align: center;">Yönetim paneline girmek için giriş yapın:</p>
-            
-            <button id="googleLoginBtn" class="google-btn">
-                <i class="fab fa-google"></i> <span id="googleText">Google ile Giriş Yap</span>
-            </button>
-
-            <div class="divider" id="orText">veya e-posta ile</div>
-
-            <form id="emailLoginForm">
-                <div class="form-group">
-                    <label id="emailLabel">E-posta Adresi</label>
-                    <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
-                </div>
-                <div class="form-group">
-                    <label id="passLabel">Parola</label>
-                    <input type="password" id="loginPassword" placeholder="********" required>
-                </div>
-                <button type="submit" class="btn" id="emailLoginBtn" style="width: 100%; background: #333;">E-posta ile Giriş</button>
-            </form>
-        </div>
-
-        <!-- Giriş Edilenden Soňky Panel -->
-        <div id="adminContent">
-            <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500; text-align: center;"></p>
-            
-            <h3 id="addProductTitle" style="margin-bottom: 15px; color: #444;">Yeni Ürün Ekle</h3>
+        <!-- Önüm Goşmak Formy -->
+        <div class="admin-card">
+            <h2><i class="fas fa-plus-circle"></i> Yeni Ürün / Tasarım Ekle</h2>
             <form id="addProductForm">
                 <div class="form-group">
-                    <label id="prodNameLabel">Ürün Adı</label>
+                    <label>Ürün Başlığı</label>
                     <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
-                
                 <div class="form-group">
-                    <label id="prodImgLabel">Görsel Seç (Galeriden)</label>
-                    <label class="file-upload-box" for="prodImageFile">
-                        <span id="fileLabel"><i class="fas fa-cloud-upload-alt"></i> Bilgisayardan/Telefondan Seç</span>
-                        <input type="file" id="prodImageFile" accept="image/*" required>
-                    </label>
-                    <img id="imagePreview" class="preview-img" alt="Önizleme">
+                    <label>Görsel Bağlantısı (Image URL)</label>
+                    <input type="url" id="prodImage" placeholder="https://images.unsplash.com/..." required>
                 </div>
-
                 <div class="form-group">
-                    <label id="prodDescLabel">Açıklama veya Fiyat</label>
-                    <input type="text" id="prodDesc" placeholder="Örn: 15.000 TL'den başlayan fiyatlarla" required>
+                    <label>Açıklama</label>
+                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
-                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">Ürünü Siteye Ekle</button>
-                <p id="successMsg" class="success-msg">Ürün başarıyla eklendi!</p>
+                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> Ürünü Yayınla</button>
+                <div id="statusMessage"></div>
             </form>
+        </div>
 
-            <div class="manage-section">
-                <h3 id="manageTitle" style="margin-bottom: 15px; color: #444; text-align: left;">Mevcut Ürünleri Yönet (Sil)</h3>
-                <div id="adminProductList">
-                    <p id="loadingText" style="color: #777; font-size: 14px;">Ürünler yükleniyor...</p>
-                </div>
+        <!-- Bar bolan önümleri dolandyrmak we pozmak -->
+        <div class="admin-card">
+            <h2><i class="fas fa-boxes"></i> Mevcut Ürünleri Yönet</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Görsel</th>
+                            <th>Başlık</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminProductsList">
+                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Yükleniyor...</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; margin-top: 25px; cursor: pointer; width: 100%;">Çıkış Yap</button>
         </div>
     </div>
 
-    <!-- Firebase SDK we Logika -->
+    <!-- Scriptler -->
+    <script>
+        // Dark/Light Mode Logika (Admin üçin hem)
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mobleart_theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'light') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+        import { getFirestore, collection, addCollection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -125,225 +288,87 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
 
-        const loginSection = document.getElementById('loginSection');
-        const adminContent = document.getElementById('adminContent');
-        const googleLoginBtn = document.getElementById('googleLoginBtn');
-        const emailLoginForm = document.getElementById('emailLoginForm');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const userInfo = document.getElementById('userInfo');
+        const form = document.getElementById('addProductForm');
+        const statusMsg = document.getElementById('statusMessage');
+        const listContainer = document.getElementById('adminProductsList');
 
-        let base64Image = "";
-
-        // Dil Sözlügi (Türkçe / Türkmençe)
-        const translations = {
-            tr: {
-                pageTitle: "MobleArt | Admin Paneli",
-                panelTitle: "Yönetim Paneli",
-                backBtn: "Siteye Dön",
-                loginDesc: "Yönetim paneline girmek için giriş yapın:",
-                googleText: "Google ile Giriş Yap",
-                orText: "veya e-posta ile",
-                emailLabel: "E-posta Adresi",
-                passLabel: "Parola",
-                emailLoginBtn: "E-posta ile Giriş",
-                addProductTitle: "Yeni Ürün Ekle",
-                prodNameLabel: "Ürün Adı",
-                prodImgLabel: "Görsel Seç (Galeriden)",
-                fileLabelText: "Bilgisayardan/Telefondan Seç",
-                prodDescLabel: "Açıklama veya Fiyat",
-                submitBtn: "Ürünü Siteye Ekle",
-                successMsg: "Ürün başarıyla eklendi!",
-                manageTitle: "Mevcut Ürünleri Yönet (Sil)",
-                loadingText: "Ürünler yükleniyor...",
-                logoutBtn: "Çıkış Yap",
-                deleteBtn: "Sil",
-                confirmDelete: "Bu ürünü silmek istiyor musunuz?",
-                successDelete: "Ürün başarıyla silindi!"
-            },
-            tk: {
-                pageTitle: "MobleArt | Admin Paneli",
-                panelTitle: "Admin Paneli",
-                backBtn: "Saýta Gaýt",
-                loginDesc: "Admin paneline girmek üçin giriň:",
-                googleText: "Google Bilen Giriş Et",
-                orText: "ýa-da email bilen",
-                emailLabel: "Email Salgysy",
-                passLabel: "Parol",
-                emailLoginBtn: "Email bilen Giriş",
-                addProductTitle: "Täze Önüm Goş",
-                prodNameLabel: "Önüm Ady",
-                prodImgLabel: "Surat Saýla (Galereýadan)",
-                fileLabelText: "Kompýuterden/ Telefondan Saýla",
-                prodDescLabel: "Baha ýa-da Beýan",
-                submitBtn: "Önümi Saýta Goş",
-                successMsg: "Önüm üstünlikli goşuldy!",
-                manageTitle: "Bar Olan Önümleri Dolandyr (Poz)",
-                loadingText: "Önümler ýüklenýär...",
-                logoutBtn: "Çykyş Et",
-                deleteBtn: "Poz",
-                confirmDelete: "Bu önümi pozmak isleýärsiňizmi?",
-                successDelete: "Önüm üstünlikli pozuldy!"
-            }
-        };
-
-        let currentLang = 'tr';
-
-        window.setLanguage = function(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const t = translations[lang];
-            document.getElementById('pageTitle').textContent = t.pageTitle;
-            document.getElementById('panelTitle').textContent = t.panelTitle;
-            document.getElementById('backBtn').textContent = t.backBtn;
-            document.getElementById('loginDesc').textContent = t.loginDesc;
-            document.getElementById('googleText').textContent = t.googleText;
-            document.getElementById('orText').textContent = t.orText;
-            document.getElementById('emailLabel').textContent = t.emailLabel;
-            document.getElementById('passLabel').textContent = t.passLabel;
-            document.getElementById('emailLoginBtn').textContent = t.emailLoginBtn;
-            document.getElementById('addProductTitle').textContent = t.addProductTitle;
-            document.getElementById('prodNameLabel').textContent = t.prodNameLabel;
-            document.getElementById('prodImgLabel').textContent = t.prodImgLabel;
-            document.getElementById('fileLabel').innerHTML = `<i class="fas fa-cloud-upload-alt"></i> ${t.fileLabelText}`;
-            document.getElementById('prodDescLabel').textContent = t.prodDescLabel;
-            document.getElementById('submitBtn').textContent = t.submitBtn;
-            document.getElementById('successMsg').textContent = t.successMsg;
-            document.getElementById('manageTitle').textContent = t.manageTitle;
-            document.getElementById('loadingText').textContent = t.loadingText;
-            document.getElementById('logoutBtn').textContent = t.logoutBtn;
-        }
-
-        // Surat saýlanynda
-        document.getElementById('prodImageFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                document.getElementById('fileLabel').textContent = file.name;
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    base64Image = event.target.result;
-                    const preview = document.getElementById('imagePreview');
-                    preview.src = base64Image;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Google Giriş
-        googleLoginBtn.addEventListener('click', async () => {
-            try { await signInWithPopup(auth, provider); } 
-            catch (error) { alert("Giriş ýalňyşlygy: " + error.message); }
-        });
-
-        // Email / Parol Giriş
-        emailLoginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            try { await signInWithEmailAndPassword(auth, email, password); } 
-            catch (error) { alert("Giriş ýalňyşlygy: E-mail ýa-da parol ýalňyş!"); }
-        });
-
-        logoutBtn.addEventListener('click', async () => { await signOut(auth); });
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                loginSection.style.display = 'none';
-                adminContent.style.display = 'block';
-                userInfo.textContent = `Giriş edildi: ${user.email}`;
-                loadAdminProducts();
-            } else {
-                loginSection.style.display = 'block';
-                adminContent.style.display = 'none';
-            }
-        });
-
-        // Önüm Goşmak
-        document.getElementById('addProductForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const title = document.getElementById('prodTitle').value;
-            const desc = document.getElementById('prodDesc').value;
-            const submitBtn = document.getElementById('submitBtn');
-
-            if (!base64Image) {
-                alert(currentLang === 'tr' ? "Lütfen bir görsel seçin!" : "Haýyş edýäris, surat saýlaň!");
-                return;
-            }
-
-            submitBtn.textContent = currentLang === 'tr' ? "Yükleniyor..." : "Ýüklenýär...";
-            submitBtn.disabled = true;
-
-            try {
-                await addDoc(collection(db, "products"), {
-                    title: title,
-                    image: base64Image,
-                    description: desc,
-                    createdAt: new Date()
-                });
-
-                document.getElementById('successMsg').style.display = 'block';
-                document.getElementById('addProductForm').reset();
-                document.getElementById('imagePreview').style.display = 'none';
-                document.getElementById('fileLabel').innerHTML = `<i class="fas fa-cloud-upload-alt"></i> ${translations[currentLang].fileLabelText}`;
-                base64Image = "";
-                
-                loadAdminProducts();
-                setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
-            } catch (error) {
-                alert("Hata: " + error.message);
-            } finally {
-                submitBtn.textContent = translations[currentLang].submitBtn;
-                submitBtn.disabled = false;
-            }
-        });
-
-        // Önümleri görkezmek we pozmak
-        async function loadAdminProducts() {
-            const listContainer = document.getElementById('adminProductList');
+        // Önümleri çykarmak we sanawda görkezmek
+        async function fetchAdminProducts() {
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<p style="color: #777; font-size: 14px;">${currentLang === 'tr' ? "Henüz ürün yok." : "Häzirlikçe önüm ýok."}</p>`;
+                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Henüz kayıtlı ürün yok.</td></tr>`;
                     return;
                 }
 
                 listContainer.innerHTML = "";
-                querySnapshot.forEach((docSnap) => {
-                    const prod = docSnap.data();
-                    const prodId = docSnap.id;
-                    const t = translations[currentLang];
+                querySnapshot.forEach((documentSnap) => {
+                    const prod = documentSnap.data();
+                    const id = documentSnap.id;
                     listContainer.innerHTML += `
-                        <div class="admin-product-item">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <img src="${prod.image}" alt="">
-                                <span style="font-size: 14px; font-weight: 500; color: #333;">${prod.title}</span>
-                            </div>
-                            <button class="delete-btn" onclick="deleteProduct('${prodId}')">${t.deleteBtn}</button>
-                        </div>
+                        <tr>
+                            <td><img src="${prod.image}" class="prod-thumb" alt=""></td>
+                            <td><strong>${prod.title}</strong></td>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
                     `;
                 });
             } catch (error) {
-                console.error(error);
+                console.error("Ýalňyşlyk:", error);
+                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Ürünler yüklenirken hata oluştu.</td></tr>`;
             }
         }
 
+        fetchAdminProducts();
+
+        // Firebase-e täze önüm goşmak
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('prodTitle').value;
+            const image = document.getElementById('prodImage').value;
+            const description = document.getElementById('prodDesc').value;
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Ekleniyor...`;
+
+            try {
+                await addDoc(collection(db, "products"), {
+                    title: title,
+                    image: image,
+                    description: description,
+                    createdAt: new Date()
+                });
+                statusMsg.style.color = "#22c55e";
+                statusMsg.innerHTML = "✓ Ürün başarıyla eklendi!";
+                form.reset();
+                fetchAdminProducts();
+            } catch (error) {
+                console.error("Ýalňyşlyk:", error);
+                statusMsg.style.color = "#ef4444";
+                statusMsg.innerHTML = "✕ Ürün eklenirken hata oluştu!";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
+            }
+        });
+
+        // Önümi pozmak (Global funksiýa hökmünde goşulýar)
         window.deleteProduct = async function(id) {
-            const t = translations[currentLang];
-            if (confirm(t.confirmDelete)) {
+            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
-                    alert(t.successDelete);
-                    loadAdminProducts();
+                    alert("Ürün silindi!");
+                    fetchAdminProducts();
                 } catch (error) {
-                    alert("Hata: " + error.message);
+                    console.error("Pozuş hatasy:", error);
+                    alert("Silinirken hata oluştu.");
                 }
             }
-        };
+        }
     </script>
 </body>
 </html>
