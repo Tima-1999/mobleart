@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Admin Paneli (Google Giriş)</title>
+    <title>MobleArt | Admin Paneli</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -11,8 +11,9 @@
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .success-msg { color: #27ae60; font-weight: 500; margin-top: 10px; display: none; }
         #adminContent { display: none; text-align: left; }
-        .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; transition: 0.3s; }
+        .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 15px; font-size: 15px; transition: 0.3s; }
         .google-btn:hover { background: #c23321; }
+        .divider { margin: 15px 0; color: #777; font-size: 14px; }
     </style>
 </head>
 <body style="background-color: #f4efe9;">
@@ -23,15 +24,30 @@
             <a href="index.html" class="btn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Saýta Gaýt</a>
         </div>
 
-        <!-- Google Giriş Etmek Üçin Bölüm -->
-        <div id="loginSection">
-            <p style="margin-bottom: 20px; color: #666;">Admin panelini ulanmak üçin öz Google hasabyňyz bilen giriň:</p>
+        <!-- Giriş Bölümi (Google + Email/Password) -->
+        <div id="loginSection" style="text-align: left;">
+            <p style="margin-bottom: 15px; color: #666; text-align: center;">Admin paneline girmek üçin aşakdakylardan birini ulanyň:</p>
+            
             <button id="googleLoginBtn" class="google-btn">
                 <i class="fab fa-google"></i> Google Bilen Giriş Et
             </button>
+
+            <div class="divider" style="text-align: center;">ýa-da Email / Parol bilen</div>
+
+            <form id="emailLoginForm">
+                <div class="form-group">
+                    <label>Email Salgysy</label>
+                    <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Parol</label>
+                    <input type="password" id="loginPassword" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; background: #333;">Email bilen Giriş</button>
+            </form>
         </div>
 
-        <!-- Diňe Giriş Edilenden Son Görkeziljek Önüm Goşma Formasy -->
+        <!-- Diňe Giriş Edilenden Soň Görkeziljek Önüm Goşma Formasy -->
         <div id="adminContent">
             <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500;"></p>
             <form id="addProductForm">
@@ -54,11 +70,11 @@
         </div>
     </div>
 
-    <!-- Firebase SDK we Google Auth Logikasy -->
+    <!-- Firebase SDK we Logika -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -78,41 +94,51 @@
         const loginSection = document.getElementById('loginSection');
         const adminContent = document.getElementById('adminContent');
         const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const emailLoginForm = document.getElementById('emailLoginForm');
         const logoutBtn = document.getElementById('logoutBtn');
         const userInfo = document.getElementById('userInfo');
 
-        // Google bilen giriş düwmesine basylanda
+        // Google Giriş
         googleLoginBtn.addEventListener('click', async () => {
             try {
                 await signInWithPopup(auth, provider);
             } catch (error) {
-                alert("Giriş ýalňyşlygy: " + error.message);
+                alert("Giriş ýalňyşlygy (Popup bloklanan bolar): " + error.message);
             }
         });
 
-        // Çykyş et düwmesi
+        // Email / Parol Giriş
+        emailLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                alert("Giriş ýalňyşlygy: E-mail ýa-da parol ýalňyş!");
+            }
+        });
+
+        // Çykyş Et
         logoutBtn.addEventListener('click', async () => {
             await signOut(auth);
         });
 
-        // Ulanyjynyň giren ýa-da girmändigini barlaýar
+        // Auth status barlag
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // Giriş eden bolsa admin paneli görkez
                 loginSection.style.display = 'none';
                 adminContent.style.display = 'block';
                 userInfo.textContent = `Hoş geldiňiz: ${user.email}`;
             } else {
-                // Giriş etmedik bolsa login düwmesini görkez
                 loginSection.style.display = 'block';
                 adminContent.style.display = 'none';
             }
         });
 
-        // Önüm goşma işi
+        // Önüm Goşmak
         document.getElementById('addProductForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const title = document.getElementById('prodTitle').value;
             const img = document.getElementById('prodImg').value;
             const desc = document.getElementById('prodDesc').value;
@@ -127,12 +153,9 @@
 
                 document.getElementById('successMsg').style.display = 'block';
                 document.getElementById('addProductForm').reset();
-                
-                setTimeout(() => {
-                    document.getElementById('successMsg').style.display = 'none';
-                }, 4000);
+                setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
             } catch (error) {
-                alert("Ýalňyşlyk ýüze çykdy: " + error.message);
+                alert("Ýalňyşlyk: " + error.message);
             }
         });
     </script>
