@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobleArt | Admin Paneli (Google Giriş)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .success-msg { color: #27ae60; font-weight: 500; margin-top: 10px; display: none; }
+        #adminContent { display: none; text-align: left; }
+        .google-btn { background: #db4437; color: white; padding: 12px 20px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; transition: 0.3s; }
+        .google-btn:hover { background: #c23321; }
+    </style>
+</head>
+<body style="background-color: #f4efe9;">
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>Admin Paneli</h2>
+            <a href="index.html" class="btn" style="padding: 6px 15px; font-size: 13px; background: #555; text-decoration: none;">Saýta Gaýt</a>
+        </div>
+
+        <!-- Google Giriş Etmek Üçin Bölüm -->
+        <div id="loginSection">
+            <p style="margin-bottom: 20px; color: #666;">Admin panelini ulanmak üçin öz Google hasabyňyz bilen giriň:</p>
+            <button id="googleLoginBtn" class="google-btn">
+                <i class="fab fa-google"></i> Google Bilen Giriş Et
+            </button>
+        </div>
+
+        <!-- Diňe Giriş Edilenden Son Görkeziljek Önüm Goşma Formasy -->
+        <div id="adminContent">
+            <p id="userInfo" style="margin-bottom: 20px; color: #27ae60; font-weight: 500;"></p>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label>Önüm Ady</label>
+                    <input type="text" id="prodTitle" placeholder="Mysal: Lüks Mutfak Dolaby" required>
+                </div>
+                <div class="form-group">
+                    <label>Surat Salgysy (URL)</label>
+                    <input type="text" id="prodImg" placeholder="https://images.unsplash.com/..." required>
+                </div>
+                <div class="form-group">
+                    <label>Baha ýa-da Beýan</label>
+                    <input type="text" id="prodDesc" placeholder="Mysal: 15.000 TL-den başlaýan bahalarla" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Önümi Saýta Goş</button>
+                <p id="successMsg" class="success-msg">Önüm üstünlikli goşuldy!</p>
+            </form>
+            <button id="logoutBtn" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; margin-top: 20px; cursor: pointer;">Çykyş Et</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK we Google Auth Logikasy -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
+            authDomain: "mobleart-db.firebaseapp.com",
+            projectId: "mobleart-db",
+            storageBucket: "mobleart-db.firebasestorage.app",
+            messagingSenderId: "53737008056",
+            appId: "1:53737008056:web:ec06ad2b5d4fe0d79d7d4d",
+            measurementId: "G-7NJ8ZKDZPW"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        const loginSection = document.getElementById('loginSection');
+        const adminContent = document.getElementById('adminContent');
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userInfo = document.getElementById('userInfo');
+
+        // Google bilen giriş düwmesine basylanda
+        googleLoginBtn.addEventListener('click', async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                alert("Giriş ýalňyşlygy: " + error.message);
+            }
+        });
+
+        // Çykyş et düwmesi
+        logoutBtn.addEventListener('click', async () => {
+            await signOut(auth);
+        });
+
+        // Ulanyjynyň giren ýa-da girmändigini barlaýar
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Giriş eden bolsa admin paneli görkez
+                loginSection.style.display = 'none';
+                adminContent.style.display = 'block';
+                userInfo.textContent = `Hoş geldiňiz: ${user.email}`;
+            } else {
+                // Giriş etmedik bolsa login düwmesini görkez
+                loginSection.style.display = 'block';
+                adminContent.style.display = 'none';
+            }
+        });
+
+        // Önüm goşma işi
+        document.getElementById('addProductForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('prodTitle').value;
+            const img = document.getElementById('prodImg').value;
+            const desc = document.getElementById('prodDesc').value;
+
+            try {
+                await addDoc(collection(db, "products"), {
+                    title: title,
+                    image: img,
+                    description: desc,
+                    createdAt: new Date()
+                });
+
+                document.getElementById('successMsg').style.display = 'block';
+                document.getElementById('addProductForm').reset();
+                
+                setTimeout(() => {
+                    document.getElementById('successMsg').style.display = 'none';
+                }, 4000);
+            } catch (error) {
+                alert("Ýalňyşlyk ýüze çykdy: " + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
