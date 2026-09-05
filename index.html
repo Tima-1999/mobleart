@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Global Styles & Responsiveness */
         * {
             margin: 0;
             padding: 0;
@@ -27,8 +26,8 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
-            background-color: #faf8f5;
-            color: #333;
+            background-color: #0f0f0f;
+            color: #e5e5e5;
             overflow-x: hidden;
         }
         header {
@@ -36,8 +35,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #222;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,7 +45,8 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #111;
+            color: #fff;
+            letter-spacing: 1px;
         }
         .logo span {
             color: #d4af37;
@@ -57,7 +58,7 @@
         }
         .nav-links a {
             text-decoration: none;
-            color: #444;
+            color: #ccc;
             font-weight: 500;
             font-size: 15px;
             transition: 0.3s;
@@ -71,7 +72,7 @@
             align-items: center;
         }
         .social-icons a {
-            color: #333;
+            color: #ccc;
             font-size: 18px;
             transition: 0.3s;
         }
@@ -84,7 +85,7 @@
             gap: 15px;
         }
         .header-phone {
-            color: #111;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
             font-size: 15px;
@@ -99,8 +100,8 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -108,11 +109,13 @@
             color: #fff;
             padding: 0 20px;
         }
-        .hero-content max-width: 800px;
+        .hero-content {
+            max-width: 800px;
+        }
         .hero-badge {
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.15);
             border: 1px solid #d4af37;
-            padding: 6px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 13px;
             color: #d4af37;
@@ -121,15 +124,16 @@
             font-weight: 500;
         }
         .hero h1 {
-            font-size: 42px;
+            font-size: 44px;
             margin-bottom: 15px;
             font-weight: 700;
             line-height: 1.2;
+            color: #fff;
         }
         .hero p {
             font-size: 17px;
             margin-bottom: 30px;
-            color: #ddd;
+            color: #bbb;
         }
         .hero-buttons {
             display: flex;
@@ -139,7 +143,7 @@
         }
         .btn {
             background: #d4af37;
-            color: #fff;
+            color: #111;
             padding: 12px 28px;
             border-radius: 5px;
             text-decoration: none;
@@ -150,7 +154,7 @@
             gap: 8px;
         }
         .btn:hover {
-            background: #b5932a;
+            background: #e6c555;
         }
         .btn-outline {
             background: transparent;
@@ -165,26 +169,26 @@
         /* Containers & Grids */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 80px auto;
             padding: 0 20px;
         }
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .sub-title {
             color: #d4af37;
             font-weight: 600;
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: block;
             margin-bottom: 8px;
         }
         .section-title {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 700;
-            color: #111;
+            color: #fff;
         }
         
         /* Products Grid */
@@ -194,20 +198,22 @@
             gap: 30px;
         }
         .product-card {
-            background: #fff;
+            background: #161616;
+            border: 1px solid #262626;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: 0.3s;
         }
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
         }
         .product-img-container {
             width: 100%;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
+            background: #222;
         }
         .product-img {
             width: 100%;
@@ -224,16 +230,17 @@
         .product-info h3 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #111;
+            color: #fff;
         }
         .product-desc {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
+            color: #aaa;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
         .product-btn {
             background: #25d366;
+            color: #fff;
             width: 100%;
             justify-content: center;
             font-size: 14px;
@@ -245,8 +252,10 @@
 
         /* Features Section */
         .features {
-            background: #fff;
-            padding: 60px 0;
+            background: #141414;
+            padding: 80px 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
         }
         .features-grid {
             display: grid;
@@ -255,9 +264,10 @@
         }
         .feature-box {
             text-align: center;
-            padding: 30px;
+            padding: 35px 25px;
             border-radius: 8px;
-            background: #faf8f5;
+            background: #1a1a1a;
+            border: 1px solid #262626;
         }
         .feature-icon {
             font-size: 36px;
@@ -267,17 +277,16 @@
         .feature-box h4 {
             font-size: 18px;
             margin-bottom: 10px;
-            color: #111;
+            color: #fff;
         }
         .feature-box p {
             font-size: 14px;
-            color: #666;
+            color: #999;
         }
 
         /* Contact / Quote Section */
         .contact-section {
-            background: #111;
-            color: #fff;
+            background: #0f0f0f;
             padding: 80px 20px;
         }
         .contact-container {
@@ -291,6 +300,7 @@
         .contact-text h2 {
             font-size: 32px;
             margin-bottom: 15px;
+            color: #fff;
         }
         .contact-text p {
             color: #aaa;
@@ -310,7 +320,8 @@
             font-size: 18px;
         }
         .contact-form-box {
-            background: #222;
+            background: #161616;
+            border: 1px solid #262626;
             padding: 30px;
             border-radius: 10px;
         }
@@ -326,20 +337,25 @@
         .form-group input, .form-group select {
             width: 100%;
             padding: 12px;
-            background: #111;
-            border: 1px solid #444;
+            background: #0f0f0f;
+            border: 1px solid #333;
             color: #fff;
             border-radius: 5px;
             font-size: 14px;
         }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
 
-        /* Footer & Mobile Navigation Bar */
+        /* Footer */
         footer {
-            background: #0a0a0a;
-            color: #888;
+            background: #080808;
+            color: #777;
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 60px; /* Mobil alt bar üçin boşluk */
+            padding: 50px 20px;
+            border-top: 1px solid #1c1c1c;
+            margin-bottom: 60px;
         }
         .footer-logo {
             font-size: 22px;
@@ -358,18 +374,32 @@
         }
         .footer-social a {
             color: #fff;
-            font-size: 20px;
-            background: #222;
+            font-size: 18px;
+            background: #1a1a1a;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            border: 1px solid #333;
             transition: 0.3s;
         }
         .footer-social a:hover {
             background: #d4af37;
+            color: #111;
+        }
+        .admin-link-container {
+            margin-top: 25px;
+        }
+        .admin-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .admin-link:hover {
+            color: #d4af37;
         }
 
         .mobile-bottom-bar {
@@ -378,8 +408,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #fff;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            background: #161616;
+            border-top: 1px solid #262626;
             z-index: 1001;
             grid-template-columns: 1fr 1fr;
         }
@@ -395,7 +425,7 @@
             gap: 8px;
         }
         .call-btn {
-            background: #111;
+            background: #1a1a1a;
             color: #fff;
         }
         .wa-btn {
@@ -403,13 +433,12 @@
             color: #fff;
         }
 
-        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
             }
             .nav-links, .header-phone {
-                display: none; /* Mobilde menýulary gizläp mobil bara geçýäris */
+                display: none;
             }
             .hero h1 {
                 font-size: 28px;
@@ -465,11 +494,11 @@
         <div class="section-header">
             <span class="sub-title">Ürünlerimiz</span>
             <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
-            <p style="color: #666; font-size: 15px; margin-top: 5px;">Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız</p>
+            <p style="color: #999; font-size: 15px; margin-top: 5px;">Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız</p>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
-            <div class="loading-box" style="grid-column: 1/-1; text-align: center; padding: 40px; color: #777;">
-                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #888;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: #d4af37;"></i>
                 <p>Ürünler yükleniyor...</p>
             </div>
         </div>
@@ -564,6 +593,9 @@
             <a href="https://www.instagram.com/mobleart.tr" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/905077079354" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
+        <div class="admin-link-container">
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Yönetim Paneli (Admin)</a>
+        </div>
     </footer>
 
     <!-- Firebase Ürün Çekici Logika -->
@@ -589,7 +621,14 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 30px;">Henüz ürün eklenmemiş. Admin panelinden ürün ekleyebilirsiniz.</p>`;
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: #161616; border: 1px dashed #333; border-radius: 10px;">
+                            <i class="fas fa-box-open" style="font-size: 36px; color: #d4af37; margin-bottom: 15px;"></i>
+                            <h3 style="color: #fff; margin-bottom: 8px; font-size: 18px;">Henüz Ürün Eklenmemiş</h3>
+                            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">Admin paneline girerek ilk mobilya tasarımlarınızı yükleyebilirsiniz.</p>
+                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> Ürün Ekle</a>
+                        </div>
+                    `;
                     return;
                 }
 
@@ -613,7 +652,7 @@
                 });
             } catch (error) {
                 console.error("Hata:", error);
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #777; padding: 30px;">Ürünler yüklenirken bir hata oluştu.</p>`;
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 30px;">Ürünler yüklenirken bir hata oluştu.</p>`;
             }
         }
 
