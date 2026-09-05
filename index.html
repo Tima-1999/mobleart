@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özel Tasarım Mobilya | Modern & Minimalist</title>
+    <title>MobleArt | Özel Tasarım Mobilya</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -15,9 +15,8 @@
         <nav>
             <a href="#">Anasayfa</a>
             <a href="#urunler">Ürünler</a>
-            <a href="#yorumlar">Yorumlar</a>
-            <a href="#sss">S.S.S.</a>
             <a href="#teklif">Teklif Al</a>
+            <a href="admin.html" style="color: #b5838d; font-weight: 600;"><i class="fas fa-lock"></i> Admin</a>
         </nav>
         <div class="header-cta">
             <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> Hemen Ara</a>
@@ -35,33 +34,12 @@
         </div>
     </section>
 
+    <!-- Dinamik Önümler Galereýasy (Firebase-den çekilýär) -->
     <div class="container" id="urunler">
-        <h2 class="section-title">Popüler Koleksiyonlar</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Mutfak" class="product-img">
-                <div class="product-info">
-                    <h3>Modern Mutfak Dolapları</h3>
-                    <p>Mekânınıza tam uyum sağlayan, birinci sınıf malzemeden özel ölçü mutfaklar.</p>
-                    <a href="https://wa.me/905077079354?text=Merhaba,%20modern%20mutfak%20dolapları%20hakkında%20bilgi%20almak%20istiyorum." class="btn" style="padding: 8px 15px; font-size: 14px;" target="_blank">WhatsApp Bilgi</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80" alt="Yatak Odası" class="product-img">
-                <div class="product-info">
-                    <h3>Lüks Yatak Odaları</h3>
-                    <p>Konforu ve zarafeti birleştiren gardırop ve yatak odası takımları.</p>
-                    <a href="https://wa.me/905077079354?text=Merhaba,%20yatak%20odası%20takımları%20hakkında%20bilgi%20almak%20istiyorum." class="btn" style="padding: 8px 15px; font-size: 14px;" target="_blank">WhatsApp Bilgi</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Özel Ölçü" class="product-img">
-                <div class="product-info">
-                    <h3>Kişiye Özel Mobilya</h3>
-                    <p>Salon, TV ünitesi ve antreleriniz için tamamen size özel tasarımlar.</p>
-                    <a href="https://wa.me/905077079354?text=Merhaba,%20kişiye%20özel%20mobilya%20tasarımı%20hakkında%20bilgi%20almak%20istiyorum." class="btn" style="padding: 8px 15px; font-size: 14px;" target="_blank">WhatsApp Bilgi</a>
-                </div>
-            </div>
+        <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
+        <div class="products-grid" id="dynamicProductsGrid">
+            <!-- Firebase-den önümler şu ýere awtomatiki ýüklenýär -->
+            <p style="text-align: center; color: #777; grid-column: 1/-1;">Önümler ýüklenýär...</p>
         </div>
     </div>
 
@@ -81,40 +59,6 @@
                 <i class="fas fa-truck"></i>
                 <h4>Zamanında Teslimat</h4>
                 <p>Söz verdiğimiz tarihte üretim, montaj ve teslimat garantisi sunuyoruz.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="container" id="yorumlar">
-        <h2 class="section-title">Müşterilerimiz Neler Diyor?</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Mutfağımız tam istediğimiz ölçüde ve zamanında teslim edildi. İşçilik kalitesi harika, çok teşekkür ederiz."</p>
-                <h5>Ahmet Yılmaz (İstanbul)</h5>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Yatak odası dolapları için özel tasarım yaptırdık. Evin havası tamamen değişti, profesyonel ekip teşekkürler."</p>
-                <h5>Zeynep Kaya (Kadıköy)</h5>
-            </div>
-        </div>
-    </div>
-
-    <section class="faq-section" id="sss">
-        <div class="faq-container">
-            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
-            <div class="faq-item">
-                <h4>Ölçüm ve keşif ücretli mi?</h4>
-                <p>Hayır, uzman ekibimiz evinize gelerek ücretsiz keşif ve ölçüm hizmeti sunmaktadır.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Üretim ve teslimat süresi ne kadardır?</h4>
-                <p>Sipariş onayından sonra özel projelerimiz ortalama 2 ile 3 hafta içinde üretilip monte edilir.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Garanti veriliyor mu?</h4>
-                <p>Tüm mobilya üretim ve montaj işçiliklerimiz firmamız tarafından 2 yıl garantilidir.</p>
             </div>
         </div>
     </section>
@@ -140,12 +84,12 @@
                         <option>Özel Ölçü Mobilya</option>
                     </select>
                 </div>
-                <button type="submit" class="btn" style="width: 100%;">Teklif İste</button>
+                <button type="submit" class="btn" style="width: 100%;">Teklif İste (WhatsApp)</button>
             </form>
         </div>
     </section>
 
-    <!-- Mobil Aşakyı Ýörite Menýu (Yalnızca telefonlarda görünür) -->
+    <!-- Mobil Aşaky Menýu -->
     <div class="mobile-bottom-bar">
         <a href="tel:+905077079354" class="mob-btn call-btn">
             <i class="fas fa-phone-alt"></i> Hemen Ara
@@ -155,19 +99,68 @@
         </a>
     </div>
 
-    <!-- Sağ Aşakda Aýlanýan WhatsApp Düwmesi -->
+    <!-- Sag Aşakda Aýlanýan WhatsApp Düwmesi -->
     <a href="https://wa.me/905077079354" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer>
         <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/905077079354" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="admin.html"><i class="fas fa-user-shield"></i> Admin Paneli</a>
         </div>
         <p>&copy; 2026 MobleArt. Tüm Hakları Saklıdır. | İstanbul / Türkiye</p>
     </footer>
 
+    <!-- Firebase we Baş Sahypa Logikasy -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
+            authDomain: "mobleart-db.firebaseapp.com",
+            projectId: "mobleart-db",
+            storageBucket: "mobleart-db.firebasestorage.app",
+            messagingSenderId: "53737008056",
+            appId: "1:53737008056:web:ec06ad2b5d4fe0d79d7d4d",
+            measurementId: "G-7NJ8ZKDZPW"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Firestore-dan önümleri alyp saýta ýazmak
+        async function loadProducts() {
+            const grid = document.getElementById('dynamicProductsGrid');
+            try {
+                const querySnapshot = await getDocs(collection(db, "products"));
+                if (querySnapshot.empty) {
+                    grid.innerHTML = `<p style="text-align: center; color: #777; grid-column: 1/-1;">Häzirlikçe önüm goşulmady. Admin paneli arkaly goşup bilersiňiz.</p>`;
+                    return;
+                }
+
+                grid.innerHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const prod = doc.data();
+                    grid.innerHTML += `
+                        <div class="product-card">
+                            <img src="${prod.image}" alt="${prod.title}" class="product-img">
+                            <div class="product-info">
+                                <h3>${prod.title}</h3>
+                                <p>${prod.description}</p>
+                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20hakkında%20bilgi%20almak%20istiyorum." class="btn" style="padding: 8px 15px; font-size: 14px;" target="_blank">WhatsApp Bilgi</a>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Ýalňyşlyk:", error);
+                grid.innerHTML = `<p style="text-align: center; color: red; grid-column: 1/-1;">Maglumatlar yüklenende ýalňyşlyk boldy.</p>`;
+            }
+        }
+
+        loadProducts();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
