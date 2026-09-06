@@ -283,8 +283,21 @@
         .feature-box h4 { font-size: 18px; margin-bottom: 10px; color: var(--text-color); }
         .feature-box p { font-size: 14px; color: var(--text-muted); }
 
+        /* Reviews Section */
+        .reviews-section { padding: 80px 20px; background: var(--bg-color); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 25px; border-radius: 10px; }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .review-name { font-weight: 600; font-size: 16px; color: var(--text-color); }
+        .review-stars { color: #ffd700; font-size: 14px; }
+        .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        
+        .review-form-container { background: var(--card-bg); border: 1px solid var(--border-color); padding: 35px; border-radius: 10px; max-width: 700px; margin: 0 auto; }
+        .star-rating { display: flex; gap: 10px; font-size: 22px; color: var(--text-muted); cursor: pointer; margin-bottom: 15px; }
+        .star-rating .active { color: #ffd700; }
+
         /* Contact */
-        .contact-section { background: var(--bg-color); padding: 80px 20px; }
+        .contact-section { background: var(--feature-bg); padding: 80px 20px; border-top: 1px solid var(--border-color); }
         .contact-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         .contact-text h2 { font-size: 32px; margin-bottom: 15px; color: var(--text-color); }
         .contact-text p { color: var(--text-muted); margin-bottom: 25px; font-size: 15px; }
@@ -293,7 +306,7 @@
         .contact-form-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 10px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); }
-        .form-group input, .form-group select { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
         
         /* Footer */
         footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 50px 20px; border-top: 1px solid var(--border-color); margin-bottom: 60px; }
@@ -327,6 +340,7 @@
             <a href="#" data-tr="Ana Sayfa" data-tk="Baş sahypa">Ana Sayfa</a>
             <a href="#urunler" data-tr="Koleksiyon" data-tk="Toplumlar">Koleksiyon</a>
             <a href="#ustunlukler" data-tr="Neden Biz?" data-tk="Näme üçin biz?">Neden Biz?</a>
+            <a href="#yorumlar" data-tr="Müşteri Yorumları" data-tk="Müşderi pikirleri">Yorumlar</a>
             <a href="#teklif" data-tr="Teklif Al" data-tk="Teklif alyň">Teklif Al</a>
         </nav>
         <div class="header-controls">
@@ -354,7 +368,6 @@
         <div class="section-header">
             <span class="sub-title" data-tr="Ürünlerimiz" data-tk="Önümlerimiz">Ürünlerimiz</span>
             <h2 class="section-title" data-tr="Özel Üretim Koleksiyonlarımız" data-tk="Ýörite önüm toplumlarymyz">Özel Üretim Koleksiyonlarımız</h2>
-            <p style="color: var(--text-muted); font-size: 15px; margin-top: 5px;" data-tr="Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız" data-tk="Firebase maglumat bazasyndan göni ýüklenýän täze dizaýnlar">Firebase veritabanından anlık olarak yüklenen en yeni tasarımlarımız</p>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
@@ -395,11 +408,53 @@
         </div>
     </section>
 
+    <!-- Müşteri Yorumları ve Puanlama Bölümü -->
+    <section class="reviews-section" id="yorumlar">
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <div class="section-header">
+                <span class="sub-title" data-tr="Müşteri Deneyimi" data-tk="Müşderi tejribesi">Müşteri Deneyimi</span>
+                <h2 class="section-title" data-tr="Müşteri Yorumları & Puanlar" data-tk="Müşderi pikirleri we reýtingler">Müşteri Yorumları & Puanlar</h2>
+            </div>
+            
+            <div class="reviews-grid" id="dynamicReviewsGrid">
+                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
+                    <p data-tr="Yorumlar yükleniyor..." data-tk="Pikirler ýüklenýär...">Yorumlar yükleniyor...</p>
+                </div>
+            </div>
+
+            <div class="review-form-container">
+                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-color);" data-tr="Değerlendirme Yapın" data-tk="Baha beriň we pikir ýazyň">Değerlendirme Yapın</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label data-tr="Puanınız" data-tk="Reýtingiňiz (Ýyldyz)">Puanınız</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="fas fa-star active" data-value="1"></i>
+                            <i class="fas fa-star active" data-value="2"></i>
+                            <i class="fas fa-star active" data-value="3"></i>
+                            <i class="fas fa-star active" data-value="4"></i>
+                            <i class="fas fa-star active" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="Adınız ve Soyadınız" data-tk="Adyňyz we familiýaňyz">Adınız ve Soyadınız</label>
+                        <input type="text" id="reviewName" placeholder="Adınızı girin" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="Yorumunuz" data-tk="Pikiriňiz">Yorumunuz</label>
+                        <textarea id="reviewText" rows="4" placeholder="Hizmet hakkındaki düşüncelerinizi yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Yorumu Gönder" data-tk="Pikiri ugrat">Yorumu Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
                 <h2 data-tr="Hayalinizdeki Evi Birlikte Tasarlayalım" data-tk="Hyýalyňyzadaky öýi bilelikde dizaýn edeliň">Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
-                <p data-tr="Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim." data-tk=" Formany dolduryň, size bahasy we taslama barada giňişleýin maglumat bereliň.">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <p data-tr="Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim." data-tk="Formany dolduryň, size bahasy we taslama barada giňişleýin maglumat bereliň.">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
                 <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
                 <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
@@ -501,11 +556,28 @@
                 modal.style.display = "none";
             }
         }
+
+        // Star rating selection in form
+        const stars = document.querySelectorAll('#starRating i');
+        const ratingValueInput = document.getElementById('ratingValue');
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const val = this.getAttribute('data-value');
+                ratingValueInput.value = val;
+                stars.forEach(s => {
+                    if(s.getAttribute('data-value') <= val) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
     </script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -520,6 +592,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+        // Load Products
         async function loadProducts() {
             const grid = document.getElementById('dynamicProductsGrid');
             try {
@@ -562,7 +635,71 @@
             }
         }
 
+        // Load Reviews
+        async function loadReviews() {
+            const grid = document.getElementById('dynamicReviewsGrid');
+            try {
+                const querySnapshot = await getDocs(collection(db, "reviews"));
+                if (querySnapshot.empty) {
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
+                            <p>Henüz yorum yapılmamış. İlk yorumu siz yazın!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const rev = doc.data();
+                    let starsHtml = '';
+                    for(let i=0; i<5; i++) {
+                        if(i < rev.rating) {
+                            starsHtml += '<i class="fas fa-star"></i>';
+                        } else {
+                            starsHtml += '<i class="far fa-star"></i>';
+                        }
+                    }
+                    grid.innerHTML += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <span class="review-name">${rev.name}</span>
+                                <div class="review-stars">${starsHtml}</div>
+                            </div>
+                            <p class="review-text">"${rev.text}"</p>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Yorum yükleme hatası:", error);
+            }
+        }
+
         loadProducts();
+        loadReviews();
+
+        // Submit Review Form
+        document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewName').value;
+            const text = document.getElementById('reviewText').value;
+            const rating = parseInt(document.getElementById('ratingValue').value);
+
+            try {
+                await addDoc(collection(db, "reviews"), {
+                    name: name,
+                    text: text,
+                    rating: rating,
+                    date: new Date().toISOString()
+                });
+                alert("Yorumunuz başarıyla eklendi, teşekkür ederiz!");
+                document.getElementById('reviewForm').reset();
+                loadReviews();
+            } catch (error) {
+                console.error("Yorum ekleme hatası:", error);
+                alert("Yorum eklenirken hata oluştu.");
+            }
+        });
 
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
