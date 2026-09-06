@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Yönetim Paneli / Dolandyryş Paneli</title>
+    <title>MobleArt | Yönetim Paneli</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -148,7 +148,7 @@
                     <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
                 </div>
                 <div class="form-group">
-                    <label><span class="tr-text">Şifre</span><span class="tk-text" style="display:none;">Açar sözi (Parol)</span></label>
+                    <label><span class="tr-text">Şifre</span><span class="tk-text" style="display:none;">Açar sözi</span></label>
                     <input type="password" id="loginPassword" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="loginBtn">
@@ -166,7 +166,7 @@
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
             <!-- Dil Çalyşýan Düwme -->
-            <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
+            <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TÜRKÇE</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
             <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span class="tr-text">Çıkış</span><span class="tk-text" style="display:none;">Çykmak</span></button>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
@@ -176,19 +176,19 @@
     <div class="admin-container">
         <!-- Ürün Ekleme -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün / Tasarım Ekle</span><span class="tk-text" style="display:none;">Täze Önüm / Dizaýn Goşuň</span></span></h2>
+            <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün / Tasarım Ekle</span><span class="tk-text" style="display:none;">Täze Önüm / Dizaýn Goş</span></span></h2>
             <form id="addProductForm">
                 <div class="form-group">
-                    <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önümin ady</span></label>
-                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı / Mysal: Lýuks aşhana" required>
+                    <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önüm ady</span></label>
+                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
                 
                 <div class="form-group">
-                    <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat (URL ýa-da Kompýuterden saýlaň)</span></label>
+                    <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat (URL ýa-da Kompýuterden saýla)</span></label>
                     <div class="image-input-box">
                         <input type="url" id="prodImage" placeholder="https://..." style="flex: 1;" required>
                         <label for="imageFile" class="file-upload-btn">
-                            <i class="fas fa-image"></i> <span class="tr-text">Görsel Seç</span><span class="tk-text" style="display:none;">Surat saýlamak</span>
+                            <i class="fas fa-image"></i> <span class="tr-text">Görsel Seç</span><span class="tk-text" style="display:none;">Surat saýla</span>
                         </label>
                         <input type="file" id="imageFile" accept="image/*">
                     </div>
@@ -196,17 +196,17 @@
 
                 <div class="form-group">
                     <label><span class="tr-text">Açıklama</span><span class="tk-text" style="display:none;">Düşündiriş</span></label>
-                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi... / Önüm barada gysgaça..." required></textarea>
+                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-text">Ürünü Yayınla</span><span class="tk-text" style="display:none;">Önümi çap ediň</span></button>
+                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-text">Ürünü Yayınla</span><span class="tk-text" style="display:none;">Önümi çap et</span></button>
                 <div id="statusMessage"></div>
             </form>
         </div>
 
         <!-- Ürün Yönetimi -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünleri Yönet</span><span class="tk-text" style="display:none;">Bar bolan önümleri dolandyrmak</span></span></h2>
+            <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünleri Yönet</span><span class="tk-text" style="display:none;">Bar bolan önümleri dolandyr</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -230,8 +230,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Ulanyjy</span></th>
-                            <th><span class="tr-text">Değerlendirme</span><span class="tk-text" style="display:none;">Reýting (Baha)</span></th>
+                            <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Müşderi</span></th>
+                            <th><span class="tr-text">Değerlendirme</span><span class="tk-text" style="display:none;">Baha</span></th>
                             <th><span class="tr-text">Yorum</span><span class="tk-text" style="display:none;">Teswir</span></th>
                             <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
@@ -247,18 +247,18 @@
         <div class="admin-card">
             <h2>
                 <span><i class="fas fa-clipboard-list"></i> <span class="tr-text">Sipariş ve Müşteri Takibi</span><span class="tk-text" style="display:none;">Sargyt we Müşderi Gözegçiligi</span></span>
-                <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span class="tr-text">Excel'e Aktar</span><span class="tk-text" style="display:none;">Excel-e geçirmek</span></button>
+                <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span class="tr-text">Excel'e Aktar</span><span class="tk-text" style="display:none;">Excel-e geçir</span></button>
             </h2>
             
             <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label><span class="tr-text">Müşteri Adı</span><span class="tk-text" style="display:none;">Müşderiniň ady</span></label>
-                        <input type="text" id="custName" placeholder="Aman Amanow" required>
+                        <label><span class="tr-text">Müşteri Adı</span><span class="tk-text" style="display:none;">Müşderi ady</span></label>
+                        <input type="text" id="custName" placeholder="Ahmet Yılmaz" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label><span class="tr-text">Telefon</span><span class="tk-text" style="display:none;">Telefon belgisi</span></label>
-                        <input type="text" id="custPhone" placeholder="+993 65..." required>
+                        <label><span class="tr-text">Telefon</span><span class="tk-text" style="display:none;">Telefon</span></label>
+                        <input type="text" id="custPhone" placeholder="+90..." required>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -273,12 +273,12 @@
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 15px;">
-                        <label><span class="tr-text">Ödenen (Kapora)</span><span class="tk-text" style="display:none;">Tölän puly (Kapora)</span></label>
+                        <label><span class="tr-text">Ödenen (Kapora)</span><span class="tk-text" style="display:none;">Tölän (Kapora)</span></label>
                         <input type="number" id="orderPaid" placeholder="10000" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 15px;">
                         <label><span class="tr-text">Durum</span><span class="tk-text" style="display:none;">Ýagdaýy</span></label>
-                        <input type="text" id="orderStatus" value="Hazırlanıyor / Taýýarlanýar" required>
+                        <input type="text" id="orderStatus" value="Hazırlanıyor" required>
                     </div>
                 </div>
                 <button type="submit" class="btn"><i class="fas fa-plus"></i> <span class="tr-text">Siparişi Kaydet</span><span class="tk-text" style="display:none;">Sargydy ýazga al</span></button>
@@ -423,10 +423,10 @@
                 loginError.innerText = "";
                 loginForm.reset();
             } catch (error) {
-                loginError.innerText = "E-posta veya şifre hatalı! / E-poçta ýa-da açar söz ýalňyş!";
+                loginError.innerText = "E-posta veya şifre hatalı!";
             } finally {
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş`;
+                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş Yap`;
             }
         });
 
@@ -447,7 +447,7 @@
                 reader.onload = function(event) {
                     prodImageInput.value = event.target.result;
                     statusMsg.style.color = "#22c55e";
-                    statusMsg.innerHTML = "✓ Başarılı! / Üstünlikli saýlendi!";
+                    statusMsg.innerHTML = "✓ Görsel başarıyla yüklendi!";
                 }
                 reader.readAsDataURL(file);
             }
@@ -457,7 +457,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Ürün/Haryt yok.</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Ürün bulunamadı.</td></tr>`;
                     return;
                 }
 
@@ -474,13 +474,13 @@
                             </td>
                             <td><strong>${prod.title}</strong></td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil / Pozmak</button>
+                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
                             </td>
                         </tr>
                     `;
                 });
             } catch (error) {
-                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata / Ýalňyşlyk.</td></tr>`;
+                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
@@ -492,14 +492,14 @@
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> İşleniyor...`;
 
             try {
                 await addDoc(collection(db, "products"), {
                     title: title, image: image, description: description, createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
-                statusMsg.innerHTML = "✓ Başarıyla eklendi! / Üstünlikli goşuldy!";
+                statusMsg.innerHTML = "✓ Ürün başarıyla eklendi!";
                 form.reset();
                 fetchAdminProducts();
             } catch (error) {
@@ -507,12 +507,12 @@
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Yayınla / Çap ediň`;
+                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
             }
         });
 
         window.deleteProduct = async function(id) {
-            if (confirm("Silmek istediğinize emin misiniz? / Pozmak isleýändigiňize ynamyňyz barmy?")) {
+            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
                     fetchAdminProducts();
@@ -525,7 +525,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "reviews"));
                 if (querySnapshot.empty) {
-                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum yok / Teswir ýok.</td></tr>`;
+                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum bulunamadı.</td></tr>`;
                     return;
                 }
 
@@ -545,16 +545,16 @@
                     `;
                 });
             } catch (error) {
-                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata.</td></tr>`;
+                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
         window.deleteReview = async function(id) {
-            if (confirm("Silmek istediğinize emin misiniz?")) {
+            if (confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "reviews", id));
                     fetchAdminReviews();
-                } catch (error) { alert("Hata."); }
+                } catch (error) { alert("Hata oluştu."); }
             }
         }
 
@@ -565,7 +565,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
                 if (querySnapshot.empty) {
-                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş yok / Sargyt ýok.</td></tr>`;
+                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş bulunamadı.</td></tr>`;
                     return;
                 }
 
@@ -586,9 +586,9 @@
                             </td>
                             <td>
                                 <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 4px; font-size: 12px;">
-                                    <option value="Hazırlanıyor / Taýýarlanýar" ${ord.status && ord.status.includes('Hazırlanıyor') ? 'selected' : ''}>Hazırlanıyor / Taýýarlanýar</option>
-                                    <option value="Tamamlandı / Tamamlandy" ${ord.status && ord.status.includes('Tamamlandı') ? 'selected' : ''}>Tamamlandı / Tamamlandy</option>
-                                    <option value="İptal / Ýatyryldy" ${ord.status && ord.status.includes('İptal') ? 'selected' : ''}>İptal / Ýatyryldy</option>
+                                    <option value="Hazırlanıyor" ${ord.status && ord.status.includes('Hazırlanıyor') ? 'selected' : ''}>Hazırlanıyor</option>
+                                    <option value="Tamamlandı" ${ord.status && ord.status.includes('Tamamlandı') ? 'selected' : ''}>Tamamlandı</option>
+                                    <option value="İptal" ${ord.status && ord.status.includes('İptal') ? 'selected' : ''}>İptal</option>
                                 </select>
                             </td>
                             <td>
@@ -602,7 +602,7 @@
 
         window.updateOrderStatus = async function(id, newStatus) {
             try { await updateDoc(doc(db, "orders", id), { status: newStatus }); } 
-            catch (error) { alert("Hata."); }
+            catch (error) { alert("Durum güncellenirken hata oluştu."); }
         }
 
         orderForm.addEventListener('submit', async (e) => {
@@ -618,18 +618,18 @@
                 await addDoc(collection(db, "orders"), {
                     name, phone, item, price, paid, status, createdAt: new Date()
                 });
-                alert("Başarılı / Sargyt goşuldy!");
+                alert("Sipariş başarıyla eklendi!");
                 orderForm.reset();
                 fetchAdminOrders();
-            } catch (error) { alert("Hata."); }
+            } catch (error) { alert("Hata oluştu."); }
         });
 
         window.deleteOrder = async function(id) {
-            if (confirm("Silmek istediğinize emin misiniz?")) {
+            if (confirm("Bu siparişi silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "orders", id));
                     fetchAdminOrders();
-                } catch (error) { alert("Hata."); }
+                } catch (error) { alert("Hata oluştu."); }
             }
         }
 
@@ -655,11 +655,11 @@
                 let csvFile = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
                 let downloadLink = document.createElement('a');
                 downloadLink.href = window.URL.createObjectURL(csvFile);
-                downloadLink.download = 'MobleArt_Sargytlar.csv';
+                downloadLink.download = 'MobleArt_Siparisler.csv';
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
-            } catch (error) { alert("Hata."); }
+            } catch (error) { alert("Excel dosyası oluşturulurken hata oluştu."); }
         });
     </script>
 </body>
