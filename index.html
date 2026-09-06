@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="metaTitle">MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
     
-    <!-- Favicon kompýuterdäki logo.png bilen çalşyldy -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./logo.png">
     
     <!-- Google Logotip Görkezmegi Üçin (Schema Markup) -->
@@ -85,10 +85,14 @@
             text-decoration: none;
         }
         .logo img {
-            height: 40px;
-            width: 40px;
+            display: block !important;
+            height: 45px !important;
+            width: 45px !important;
+            min-width: 45px !important;
+            min-height: 45px !important;
             border-radius: 50%;
             object-fit: cover;
+            background-color: #fff;
         }
         .logo span { color: var(--accent-color); }
         
@@ -562,7 +566,7 @@
 
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('name' ).value;
+            const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
             const text = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediği Hizmet:* ${encodeURIComponent(service)}`;
