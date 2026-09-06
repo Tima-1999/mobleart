@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Yönetim Paneli (Admin)</title>
+    <title>MobleArt | Yönetim Paneli / Dolandyryş Paneli</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -135,174 +135,168 @@
             font-size: 40px; font-weight: bold; cursor: pointer;
         }
         .close-modal:hover { color: var(--accent-color); }
-
-        /* Microsoft/Bing Terjimeçisini doly gizlemek üçin */
-        #MicrosoftTranslatorWidget { display: none !important; }
     </style>
 </head>
 <body>
 
     <div id="loginOverlay">
         <div class="login-box">
-            <h2>Moble<span>Art</span> Admin Girişi</h2>
+            <h2>Moble<span>Art</span> <span class="tr-text">Admin Giriş</span><span class="tk-text" style="display:none;">Admin Giriş</span></h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label>E-Posta Adresi</label>
+                    <label><span class="tr-text">E-Posta Adresi</span><span class="tk-text" style="display:none;">E-Poçta Salgysy</span></label>
                     <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
                 </div>
                 <div class="form-group">
-                    <label>Şifre</label>
+                    <label><span class="tr-text">Şifre</span><span class="tk-text" style="display:none;">Açar sözi (Parol)</span></label>
                     <input type="password" id="loginPassword" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    <i class="fas fa-sign-in-alt"></i> <span class="tr-text">Giriş Yap</span><span class="tk-text" style="display:none;">Girmek</span>
                 </button>
                 <div id="loginError" style="color: #ef4444; margin-top: 10px; font-size: 13px; text-align: center;"></div>
             </form>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="index.html" class="back-home" style="justify-content: center;"><i class="fas fa-arrow-left"></i> Siteye Dön</a>
+                <a href="index.html" class="back-home" style="justify-content: center;"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
             </div>
         </div>
     </div>
 
-    <!-- Microsoft Terjimeçisi üçin gizlin konteýner -->
-    <div id='MicrosoftTranslatorWidget'></div>
-
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
-            <!-- Arka planda gizlin işleýän Microsoft / Bing terjime düwmesi -->
+            <!-- Dil Çalyşýan Düwme -->
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
-            <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Çıkış</button>
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Siteye Dön</a>
+            <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span class="tr-text">Çıkış</span><span class="tk-text" style="display:none;">Çykmak</span></button>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
         </div>
     </header>
 
     <div class="admin-container">
-        <!-- Ürün Ekleme Bölümü -->
+        <!-- Ürün Ekleme -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-plus-circle"></i> Yeni Ürün / Tasarım Ekle</span></h2>
+            <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün / Tasarım Ekle</span><span class="tk-text" style="display:none;">Täze Önüm / Dizaýn Goşuň</span></span></h2>
             <form id="addProductForm">
                 <div class="form-group">
-                    <label>Ürün Başlığı</label>
-                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
+                    <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önümin ady</span></label>
+                    <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı / Mysal: Lýuks aşhana" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Görsel (URL veya Bilgisayardan Seç)</label>
+                    <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat (URL ýa-da Kompýuterden saýlaň)</span></label>
                     <div class="image-input-box">
                         <input type="url" id="prodImage" placeholder="https://..." style="flex: 1;" required>
                         <label for="imageFile" class="file-upload-btn">
-                            <i class="fas fa-image"></i> Surat Seç
+                            <i class="fas fa-image"></i> <span class="tr-text">Görsel Seç</span><span class="tk-text" style="display:none;">Surat saýlamak</span>
                         </label>
                         <input type="file" id="imageFile" accept="image/*">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Açıklama</label>
-                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
+                    <label><span class="tr-text">Açıklama</span><span class="tk-text" style="display:none;">Düşündiriş</span></label>
+                    <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi... / Önüm barada gysgaça..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> Ürünü Yayınla</button>
+                <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-text">Ürünü Yayınla</span><span class="tk-text" style="display:none;">Önümi çap ediň</span></button>
                 <div id="statusMessage"></div>
             </form>
         </div>
 
-        <!-- Ürünleri Yönet Bölümü -->
+        <!-- Ürün Yönetimi -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-boxes"></i> Mevcut Ürünleri Yönet</span></h2>
+            <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünleri Yönet</span><span class="tk-text" style="display:none;">Bar bolan önümleri dolandyrmak</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Görsel</th>
-                            <th>Başlık</th>
-                            <th>İşlem</th>
+                            <th><span class="tr-text">Görsel</span><span class="tk-text" style="display:none;">Surat</span></th>
+                            <th><span class="tr-text">Başlık</span><span class="tk-text" style="display:none;">Ady</span></th>
+                            <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
                     </thead>
                     <tbody id="adminProductsList">
-                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Yükleniyor...</td></tr>
+                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Yorumlar ve Değerlendirmeler -->
+        <!-- Yorumlar -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-star"></i> Yorumlar ve Değerlendirmeler</span></h2>
+            <h2><span><i class="fas fa-star"></i> <span class="tr-text">Yorumlar ve Değerlendirmeler</span><span class="tk-text" style="display:none;">Teswirler we Bahalar</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>Müşteri / Ulanyjy</th>
-                            <th>Reýting (Pally)</th>
-                            <th>Teswir</th>
-                            <th>İşlem</th>
+                            <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Ulanyjy</span></th>
+                            <th><span class="tr-text">Değerlendirme</span><span class="tk-text" style="display:none;">Reýting (Baha)</span></th>
+                            <th><span class="tr-text">Yorum</span><span class="tk-text" style="display:none;">Teswir</span></th>
+                            <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
                     </thead>
                     <tbody id="adminReviewsList">
-                        <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yükleniyor...</td></tr>
+                        <tr><td colspan="4" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Sipariş Takibi Bölümü -->
+        <!-- Siparişler -->
         <div class="admin-card">
             <h2>
-                <span><i class="fas fa-clipboard-list"></i> Sipariş ve Müşteri Takibi</span>
-                <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> Excel'e Aktar</button>
+                <span><i class="fas fa-clipboard-list"></i> <span class="tr-text">Sipariş ve Müşteri Takibi</span><span class="tk-text" style="display:none;">Sargyt we Müşderi Gözegçiligi</span></span>
+                <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span class="tr-text">Excel'e Aktar</span><span class="tk-text" style="display:none;">Excel-e geçirmek</span></button>
             </h2>
             
             <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label>Müşteri Adı</label>
+                        <label><span class="tr-text">Müşteri Adı</span><span class="tk-text" style="display:none;">Müşderiniň ady</span></label>
                         <input type="text" id="custName" placeholder="Aman Amanow" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label>Telefon</label>
-                        <input type="text" id="custPhone" placeholder="+90 555..." required>
+                        <label><span class="tr-text">Telefon</span><span class="tk-text" style="display:none;">Telefon belgisi</span></label>
+                        <input type="text" id="custPhone" placeholder="+993 65..." required>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label>Mobilya / Ürün</label>
-                        <input type="text" id="orderItem" placeholder="Lüks Mutfak Dolabı" required>
+                        <label><span class="tr-text">Mobilya / Ürün</span><span class="tk-text" style="display:none;">Mebel / Önüm</span></label>
+                        <input type="text" id="orderItem" placeholder="Mutfak Dolabı" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 10px;">
-                        <label>Toplam Fiyat (TL)</label>
+                        <label><span class="tr-text">Toplam Fiyat</span><span class="tk-text" style="display:none;">Jemi Bahasy</span></label>
                         <input type="number" id="orderPrice" placeholder="15000" required>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Ödenen (Kapora)</label>
+                        <label><span class="tr-text">Ödenen (Kapora)</span><span class="tk-text" style="display:none;">Tölän puly (Kapora)</span></label>
                         <input type="number" id="orderPaid" placeholder="10000" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 15px;">
-                        <label>Durum</label>
-                        <input type="text" id="orderStatus" placeholder="Hazırlanıyor" value="Hazırlanıyor" required>
+                        <label><span class="tr-text">Durum</span><span class="tk-text" style="display:none;">Ýagdaýy</span></label>
+                        <input type="text" id="orderStatus" value="Hazırlanıyor / Taýýarlanýar" required>
                     </div>
                 </div>
-                <button type="submit" class="btn"><i class="fas fa-plus"></i> Siparişi Kaydet</button>
+                <button type="submit" class="btn"><i class="fas fa-plus"></i> <span class="tr-text">Siparişi Kaydet</span><span class="tk-text" style="display:none;">Sargydy ýazga al</span></button>
             </form>
 
             <div class="table-responsive">
                 <table id="ordersTable">
                     <thead>
                         <tr>
-                            <th>Müşteri</th>
-                            <th>Ürün</th>
-                            <th>Toplam/Ödenen/Kalan</th>
-                            <th>Durum</th>
-                            <th>İşlem</th>
+                            <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Müşderi</span></th>
+                            <th><span class="tr-text">Ürün</span><span class="tk-text" style="display:none;">Önüm</span></th>
+                            <th><span class="tr-text">Toplam / Ödenen / Kalan</span><span class="tk-text" style="display:none;">Jemi / Tölän / Galan</span></th>
+                            <th><span class="tr-text">Durum</span><span class="tk-text" style="display:none;">Ýagdaýy</span></th>
+                            <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
                     </thead>
                     <tbody id="adminOrdersList">
-                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Yükleniyor...</td></tr>
+                        <tr><td colspan="5" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -314,24 +308,11 @@
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Microsoft Translator Gizlin Skripti -->
-    <script type="text/javascript">
-        setTimeout(function(){
-            var s = document.createElement("script");
-            s.type = "text/javascript";
-            s.charset = "UTF-8";
-            s.src = ((location && location.protocol == 'https:') ? 'https://translator.microsoft.com' : 'http://www.microsofttranslator.com') + '/ajax/v3/WidgetV3.aspx?siteData=uOIGSKLMBOV1MIe1b-B9w_V_V_V_V_V_V_V_V_V_V_V&text=&from=tr&to=tk&autobits=0&app=რების';
-            var p = document.getElementsByTagName('head')[0] || document.documentElement;
-            p.insertBefore(s, p.firstChild);
-        }, 0);
-    </script>
-
     <script>
+        // Tema logikasy
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
-        const langToggleBtn = document.getElementById('langToggleBtn');
-        const langText = document.getElementById('langText');
 
         const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
         htmlElement.setAttribute('data-theme', savedTheme);
@@ -349,29 +330,36 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Düwmä basylanda Microsoft Translator logikasyny işledip sahypany täzelemek
-        langToggleBtn.addEventListener('click', () => {
-            let cookies = document.cookie.split(';');
-            let currentLang = 'tr';
-            for (let c of cookies) {
-                if (c.trim().startsWith('googtrans=')) {
-                    currentLang = c;
-                }
-            }
+        // Dil çalşyş (Türkçe / Türkmençe) logikasy
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langText = document.getElementById('langText');
+
+        function setLanguage(lang) {
+            const trElements = document.querySelectorAll('.tr-text');
+            const tkElements = document.querySelectorAll('.tk-text');
             
-            let targetLang = currentLang.includes('/tk') ? '/tr/tr' : '/tr/tk';
-            document.cookie = "googtrans=" + targetLang + ";path=/;domain=" + document.domain;
-            location.reload();
-        });
-
-        window.addEventListener('load', () => {
-            if (document.cookie.includes('googtrans=/tr/tk')) {
+            if (lang === 'tk') {
+                trElements.forEach(el => el.style.display = 'none');
+                tkElements.forEach(el => el.style.display = 'inline');
                 langText.innerText = 'TÜRKMENÇE';
+                localStorage.setItem('mobleart_lang', 'tk');
             } else {
+                trElements.forEach(el => el.style.display = 'inline');
+                tkElements.forEach(el => el.style.display = 'none');
                 langText.innerText = 'TÜRKÇE';
+                localStorage.setItem('mobleart_lang', 'tr');
             }
+        }
+
+        const savedLang = localStorage.getItem('mobleart_lang') || 'tr';
+        setLanguage(savedLang);
+
+        langToggleBtn.addEventListener('click', () => {
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+            setLanguage(currentLang === 'tr' ? 'tk' : 'tr');
         });
 
+        // Modal surat açmak
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -385,7 +373,7 @@
         modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
-    <!-- Firebase we Başga Funksiýalar -->
+    <!-- Firebase we Esasy Skriptler -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -435,10 +423,10 @@
                 loginError.innerText = "";
                 loginForm.reset();
             } catch (error) {
-                loginError.innerText = "E-posta veya şifre hatalı!";
+                loginError.innerText = "E-posta veya şifre hatalı! / E-poçta ýa-da açar söz ýalňyş!";
             } finally {
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş Yap`;
+                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş`;
             }
         });
 
@@ -459,7 +447,7 @@
                 reader.onload = function(event) {
                     prodImageInput.value = event.target.result;
                     statusMsg.style.color = "#22c55e";
-                    statusMsg.innerHTML = "✓ Görsel başarıyla seçildi!";
+                    statusMsg.innerHTML = "✓ Başarılı! / Üstünlikli saýlendi!";
                 }
                 reader.readAsDataURL(file);
             }
@@ -469,7 +457,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Henüz kayıtlı ürün yok.</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Ürün/Haryt yok.</td></tr>`;
                     return;
                 }
 
@@ -486,13 +474,13 @@
                             </td>
                             <td><strong>${prod.title}</strong></td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil / Pozmak</button>
                             </td>
                         </tr>
                     `;
                 });
             } catch (error) {
-                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata / Ýalňyşlyk.</td></tr>`;
             }
         }
 
@@ -504,14 +492,14 @@
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> İşleniyor...`;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
 
             try {
                 await addDoc(collection(db, "products"), {
                     title: title, image: image, description: description, createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
-                statusMsg.innerHTML = "✓ Ürün başarıyla eklendi!";
+                statusMsg.innerHTML = "✓ Başarıyla eklendi! / Üstünlikli goşuldy!";
                 form.reset();
                 fetchAdminProducts();
             } catch (error) {
@@ -519,12 +507,12 @@
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
+                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Yayınla / Çap ediň`;
             }
         });
 
         window.deleteProduct = async function(id) {
-            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+            if (confirm("Silmek istediğinize emin misiniz? / Pozmak isleýändigiňize ynamyňyz barmy?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
                     fetchAdminProducts();
@@ -537,7 +525,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "reviews"));
                 if (querySnapshot.empty) {
-                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Henüz yorum yok.</td></tr>`;
+                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum yok / Teswir ýok.</td></tr>`;
                     return;
                 }
 
@@ -557,16 +545,16 @@
                     `;
                 });
             } catch (error) {
-                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata.</td></tr>`;
             }
         }
 
         window.deleteReview = async function(id) {
-            if (confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
+            if (confirm("Silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "reviews", id));
                     fetchAdminReviews();
-                } catch (error) { alert("Hata oluştu."); }
+                } catch (error) { alert("Hata."); }
             }
         }
 
@@ -577,7 +565,7 @@
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
                 if (querySnapshot.empty) {
-                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Kayıtlı sipariş yok.</td></tr>`;
+                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş yok / Sargyt ýok.</td></tr>`;
                     return;
                 }
 
@@ -592,15 +580,15 @@
                             <td><strong>${ord.name}</strong><br><small style="color:var(--text-muted);">${ord.phone}</small></td>
                             <td>${ord.item}</td>
                             <td>
-                                <span style="color:var(--accent-color);">${ord.price} TL</span><br>
-                                <small style="color:#22c55e;">Ödenen: ${ord.paid} TL</small><br>
-                                <small style="color:#ef4444;">Kalan: ${kalan} TL</small>
+                                <span style="color:var(--accent-color);">${ord.price}</span><br>
+                                <small style="color:#22c55e;">Ödenen: ${ord.paid}</small><br>
+                                <small style="color:#ef4444;">Kalan: ${kalan}</small>
                             </td>
                             <td>
                                 <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 4px; font-size: 12px;">
-                                    <option value="Hazırlanıyor" ${ord.status.includes('Hazırlanıyor') ? 'selected' : ''}>Hazırlanıyor</option>
-                                    <option value="Tamamlandı" ${ord.status.includes('Tamamlandı') ? 'selected' : ''}>Tamamlandı</option>
-                                    <option value="İptal Edildi" ${ord.status.includes('İptal') ? 'selected' : ''}>İptal Edildi</option>
+                                    <option value="Hazırlanıyor / Taýýarlanýar" ${ord.status && ord.status.includes('Hazırlanıyor') ? 'selected' : ''}>Hazırlanıyor / Taýýarlanýar</option>
+                                    <option value="Tamamlandı / Tamamlandy" ${ord.status && ord.status.includes('Tamamlandı') ? 'selected' : ''}>Tamamlandı / Tamamlandy</option>
+                                    <option value="İptal / Ýatyryldy" ${ord.status && ord.status.includes('İptal') ? 'selected' : ''}>İptal / Ýatyryldy</option>
                                 </select>
                             </td>
                             <td>
@@ -614,7 +602,7 @@
 
         window.updateOrderStatus = async function(id, newStatus) {
             try { await updateDoc(doc(db, "orders", id), { status: newStatus }); } 
-            catch (error) { alert("Durum güncellenirken hata oluştu."); }
+            catch (error) { alert("Hata."); }
         }
 
         orderForm.addEventListener('submit', async (e) => {
@@ -630,18 +618,18 @@
                 await addDoc(collection(db, "orders"), {
                     name, phone, item, price, paid, status, createdAt: new Date()
                 });
-                alert("Sipariş başarıyla eklendi!");
+                alert("Başarılı / Sargyt goşuldy!");
                 orderForm.reset();
                 fetchAdminOrders();
-            } catch (error) { alert("Hata oluştu."); }
+            } catch (error) { alert("Hata."); }
         });
 
         window.deleteOrder = async function(id) {
-            if (confirm("Bu siparişi silmek istediğinize emin misiniz?")) {
+            if (confirm("Silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "orders", id));
                     fetchAdminOrders();
-                } catch (error) { alert("Hata oluştu."); }
+                } catch (error) { alert("Hata."); }
             }
         }
 
@@ -654,7 +642,7 @@
                 }
 
                 let csv = [];
-                csv.push('"Müşteri";"Telefon";"Ürün";"Toplam (TL)";"Ödenen (TL)";"Kalan (TL)";"Durum"');
+                csv.push('"Müşteri";"Telefon";"Ürün";"Toplam";"Ödenen";"Kalan";"Durum"');
 
                 querySnapshot.forEach((documentSnap) => {
                     const ord = documentSnap.data();
@@ -671,7 +659,7 @@
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
-            } catch (error) { alert("Excel dosyası oluşturulurken hata oluştu."); }
+            } catch (error) { alert("Hata."); }
         });
     </script>
 </body>
