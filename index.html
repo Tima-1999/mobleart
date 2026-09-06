@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark" class="notranslate">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
     <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
     
     <link rel="icon" type="image/png" href="./logo.png">
@@ -21,28 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Google Translate ýokarky zolagyny we süýşmegini ýatyrmak üçin zerur CSS */
-        html.notranslate {
-            top: 0 !important;
-        }
-        body.notranslate {
-            top: 0 !important;
-            position: static !important;
-        }
-        .goog-te-banner-frame {
-            display: none !important;
-        }
-        .goog-tooltip {
-            display: none !important;
-        }
-        .goog-text-highlight {
-            background-color: transparent !important;
-            box-shadow: none !important;
-        }
-        #goog-gt-tt {
-            display: none !important;
-        }
-
         :root {
             --bg-color: #0f0f0f;
             --card-bg: #161616;
@@ -174,7 +151,7 @@
         }
     </style>
 </head>
-<body class="notranslate">
+<body>
 
     <header>
         <a href="#" class="logo">
@@ -182,11 +159,11 @@
             <div>Moble<span>Art</span></div>
         </a>
         <nav class="nav-links">
-            <a href="#" class="notranslate" data-translate="home">Ana Sayfa</a>
-            <a href="#urunler" class="notranslate" data-translate="collection">Koleksiyon</a>
-            <a href="#ustunlukler" class="notranslate" data-translate="whyus">Neden Biz?</a>
-            <a href="#yorumlar" class="notranslate" data-translate="reviews">Yorumlar</a>
-            <a href="#teklif" class="notranslate" data-translate="contact">Teklif Al</a>
+            <a href="#" data-tr="Ana Sayfa" data-tk="Baş sahypa">Ana Sayfa</a>
+            <a href="#urunler" data-tr="Koleksiyon" data-tk="Koleksiýa">Koleksiyon</a>
+            <a href="#ustunlukler" data-tr="Neden Biz?" data-tk="Näme üçin biz?">Neden Biz?</a>
+            <a href="#yorumlar" data-tr="Yorumlar" data-tk="Teswirler">Yorumlar</a>
+            <a href="#teklif" data-tr="Teklif Al" data-tk="Teklif alyň">Teklif Al</a>
         </nav>
         <div class="header-controls">
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
@@ -197,16 +174,13 @@
         </div>
     </header>
 
-    <!-- Hakyky Google Translate Widget üçin Gizlin Div -->
-    <div id="google_translate_element" style="display:none;"></div>
-
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge"><i class="fas fa-star"></i> <span data-translate="hero_badge">Lüks ve Kişiselleştirilmiş Tasarım</span></span>
-            <h1 data-translate="hero_title">Evinize Değer Katan Ustalık</h1>
-            <p data-translate="hero_desc">Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
+            <span class="hero-badge"><i class="fas fa-star"></i> <span data-tr="Lüks ve Kişiselleştirilmiş Tasarım" data-tk="Lüks we Şahsylaşdyrylan Dizaýn">Lüks ve Kişiselleştirilmiş Tasarım</span></span>
+            <h1 data-tr="Evinize Değer Katan Ustalık" data-tk="Öýüňüze Baha Goşýan Ussatlyk">Evinize Değer Katan Ustalık</h1>
+            <p data-tr="Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz." data-tk="Aşhanada, ýatjak oturda we myhman oturda isleýän ölçegleriňizde ýörite taslamalary ýokary hilli ussatlyk bilen öndürýäris.">Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
             <div class="hero-buttons">
-                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> <span data-translate="hero_btn1">Ücretsiz Danışmanlık Al</span></a>
+                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> <span data-tr="Ücretsiz Danışmanlık Al" data-tk="Mugt Maslahat Alyň">Ücretsiz Danışmanlık Al</span></a>
                 <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Sohbet</a>
             </div>
         </div>
@@ -214,13 +188,13 @@
 
     <div class="container" id="urunler">
         <div class="section-header">
-            <span class="sub-title" data-translate="prod_sub">Ürünlerimiz</span>
-            <h2 class="section-title" data-translate="prod_title">Özel Üretim Koleksiyonlarımız</h2>
+            <span class="sub-title" data-tr="Ürünlerimiz" data-tr-key="prod_sub" data-tk="Harytlarymyz">Ürünlerimiz</span>
+            <h2 class="section-title" data-tr="Özel Üretim Koleksiyonlarımız" data-tk="Ýörite Önümçilik Koleksiýalarymyz">Özel Üretim Koleksiyonlarımız</h2>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
                 <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: var(--accent-color);"></i>
-                <p data-translate="loading_prod">Ürünler yükleniyor...</p>
+                <p data-tr="Ürünler yükleniyor..." data-tk="Harytlar ýüklenýär...">Ürünler yükleniyor...</p>
             </div>
         </div>
     </div>
@@ -233,24 +207,24 @@
     <section class="features" id="ustunlukler">
         <div class="container" style="margin: 0 auto; padding: 0 20px;">
             <div class="section-header">
-                <span class="sub-title" data-translate="feat_sub">Güven & Kalite</span>
-                <h2 class="section-title" data-translate="feat_title">Neden Bizimle Çalışmalısınız?</h2>
+                <span class="sub-title" data-tr="Güven & Kalite" data-tk="Ynam & Hilli">Güven & Kalite</span>
+                <h2 class="section-title" data-tr="Neden Bizimle Çalışmalısınız?" data-tk="Näme üçin bizim bilen işlemeli?">Neden Bizimle Çalışmalısınız?</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-box">
                     <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
-                    <h4 data-translate="feat1_h">Ücretsiz Keşif & Ölçü</h4>
-                    <p data-translate="feat1_p">Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz.</p>
+                    <h4 data-tr="Ücretsiz Keşif & Ölçü" data-tk="Mugt Gözegçilik & Ölçeg">Ücretsiz Keşif & Ölçü</h4>
+                    <p data-tr="Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz." data-tk="Öýüňüze gelip takyk ölçeg alyp, ýeriňize laýyk taslamany taýýarlaýarys.">Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                    <h4 data-translate="feat2_h">1. Sınıf Kaliteli Malzeme</h4>
-                    <p data-translate="feat2_p">Uzun ömürlü, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz.</p>
+                    <h4 data-tr="1. Sınıf Kaliteli Malzeme" data-tk="1-nji derejeli hilli haryt">1. Sınıf Kaliteli Malzeme</h4>
+                    <p data-tr="Uzun ömürlü, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz." data-tk="Uzyn ömürli, berk we saglyga zyýansyz ýokary hilli çig mal ulanýarys.">Uzun ömürlü, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <h4 data-translate="feat3_h">Zamanında Teslimat</h4>
-                    <p data-translate="feat3_p">Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz.</p>
+                    <h4 data-tr="Zamanında Teslimat" data-tk="Wagtynda gowşuryş">Zamanında Teslimat</h4>
+                    <p data-tr="Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz." data-tk="Kesgitlenen wagtda kemçiliksiz önümçilik we gurnama kepilligini berýäris.">Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz.</p>
                 </div>
             </div>
         </div>
@@ -259,21 +233,21 @@
     <section class="reviews-section" id="yorumlar">
         <div class="container" style="margin: 0 auto; padding: 0 20px;">
             <div class="section-header">
-                <span class="sub-title" data-translate="rev_sub">Müşteri Deneyimi</span>
-                <h2 class="section-title" data-translate="rev_title">Müşteri Yorumları & Puanlar</h2>
+                <span class="sub-title" data-tr="Müşteri Deneyimi" data-tk="Müşderi Tejribesi">Müşteri Deneyimi</span>
+                <h2 class="section-title" data-tr="Müşteri Yorumları & Puanlar" data-tk="Müşderi Teswirleri & Bahalar">Müşteri Yorumları & Puanlar</h2>
             </div>
             
             <div class="reviews-grid" id="dynamicReviewsGrid">
                 <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
-                    <p data-translate="loading_rev">Yorumlar yükleniyor...</p>
+                    <p data-tr="Yorumlar yükleniyor..." data-tk="Teswirler ýüklenýär...">Yorumlar yükleniyor...</p>
                 </div>
             </div>
 
             <div class="review-form-container">
-                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-color);" data-translate="rev_form_h">Değerlendirme Yapın</h3>
+                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-color);" data-tr="Değerlendirme Yapın" data-tk="Bahalandyryň">Değerlendirme Yapın</h3>
                 <form id="reviewForm">
                     <div class="form-group">
-                        <label data-translate="rev_score">Puanınız</label>
+                        <label data-tr="Puanınız" data-tk="Bahanyz">Puanınız</label>
                         <div class="star-rating" id="starRating">
                             <i class="fas fa-star active" data-value="1"></i>
                             <i class="fas fa-star active" data-value="2"></i>
@@ -284,14 +258,14 @@
                         <input type="hidden" id="ratingValue" value="5">
                     </div>
                     <div class="form-group">
-                        <label data-translate="rev_name">Adınız ve Soyadınız</label>
+                        <label data-tr="Adınız ve Soyadınız" data-tk="Adyňyz we Familiýaňyz">Adınız ve Soyadınız</label>
                         <input type="text" id="reviewName" placeholder="Adınızı girin" required>
                     </div>
                     <div class="form-group">
-                        <label data-translate="rev_text">Yorumunuz</label>
+                        <label data-tr="Yorumunuz" data-tk="Teswiriňiz">Yorumunuz</label>
                         <textarea id="reviewText" rows="4" placeholder="Hizmet hakkındaki düşüncelerinizi yazın..." required></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-translate="rev_send">Yorumu Gönder</button>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Yorumu Gönder" data-tk="Teswiri Ugrat">Yorumu Gönder</button>
                 </form>
             </div>
         </div>
@@ -300,8 +274,8 @@
     <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
-                <h2 data-translate="contact_h">Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
-                <p data-translate="contact_p">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <h2 data-tr="Hayalinizdeki Evi Birlikte Tasarlayalım" data-tk="Arzuw edýän öýüňizi bilelikde dizaýn edeliň">Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
+                <p data-tr="Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim." data-tk="Formany dolduryň, size derrew jogap berip, baha we taslama barada giňişleýin maglumat bereliň.">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
                 <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
                 <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
@@ -309,52 +283,40 @@
             <div class="contact-form-box">
                 <form id="quoteForm">
                     <div class="form-group">
-                        <label data-translate="rev_name">Adınız ve Soyadınız</label>
+                        <label data-tr="Adınız ve Soyadınız" data-tk="Adyňyz we Familiýaňyz">Adınız ve Soyadınız</label>
                         <input type="text" id="name" placeholder="Adınızı yazın" required>
                     </div>
                     <div class="form-group">
-                        <label data-translate="phone_label">Telefon Numaranız</label>
+                        <label data-tr="Telefon Numaranız" data-tk="Telefon belgiňiz">Telefon Numaranız</label>
                         <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
                     </div>
                     <div class="form-group">
-                        <label data-translate="mob_type_label">İstediğiniz Mobilya Türü</label>
+                        <label data-tr="İstediğiniz Mobilya Türü" data-tk="Isleýän mebiliňiz">İstediğiniz Mobilya Türü</label>
                         <select id="service">
-                            <option data-translate="opt1">Lüks Mutfak Dolabı</option>
-                            <option data-translate="opt2">Yatak Odası</option>
-                            <option data-translate="opt3">TV Ünitesi & Salon</option>
-                            <option data-translate="opt4">Kişiye Özel Tasarım</option>
+                            <option data-tr="Lüks Mutfak Dolabı" data-tk="Lüks aşhana dolaby">Lüks Mutfak Dolabı</option>
+                            <option data-tr="Yatak Odası" data-tk="Ýatylýan otur">Yatak Odası</option>
+                            <option data-tr="TV Ünitesi & Salon" data-tk="TV bölümi we Myhman otur">TV Ünitesi & Salon</option>
+                            <option data-tr="Kişiye Özel Tasarım" data-tk="Şahsylaşdyrylan dizaýn">Kişiye Özel Tasarım</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-translate="quote_btn">Fiyat Teklifi Al (WhatsApp)</button>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Fiyat Teklifi Al (WhatsApp)" data-tk="Baha teklifini alyň (WhatsApp)">Fiyat Teklifi Al (WhatsApp)</button>
                 </form>
             </div>
         </div>
     </section>
 
     <div class="mobile-bottom-bar">
-        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> <span data-translate="call_btn">Ara</span></a>
+        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> <span data-tr="Ara" data-tk="Jaň et">Ara</span></a>
         <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <footer>
         <div class="footer-logo">Moble<span>Art</span></div>
-        <p>&copy; 2026 MobleArt. <span data-translate="footer_text">Tüm hakları saklıdır. | İstanbul</span></p>
+        <p>&copy; 2026 MobleArt. <span data-tr="Tüm hakları saklıdır. | İstanbul" data-tk="Ähli hukuklar goralýar. | Stambul">Tüm hakları saklıdır. | İstanbul</span></p>
         <div class="footer-admin" style="margin-top: 20px;">
-            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> <span data-translate="admin_link">Yönetim Paneli (Admin)</span></a>
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> <span data-tr="Yönetim Paneli (Admin)" data-tk="Dolandyryş paneli (Admin)">Yönetim Paneli (Admin)</span></a>
         </div>
     </footer>
-
-    <!-- Hakyky Google Translate Skripti -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'tr',
-                includedLanguages: 'tk,tr',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
@@ -368,6 +330,7 @@
         
         htmlElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
+        applyLanguage(currentLang);
 
         toggleBtn.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
@@ -377,36 +340,29 @@
             updateThemeIcon(newTheme);
         });
 
-        // Hakyky Google Translate üýtgetmek funksiýasy
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'tr' ? 'tk' : 'tr';
             localStorage.setItem('mobleart_lang', currentLang);
-            changeGoogleLanguage(currentLang);
+            applyLanguage(currentLang);
         });
 
         function updateThemeIcon(theme) {
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        function changeGoogleLanguage(lang) {
-            langText.innerText = lang.toUpperCase() === 'TR' ? 'TÜRKÇE' : 'TÜRKMENÇE';
-            let targetLang = lang === 'tk' ? 'tk' : 'tr';
-            
-            let interval = setInterval(() => {
-                let selectField = document.querySelector(".goog-te-combo");
-                if (selectField) {
-                    selectField.value = targetLang;
-                    selectField.dispatchEvent(new Event('change'));
-                    clearInterval(interval);
-                }
-            }, 200);
-        }
+        function applyLanguage(lang) {
+            langText.innerText = lang.toUpperCase() === 'TR' ? 'TK / TR' : 'TR / TK';
+            htmlElement.setAttribute('lang', lang);
 
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                changeGoogleLanguage(currentLang);
-            }, 1000);
-        });
+            // Bütün data-tr we data-tk elementleri üýtgetmek
+            const translatableElements = document.querySelectorAll('[data-tr][data-tk]');
+            translatableElements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerText = text;
+                }
+            });
+        }
 
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
@@ -453,15 +409,16 @@
 
         async function loadProducts() {
             const grid = document.getElementById('dynamicProductsGrid');
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
                     grid.innerHTML = `
                         <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 10px;">
                             <i class="fas fa-box-open" style="font-size: 36px; color: var(--accent-color); margin-bottom: 15px;"></i>
-                            <h3 style="color: var(--text-color); margin-bottom: 8px; font-size: 18px;">Henüz Ürün Eklenmemiş</h3>
-                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Admin paneline girerek ilk tasarımlarınızı yükleyin.</p>
-                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> Ürün Ekle</a>
+                            <h3 style="color: var(--text-color); margin-bottom: 8px; font-size: 18px;">${currentLang === 'tk' ? 'Häzirlikçe haryt ýok' : 'Henüz Ürün Eklenmemiş'}</h3>
+                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">${currentLang === 'tk' ? 'Admin paneline girip ilkinji dizaýnlaryňyzy ýüklediň.' : 'Admin paneline girerek ilk tasarımlarınızı yükleyin.'}</p>
+                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> ${currentLang === 'tk' ? 'Haryt goş' : 'Ürün Ekle'}</a>
                         </div>
                     `;
                     return;
@@ -481,7 +438,7 @@
                                     <p class="product-desc">${prod.description}</p>
                                 </div>
                                 <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Bilgi Al
+                                    <i class="fab fa-whatsapp"></i> ${currentLang === 'tk' ? 'Maglumat al' : 'Bilgi Al'}
                                 </a>
                             </div>
                         </div>
@@ -494,10 +451,11 @@
 
         async function loadReviews() {
             const grid = document.getElementById('dynamicReviewsGrid');
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "reviews"));
                 if (querySnapshot.empty) {
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>Henüz yorum yapılmamış.</p></div>`;
+                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>${currentLang === 'tk' ? 'Häzirlikçe teswir ýok.' : 'Henüz yorum yapılmamış.'}</p></div>`;
                     return;
                 }
 
@@ -531,6 +489,7 @@
             const name = document.getElementById('reviewName').value;
             const text = document.getElementById('reviewText').value;
             const rating = parseInt(document.getElementById('ratingValue').value);
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
 
             try {
                 await addDoc(collection(db, "reviews"), {
@@ -539,7 +498,7 @@
                     rating: rating,
                     date: new Date().toISOString()
                 });
-                alert("Yorumunuz başarıyla eklendi, teşekkür ederiz!");
+                alert(currentLang === 'tk' ? 'Teswiriňiz üstünlikli goşuldy, sag boluň!' : 'Yorumunuz başarıyla eklendi, teşekkür ederiz!');
                 document.getElementById('reviewForm').reset();
                 loadReviews();
             } catch (error) {
