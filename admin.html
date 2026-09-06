@@ -136,13 +136,8 @@
         }
         .close-modal:hover { color: var(--accent-color); }
 
-        /* Google Translate elementi hakyky gizlenýär, ýöne arka planda işleýär */
-        #google_translate_element {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-            pointer-events: none;
-        }
+        /* Microsoft/Bing Terjimeçisini doly gizlemek üçin */
+        #MicrosoftTranslatorWidget { display: none !important; }
     </style>
 </head>
 <body>
@@ -170,13 +165,13 @@
         </div>
     </div>
 
-    <!-- Gizli Google Translate Widjeti -->
-    <div id="google_translate_element"></div>
+    <!-- Microsoft Terjimeçisi üçin gizlin konteýner -->
+    <div id='MicrosoftTranslatorWidget'></div>
 
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
-            <!-- Özüňiziň TK / TR Düwmäňiz -->
+            <!-- Arka planda gizlin işleýän Microsoft / Bing terjime düwmesi -->
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
             <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Çıkış</button>
@@ -319,13 +314,17 @@
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Google Translate Arka Plan Skripti -->
+    <!-- Microsoft Translator Gizlin Skripti -->
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'tr', includedLanguages: 'tr,tk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
+        setTimeout(function(){
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.charset = "UTF-8";
+            s.src = ((location && location.protocol == 'https:') ? 'https://translator.microsoft.com' : 'http://www.microsofttranslator.com') + '/ajax/v3/WidgetV3.aspx?siteData=uOIGSKLMBOV1MIe1b-B9w_V_V_V_V_V_V_V_V_V_V_V&text=&from=tr&to=tk&autobits=0&app=რების';
+            var p = document.getElementsByTagName('head')[0] || document.documentElement;
+            p.insertBefore(s, p.firstChild);
+        }, 0);
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
@@ -350,7 +349,7 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // TK / TR düwmesine basylanda Google Translate cookie üýtgedip sahypany täzeleýär
+        // Düwmä basylanda Microsoft Translator logikasyny işledip sahypany täzelemek
         langToggleBtn.addEventListener('click', () => {
             let cookies = document.cookie.split(';');
             let currentLang = 'tr';
@@ -365,7 +364,6 @@
             location.reload();
         });
 
-        // Sahypa açylanda düwmedäki ýazyny dogry görkezmek üçin barlag
         window.addEventListener('load', () => {
             if (document.cookie.includes('googtrans=/tr/tk')) {
                 langText.innerText = 'TÜRKMENÇE';
