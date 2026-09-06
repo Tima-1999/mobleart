@@ -135,20 +135,14 @@
             font-size: 40px; font-weight: bold; cursor: pointer;
         }
         .close-modal:hover { color: var(--accent-color); }
-        
-        /* Google Translate stilleri */
-        #google_translate_element { display: inline-block; }
-        .goog-te-combo {
-            background: var(--card-bg) !important;
-            color: var(--text-color) !important;
-            border: 1px solid var(--border-color) !important;
-            padding: 6px;
-            border-radius: 20px;
-            font-size: 12px;
-            outline: none;
+
+        /* Google Translate elementi hakyky gizlenýär, ýöne arka planda işleýär */
+        #google_translate_element {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
         }
-        .goog-logo-link, .goog-te-gadget span { display: none !important; }
-        .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
     </style>
 </head>
 <body>
@@ -176,12 +170,14 @@
         </div>
     </div>
 
+    <!-- Gizli Google Translate Widjeti -->
+    <div id="google_translate_element"></div>
+
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
-            <!-- Google Translate Widgeti Ýerine Getirildi -->
-            <div id="google_translate_element"></div>
-            
+            <!-- Özüňiziň TK / TR Düwmäňiz -->
+            <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
             <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Çıkış</button>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Siteye Dön</a>
@@ -323,10 +319,10 @@
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Google Translate Skripti -->
+    <!-- Google Translate Arka Plan Skripti -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'tr', includedLanguages: 'tr,tk,en,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            new google.translate.TranslateElement({pageLanguage: 'tr', includedLanguages: 'tr,tk', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -335,6 +331,8 @@
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langText = document.getElementById('langText');
 
         const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
         htmlElement.setAttribute('data-theme', savedTheme);
@@ -352,6 +350,30 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
+        // TK / TR düwmesine basylanda Google Translate cookie üýtgedip sahypany täzeleýär
+        langToggleBtn.addEventListener('click', () => {
+            let cookies = document.cookie.split(';');
+            let currentLang = 'tr';
+            for (let c of cookies) {
+                if (c.trim().startsWith('googtrans=')) {
+                    currentLang = c;
+                }
+            }
+            
+            let targetLang = currentLang.includes('/tk') ? '/tr/tr' : '/tr/tk';
+            document.cookie = "googtrans=" + targetLang + ";path=/;domain=" + document.domain;
+            location.reload();
+        });
+
+        // Sahypa açylanda düwmedäki ýazyny dogry görkezmek üçin barlag
+        window.addEventListener('load', () => {
+            if (document.cookie.includes('googtrans=/tr/tk')) {
+                langText.innerText = 'TÜRKMENÇE';
+            } else {
+                langText.innerText = 'TÜRKÇE';
+            }
+        });
+
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -365,6 +387,7 @@
         modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
+    <!-- Firebase we Başga Funksiýalar -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -601,13 +624,13 @@
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
             const item = document.getElementById('orderItem').value;
-            const price = document.getElementById('orderPrice5') || document.getElementById('orderPrice').value;
+            const price = document.getElementById('orderPrice').value;
             const paid = document.getElementById('orderPaid').value;
             const status = document.getElementById('orderStatus').value;
 
             try {
                 await addDoc(collection(db, "orders"), {
-                    name, phone, item, price: document.getElementById('orderPrice').value, paid, status, createdAt: new Date()
+                    name, phone, item, price, paid, status, createdAt: new Date()
                 });
                 alert("Sipariş başarıyla eklendi!");
                 orderForm.reset();
