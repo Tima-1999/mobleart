@@ -83,7 +83,7 @@
 
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 500; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
         
         .image-input-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .file-upload-btn { background: var(--border-color); color: var(--text-color); padding: 12px 18px; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
@@ -390,7 +390,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
         const firebaseConfig = {
@@ -572,7 +572,13 @@
                                 <small style="color:#22c55e;">${currentLang === 'tk' ? 'Alnan' : 'Ödenen'}: ${ord.paid} TL</small><br>
                                 <small style="color:#ef4444;">${currentLang === 'tk' ? 'Galgan' : 'Kalan'}: ${kalan} TL</small>
                             </td>
-                            <td>${ord.status}</td>
+                            <td>
+                                <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 4px; font-size: 12px;">
+                                    <option value="Hazırlanıyor / Taýýarlanýar" ${ord.status.includes('Hazırlanıyor') || ord.status.includes('Taýýarlanýar') ? 'selected' : ''}>Hazırlanıyor / Taýýarlanýar</option>
+                                    <option value="Tamamlandı / Tamamlandy" ${ord.status.includes('Tamamlandı') || ord.status.includes('Tamamlandy') ? 'selected' : ''}>Tamamlandı / Tamamlandy</option>
+                                    <option value="İptal Edildi / Ýatyryldy" ${ord.status.includes('İptal') || ord.status.includes('Ýatyryldy') ? 'selected' : ''}>İptal Edildi / Ýatyryldy</option>
+                                </select>
+                            </td>
                             <td>
                                 <button class="btn btn-danger" onclick="deleteOrder('${id}')"><i class="fas fa-trash"></i></button>
                             </td>
@@ -581,6 +587,16 @@
                 });
             } catch (error) {
                 console.error("Ýalňyşlyk:", error);
+            }
+        }
+
+        window.updateOrderStatus = async function(id, newStatus) {
+            try {
+                await updateDoc(doc(db, "orders", id), {
+                    status: newStatus
+                });
+            } catch (error) {
+                alert("Status üýtgetmekde ýalňyşlyk ýüze çykdy.");
             }
         }
 
@@ -623,29 +639,46 @@
             }
         }
 
-        // Excel-e ýüklemek (Export to Excel) funksiýasy
-        document.getElementById('exportExcelBtn').addEventListener('click', () => {
-            const table = document.getElementById('ordersTable');
-            let csv = [];
-            let rows = table.querySelectorAll('tr');
-
-            for (let i = 0; i < rows.length; i++) {
-                let row = [], cols = rows[i].querySelectorAll('td, th');
-
-                for (let j = 0; j < cols.length - 1; j++) { // Soňky "İşlem" sütünini almaz ýaly -1 goýuldy
-                    let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/;/g, ",");
-                    row.push('"' + data + '"');
+        // Excel-e ýüklemek (Export to Excel) funksiýasy (Doly we dogry formatda)
+        document.getElementById('exportExcelBtn').addEventListener('click', async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "orders"));
+                if (querySnapshot.empty) {
+                    alert(currentLang === 'tk' ? 'Export etmek üçin sargyt ýok!' : 'Aktarılacak sipariş yok!');
+                    return;
                 }
-                csv.push(row.join(';'));
-            }
 
-            let csvFile = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
-            let downloadLink = document.createElement('a');
-            downloadLink.href = window.URL.createObjectURL(csvFile);
-            downloadLink.download = 'MobleArt_Sargytlar.csv';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+                let csv = [];
+                // Sözbaşylar (Headers)
+                csv.push('"' + (currentLang === 'tk' ? 'Müşderi' : 'Müşteri') + '";"' + (currentLang === 'tk' ? 'Telefon' : 'Telefon') + '";"' + (currentLang === 'tk' ? 'Önüm' : 'Ürün') + '";"' + (currentLang === 'tk' ? 'Umumy (TL)' : 'Toplam (TL)') + '";"' + (currentLang === 'tk' ? 'Tölenen (TL)' : 'Ödenen (TL)') + '";"' + (currentLang === 'tk' ? 'Galgan (TL)' : 'Kalan (TL)') + '";"' + (currentLang === 'tk' ? 'Ýagdaýy' : 'Durum') + '"');
+
+                querySnapshot.forEach((documentSnap) => {
+                    const ord = documentSnap.data();
+                    const kalan = Number(ord.price) - Number(ord.paid);
+                    let row = [
+                        ord.name || '',
+                        ord.phone || '',
+                        ord.item || '',
+                        ord.price || 0,
+                        ord.paid || 0,
+                        kalan,
+                        ord.status || ''
+                    ];
+                    let formattedRow = row.map(item => '"' + String(item).replace(/(\r\n|\n|\r)/gm, " ").replace(/;/g, ",") + '"');
+                    csv.push(formattedRow.join(';'));
+                });
+
+                let csvFile = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+                let downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+                downloadLink.download = 'MobleArt_Sargytlar.csv';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            } catch (error) {
+                console.error("Excel export ýalňyşlygy:", error);
+                alert("Excel-e ýüklemekde ýalňyşlyk ýüze çykdy.");
+            }
         });
     </script>
 </body>
