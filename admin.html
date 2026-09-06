@@ -116,84 +116,32 @@
             border: 1px solid var(--border-color);
             cursor: pointer;
         }
-        .prod-thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .prod-thumb { width: 100%; height: 100%; object-fit: cover; }
         #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
 
         #loginOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color); z-index: 9999; display: flex;
+            align-items: center; justify-content: center; padding: 20px;
         }
         .login-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 400px;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            padding: 40px; border-radius: 12px; width: 100%; max-width: 400px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .login-box h2 {
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
+        .login-box h2 { margin-bottom: 20px; text-align: center; font-size: 24px; }
 
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0;
+            width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);
+            align-items: center; justify-content: center; padding: 20px;
         }
-        .modal-content {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
+        .modal-content { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 8px; }
         .close-modal {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
+            position: absolute; top: 25px; right: 35px; color: #fff;
+            font-size: 40px; font-weight: bold; cursor: pointer;
         }
         .close-modal:hover { color: var(--accent-color); }
-        
-        /* Google Translate stilleri */
-        #google_translate_element { display: inline-block; }
-        .goog-te-combo {
-            background: var(--card-bg) !important;
-            color: var(--text-color) !important;
-            border: 1px solid var(--border-color) !important;
-            padding: 6px;
-            border-radius: 20px;
-            font-size: 12px;
-            outline: none;
-        }
-        .goog-logo-link, .goog-te-gadget span { display: none !important; }
-        .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
     </style>
 </head>
 <body>
@@ -224,9 +172,7 @@
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
-            <!-- Google Translate Widgeti -->
-            <div id="google_translate_element"></div>
-            
+            <!-- Dil Çalyşýan Düwmeler (Hiç hili zagruzka etmezden göni üýtgeýär) -->
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
             <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span data-tr="Çıkış" data-tk="Çykmak">Çıkış</span></button>
@@ -284,15 +230,15 @@
             </div>
         </div>
 
-        <!-- Teswirleri we Reýtingleri Yönet Bölümü (Täze goşulan) -->
+        <!-- Teswirleri we Reýtingleri Yönet Bölümü -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-star"></i> <span data-tr="Teswirler we Reýtingler" data-tr-alt="Yorumlar ve Değerlendirmeler">Yorumlar ve Değerlendirmeler</span></span></h2>
+            <h2><span><i class="fas fa-star"></i> <span data-tr="Yorumlar ve Değerlendirmeler" data-tk="Teswirler we Reýtingler">Yorumlar ve Değerlendirmeler</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th data-tr="Ulanyjy" data-tk="Müşteri">Müşteri / Ulanyjy</th>
-                            <th data-tr="Reýting" data-tk="Reýting">Reýting (Pally)</th>
+                            <th data-tr="Müşteri / Ulanyjy" data-tk="Müşteri / Ulanyjy">Müşteri / Ulanyjy</th>
+                            <th data-tr="Reýting (Pally)" data-tk="Reýting (Pally)">Reýting (Pally)</th>
                             <th data-tr="Teswir" data-tk="Teswir">Teswir</th>
                             <th data-tr="İşlem" data-tk="Hereket">İşlem</th>
                         </tr>
@@ -369,14 +315,6 @@
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Google Translate Skripti -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'tr', includedLanguages: 'tr,tk,en,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -403,6 +341,12 @@
             currentLang = currentLang === 'tr' ? 'tk' : 'tr';
             localStorage.setItem('mobleart_lang', currentLang);
             setLanguage(currentLang);
+            // Sahypany täzeden ýüklemezden funksiýalary täzeden çagyrýarys
+            if(typeof fetchAdminProducts === 'function') {
+                fetchAdminProducts();
+                fetchAdminOrders();
+                fetchAdminReviews();
+            }
         });
 
         function updateThemeIcon(theme) {
@@ -410,7 +354,7 @@
         }
 
         function setLanguage(lang) {
-            langText.innerText = lang.toUpperCase() === 'TR' ? 'TURKMENÇE' : 'TÜRKÇE';
+            langText.innerText = lang.toUpperCase() === 'TR' ? 'TÜRKÇE' : 'TÜRKMENÇE';
             document.querySelectorAll('[data-tr]').forEach(el => {
                 if (el.getAttribute(`data-${lang}`)) {
                     el.innerText = el.getAttribute(`data-${lang}`);
@@ -427,15 +371,8 @@
             modalImg.src = imgSrc;
         }
 
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        modal.onclick = function(e) {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        }
+        closeModal.onclick = function() { modal.style.display = "none"; }
+        modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
     <script type="module">
@@ -467,7 +404,7 @@
                 loginOverlay.style.display = 'none';
                 fetchAdminProducts();
                 fetchAdminOrders();
-                fetchAdminReviews(); // Teswirleri ýükle
+                fetchAdminReviews();
             } else {
                 loginOverlay.style.display = 'flex';
             }
@@ -487,19 +424,15 @@
                 loginError.innerText = "";
                 loginForm.reset();
             } catch (error) {
-                loginError.innerText = currentLang === 'tk' ? "E-poçta ýa-da parol ýalňyş!" : "E-posta veya şifre hatalı!";
+                loginError.innerText = localStorage.getItem('mobleart_lang') === 'tk' ? "E-poçta ýa-da parol ýalňyş!" : "E-posta veya şifre hatalı!";
             } finally {
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> ${currentLang === 'tk' ? 'Girmek' : 'Giriş Yap'}`;
+                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> ${localStorage.getItem('mobleart_lang') === 'tk' ? 'Girmek' : 'Giriş Yap'}`;
             }
         });
 
         logoutBtn.addEventListener('click', async () => {
-            try {
-                await signOut(auth);
-            } catch (error) {
-                console.error("Çykyşda ýalňyşlyk:", error);
-            }
+            try { await signOut(auth); } catch (error) { console.error("Çykyşda ýalňyşlyk:", error); }
         });
 
         const form = document.getElementById('addProductForm');
@@ -515,13 +448,14 @@
                 reader.onload = function(event) {
                     prodImageInput.value = event.target.result;
                     statusMsg.style.color = "#22c55e";
-                    statusMsg.innerHTML = currentLang === 'tk' ? "✓ Surat üstünlikli saýlandy!" : "✓ Görsel başarıyla seçildi!";
+                    statusMsg.innerHTML = localStorage.getItem('mobleart_lang') === 'tk' ? "✓ Surat üstünlikli saýlandy!" : "✓ Görsel başarıyla seçildi!";
                 }
                 reader.readAsDataURL(file);
             }
         });
 
-        async function fetchAdminProducts() {
+        window.fetchAdminProducts = async function() {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
@@ -548,13 +482,13 @@
                     `;
                 });
             } catch (error) {
-                console.error("Ýalňyşlyk:", error);
                 listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             const title = document.getElementById('prodTitle').value;
             const image = prodImageInput.value;
             const description = document.getElementById('prodDesc').value;
@@ -565,17 +499,13 @@
 
             try {
                 await addDoc(collection(db, "products"), {
-                    title: title,
-                    image: image,
-                    description: description,
-                    createdAt: new Date()
+                    title: title, image: image, description: description, createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
                 statusMsg.innerHTML = currentLang === 'tk' ? "✓ Önüm üstünlikli goşuldy!" : "✓ Ürün başarıyla eklendi!";
                 form.reset();
                 fetchAdminProducts();
             } catch (error) {
-                console.error("Ýalňyşlyk:", error);
                 statusMsg.style.color = "#ef4444";
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
@@ -585,21 +515,18 @@
         });
 
         window.deleteProduct = async function(id) {
-            const confirmMsg = currentLang === 'tk' ? "Bu önümi pozmak isleýärsiňizmi?" : "Bu ürünü silmek istediğinize emin misiniz?";
-            if (confirm(confirmMsg)) {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+            if (confirm(currentLang === 'tk' ? "Bu önümi pozmak isleýärsiňizmi?" : "Bu ürünü silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
-                    alert(currentLang === 'tk' ? "Pozuldy!" : "Silindi!");
                     fetchAdminProducts();
-                } catch (error) {
-                    alert("Hata oluştu.");
-                }
+                } catch (error) { alert("Hata oluştu."); }
             }
         }
 
-        // Teswirleri we reýtingleri çekmek (Get reviews from Firestore 'reviews' collection)
         const reviewsListContainer = document.getElementById('adminReviewsList');
-        async function fetchAdminReviews() {
+        window.fetchAdminReviews = async function() {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "reviews"));
                 if (querySnapshot.empty) {
@@ -611,7 +538,6 @@
                 querySnapshot.forEach((documentSnap) => {
                     const rev = documentSnap.data();
                     const id = documentSnap.id;
-                    
                     reviewsListContainer.innerHTML += `
                         <tr>
                             <td><strong>${rev.name || 'Adsız'}</strong></td>
@@ -624,28 +550,25 @@
                     `;
                 });
             } catch (error) {
-                console.error("Teswirleri çekmekde ýalňyşlyk:", error);
                 reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
         window.deleteReview = async function(id) {
-            const confirmMsg = currentLang === 'tk' ? "Bu teswiri pozmak isleýärsiňizmi?" : "Bu yorumu silmek istediğinize emin misiniz?";
-            if (confirm(confirmMsg)) {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+            if (confirm(currentLang === 'tk' ? "Bu teswiri pozmak isleýärsiňizmi?" : "Bu yorumu silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "reviews", id));
-                    alert(currentLang === 'tk' ? "Pozuldy!" : "Silindi!");
                     fetchAdminReviews();
-                } catch (error) {
-                    alert("Hata oluştu.");
-                }
+                } catch (error) { alert("Hata oluştu."); }
             }
         }
 
         const orderForm = document.getElementById('addOrderForm');
         const ordersListContainer = document.getElementById('adminOrdersList');
 
-        async function fetchAdminOrders() {
+        window.fetchAdminOrders = async function() {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
                 if (querySnapshot.empty) {
@@ -681,23 +604,17 @@
                         </tr>
                     `;
                 });
-            } catch (error) {
-                console.error("Ýalňyşlyk:", error);
-            }
+            } catch (error) { console.error("Ýalňyşlyk:", error); }
         }
 
         window.updateOrderStatus = async function(id, newStatus) {
-            try {
-                await updateDoc(doc(db, "orders", id), {
-                    status: newStatus
-                });
-            } catch (error) {
-                alert("Status üýtgetmekde ýalňyşlyk ýüze çykdy.");
-            }
+            try { await updateDoc(doc(db, "orders", id), { status: newStatus }); } 
+            catch (error) { alert("Status üýtgetmekde ýalňyşlyk ýüze çykdy."); }
         }
 
         orderForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
             const item = document.getElementById('orderItem').value;
@@ -707,36 +624,26 @@
 
             try {
                 await addDoc(collection(db, "orders"), {
-                    name: name,
-                    phone: phone,
-                    item: item,
-                    price: price,
-                    paid: paid,
-                    status: status,
-                    createdAt: new Date()
+                    name, phone, item, price, paid, status, createdAt: new Date()
                 });
                 alert(currentLang === 'tk' ? "Sargyt üstünlikli goşuldy!" : "Sipariş başarıyla eklendi!");
                 orderForm.reset();
                 fetchAdminOrders();
-            } catch (error) {
-                alert("Hata oluştu / Ýalňyşlyk ýüze çykdy.");
-            }
+            } catch (error) { alert("Hata oluştu / Ýalňyşlyk ýüze çykdy."); }
         });
 
         window.deleteOrder = async function(id) {
-            const confirmMsg = currentLang === 'tk' ? "Bu sargydy pozmak isleýärsiňizmi?" : "Bu siparişi silmek istediğinize emin misiniz?";
-            if (confirm(confirmMsg)) {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+            if (confirm(currentLang === 'tk' ? "Bu sargydy pozmak isleýärsiňizmi?" : "Bu siparişi silmek istediğinize emin misiniz?")) {
                 try {
                     await deleteDoc(doc(db, "orders", id));
                     fetchAdminOrders();
-                } catch (error) {
-                    alert("Hata oluştu.");
-                }
+                } catch (error) { alert("Hata oluştu."); }
             }
         }
 
-        // Excel-e ýüklemek (Export to Excel) funksiýasy
         document.getElementById('exportExcelBtn').addEventListener('click', async () => {
+            let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
                 if (querySnapshot.empty) {
@@ -750,15 +657,7 @@
                 querySnapshot.forEach((documentSnap) => {
                     const ord = documentSnap.data();
                     const kalan = Number(ord.price) - Number(ord.paid);
-                    let row = [
-                        ord.name || '',
-                        ord.phone || '',
-                        ord.item || '',
-                        ord.price || 0,
-                        ord.paid || 0,
-                        kalan,
-                        ord.status || ''
-                    ];
+                    let row = [ord.name || '', ord.phone || '', ord.item || '', ord.price || 0, ord.paid || 0, kalan, ord.status || ''];
                     let formattedRow = row.map(item => '"' + String(item).replace(/(\r\n|\n|\r)/gm, " ").replace(/;/g, ",") + '"');
                     csv.push(formattedRow.join(';'));
                 });
@@ -770,10 +669,7 @@
                 document.body.appendChild(downloadLink);
                 downloadLink.click();
                 document.body.removeChild(downloadLink);
-            } catch (error) {
-                console.error("Excel export ýalňyşlygy:", error);
-                alert("Excel-e ýüklemekde ýalňyşlyk ýüze çykdy.");
-            }
+            } catch (error) { alert("Excel-e ýüklemekde ýalňyşlyk ýüze çykdy."); }
         });
     </script>
 </body>
