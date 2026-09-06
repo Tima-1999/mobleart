@@ -52,11 +52,13 @@
             padding: 20px 5%;
             background: var(--header-bg);
             border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .logo { font-size: 22px; font-weight: 700; color: var(--text-color); }
         .logo span { color: var(--accent-color); }
         
-        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .header-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
         
         .control-btn {
             background: var(--card-bg);
@@ -78,7 +80,7 @@
 
         .admin-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; margin-bottom: 40px; }
-        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; justify-content: space-between; flex-wrap: wrap; }
         .admin-card h2 i { color: var(--accent-color); }
 
         .form-group { margin-bottom: 20px; }
@@ -178,6 +180,20 @@
             cursor: pointer;
         }
         .close-modal:hover { color: var(--accent-color); }
+        
+        /* Google Translate stilleri */
+        #google_translate_element { display: inline-block; }
+        .goog-te-combo {
+            background: var(--card-bg) !important;
+            color: var(--text-color) !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 6px;
+            border-radius: 20px;
+            font-size: 12px;
+            outline: none;
+        }
+        .goog-logo-link, .goog-te-gadget span { display: none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
     </style>
 </head>
 <body>
@@ -208,6 +224,9 @@
     <header>
         <div class="logo">Moble<span>Art</span> Admin</div>
         <div class="header-actions">
+            <!-- Google Translate Widgeti -->
+            <div id="google_translate_element"></div>
+            
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
             <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span data-tr="Çıkış" data-tk="Çykmak">Çıkış</span></button>
@@ -216,6 +235,7 @@
     </header>
 
     <div class="admin-container">
+        <!-- Ürün Ekleme Bölümü -->
         <div class="admin-card">
             <h2><span><i class="fas fa-plus-circle"></i> <span data-tr="Yeni Ürün / Tasarım Ekle" data-tk="Täze önüm / dizaýn goş">Yeni Ürün / Tasarım Ekle</span></span></h2>
             <form id="addProductForm">
@@ -245,6 +265,7 @@
             </form>
         </div>
 
+        <!-- Ürünleri Yönet Bölümü -->
         <div class="admin-card">
             <h2><span><i class="fas fa-boxes"></i> <span data-tr="Mevcut Ürünleri Yönet" data-tk="Bar bolan önümleri dolandyr">Mevcut Ürünleri Yönet</span></span></h2>
             <div class="table-responsive">
@@ -263,6 +284,27 @@
             </div>
         </div>
 
+        <!-- Teswirleri we Reýtingleri Yönet Bölümü (Täze goşulan) -->
+        <div class="admin-card">
+            <h2><span><i class="fas fa-star"></i> <span data-tr="Teswirler we Reýtingler" data-tr-alt="Yorumlar ve Değerlendirmeler">Yorumlar ve Değerlendirmeler</span></span></h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-tr="Ulanyjy" data-tk="Müşteri">Müşteri / Ulanyjy</th>
+                            <th data-tr="Reýting" data-tk="Reýting">Reýting (Pally)</th>
+                            <th data-tr="Teswir" data-tk="Teswir">Teswir</th>
+                            <th data-tr="İşlem" data-tk="Hereket">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminReviewsList">
+                        <tr><td colspan="4" style="text-align: center; color: var(--text-muted);" data-tr="Yükleniyor..." data-tk="Ýüklenýär...">Yükleniyor...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sipariş Takibi Bölümü -->
         <div class="admin-card">
             <h2>
                 <span><i class="fas fa-clipboard-list"></i> <span data-tr="Sipariş ve Müşteri Takibi" data-tk="Sargytlar we Müşderi Yzarlamak">Sipariş ve Müşteri Takibi</span></span>
@@ -326,6 +368,14 @@
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
+
+    <!-- Google Translate Skripti -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'tr', includedLanguages: 'tr,tk,en,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
@@ -417,6 +467,7 @@
                 loginOverlay.style.display = 'none';
                 fetchAdminProducts();
                 fetchAdminOrders();
+                fetchAdminReviews(); // Teswirleri ýükle
             } else {
                 loginOverlay.style.display = 'flex';
             }
@@ -546,6 +597,51 @@
             }
         }
 
+        // Teswirleri we reýtingleri çekmek (Get reviews from Firestore 'reviews' collection)
+        const reviewsListContainer = document.getElementById('adminReviewsList');
+        async function fetchAdminReviews() {
+            try {
+                const querySnapshot = await getDocs(collection(db, "reviews"));
+                if (querySnapshot.empty) {
+                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">${currentLang === 'tk' ? 'Heniz teswir ýok.' : 'Henüz yorum yok.'}</td></tr>`;
+                    return;
+                }
+
+                reviewsListContainer.innerHTML = "";
+                querySnapshot.forEach((documentSnap) => {
+                    const rev = documentSnap.data();
+                    const id = documentSnap.id;
+                    
+                    reviewsListContainer.innerHTML += `
+                        <tr>
+                            <td><strong>${rev.name || 'Adsız'}</strong></td>
+                            <td><span style="color: var(--accent-color);">${rev.rating || '5'} <i class="fas fa-star"></i></span></td>
+                            <td>${rev.comment || rev.text || ''}</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteReview('${id}')"><i class="fas fa-trash"></i> ${currentLang === 'tk' ? 'Poz' : 'Sil'}</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error("Teswirleri çekmekde ýalňyşlyk:", error);
+                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+            }
+        }
+
+        window.deleteReview = async function(id) {
+            const confirmMsg = currentLang === 'tk' ? "Bu teswiri pozmak isleýärsiňizmi?" : "Bu yorumu silmek istediğinize emin misiniz?";
+            if (confirm(confirmMsg)) {
+                try {
+                    await deleteDoc(doc(db, "reviews", id));
+                    alert(currentLang === 'tk' ? "Pozuldy!" : "Silindi!");
+                    fetchAdminReviews();
+                } catch (error) {
+                    alert("Hata oluştu.");
+                }
+            }
+        }
+
         const orderForm = document.getElementById('addOrderForm');
         const ordersListContainer = document.getElementById('adminOrdersList');
 
@@ -639,7 +735,7 @@
             }
         }
 
-        // Excel-e ýüklemek (Export to Excel) funksiýasy (Doly we dogry formatda)
+        // Excel-e ýüklemek (Export to Excel) funksiýasy
         document.getElementById('exportExcelBtn').addEventListener('click', async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
@@ -649,7 +745,6 @@
                 }
 
                 let csv = [];
-                // Sözbaşylar (Headers)
                 csv.push('"' + (currentLang === 'tk' ? 'Müşderi' : 'Müşteri') + '";"' + (currentLang === 'tk' ? 'Telefon' : 'Telefon') + '";"' + (currentLang === 'tk' ? 'Önüm' : 'Ürün') + '";"' + (currentLang === 'tk' ? 'Umumy (TL)' : 'Toplam (TL)') + '";"' + (currentLang === 'tk' ? 'Tölenen (TL)' : 'Ödenen (TL)') + '";"' + (currentLang === 'tk' ? 'Galgan (TL)' : 'Kalan (TL)') + '";"' + (currentLang === 'tk' ? 'Ýagdaýy' : 'Durum') + '"');
 
                 querySnapshot.forEach((documentSnap) => {
