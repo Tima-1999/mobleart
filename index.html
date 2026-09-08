@@ -1,306 +1,407 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık</title>
+    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
+    
+    <link rel="icon" type="image/png" href="./logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://mobleart.vercel.app",
+      "logo": "https://mobleart.vercel.app/logo.png"
+    }
+    </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #fdfbf7;
+            --bg-color: #0f0f0f;
+            --card-bg: #161616;
+            --text-color: #e5e5e5;
+            --text-muted: #aaa;
+            --border-color: #262626;
+            --header-bg: rgba(15, 15, 15, 0.95);
+            --accent-color: #d4af37;
+            --accent-hover: #e6c555;
+            --feature-bg: #1a1a1a;
+            --footer-bg: #080808;
+            --input-bg: #0f0f0f;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8f9fa;
             --card-bg: #ffffff;
-            --text-color: #2c2c2c;
+            --text-color: #222222;
             --text-muted: #666666;
-            --accent-color: #b5838d;
-            --accent-hover: #9c6c77;
-            --border-color: #f0e6de;
-            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #e2e8f0;
+            --header-bg: rgba(248, 249, 250, 0.95);
+            --accent-color: #b89728;
+            --accent-hover: #997c1d;
+            --feature-bg: #ffffff;
+            --footer-bg: #f1f3f5;
+            --input-bg: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 8%;
-            background: var(--header-bg);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo { font-size: 24px; font-weight: 700; color: var(--text-color); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; padding-bottom: 70px; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: var(--header-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 700; color: var(--text-color); text-decoration: none; }
+        .logo img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; background-color: #fff; }
         .logo span { color: var(--accent-color); }
-
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #555; font-weight: 500; font-size: 15px; transition: 0.3s; }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 15px; }
         .nav-links a:hover { color: var(--accent-color); }
-        .admin-link { color: var(--accent-color) !important; font-weight: 600; }
 
-        .header-phone {
-            background: #f4efe9;
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .header-controls { display: flex; align-items: center; gap: 15px; }
+        .control-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .control-btn:hover { background: var(--accent-color); color: #111; }
+
+        .header-phone { color: var(--text-color); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; }
         .header-phone i { color: #25d366; }
-        .header-phone:hover { background: var(--accent-color); color: #fff; }
-        .header-phone:hover i { color: #fff; }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-
-        .hero-content { max-width: 750px; animation: fadeInDown 1s ease; }
-        .hero-badge { background: rgba(181, 131, 141, 0.9); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-block; margin-bottom: 20px; letter-spacing: 1px; }
-        .hero-content h1 { font-size: 46px; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
-        .hero-content p { font-size: 17px; margin-bottom: 30px; color: #f1f1f1; }
-        
+        .hero { position: relative; height: 85vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 0 20px; }
+        .hero-content { max-width: 800px; }
+        .hero-badge { background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; padding: 6px 18px; border-radius: 20px; font-size: 13px; color: #ffd700; display: inline-block; margin-bottom: 20px; font-weight: 500; }
+        .hero h1 { font-size: 44px; margin-bottom: 15px; font-weight: 700; line-height: 1.2; color: #fff; }
+        .hero p { font-size: 17px; margin-bottom: 30px; color: #ddd; }
         .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-
-        .btn {
-            background: var(--accent-color);
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(181, 131, 141, 0.4);
-        }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
         
-        .btn-outline { background: transparent; border: 2px solid #fff; color: #fff; box-shadow: none; }
-        .btn-outline:hover { background: #fff; color: var(--text-color); }
+        .btn { background: var(--accent-color); color: #111; padding: 12px 28px; border-radius: 5px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; }
+        .btn:hover { background: var(--accent-hover); }
+        .btn-outline { background: transparent; border: 2px solid #fff; color: #fff; }
+        .btn-outline:hover { background: #fff; color: #111; }
 
-        /* Container & Titles */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-header { text-align: center; margin-bottom: 50px; }
-        .sub-title { color: var(--accent-color); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
+        .sub-title { color: var(--accent-color); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
         .section-title { font-size: 34px; font-weight: 700; color: var(--text-color); }
-
-        /* Products Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .product-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.04); transition: 0.4s; border: 1px solid var(--border-color); }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
         
-        .product-img-container { width: 100%; height: 250px; overflow: hidden; position: relative; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .product-card:hover .product-img { transform: scale(1.08); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1); }
+        .product-img-container { width: 100%; height: 280px; background: var(--bg-color); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .product-img-container:hover .product-img { transform: scale(1.05); }
         
-        .product-info { padding: 25px; }
-        .product-info h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--text-color); }
-        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .product-info h3 { font-size: 18px; margin-bottom: 10px; color: var(--text-color); }
+        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
+        .product-btn { background: #25d366; color: #fff; width: 100%; justify-content: center; font-size: 14px; padding: 10px; }
+        .product-btn:hover { background: #1ebd5b; }
 
-        /* Features */
-        .features { background: #f4efe9; padding: 80px 0; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-box { background: #fff; padding: 40px 30px; border-radius: 16px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-color); }
-        .feature-icon { font-size: 36px; color: var(--accent-color); margin-bottom: 20px; }
-        .feature-box h4 { font-size: 18px; margin-bottom: 10px; font-weight: 600; }
+        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+        .close-modal { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 40px; cursor: pointer; }
+
+        .features { background: var(--feature-bg); padding: 80px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .feature-box { text-align: center; padding: 35px 25px; border-radius: 8px; background: var(--card-bg); border: 1px solid var(--border-color); }
+        .feature-icon { font-size: 36px; color: var(--accent-color); margin-bottom: 15px; }
+        .feature-box h4 { font-size: 18px; margin-bottom: 10px; color: var(--text-color); }
         .feature-box p { font-size: 14px; color: var(--text-muted); }
 
-        /* Contact Section */
-        .contact-section { background: #fff; padding: 80px 20px; }
-        .contact-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: var(--bg-color); padding: 50px; border-radius: 20px; border: 1px solid var(--border-color); }
-        .contact-text h2 { font-size: 32px; font-weight: 700; margin-bottom: 15px; }
+        .reviews-section { padding: 80px 20px; background: var(--bg-color); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 25px; border-radius: 10px; }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .review-name { font-weight: 600; font-size: 16px; color: var(--text-color); }
+        .review-stars { color: #ffd700; font-size: 14px; }
+        .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        
+        .review-form-container { background: var(--card-bg); border: 1px solid var(--border-color); padding: 35px; border-radius: 10px; max-width: 700px; margin: 0 auto; }
+        .star-rating { display: flex; gap: 10px; font-size: 22px; color: var(--text-muted); cursor: pointer; margin-bottom: 15px; }
+        .star-rating .active { color: #ffd700; }
+
+        .contact-section { background: var(--feature-bg); padding: 80px 20px; border-top: 1px solid var(--border-color); }
+        .contact-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .contact-text h2 { font-size: 32px; margin-bottom: 15px; color: var(--text-color); }
         .contact-text p { color: var(--text-muted); margin-bottom: 25px; font-size: 15px; }
-        .contact-info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-weight: 500; font-size: 15px; }
-        .contact-info-item i { color: var(--accent-color); font-size: 20px; }
-
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #444; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none; background: #fff; transition: 0.3s; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-color); box-shadow: 0 0 8px rgba(181, 131, 141, 0.25); }
-
-        /* WhatsApp Float & Mobile Bar */
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 998; transition: 0.3s; text-decoration: none; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 999; padding: 12px 15px; gap: 12px; }
-        .mob-btn { flex: 1; padding: 12px; text-align: center; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .call-btn { background: #2c2c2c; }
-        .wa-btn { background: #25d366; }
-
-        /* Footer */
-        footer { background: #2c2c2c; color: #fff; padding: 40px 20px; text-align: center; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .footer-logo { font-size: 24px; font-weight: 700; color: #fff; }
+        .contact-info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 15px; color: var(--text-color); }
+        .contact-info-item i { color: var(--accent-color); font-size: 18px; }
+        .contact-form-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 10px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
+        
+        footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 50px 20px; border-top: 1px solid var(--border-color); }
+        .footer-logo { font-size: 22px; font-weight: 700; color: var(--text-color); margin-bottom: 10px; }
         .footer-logo span { color: var(--accent-color); }
-        footer p { font-size: 14px; color: #aaa; }
-        .footer-admin { color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: 500; transition: 0.3s; }
-        .footer-admin:hover { text-decoration: underline; }
+        .admin-link { color: var(--text-muted); text-decoration: none; font-size: 13px; }
+        .admin-link:hover { color: var(--accent-color); }
 
-        /* Responsive */
+        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; }
+        .mob-btn { padding: 15px; text-align: center; text-decoration: none; font-weight: 600; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .call-btn { background: var(--card-bg); color: var(--text-color); }
+        .wa-btn { background: #25d366; color: #fff; }
+
         @media (max-width: 768px) {
+            header { padding: 15px 20px; }
             .nav-links, .header-phone { display: none; }
-            .hero-content h1 { font-size: 32px; }
-            .contact-container { grid-template-columns: 1fr; padding: 25px; }
-            .mobile-bottom-bar { display: flex; }
-            body { padding-bottom: 70px; }
+            .hero h1 { font-size: 28px; }
+            .contact-container { grid-template-columns: 1fr; gap: 30px; }
+            .mobile-bottom-bar { display: grid; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
-        <div class="logo">Moble<span>Art</span></div>
+        <a href="#" class="logo">
+            <img src="./logo.png" alt="MobleArt Logo">
+            <div>Moble<span>Art</span></div>
+        </a>
         <nav class="nav-links">
-            <a href="#home">Ana Sayfa</a>
-            <a href="#products">Koleksiyon</a>
-            <a href="#features">Neden Biz?</a>
-            <a href="#contact">İletişim</a>
-            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Admin Giriş</a>
+            <a href="#" data-tr="Ana Sayfa" data-tk="Baş sahypa">Ana Sayfa</a>
+            <a href="#urunler" data-tr="Koleksiyon" data-tk="Koleksiýa">Koleksiyon</a>
+            <a href="#ustunlukler" data-tr="Neden Biz?" data-tk="Näme üçin biz?">Neden Biz?</a>
+            <a href="#yorumlar" data-tr="Yorumlar" data-tk="Teswirler">Yorumlar</a>
+            <a href="#teklif" data-tr="Teklif Al" data-tk="Teklif alyň">Teklif Al</a>
         </nav>
-        <a href="tel:+905077079354" class="header-phone"><i class="fab fa-whatsapp"></i> +90 507 707 93 54</a>
+        <div class="header-controls">
+            <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
+            <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+        </div>
+        <div class="header-cta" style="margin-left: 10px;">
+            <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
+        </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">Lüks İç Mimarlık & Mobilya</span>
-            <h1>Hayalinizdeki Yaşam Alanını Birlikte Tasarlayalım</h1>
-            <p>Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
+            <span class="hero-badge"><i class="fas fa-star"></i> <span data-tr="Lüks ve Kişiselleştirilmiş Tasarım" data-tk="Lüks we Şahsylaşdyrylan Dizaýn">Lüks ve Kişiselleştirilmiş Tasarım</span></span>
+            <h1 data-tr="Evinize Değer Katan Ustalık" data-tk="Öýüňüze Baha Goşýan Ussatlyk">Evinize Değer Katan Ustalık</h1>
+            <p data-tr="Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz." data-tk="Aşhanada, ýatjak oturda we myhman oturda isleýän ölçegleriňizde ýörite taslamalary ýokary hilli ussatlyk bilen öndürýäris.">Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
             <div class="hero-buttons">
-                <a href="#products" class="btn"><i class="fas fa-couch"></i> Koleksiyonu Keşfet</a>
-                <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Teklif Al</a>
+                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> <span data-tr="Ücretsiz Danışmanlık Al" data-tk="Mugt Maslahat Alyň">Ücretsiz Danışmanlık Al</span></a>
+                <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Sohbet</a>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="container" id="products">
+    <div class="container" id="urunler">
         <div class="section-header">
-            <span class="sub-title">Özenle Tasarlandı</span>
-            <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
+            <span class="sub-title" data-tr="Ürünlerimiz" data-tk="Harytlarymyz">Ürünlerimiz</span>
+            <h2 class="section-title" data-tr="Özel Üretim Koleksiyonlarımız" data-tk="Ýörite Önümçilik Koleksiýalarymyz">Özel Üretim Koleksiyonlarımız</h2>
         </div>
-        <div class="products-grid" id="publicProductsGrid">
-            <!-- Firebase-den önümler dinamik ýüklener -->
-            <div style="grid-column: 1/-1; text-align: center; color: #777; padding: 40px;">Örünler ýüklenýär...</div>
+        <div class="products-grid" id="dynamicProductsGrid">
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: var(--accent-color);"></i>
+                <p data-tr="Ürünler yükleniyor..." data-tk="Harytlar ýüklenýär...">Ürünler yükleniyor...</p>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Features -->
-    <section class="features" id="features">
-        <div class="container" style="padding: 0 20px;">
-            <div class="section-header" style="margin-bottom: 40px;">
-                <span class="sub-title">Farkımız</span>
-                <h2 class="section-title">Neden MobleArt?</h2>
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <section class="features" id="ustunlukler">
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <div class="section-header">
+                <span class="sub-title" data-tr="Güven & Kalite" data-tk="Ynam & Hilli">Güven & Kalite</span>
+                <h2 class="section-title" data-tr="Neden Bizimle Çalışmalısınız?" data-tk="Näme üçin bizim bilen işlemeli?">Neden Bizimle Çalışmalısınız?</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-box">
-                    <i class="fas fa-pencil-ruler feature-icon"></i>
-                    <h4>Kişiye Özel Tasarım</h4>
-                    <p>Evinizin ölçülerine ve zevkinize tam uyumlu, tamamen size özel projeler hazırlıyoruz.</p>
+                    <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h4 data-tr="Ücretsiz Keşif & Ölçü" data-tk="Mugt Gözegçilik & Ölçeg">Ücretsiz Keşif & Ölçü</h4>
+                    <p data-tr="Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz." data-tk="Öýüňüze gelip takyk ölçeg alyp, ýeriňize laýyk taslamany taýýarlaýarys.">Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz.</p>
                 </div>
                 <div class="feature-box">
-                    <i class="fas fa-gem feature-icon"></i>
-                    <h4>1. Sınıf Kalite Malzeme</h4>
-                    <p>Uzun yıllar güvenle kullanabileceğiniz dayanıklı, estetik ve birinci sınıf malzemeler.</p>
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h4 data-tr="1. Sınıf Kaliteli Malzeme" data-tk="1-nji derejeli hilli haryt">1. Sınıf Kaliteli Malzeme</h4>
+                    <p data-tr="Uzun ömürlü, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz." data-tk="Uzyn ömürli, berk we saglyga zyýansyz ýokary hilli çig mal ulanýarys.">Uzun ömürli, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz.</p>
                 </div>
                 <div class="feature-box">
-                    <i class="fas fa-truck feature-icon"></i>
-                    <h4>Güvenli Kurulum</h4>
-                    <p>Profesyonel ekibimizle zamanında teslimat ve kusursuz montaj hizmeti sağlıyoruz.</p>
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h4 data-tr="Zamanında Teslimat" data-tk="Wagtynda gowşuryş">Zamanında Teslimat</h4>
+                    <p data-tr="Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz." data-tk="Kesgitlenen wagtda kemçiliksiz önümçilik we gurnama kepilligini berýäris.">Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-section" id="contact">
+    <section class="reviews-section" id="yorumlar">
+        <div class="container" style="margin: 0 auto; padding: 0 20px;">
+            <div class="section-header">
+                <span class="sub-title" data-tr="Müşteri Deneyimi" data-tk="Müşderi Tejribesi">Müşteri Deneyimi</span>
+                <h2 class="section-title" data-tr="Müşteri Yorumları & Puanlar" data-tk="Müşderi Teswirleri & Bahalar">Müşteri Yorumları & Puanlar</h2>
+            </div>
+            
+            <div class="reviews-grid" id="dynamicReviewsGrid">
+                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
+                    <p data-tr="Yorumlar yükleniyor..." data-tk="Teswirler ýüklenýär...">Yorumlar yükleniyor...</p>
+                </div>
+            </div>
+
+            <div class="review-form-container">
+                <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-color);" data-tr="Değerlendirme Yapın" data-tk="Bahalandyryň">Değerlendirme Yapın</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label data-tr="Puanınız" data-tk="Bahanyz">Puanınız</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="fas fa-star active" data-value="1"></i>
+                            <i class="fas fa-star active" data-value="2"></i>
+                            <i class="fas fa-star active" data-value="3"></i>
+                            <i class="fas fa-star active" data-value="4"></i>
+                            <i class="fas fa-star active" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="Adınız ve Soyadınız" data-tk="Adyňyz we Familiýaňyz">Adınız ve Soyadınız</label>
+                        <input type="text" id="reviewName" placeholder="Adınızı girin" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="Yorumunuz" data-tk="Teswiriňiz">Yorumunuz</label>
+                        <textarea id="reviewText" rows="4" placeholder="Hizmet hakkındaki düşüncelerinizi yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Yorumu Gönder" data-tk="Teswiri Ugrat">Yorumu Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
-                <span class="sub-title">İletişimde Kalın</span>
-                <h2>Hemen Projenizi Konuşalım</h2>
-                <p>Özel ölçü mobilya veya iç mimari projeleriniz için formu doldurun, sizinle hemen iletişime geçelim.</p>
-                <div class="contact-info-item"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</div>
-                <div class="contact-info-item"><i class="fas fa-envelope"></i> info@mobleart.com</div>
-                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</div>
+                <h2 data-tr="Hayalinizdeki Evi Birlikte Tasarlayalım" data-tk="Arzuw edýän öýüňizi bilelikde dizaýn edeliň">Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
+                <p data-tr="Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim." data-tk="Formany dolduryň, size derrew jogap berip, baha we taslama barada giňişleýin maglumat bereliň.">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
+                <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
             </div>
-            <form id="clientContactForm">
-                <div class="form-group">
-                    <label>Ad Soyad</label>
-                    <input type="text" id="clientName" placeholder="Adınız Soyadınız" required>
-                </div>
-                <div class="form-group">
-                    <label>Telefon Numarası</label>
-                    <input type="text" id="clientPhone" placeholder="05XX XXX XX XX" required>
-                </div>
-                <div class="form-group">
-                    <label>İstediğiniz Hizmet / Ürün</label>
-                    <input type="text" id="clientItem" placeholder="Mutfak Dolabı, Yatak Odası vb." required>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="clientSubmitBtn">
-                    <i class="fas fa-paper-plane"></i> Gönder ve Teklif Al
-                </button>
-                <div id="clientMsg" style="margin-top: 15px; font-size: 14px; font-weight: 500; text-align: center;"></div>
-            </form>
+            <div class="contact-form-box">
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label data-tr="Adınız ve Soyadınız" data-tk="Adyňyz we Familiýaňyz">Adınız ve Soyadınız</label>
+                        <input type="text" id="name" placeholder="Adınızı yazın" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="Telefon Numaranız" data-tk="Telefon belgiňiz">Telefon Numaranız</label>
+                        <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-tr="İstediğiniz Mobilya Türü" data-tk="Isleýän mebiliňiz">İstediğiniz Mobilya Türü</label>
+                        <select id="service">
+                            <option data-tr="Lüks Mutfak Dolabı" data-tk="Lüks aşhana dolaby">Lüks Mutfak Dolabı</option>
+                            <option data-tr="Yatak Odası" data-tk="Ýatylýan otur">Yatak Odası</option>
+                            <option data-tr="TV Ünitesi & Salon" data-tk="TV bölümi we Myhman otur">TV Ünitesi & Salon</option>
+                            <option data-tr="Kişiye Özel Tasarım" data-tk="Şahsylaşdyrylan dizaýn">Kişiye Özel Tasarım</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Fiyat Teklifi Al (WhatsApp)" data-tk="Baha teklifini alyň (WhatsApp)">Fiyat Teklifi Al (WhatsApp)</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <div class="mobile-bottom-bar">
+        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> <span data-tr="Ara" data-tk="Jaň et">Ara</span></a>
+        <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Moble<span>Art</span></div>
-            <p>&copy; 2026 MobleArt. Bütün hukuklar goralandyr. Lüks iç mimarlık we mebel çözümleri.</p>
-            <a href="admin.html" class="footer-admin"><i class="fas fa-user-shield"></i> Yönetim Paneline Geç</a>
+        <div class="footer-logo">Moble<span>Art</span></div>
+        <p>&copy; 2026 MobleArt. <span data-tr="Tüm hakları saklıdır. | İstanbul" data-tk="Ähli hukuklar goralýar. | Stambul">Tüm hakları saklıdır. | İstanbul</span></p>
+        <div class="footer-admin" style="margin-top: 20px;">
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> <span data-tr="Yönetim Paneli (Admin)" data-tk="Dolandyryş paneli (Admin)">Yönetim Paneli (Admin)</span></a>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/905077079354" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <script>
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlElement = document.documentElement;
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langText = document.getElementById('langText');
 
-    <!-- Mobile Bottom Navigation Bar -->
-    <div class="mobile-bottom-bar">
-        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone"></i> Jaň Et</a>
-        <a href="https://wa.me/905077079354" target="_blank" class="mob-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
+        let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+        const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
+        
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        applyLanguage(currentLang);
 
-    <!-- Firebase Skriptleri (Önümleri we Müşderi soraglaryny awtomatiki çekmek üçin) -->
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mobleart_theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'tr' ? 'tk' : 'tr';
+            localStorage.setItem('mobleart_lang', currentLang);
+            applyLanguage(currentLang);
+            location.reload(); // Dil üýtgände maglumatlaryň täzeden dogry ýüklenmegi üçin
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function applyLanguage(lang) {
+            langText.innerText = lang.toUpperCase() === 'TR' ? 'TK / TR' : 'TR / TK';
+            htmlElement.setAttribute('lang', lang);
+
+            const translatableElements = document.querySelectorAll('[data-tr][data-tk]');
+            translatableElements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerText = text;
+                }
+            });
+        }
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.querySelector('.close-modal');
+
+        function openModal(imgSrc) {
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        closeModal.onclick = function() { modal.style.display = "none"; }
+        modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
+
+        const stars = document.querySelectorAll('#starRating i');
+        const ratingValueInput = document.getElementById('ratingValue');
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const val = this.getAttribute('data-value');
+                ratingValueInput.value = val;
+                stars.forEach(s => {
+                    if(s.getAttribute('data-value') <= val) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+            });
+        });
+
+        // Teklif formasyndan WhatsApp-a ugratmak üçin
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            const message = `Salam, adym ${name}. Tel: ${phone}. Sizden şu hyzmat boýunça baha teklifini almak isleýärin: ${service}`;
+            const whatsappUrl = `https://wa.me/905077079354?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -318,13 +419,20 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Önümleri sahypada görkezmek
-        async function loadPublicProducts() {
-            const grid = document.getElementById('publicProductsGrid');
+        async function loadProducts() {
+            const grid = document.getElementById('dynamicProductsGrid');
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
-                    grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #777;">Häzirlikçe önüm goşulmady.</p>`;
+                    grid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 40px; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 10px;">
+                            <i class="fas fa-box-open" style="font-size: 36px; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <h3 style="color: var(--text-color); margin-bottom: 8px; font-size: 18px;">${currentLang === 'tk' ? 'Häzirlikçe haryt ýok' : 'Henüz Ürün Eklenmemiş'}</h3>
+                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">${currentLang === 'tk' ? 'Admin paneline girip ilkinji dizaýnlaryňyzy ýüklediň.' : 'Admin paneline girerek ilk tasarımlarınızı yükleyin.'}</p>
+                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> ${currentLang === 'tk' ? 'Haryt goş' : 'Ürün Ekle'}</a>
+                        </div>
+                    `;
                     return;
                 }
 
@@ -333,59 +441,80 @@
                     const prod = doc.data();
                     grid.innerHTML += `
                         <div class="product-card">
-                            <div class="product-img-container">
-                                <img src="${prod.image}" class="product-img" alt="${prod.title}">
+                            <div class="product-img-container" onclick="openModal('${prod.image}')">
+                                <img src="${prod.image}" alt="${prod.title}" class="product-img">
                             </div>
                             <div class="product-info">
-                                <h3>${prod.title}</h3>
-                                <p class="product-desc">${prod.description}</p>
-                                <a href="https://wa.me/905077079354?text=Merhabalar, ${encodeURIComponent(prod.title)} hakkında bilgi almak istiyorum." target="_blank" class="btn" style="width: 100%; justify-content: center; font-size: 14px; padding: 10px;">
-                                    <i class="fab fa-whatsapp"></i> Detay / Sipariş Ver
+                                <div>
+                                    <h3>${prod.title}</h3>
+                                    <p class="product-desc">${prod.description}</p>
+                                </div>
+                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> ${currentLang === 'tk' ? 'Maglumat al' : 'Bilgi Al'}
                                 </a>
                             </div>
                         </div>
                     `;
                 });
             } catch (error) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ef4444;">Önümleri ýüklemekde ýalňyşlyk ýüze çykdy.</p>`;
+                console.error("Hata:", error);
             }
         }
 
-        loadPublicProducts();
+        async function loadReviews() {
+            const grid = document.getElementById('dynamicReviewsGrid');
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
+            try {
+                const querySnapshot = await getDocs(collection(db, "reviews"));
+                if (querySnapshot.empty) {
+                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>${currentLang === 'tk' ? 'Häzirlikçe teswir ýok.' : 'Henüz yorum yapılmamış.'}</p></div>`;
+                    return;
+                }
 
-        // Müşderi habarlaşyk formasy (Sipariş ýa-da Teklif almak)
-        const contactForm = document.getElementById('clientContactForm');
-        const clientMsg = document.getElementById('clientMsg');
+                grid.innerHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const rev = doc.data();
+                    let starsHtml = '';
+                    for(let i=0; i<5; i++) {
+                        starsHtml += (i < rev.rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+                    }
+                    grid.innerHTML += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <span class="review-name">${rev.name}</span>
+                                <div class="review-stars">${starsHtml}</div>
+                            </div>
+                            <p class="review-text">"${rev.text}"</p>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Yorum yükleme hatası:", error);
+            }
+        }
 
-        contactForm.addEventListener('submit', async (e) => {
+        loadProducts();
+        loadReviews();
+
+        document.getElementById('reviewForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const item = document.getElementById('clientItem').value;
-            const submitBtn = document.getElementById('clientSubmitBtn');
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Işlenilýär...`;
+            const name = document.getElementById('reviewName').value;
+            const text = document.getElementById('reviewText').value;
+            const rating = parseInt(document.getElementById('ratingValue').value);
+            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
 
             try {
-                await addDoc(collection(db, "orders"), {
+                await addDoc(collection(db, "reviews"), {
                     name: name,
-                    phone: phone,
-                    item: item,
-                    price: "Belirlenmedi",
-                    paid: "0",
-                    status: "Garaşylýar",
-                    createdAt: new Date()
+                    text: text,
+                    rating: rating,
+                    date: new Date().toISOString()
                 });
-                clientMsg.style.color = "#22c55e";
-                clientMsg.innerHTML = "✓ Talabyňyz üstünlikli kabul edildi! Siziň bilen tiz wagtda habarlaşarys.";
-                contactForm.reset();
+                alert(currentLang === 'tk' ? 'Teswiriňiz üstünlikli goşuldy, sag boluň!' : 'Yorumunuz başarıyla eklendi, teşekkür ederiz!');
+                document.getElementById('reviewForm').reset();
+                loadReviews();
             } catch (error) {
-                clientMsg.style.color = "#ef4444";
-                clientMsg.innerHTML = "✕ Ýalňyşlyk ýüze çykdy, täzeden synanyşyň.";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-paper-plane"></i> Gönder ve Teklif Al`;
+                alert("Hata oluştu.");
             }
         });
     </script>
