@@ -124,7 +124,6 @@
         .product-info h3 { font-size: 20px; margin-bottom: 8px; color: var(--text-color); font-weight: 700; }
         .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.6; }
         
-        /* Her önümiň astyndaky yorumlar bölümi üçin düwmeler we bloklar */
         .product-actions { display: flex; gap: 10px; margin-top: 15px; }
         .product-btn { background: #25d366; color: #fff; flex: 1; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; box-shadow: none; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
         .product-btn:hover { background: #1ebd5b; }
@@ -132,7 +131,6 @@
         .comment-toggle-btn { background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
         .comment-toggle-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
-        /* Önüme degişli ýazylan yorumlaryň sanawy */
         .product-comments-section { margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; display: none; }
         .product-comments-section.active { display: block; }
         .comment-item { background: var(--input-bg); padding: 10px 14px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
@@ -234,7 +232,7 @@
         </div>
     </section>
 
-    <!-- ÖZEL ÜRETİM KOLEKSİYONLARIMIZ (Her surata aýratyn teswir we reýting ýazmak bolýar) -->
+    <!-- ÖZEL ÜRETİM KOLEKSİYONLARIMIZ -->
     <div class="container" id="urunler">
         <div class="section-header">
             <span class="sub-title">Koleksiyon</span>
@@ -397,7 +395,7 @@
         closeImageModal.onclick = function() { imageModal.style.display = "none"; }
         imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
 
-        // Modal Yıldız Seçimi
+        // Modal Ýyldyz Saýlawy
         const modalStars = document.querySelectorAll('#modalStarRating i');
         const modalRatingValueInput = document.getElementById('modalRatingValue');
         modalStars.forEach(star => {
@@ -423,17 +421,17 @@
         closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
         reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
 
-        // Kommentariýalary açyp-ýapmak üçin funksiýa (Global edildi)
+        // Kommentariýalary açyp-ýapmak üçin funksiýa
         window.toggleComments = function(productId) {
             const section = document.getElementById(`comments-section-${productId}`);
             section.classList.toggle('active');
         }
     </script>
 
-    <!-- FIREBASE İŞLEMLERİ -->
+    <!-- FIREBASE IŞLEMLERİ -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, addDoc, query, where } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -465,7 +463,6 @@
                     return;
                 }
 
-                // Hemme önümler üçin yorumlary alýarys
                 const reviewsSnapshot = await getDocs(collection(db, "product_reviews"));
                 let allReviews = [];
                 reviewsSnapshot.forEach(doc => {
@@ -477,7 +474,6 @@
                     const prod = docSnap.data();
                     const prodId = docSnap.id;
 
-                    // Şu önüme degişli yorumlar
                     const prodReviews = allReviews.filter(r => r.productId === prodId);
 
                     let commentsHtml = '';
@@ -541,7 +537,6 @@
 
         loadProductsWithReviews();
 
-        // Önüme ýazylan yorumy bazada saklamak
         document.getElementById('productReviewForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const productId = document.getElementById('modalProductId').value;
