@@ -56,7 +56,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* Modern Glassmorphism Header */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -86,7 +85,6 @@
         .header-phone:hover { border-color: var(--accent-color); }
         .header-phone i { color: #25d366; }
 
-        /* Hero Section */
         .hero { 
             position: relative; 
             min-height: 85vh; 
@@ -109,53 +107,55 @@
         .btn-outline { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; backdrop-filter: blur(5px); box-shadow: none; }
         .btn-outline:hover { background: #fff; color: #111; border-color: #fff; }
 
-        .container { max-width: 1240px; margin: 100px auto; padding: 0 24px; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        .container { max-width: 1240px; margin: 80px auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .sub-title { color: var(--accent-color); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; }
         .section-title { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-color); letter-spacing: -0.01em; }
         
         /* Products Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); }
-        .product-card:hover { transform: translateY(-6px); border-color: var(--accent-color); box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: var(--card-hover); }
-        .product-img-container { width: 100%; height: 300px; background: var(--bg-color); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .product-card:hover { border-color: var(--accent-color); box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: var(--card-hover); }
+        .product-img-container { width: 100%; height: 280px; background: var(--bg-color); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
         .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .product-img-container:hover .product-img { transform: scale(1.08); }
         
         .product-info { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .product-info h3 { font-size: 20px; margin-bottom: 10px; color: var(--text-color); font-weight: 700; }
-        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
-        .product-btn { background: #25d366; color: #fff; width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; box-shadow: none; }
-        .product-btn:hover { background: #1ebd5b; transform: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        .product-info h3 { font-size: 20px; margin-bottom: 8px; color: var(--text-color); font-weight: 700; }
+        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.6; }
+        
+        /* Her önümiň astyndaky yorumlar bölümi üçin düwmeler we bloklar */
+        .product-actions { display: flex; gap: 10px; margin-top: 15px; }
+        .product-btn { background: #25d366; color: #fff; flex: 1; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; box-shadow: none; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .product-btn:hover { background: #1ebd5b; }
+        
+        .comment-toggle-btn { background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+        .comment-toggle-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
-        /* Modal */
+        /* Önüme degişli ýazylan yorumlaryň sanawy */
+        .product-comments-section { margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; display: none; }
+        .product-comments-section.active { display: block; }
+        .comment-item { background: var(--input-bg); padding: 10px 14px; border-radius: 8px; margin-bottom: 10px; font-size: 13px; }
+        .comment-item-header { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 4px; color: var(--text-color); }
+        .comment-stars { color: #fbbf24; font-size: 11px; }
+        .comment-text { color: var(--text-muted); line-height: 1.4; }
+
+        /* Modal Stilleri */
         .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
         .modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; transition: var(--transition); }
         .close-modal:hover { color: var(--accent-color); }
+        
+        .modal-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 20px; max-width: 500px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
 
         /* Features Section */
-        .features { background: var(--feature-bg); padding: 100px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .features { background: var(--feature-bg); padding: 90px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-box { text-align: left; padding: 40px 30px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--border-color); transition: var(--transition); }
         .feature-box:hover { border-color: var(--accent-color); transform: translateY(-4px); }
         .feature-icon { width: 60px; height: 60px; background: var(--accent-glow); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-color); margin-bottom: 24px; }
         .feature-box h4 { font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 700; }
         .feature-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-
-        /* Reviews Section */
-        .reviews-section { padding: 100px 20px; background: var(--bg-color); }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 16px; transition: var(--transition); }
-        .review-card:hover { border-color: var(--accent-color); }
-        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .review-name { font-weight: 700; font-size: 16px; color: var(--text-color); }
-        .review-stars { color: #fbbf24; font-size: 14px; display: flex; gap: 4px; }
-        .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-        
-        .review-form-container { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; max-width: 750px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .star-rating { display: flex; gap: 10px; font-size: 24px; color: var(--text-muted); cursor: pointer; margin-bottom: 20px; }
-        .star-rating .active { color: #fbbf24; }
 
         /* Contact Section */
         .contact-section { background: var(--feature-bg); padding: 100px 20px; border-top: 1px solid var(--border-color); }
@@ -166,11 +166,14 @@
         .contact-info-item i { width: 45px; height: 45px; background: var(--accent-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 18px; flex-shrink: 0; }
         
         .contact-form-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 22px; }
-        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 600; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; transition: var(--transition); }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 6px; color: var(--text-color); font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; transition: var(--transition); }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
         
+        .star-rating { display: flex; gap: 8px; font-size: 22px; color: var(--text-muted); cursor: pointer; }
+        .star-rating .active { color: #fbbf24; }
+
         /* Footer */
         footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); }
         .footer-logo { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 12px; }
@@ -178,7 +181,6 @@
         .admin-link { color: var(--text-muted); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
         .admin-link:hover { color: var(--accent-color); }
 
-        /* Mobile Bottom Bar */
         .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
         .mob-btn { padding: 16px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .call-btn { background: var(--card-bg); color: var(--text-color); }
@@ -194,8 +196,8 @@
             .hero { min-height: 75vh; padding: 30px 15px; }
             .mobile-bottom-bar { display: grid; }
             body { padding-bottom: 60px; }
-            .container { margin: 60px auto; }
-            .contact-form-box, .review-form-container { padding: 25px; }
+            .container { margin: 50px auto; }
+            .contact-form-box, .modal-box { padding: 20px; }
         }
     </style>
 </head>
@@ -210,7 +212,6 @@
             <a href="#">Ana Sayfa</a>
             <a href="#urunler">Koleksiyon</a>
             <a href="#ustunlukler">Neden Biz?</a>
-            <a href="#yorumlar">Yorumlar</a>
             <a href="#teklif">Teklif Al</a>
         </nav>
         <div class="header-controls">
@@ -233,10 +234,12 @@
         </div>
     </section>
 
+    <!-- ÖZEL ÜRETİM KOLEKSİYONLARIMIZ (Her surata aýratyn teswir we reýting ýazmak bolýar) -->
     <div class="container" id="urunler">
         <div class="section-header">
-            <span class="sub-title">Ürünlerimiz</span>
-            <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
+            <span class="sub-title">Koleksiyon</span>
+            <h2 class="section-title">Özel Üretim Tasarımlarımız</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 8px;">Beğendiğiniz ürünleri inceleyebilir, puan verebilir ve yorum yazabilirsiniz.</p>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
             <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted);">
@@ -246,11 +249,7 @@
         </div>
     </div>
 
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImg">
-    </div>
-
+    <!-- NEDEN BİZ? -->
     <section class="features" id="ustunlukler">
         <div class="container" style="margin: 0 auto; padding: 0 24px;">
             <div class="section-header">
@@ -277,47 +276,7 @@
         </div>
     </section>
 
-    <section class="reviews-section" id="yorumlar">
-        <div class="container" style="margin: 0 auto; padding: 0 24px;">
-            <div class="section-header">
-                <span class="sub-title">Müşteri Deneyimi</span>
-                <h2 class="section-title">Müşteri Yorumları & Puanlar</h2>
-            </div>
-            
-            <div class="reviews-grid" id="dynamicReviewsGrid">
-                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px;">
-                    <p>Yorumlar yükleniyor...</p>
-                </div>
-            </div>
-
-            <div class="review-form-container">
-                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-color); font-weight: 700;">Değerlendirme Yapın</h3>
-                <form id="reviewForm">
-                    <div class="form-group">
-                        <label>Puanınız</label>
-                        <div class="star-rating" id="starRating">
-                            <i class="fas fa-star active" data-value="1"></i>
-                            <i class="fas fa-star active" data-value="2"></i>
-                            <i class="fas fa-star active" data-value="3"></i>
-                            <i class="fas fa-star active" data-value="4"></i>
-                            <i class="fas fa-star active" data-value="5"></i>
-                        </div>
-                        <input type="hidden" id="ratingValue" value="5">
-                    </div>
-                    <div class="form-group">
-                        <label>Adınız ve Soyadınız</label>
-                        <input type="text" id="reviewName" placeholder="Adınızı girin" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Yorumunuz</label>
-                        <textarea id="reviewText" rows="4" placeholder="Hizmet hakkındaki düşüncelerinizi yazın..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">Yorumu Gönder</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <!-- İLETİŞİM / TEKLİF AL -->
     <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
@@ -353,6 +312,43 @@
         </div>
     </section>
 
+    <!-- SURATY ULYMDURUP GÖRMEK ÜÇIN MODAL -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" id="closeImageModal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <!-- ÖNÜME YORUM ÝAZMAK ÜÇIN MODAL -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-box">
+            <span class="close-modal" id="closeReviewModal" style="top: 15px; right: 20px; font-size: 30px;">&times;</span>
+            <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-color); font-weight: 700;"><i class="fas fa-pen" style="color: var(--accent-color);"></i> Bu Ürüne Yorum Yap</h3>
+            <form id="productReviewForm">
+                <input type="hidden" id="modalProductId">
+                <div class="form-group">
+                    <label>Puanınız</label>
+                    <div class="star-rating" id="modalStarRating">
+                        <i class="fas fa-star active" data-value="1"></i>
+                        <i class="fas fa-star active" data-value="2"></i>
+                        <i class="fas fa-star active" data-value="3"></i>
+                        <i class="fas fa-star active" data-value="4"></i>
+                        <i class="fas fa-star active" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="modalRatingValue" value="5">
+                </div>
+                <div class="form-group">
+                    <label>Adınız ve Soyadınız</label>
+                    <input type="text" id="reviewAuthor" placeholder="Adınızı girin" required>
+                </div>
+                <div class="form-group">
+                    <label>Yorumunuz</label>
+                    <textarea id="reviewContent" rows="3" placeholder="Tasarım veya kalite hakkındaki düşünceleriniz..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center;">Yorumu Gönder</button>
+            </form>
+        </div>
+    </div>
+
     <div class="mobile-bottom-bar">
         <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> Ara</a>
         <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
@@ -366,6 +362,7 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT LOGIKALARY -->
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -387,35 +384,56 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        const modal = document.getElementById('imageModal');
+        // Surat Modal
+        const imageModal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
-        const closeModal = document.querySelector('.close-modal');
+        const closeImageModal = document.getElementById('closeImageModal');
 
-        function openModal(imgSrc) {
-            modal.style.display = "flex";
+        function openImageModal(imgSrc) {
+            imageModal.style.display = "flex";
             modalImg.src = imgSrc;
         }
 
-        closeModal.onclick = function() { modal.style.display = "none"; }
-        modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
+        closeImageModal.onclick = function() { imageModal.style.display = "none"; }
+        imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
 
-        const stars = document.querySelectorAll('#starRating i');
-        const ratingValueInput = document.getElementById('ratingValue');
-        stars.forEach(star => {
+        // Modal Yıldız Seçimi
+        const modalStars = document.querySelectorAll('#modalStarRating i');
+        const modalRatingValueInput = document.getElementById('modalRatingValue');
+        modalStars.forEach(star => {
             star.addEventListener('click', function() {
                 const val = this.getAttribute('data-value');
-                ratingValueInput.value = val;
-                stars.forEach(s => {
+                modalRatingValueInput.value = val;
+                modalStars.forEach(s => {
                     if(s.getAttribute('data-value') <= val) s.classList.add('active');
                     else s.classList.remove('active');
                 });
             });
         });
+
+        // Yorum Modal Aç / Ýap
+        const reviewModal = document.getElementById('reviewModal');
+        const closeReviewModal = document.getElementById('closeReviewModal');
+
+        function openReviewModal(productId) {
+            document.getElementById('modalProductId').value = productId;
+            reviewModal.style.display = "flex";
+        }
+
+        closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
+        reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
+
+        // Kommentariýalary açyp-ýapmak üçin funksiýa (Global edildi)
+        window.toggleComments = function(productId) {
+            const section = document.getElementById(`comments-section-${productId}`);
+            section.classList.toggle('active');
+        }
     </script>
 
+    <!-- FIREBASE İŞLEMLERİ -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, addDoc, query, where } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDituAe7mzCIobhpko8NJFDFMmtANehUhs",
@@ -430,7 +448,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        async function loadProducts() {
+        // Önümleri we olara degişli yorumlary ýüklemek
+        async function loadProductsWithReviews() {
             const grid = document.getElementById('dynamicProductsGrid');
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
@@ -446,12 +465,45 @@
                     return;
                 }
 
+                // Hemme önümler üçin yorumlary alýarys
+                const reviewsSnapshot = await getDocs(collection(db, "product_reviews"));
+                let allReviews = [];
+                reviewsSnapshot.forEach(doc => {
+                    allReviews.push({ id: doc.id, ...doc.data() });
+                });
+
                 grid.innerHTML = "";
-                querySnapshot.forEach((doc) => {
-                    const prod = doc.data();
+                querySnapshot.forEach((docSnap) => {
+                    const prod = docSnap.data();
+                    const prodId = docSnap.id;
+
+                    // Şu önüme degişli yorumlar
+                    const prodReviews = allReviews.filter(r => r.productId === prodId);
+
+                    let commentsHtml = '';
+                    if (prodReviews.length === 0) {
+                        commentsHtml = `<p style="color: var(--text-muted); font-size: 12px; text-align: center; padding: 5px;">Henüz bu ürüne yorum yapılmamış.</p>`;
+                    } else {
+                        prodReviews.forEach(rev => {
+                            let stars = '';
+                            for(let i=0; i<5; i++) {
+                                stars += (i < rev.rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+                            }
+                            commentsHtml += `
+                                <div class="comment-item">
+                                    <div class="comment-item-header">
+                                        <span>${rev.author}</span>
+                                        <div class="comment-stars">${stars}</div>
+                                    </div>
+                                    <div class="comment-text">${rev.content}</div>
+                                </div>
+                            `;
+                        });
+                    }
+
                     grid.innerHTML += `
                         <div class="product-card">
-                            <div class="product-img-container" onclick="openModal('${prod.image}')">
+                            <div class="product-img-container" onclick="openImageModal('${prod.image}')">
                                 <img src="${prod.image}" alt="${prod.title}" class="product-img">
                             </div>
                             <div class="product-info">
@@ -459,8 +511,24 @@
                                     <h3>${prod.title}</h3>
                                     <p class="product-desc">${prod.description}</p>
                                 </div>
-                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Bilgi Al
+                                
+                                <div class="product-actions">
+                                    <button class="comment-toggle-btn" onclick="toggleComments('${prodId}')">
+                                        <i class="fas fa-comments"></i> Yorumlar (${prodReviews.length})
+                                    </button>
+                                    <button class="comment-toggle-btn" onclick="openReviewModal('${prodId}')" style="background: var(--accent-glow); color: var(--accent-color); border-color: var(--accent-color);">
+                                        <i class="fas fa-pen"></i> Yorum Yaz
+                                    </button>
+                                </div>
+
+                                <div class="product-comments-section" id="comments-section-${prodId}">
+                                    <div style="max-height: 150px; overflow-y: auto; margin-bottom: 8px;">
+                                        ${commentsHtml}
+                                    </div>
+                                </div>
+
+                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank" style="margin-top: 12px;">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Bilgi Al
                                 </a>
                             </div>
                         </div>
@@ -471,58 +539,30 @@
             }
         }
 
-        async function loadReviews() {
-            const grid = document.getElementById('dynamicReviewsGrid');
-            try {
-                const querySnapshot = await getDocs(collection(db, "reviews"));
-                if (querySnapshot.empty) {
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>Henüz yorum yapılmamış.</p></div>`;
-                    return;
-                }
+        loadProductsWithReviews();
 
-                grid.innerHTML = "";
-                querySnapshot.forEach((doc) => {
-                    const rev = doc.data();
-                    let starsHtml = '';
-                    for(let i=0; i<5; i++) {
-                        starsHtml += (i < rev.rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-                    }
-                    grid.innerHTML += `
-                        <div class="review-card">
-                            <div class="review-header">
-                                <span class="review-name">${rev.name}</span>
-                                <div class="review-stars">${starsHtml}</div>
-                            </div>
-                            <p class="review-text">"${rev.text}"</p>
-                        </div>
-                    `;
-                });
-            } catch (error) {
-                console.error("Yorum yükleme hatası:", error);
-            }
-        }
-
-        loadProducts();
-        loadReviews();
-
-        document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+        // Önüme ýazylan yorumy bazada saklamak
+        document.getElementById('productReviewForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const name = document.getElementById('reviewName').value;
-            const text = document.getElementById('reviewText').value;
-            const rating = parseInt(document.getElementById('ratingValue').value);
+            const productId = document.getElementById('modalProductId').value;
+            const author = document.getElementById('reviewAuthor').value;
+            const content = document.getElementById('reviewContent').value;
+            const rating = parseInt(document.getElementById('modalRatingValue').value);
 
             try {
-                await addDoc(collection(db, "reviews"), {
-                    name: name,
-                    text: text,
+                await addDoc(collection(db, "product_reviews"), {
+                    productId: productId,
+                    author: author,
+                    content: content,
                     rating: rating,
                     date: new Date().toISOString()
                 });
-                alert('Yorumunuz başarıyla eklendi, teşekkür ederiz!');
-                document.getElementById('reviewForm').reset();
-                loadReviews();
+                alert('Yorumunuz başarıyla eklendi!');
+                document.getElementById('productReviewForm').reset();
+                document.getElementById('reviewModal').style.display = "none";
+                loadProductsWithReviews();
             } catch (error) {
-                alert("Hata oluştu.");
+                alert("Yorum eklenirken hata oluştu: " + error.message);
             }
         });
 
