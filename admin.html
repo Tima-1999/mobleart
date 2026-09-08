@@ -5,143 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MobleArt | Yönetim Paneli</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #0f0f0f;
-            --card-bg: #161616;
-            --text-color: #e5e5e5;
-            --text-muted: #aaa;
-            --border-color: #262626;
-            --header-bg: rgba(15, 15, 15, 0.95);
-            --accent-color: #d4af37;
-            --accent-hover: #e6c555;
-            --input-bg: #0f0f0f;
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --card-hover: #1c1c1c;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #222222;
+            --header-bg: rgba(11, 11, 11, 0.85);
+            --accent-color: #c5a059;
+            --accent-hover: #d4af37;
+            --accent-glow: rgba(197, 160, 89, 0.15);
+            --input-bg: #181818;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         [data-theme="light"] {
-            --bg-color: #f8f9fa;
+            --bg-color: #f9fafb;
             --card-bg: #ffffff;
-            --text-color: #222222;
-            --text-muted: #666666;
-            --border-color: #e2e8f0;
-            --header-bg: rgba(248, 249, 250, 0.95);
+            --card-hover: #f3f4f6;
+            --text-color: #111827;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --header-bg: rgba(249, 250, 251, 0.85);
             --accent-color: #b89728;
             --accent-hover: #997c1d;
-            --input-bg: #ffffff;
+            --accent-glow: rgba(184, 151, 40, 0.1);
+            --input-bg: #f9fafb;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding-bottom: 60px; overflow-x: hidden; }
+        
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 18px 6%; background: var(--header-bg); backdrop-filter: blur(12px); 
+            border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; 
+            flex-wrap: wrap; gap: 15px;
         }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding-bottom: 50px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: var(--header-bg);
-            border-bottom: 1px solid var(--border-color);
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo { font-size: 22px; font-weight: 700; color: var(--text-color); }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--text-color); text-decoration: none; }
+        .logo img { height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
         .logo span { color: var(--accent-color); }
         
         .header-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
         
-        .control-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .control-btn { 
+            background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); 
+            height: 40px; padding: 0 15px; border-radius: 20px; cursor: pointer; display: flex; 
+            align-items: center; justify-content: center; font-size: 13px; font-weight: 600; gap: 8px; transition: var(--transition); 
         }
         .control-btn:hover { background: var(--accent-color); color: #111; }
 
-        .back-home { color: var(--text-muted); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+        .back-home { color: var(--text-muted); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; font-weight: 600; }
         .back-home:hover { color: var(--accent-color); }
 
-        .admin-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 30px; margin-bottom: 40px; }
-        .admin-card h2 { font-size: 22px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; gap: 10px; justify-content: space-between; flex-wrap: wrap; }
+        .admin-container { max-width: 1000px; margin: 40px auto; padding: 0 24px; }
+        .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .admin-card h2 { font-size: 20px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-weight: 700; }
         .admin-card h2 i { color: var(--accent-color); }
 
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 500; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 5px; font-size: 14px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 6px; color: var(--text-color); font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 14px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; transition: var(--transition); }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
         
         .image-input-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .file-upload-btn { background: var(--border-color); color: var(--text-color); padding: 12px 18px; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
-        .file-upload-btn:hover { background: var(--accent-color); color: #111; }
+        .file-upload-btn { background: var(--card-hover); border: 1px solid var(--border-color); color: var(--text-color); padding: 12px 16px; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .file-upload-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
         #imageFile { display: none; }
 
-        .btn { background: var(--accent-color); color: #111; padding: 12px 25px; border-radius: 5px; font-weight: 600; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .btn:hover { background: var(--accent-hover); }
-        .btn-danger { background: #ef4444; color: #fff; padding: 6px 12px; font-size: 12px; }
-        .btn-danger:hover { background: #dc2626; }
-        .btn-success { background: #22c55e; color: #fff; padding: 8px 15px; font-size: 13px; }
-        .btn-success:hover { background: #16a34a; }
+        .btn { background: var(--accent-color); color: #111; padding: 12px 24px; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); font-size: 14px; }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-danger { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 6px 12px; font-size: 12px; border-radius: 6px; }
+        .btn-danger:hover { background: #ef4444; color: #fff; }
+        .btn-success { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); padding: 8px 16px; font-size: 13px; border-radius: 8px; }
+        .btn-success:hover { background: #22c55e; color: #fff; }
 
         .table-responsive { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
-        th, td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); font-size: 14px; color: var(--text-color); vertical-align: middle; }
-        th { color: var(--text-muted); font-weight: 600; background: var(--input-bg); }
+        th, td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); font-size: 14px; color: var(--text-color); vertical-align: middle; }
+        th { color: var(--text-muted); font-weight: 600; background: var(--input-bg); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
         
-        .prod-thumb-container {
-            width: 70px; height: 70px; border-radius: 6px; overflow: hidden;
-            background: #111; display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border-color); cursor: pointer;
-        }
+        .prod-thumb-container { width: 60px; height: 60px; border-radius: 8px; overflow: hidden; background: #111; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); cursor: pointer; }
         .prod-thumb { width: 100%; height: 100%; object-fit: cover; }
-        #statusMessage { margin-top: 15px; font-size: 14px; font-weight: 500; }
+        #statusMessage { margin-top: 12px; font-size: 13px; font-weight: 500; }
 
-        #loginOverlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-color); z-index: 9999; display: flex;
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .login-box {
-            background: var(--card-bg); border: 1px solid var(--border-color);
-            padding: 40px; border-radius: 12px; width: 100%; max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .login-box h2 { margin-bottom: 20px; text-align: center; font-size: 24px; }
+        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .login-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .login-box h2 { margin-bottom: 24px; text-align: center; font-size: 24px; font-weight: 800; }
 
-        .modal {
-            display: none; position: fixed; z-index: 2000; top: 0; left: 0;
-            width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-content { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 8px; }
-        .close-modal {
-            position: absolute; top: 25px; right: 35px; color: #fff;
-            font-size: 40px; font-weight: bold; cursor: pointer;
-        }
+        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .modal-content { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 12px; }
+        .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: var(--transition); }
         .close-modal:hover { color: var(--accent-color); }
     </style>
 </head>
 <body>
 
+    <!-- GIRIŞ / LOGIN EKRANY -->
     <div id="loginOverlay">
         <div class="login-box">
-            <h2>Moble<span>Art</span> <span class="tr-text">Admin Giriş</span><span class="tk-text" style="display:none;">Admin Giriş</span></h2>
+            <h2>Moble<span>Art</span> <span style="font-size: 16px; color: var(--text-muted); display: block; margin-top: 5px;"><span class="tr-text">Yönetim Paneli</span><span class="tk-text" style="display:none;">Dolandyryş Paneli</span></span></h2>
             <form id="loginForm">
                 <div class="form-group">
                     <label><span class="tr-text">E-Posta Adresi</span><span class="tk-text" style="display:none;">E-Poçta Salgysy</span></label>
@@ -154,7 +123,7 @@
                 <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="loginBtn">
                     <i class="fas fa-sign-in-alt"></i> <span class="tr-text">Giriş Yap</span><span class="tk-text" style="display:none;">Girmek</span>
                 </button>
-                <div id="loginError" style="color: #ef4444; margin-top: 10px; font-size: 13px; text-align: center;"></div>
+                <div id="loginError" style="color: #ef4444; margin-top: 12px; font-size: 13px; text-align: center; font-weight: 500;"></div>
             </form>
             <div style="text-align: center; margin-top: 20px;">
                 <a href="index.html" class="back-home" style="justify-content: center;"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
@@ -162,19 +131,23 @@
         </div>
     </div>
 
+    <!-- HEADER -->
     <header>
-        <div class="logo">Moble<span>Art</span> Admin</div>
+        <a href="index.html" class="logo">
+            <img src="./logo.png" alt="Logo">
+            <div>Moble<span>Art</span> Admin</div>
+        </a>
         <div class="header-actions">
-            <!-- Dil Çalyşýan Düwme -->
             <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TÜRKÇE</span></button>
             <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
-            <button class="control-btn" id="logoutBtn" style="border-color: #ef4444; color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span class="tr-text">Çıkış</span><span class="tk-text" style="display:none;">Çykmak</span></button>
+            <button class="control-btn" id="logoutBtn" style="border-color: rgba(239,68,68,0.3); color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span class="tr-text">Çıkış</span><span class="tk-text" style="display:none;">Çykmak</span></button>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
         </div>
     </header>
 
     <div class="admin-container">
-        <!-- Ürün Ekleme -->
+        
+        <!-- 1. TÄZE ÖNÜM GOŞMAK -->
         <div class="admin-card">
             <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün / Tasarım Ekle</span><span class="tk-text" style="display:none;">Täze Önüm / Dizaýn Goş</span></span></h2>
             <form id="addProductForm">
@@ -182,7 +155,6 @@
                     <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önüm ady</span></label>
                     <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                 </div>
-                
                 <div class="form-group">
                     <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat (URL ýa-da Kompýuterden saýla)</span></label>
                     <div class="image-input-box">
@@ -193,18 +165,16 @@
                         <input type="file" id="imageFile" accept="image/*">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label><span class="tr-text">Açıklama</span><span class="tk-text" style="display:none;">Düşündiriş</span></label>
                     <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                 </div>
-                
                 <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-text">Ürünü Yayınla</span><span class="tk-text" style="display:none;">Önümi çap et</span></button>
                 <div id="statusMessage"></div>
             </form>
         </div>
 
-        <!-- Ürün Yönetimi -->
+        <!-- 2. ÖNÜMLERI DOLANDYRYŞ (POZMAK WE GÖRMEK) -->
         <div class="admin-card">
             <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünleri Yönet</span><span class="tk-text" style="display:none;">Bar bolan önümleri dolandyr</span></span></h2>
             <div class="table-responsive">
@@ -223,15 +193,15 @@
             </div>
         </div>
 
-        <!-- Yorumlar -->
+        <!-- 3. TESWIRLERI WE BAHALARY DOLANDYRYŞ (POZMAK ÜÇIN) -->
         <div class="admin-card">
-            <h2><span><i class="fas fa-star"></i> <span class="tr-text">Yorumlar ve Değerlendirmeler</span><span class="tk-text" style="display:none;">Teswirler we Bahalar</span></span></h2>
+            <h2><span><i class="fas fa-star"></i> <span class="tr-text">Ürün Yorumları ve Değerlendirmeleri</span><span class="tk-text" style="display:none;">Önüm Teswirleri we Bahalar</span></span></h2>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Müşderi</span></th>
-                            <th><span class="tr-text">Değerlendirme</span><span class="tk-text" style="display:none;">Baha</span></th>
+                            <th><span class="tr-text">Puan</span><span class="tk-text" style="display:none;">Baha</span></th>
                             <th><span class="tr-text">Yorum</span><span class="tk-text" style="display:none;">Teswir</span></th>
                             <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
@@ -243,7 +213,7 @@
             </div>
         </div>
 
-        <!-- Siparişler -->
+        <!-- 4. SARGYTLAR WE MÜŞDERILER -->
         <div class="admin-card">
             <h2>
                 <span><i class="fas fa-clipboard-list"></i> <span class="tr-text">Sipariş ve Müşteri Takibi</span><span class="tk-text" style="display:none;">Sargyt we Müşderi Gözegçiligi</span></span>
@@ -303,11 +273,13 @@
         </div>
     </div>
 
+    <!-- SURAT MODAL -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
 
+    <!-- SKRIPTLER -->
     <script>
         // Tema logikasy
         const toggleBtn = document.getElementById('themeToggleBtn');
@@ -330,7 +302,7 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Dil çalşyş (Türkçe / Türkmençe) logikasy
+        // Dil çalşyş (Türkçe / Türkmençe)
         const langToggleBtn = document.getElementById('langToggleBtn');
         const langText = document.getElementById('langText');
 
@@ -359,7 +331,7 @@
             setLanguage(currentLang === 'tr' ? 'tk' : 'tr');
         });
 
-        // Modal surat açmak
+        // Surat Modal
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -373,7 +345,7 @@
         modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
-    <!-- Firebase we Esasy Skriptler -->
+    <!-- FIREBASE INTEGRASIÝASY -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -434,6 +406,7 @@
             try { await signOut(auth); } catch (error) { console.error("Çıkış hatası:", error); }
         });
 
+        // Ürün Goşmak
         const form = document.getElementById('addProductForm');
         const statusMsg = document.getElementById('statusMessage');
         const listContainer = document.getElementById('adminProductsList');
@@ -520,10 +493,11 @@
             }
         }
 
+        // Yorumlary Dolandyrmak we Pozmak
         const reviewsListContainer = document.getElementById('adminReviewsList');
         async function fetchAdminReviews() {
             try {
-                const querySnapshot = await getDocs(collection(db, "reviews"));
+                const querySnapshot = await getDocs(collection(db, "product_reviews"));
                 if (querySnapshot.empty) {
                     reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum bulunamadı.</td></tr>`;
                     return;
@@ -535,9 +509,9 @@
                     const id = documentSnap.id;
                     reviewsListContainer.innerHTML += `
                         <tr>
-                            <td><strong>${rev.name || 'Adsız'}</strong></td>
+                            <td><strong>${rev.author || 'Adsız'}</strong></td>
                             <td><span style="color: var(--accent-color);">${rev.rating || '5'} <i class="fas fa-star"></i></span></td>
-                            <td>${rev.comment || rev.text || ''}</td>
+                            <td>${rev.content || ''}</td>
                             <td>
                                 <button class="btn btn-danger" onclick="deleteReview('${id}')"><i class="fas fa-trash"></i> Sil</button>
                             </td>
@@ -552,12 +526,13 @@
         window.deleteReview = async function(id) {
             if (confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
                 try {
-                    await deleteDoc(doc(db, "reviews", id));
+                    await deleteDoc(doc(db, "product_reviews", id));
                     fetchAdminReviews();
                 } catch (error) { alert("Hata oluştu."); }
             }
         }
 
+        // Sargytlar we Excel
         const orderForm = document.getElementById('addOrderForm');
         const ordersListContainer = document.getElementById('adminOrdersList');
 
@@ -585,7 +560,7 @@
                                 <small style="color:#ef4444;">Kalan: ${kalan}</small>
                             </td>
                             <td>
-                                <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 4px; font-size: 12px;">
+                                <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 6px; font-size: 12px;">
                                     <option value="Hazırlanıyor" ${ord.status && ord.status.includes('Hazırlanıyor') ? 'selected' : ''}>Hazırlanıyor</option>
                                     <option value="Tamamlandı" ${ord.status && ord.status.includes('Tamamlandı') ? 'selected' : ''}>Tamamlandı</option>
                                     <option value="İptal" ${ord.status && ord.status.includes('İptal') ? 'selected' : ''}>İptal</option>
