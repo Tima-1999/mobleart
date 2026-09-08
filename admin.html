@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Yönetim Paneli</title>
+    <title>MobleArt | Gelişmiş Yönetim Paneli</title>
     
     <link rel="icon" type="image/png" href="./logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -64,7 +64,15 @@
         .back-home { color: var(--text-muted); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px; font-weight: 600; }
         .back-home:hover { color: var(--accent-color); }
 
-        .admin-container { max-width: 1000px; margin: 40px auto; padding: 0 24px; }
+        .admin-container { max-width: 1100px; margin: 40px auto; padding: 0 24px; }
+        
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .stat-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--accent-glow); color: var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .stat-info h3 { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+        .stat-info p { font-size: 20px; font-weight: 700; color: var(--text-color); margin-top: 4px; }
+
         .admin-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .admin-card h2 { font-size: 20px; margin-bottom: 20px; color: var(--text-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-weight: 700; }
         .admin-card h2 i { color: var(--accent-color); }
@@ -77,7 +85,7 @@
         .image-input-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .file-upload-btn { background: var(--card-hover); border: 1px solid var(--border-color); color: var(--text-color); padding: 12px 16px; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); }
         .file-upload-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
-        #imageFile { display: none; }
+        input[type="file"] { display: none; }
 
         .btn { background: var(--accent-color); color: #111; padding: 12px 24px; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); font-size: 14px; }
         .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
@@ -107,7 +115,7 @@
 </head>
 <body>
 
-    <!-- GIRIŞ / LOGIN EKRANY -->
+    <!-- GIRIŞ EKRANY -->
     <div id="loginOverlay">
         <div class="login-box">
             <h2>Moble<span>Art</span> <span style="font-size: 16px; color: var(--text-muted); display: block; margin-top: 5px;"><span class="tr-text">Yönetim Paneli</span><span class="tk-text" style="display:none;">Dolandyryş Paneli</span></span></h2>
@@ -147,6 +155,38 @@
 
     <div class="admin-container">
         
+        <!-- STATISTIKA KARTLARY -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-box"></i></div>
+                <div class="stat-info">
+                    <h3><span class="tr-text">Toplam Ürün</span><span class="tk-text" style="display:none;">Jemi Önüm</span></h3>
+                    <p id="statProductsCount">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="stat-info">
+                    <h3><span class="tr-text">Toplam Sipariş</span><span class="tk-text" style="display:none;">Jemi Sargyt</span></h3>
+                    <p id="statOrdersCount">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                <div class="stat-info">
+                    <h3><span class="tr-text">Müşteri Yorumları</span><span class="tk-text" style="display:none;">Teswirler</span></h3>
+                    <p id="statReviewsCount">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                <div class="stat-info">
+                    <h3><span class="tr-text">İletişim Mesajları</span><span class="tk-text" style="display:none;">Habarlar</span></h3>
+                    <p id="statMessagesCount">0</p>
+                </div>
+            </div>
+        </div>
+
         <!-- 1. TÄZE ÖNÜM GOŞMAK -->
         <div class="admin-card">
             <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün / Tasarım Ekle</span><span class="tk-text" style="display:none;">Täze Önüm / Dizaýn Goş</span></span></h2>
@@ -154,6 +194,15 @@
                 <div class="form-group">
                     <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önüm ady</span></label>
                     <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
+                </div>
+                <div class="form-group">
+                    <label><span class="tr-text">Kategori</span><span class="tk-text" style="display:none;">Kategoriýa</span></label>
+                    <select id="prodCategory" required>
+                        <option value="Mutfak">Mutfak</option>
+                        <option value="Yatak Odası">Yatak Odası</option>
+                        <option value="Oturma Odası">Oturma Odası</option>
+                        <option value="Ofis">Ofis</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat (URL ýa-da Kompýuterden saýla)</span></label>
@@ -174,7 +223,7 @@
             </form>
         </div>
 
-        <!-- 2. ÖNÜMLERI DOLANDYRYŞ (POZMAK WE GÖRMEK) -->
+        <!-- 2. ÖNÜMLERI DOLANDYRYŞ -->
         <div class="admin-card">
             <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünleri Yönet</span><span class="tk-text" style="display:none;">Bar bolan önümleri dolandyr</span></span></h2>
             <div class="table-responsive">
@@ -183,17 +232,38 @@
                         <tr>
                             <th><span class="tr-text">Görsel</span><span class="tk-text" style="display:none;">Surat</span></th>
                             <th><span class="tr-text">Başlık</span><span class="tk-text" style="display:none;">Ady</span></th>
+                            <th><span class="tr-text">Kategori</span><span class="tk-text" style="display:none;">Kategoriýa</span></th>
                             <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
                         </tr>
                     </thead>
                     <tbody id="adminProductsList">
-                        <tr><td colspan="3" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
+                        <tr><td colspan="4" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 3. TESWIRLERI WE BAHALARY DOLANDYRYŞ (POZMAK ÜÇIN) -->
+        <!-- 3. HABARLAŞMAK / SORAGLAR -->
+        <div class="admin-card">
+            <h2><span><i class="fas fa-envelope-open-text"></i> <span class="tr-text">İletişim Mesajları</span><span class="tk-text" style="display:none;">Habarlaşyk Hatlar</span></span></h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><span class="tr-text">Gönderen</span><span class="tk-text" style="display:none;">Ugradyjy</span></th>
+                            <th><span class="tr-text">E-Posta / Tel</span><span class="tk-text" style="display:none;">E-Poçta / Tel</span></th>
+                            <th><span class="tr-text">Mesaj</span><span class="tk-text" style="display:none;">Hat</span></th>
+                            <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminMessagesList">
+                        <tr><td colspan="4" style="text-align: center; color: var(--text-muted);"><span class="tr-text">Yükleniyor...</span><span class="tk-text" style="display:none;">Ýüklenýär...</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 4. TESWIRLERI WE BAHALARY DOLANDYRYŞ -->
         <div class="admin-card">
             <h2><span><i class="fas fa-star"></i> <span class="tr-text">Ürün Yorumları ve Değerlendirmeleri</span><span class="tk-text" style="display:none;">Önüm Teswirleri we Bahalar</span></span></h2>
             <div class="table-responsive">
@@ -213,7 +283,7 @@
             </div>
         </div>
 
-        <!-- 4. SARGYTLAR WE MÜŞDERILER -->
+        <!-- 5. SARGYTLAR WE MÜŞDERILER -->
         <div class="admin-card">
             <h2>
                 <span><i class="fas fa-clipboard-list"></i> <span class="tr-text">Sipariş ve Müşteri Takibi</span><span class="tk-text" style="display:none;">Sargyt we Müşderi Gözegçiligi</span></span>
@@ -281,7 +351,6 @@
 
     <!-- SKRIPTLER -->
     <script>
-        // Tema logikasy
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
@@ -302,7 +371,6 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Dil çalşyş (Türkçe / Türkmençe)
         const langToggleBtn = document.getElementById('langToggleBtn');
         const langText = document.getElementById('langText');
 
@@ -331,7 +399,6 @@
             setLanguage(currentLang === 'tr' ? 'tk' : 'tr');
         });
 
-        // Surat Modal
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeModal = document.querySelector('.close-modal');
@@ -345,7 +412,7 @@
         modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
-    <!-- FIREBASE INTEGRASIÝASY -->
+    <!-- FIREBASE & LOGIKA -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -373,9 +440,7 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginOverlay.style.display = 'none';
-                fetchAdminProducts();
-                fetchAdminOrders();
-                fetchAdminReviews();
+                loadAllData();
             } else {
                 loginOverlay.style.display = 'flex';
             }
@@ -406,7 +471,14 @@
             try { await signOut(auth); } catch (error) { console.error("Çıkış hatası:", error); }
         });
 
-        // Ürün Goşmak
+        async function loadAllData() {
+            fetchAdminProducts();
+            fetchAdminOrders();
+            fetchAdminReviews();
+            fetchAdminMessages();
+        }
+
+        // Önüm goşmak we dolandyrmak
         const form = document.getElementById('addProductForm');
         const statusMsg = document.getElementById('statusMessage');
         const listContainer = document.getElementById('adminProductsList');
@@ -429,8 +501,10 @@
         async function fetchAdminProducts() {
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
+                document.getElementById('statProductsCount').innerText = querySnapshot.size;
+                
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--text-muted);">Ürün bulunamadı.</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Ürün bulunamadı.</td></tr>`;
                     return;
                 }
 
@@ -446,6 +520,7 @@
                                 </div>
                             </td>
                             <td><strong>${prod.title}</strong></td>
+                            <td><span style="color: var(--accent-color);">${prod.category || 'Genel'}</span></td>
                             <td>
                                 <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
                             </td>
@@ -453,13 +528,14 @@
                     `;
                 });
             } catch (error) {
-                listContainer.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+                listContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
             }
         }
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const title = document.getElementById('prodTitle').value;
+            const category = document.getElementById('prodCategory').value;
             const image = prodImageInput.value;
             const description = document.getElementById('prodDesc').value;
             const submitBtn = document.getElementById('submitBtn');
@@ -469,7 +545,7 @@
 
             try {
                 await addDoc(collection(db, "products"), {
-                    title: title, image: image, description: description, createdAt: new Date()
+                    title, category, image, description, createdAt: new Date()
                 });
                 statusMsg.style.color = "#22c55e";
                 statusMsg.innerHTML = "✓ Ürün başarıyla eklendi!";
@@ -493,11 +569,54 @@
             }
         }
 
-        // Yorumlary Dolandyrmak we Pozmak
+        // Habarlaşyk hatlary
+        const messagesListContainer = document.getElementById('adminMessagesList');
+        async function fetchAdminMessages() {
+            try {
+                const querySnapshot = await getDocs(collection(db, "contacts"));
+                document.getElementById('statMessagesCount').innerText = querySnapshot.size;
+
+                if (querySnapshot.empty) {
+                    messagesListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Mesaj bulunamadı.</td></tr>`;
+                    return;
+                }
+
+                messagesListContainer.innerHTML = "";
+                querySnapshot.forEach((documentSnap) => {
+                    const msg = documentSnap.data();
+                    const id = documentSnap.id;
+                    messagesListContainer.innerHTML += `
+                        <tr>
+                            <td><strong>${msg.name || 'Adsız'}</strong></td>
+                            <td>${msg.email || msg.phone || ''}</td>
+                            <td>${msg.message || ''}</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="deleteMessage('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                messagesListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
+            }
+        }
+
+        window.deleteMessage = async function(id) {
+            if (confirm("Bu mesajı silmek istediğinize emin misiniz?")) {
+                try {
+                    await deleteDoc(doc(db, "contacts", id));
+                    fetchAdminMessages();
+                } catch (error) { alert("Hata oluştu."); }
+            }
+        }
+
+        // Teswirler
         const reviewsListContainer = document.getElementById('adminReviewsList');
         async function fetchAdminReviews() {
             try {
                 const querySnapshot = await getDocs(collection(db, "product_reviews"));
+                document.getElementById('statReviewsCount').innerText = querySnapshot.size;
+
                 if (querySnapshot.empty) {
                     reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum bulunamadı.</td></tr>`;
                     return;
@@ -532,13 +651,15 @@
             }
         }
 
-        // Sargytlar we Excel
+        // Sargytlar
         const orderForm = document.getElementById('addOrderForm');
         const ordersListContainer = document.getElementById('adminOrdersList');
 
         async function fetchAdminOrders() {
             try {
                 const querySnapshot = await getDocs(collection(db, "orders"));
+                document.getElementById('statOrdersCount').innerText = querySnapshot.size;
+
                 if (querySnapshot.empty) {
                     ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş bulunamadı.</td></tr>`;
                     return;
