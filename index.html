@@ -3,188 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Lüks Özel Tasarım Mobilya ve İç Mimarlık</title>
+    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
     
     <link rel="icon" type="image/png" href="./logo.png">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://mobleart.vercel.app",
+      "logo": "https://mobleart.vercel.app/logo.png"
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-color: #050507;
-            --card-bg: #0e0e12;
-            --card-hover: #14141a;
-            --text-color: #f8f8fa;
-            --text-muted: #8e8e99;
-            --border-color: #1f1f28;
-            --header-bg: rgba(5, 5, 7, 0.9);
-            --accent-color: #dfb15b;
-            --accent-hover: #f3c66f;
-            --accent-glow: rgba(223, 177, 91, 0.15);
-            --footer-bg: #020203;
-            --input-bg: #0c0c10;
-            --radius: 22px;
-            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --card-hover: #1c1c1c;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #222222;
+            --header-bg: rgba(11, 11, 11, 0.85);
+            --accent-color: #c5a059;
+            --accent-hover: #d4af37;
+            --accent-glow: rgba(197, 160, 89, 0.15);
+            --feature-bg: #111111;
+            --footer-bg: #050505;
+            --input-bg: #181818;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         [data-theme="light"] {
-            --bg-color: #f4f4f7;
+            --bg-color: #f9fafb;
             --card-bg: #ffffff;
-            --card-hover: #f9f9fb;
-            --text-color: #0e0e12;
-            --text-muted: #666670;
-            --border-color: #dedee6;
-            --header-bg: rgba(244, 244, 247, 0.9);
-            --accent-color: #b38b3a;
-            --accent-hover: #967129;
-            --accent-glow: rgba(179, 139, 58, 0.1);
-            --footer-bg: #e8e8ed;
-            --input-bg: #ffffff;
+            --card-hover: #f3f4f6;
+            --text-color: #111827;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --header-bg: rgba(249, 250, 251, 0.85);
+            --accent-color: #b89728;
+            --accent-hover: #997c1d;
+            --accent-glow: rgba(184, 151, 40, 0.1);
+            --feature-bg: #ffffff;
+            --footer-bg: #f3f4f6;
+            --input-bg: #f9fafb;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: var(--transition); }
-        body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; padding-bottom: 90px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 22px 6%; background: var(--header-bg); backdrop-filter: blur(25px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
-        .logo { display: flex; align-items: center; gap: 14px; font-size: 23px; font-weight: 800; color: var(--text-color); text-decoration: none; letter-spacing: -0.5px; }
-        .logo img { height: 46px; width: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
+        /* Modern Glassmorphism Header */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 18px 6%; 
+            background: var(--header-bg); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 700; color: var(--text-color); text-decoration: none; }
+        .logo img { height: 42px; width: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
         .logo span { color: var(--accent-color); }
         
-        .nav-links { display: flex; align-items: center; gap: 34px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: var(--transition); }
         .nav-links a:hover { color: var(--accent-color); }
 
         .header-controls { display: flex; align-items: center; gap: 12px; }
-        .control-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-        .control-btn:hover { background: var(--accent-color); color: #000; border-color: var(--accent-color); transform: translateY(-3px); }
-        
-        .lang-btn { width: auto; padding: 0 18px; border-radius: 24px; font-weight: 600; font-size: 13px; gap: 6px; }
-        .cart-badge-btn { position: relative; }
-        .cart-count { position: absolute; top: -4px; right: -4px; background: var(--accent-color); color: #000; font-size: 11px; font-weight: 800; width: 21px; height: 21px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .control-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: var(--transition); }
+        .control-btn:hover { background: var(--accent-color); color: #111; transform: scale(1.05); }
 
-        .header-phone { color: var(--text-color); text-decoration: none; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; background: var(--card-bg); padding: 11px 20px; border-radius: 24px; border: 1px solid var(--border-color); }
+        .header-phone { color: var(--text-color); text-decoration: none; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; background: var(--card-bg); padding: 8px 16px; border-radius: 30px; border: 1px solid var(--border-color); transition: var(--transition); }
+        .header-phone:hover { border-color: var(--accent-color); }
         .header-phone i { color: #25d366; }
 
         /* Hero Section */
-        .hero { padding: 50px 6% 30px; max-width: 1450px; margin: 0 auto; }
-        .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 28px; }
-        .hero-main-card { background: linear-gradient(135deg, var(--card-bg), var(--card-hover)); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 65px 55px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-        .hero-main-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 380px; height: 380px; background: var(--accent-glow); filter: blur(100px); border-radius: 50%; z-index: 0; }
-        .hero-content { position: relative; z-index: 1; }
+        .hero { 
+            position: relative; 
+            min-height: 85vh; 
+            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: #fff; 
+            padding: 40px 20px; 
+        }
+        .hero-content { max-width: 850px; z-index: 2; }
+        .hero-badge { background: rgba(197, 160, 89, 0.15); border: 1px solid var(--accent-color); padding: 8px 20px; border-radius: 30px; font-size: 13px; color: #f3e5ab; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; font-weight: 500; backdrop-filter: blur(5px); }
+        .hero h1 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 20px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #fff; }
+        .hero p { font-size: clamp(15px, 2vw, 18px); margin-bottom: 35px; color: #d1d5db; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         
-        .hero-badge { background: var(--accent-glow); border: 1px solid var(--accent-color); padding: 8px 18px; border-radius: 20px; font-size: 12px; color: var(--accent-color); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; }
-        .hero p { font-size: 16px; margin-bottom: 35px; color: var(--text-muted); line-height: 1.75; max-width: 600px; }
-        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        
-        .btn { background: var(--accent-color); color: #000; padding: 16px 32px; border-radius: 14px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; font-size: 14px; box-shadow: 0 8px 30px var(--accent-glow); }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-3px); }
-        .btn-outline { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); box-shadow: none; }
-        .btn-outline:hover { background: var(--card-hover); border-color: var(--accent-color); color: var(--accent-color); }
+        .btn { background: var(--accent-color); color: #111; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; font-size: 15px; transition: var(--transition); box-shadow: 0 4px 20px var(--accent-glow); }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(197, 160, 89, 0.3); }
+        .btn-outline { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; backdrop-filter: blur(5px); box-shadow: none; }
+        .btn-outline:hover { background: #fff; color: #111; border-color: #fff; }
 
-        .hero-side-card { background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover; border-radius: var(--radius); border: 1px solid var(--border-color); min-height: 420px; position: relative; }
-        .hero-side-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.15)); border-radius: var(--radius); display: flex; flex-direction: column; justify-content: flex-end; padding: 35px; color: #fff; }
-
-        /* Container & Sections */
-        .container { max-width: 1350px; margin: 0 auto; padding: 75px 6%; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .sub-title { color: var(--accent-color); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px; display: block; margin-bottom: 10px; }
-        .section-title { font-size: 38px; font-weight: 800; letter-spacing: -1px; }
+        .container { max-width: 1240px; margin: 100px auto; padding: 0 24px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .sub-title { color: var(--accent-color); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; }
+        .section-title { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-color); letter-spacing: -0.01em; }
         
-        /* Products Bento Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
-        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
-        .product-card:hover { border-color: var(--accent-color); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
-        .product-img-container { width: 100%; height: 290px; background: var(--bg-color); position: relative; overflow: hidden; cursor: pointer; }
-        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* Products Grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); }
+        .product-card:hover { transform: translateY(-6px); border-color: var(--accent-color); box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: var(--card-hover); }
+        .product-img-container { width: 100%; height: 300px; background: var(--bg-color); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .product-img-container:hover .product-img { transform: scale(1.08); }
         
-        .product-info { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        .product-info h3 { font-size: 20px; margin-bottom: 10px; font-weight: 700; }
-        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; line-height: 1.65; }
-        .product-actions { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
-        .product-btn { background: #25d366; color: #fff; justify-content: center; font-size: 13px; padding: 13px 18px; border-radius: 12px; box-shadow: none; }
-        .product-btn:hover { background: #1ebd5b; transform: none; }
-        .add-cart-btn { background: var(--card-hover); border: 1px solid var(--border-color); color: var(--text-color); padding: 13px 16px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-        .add-cart-btn:hover { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
-
-        /* Calculator Section */
-        .calculator-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 55px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 55px; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .calc-form .form-group { margin-bottom: 20px; }
-        .calc-form label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text-color); }
-        .calc-form input, .calc-form select { width: 100%; padding: 15px 18px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 12px; font-size: 14px; outline: none; }
-        .calc-form input:focus, .calc-form select:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
-        .calc-result-box { background: var(--bg-color); border: 1px solid var(--border-color); padding: 35px; border-radius: var(--radius); text-align: center; }
-        .calc-price { font-size: 38px; font-weight: 800; color: var(--accent-color); margin: 15px 0; letter-spacing: -1px; }
-
-        /* Features */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-        .feature-box { text-align: left; padding: 38px; border-radius: var(--radius); background: var(--card-bg); border: 1px solid var(--border-color); }
-        .feature-box:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-        .feature-icon { width: 58px; height: 58px; background: var(--accent-glow); color: var(--accent-color); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 24px; }
-        .feature-box h4 { font-size: 19px; margin-bottom: 10px; font-weight: 700; }
-        .feature-box p { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
-
-        /* Reviews */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-bottom: 35px; }
-        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: var(--radius); }
-        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .review-name { font-weight: 700; font-size: 16px; }
-        .review-stars { color: #f59e0b; font-size: 13px; }
-        .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
-        
-        .review-form-container { background: var(--card-bg); border: 1px solid var(--border-color); padding: 38px; border-radius: var(--radius); max-width: 650px; margin: 0 auto; }
-        .star-rating { display: flex; gap: 10px; font-size: 22px; color: var(--border-color); cursor: pointer; margin-bottom: 18px; }
-        .star-rating .active { color: #f59e0b; }
+        .product-info { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .product-info h3 { font-size: 20px; margin-bottom: 10px; color: var(--text-color); font-weight: 700; }
+        .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+        .product-btn { background: #25d366; color: #fff; width: 100%; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; box-shadow: none; }
+        .product-btn:hover { background: #1ebd5b; transform: none; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
 
         /* Modal */
-        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 25px; }
-        .modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 14px; }
-        .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; }
+        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; transition: var(--transition); }
+        .close-modal:hover { color: var(--accent-color); }
 
-        /* Cart Drawer */
-        .cart-drawer { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: var(--card-bg); border-left: 1px solid var(--border-color); z-index: 3000; padding: 32px; display: flex; flex-direction: column; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: -20px 0 50px rgba(0,0,0,0.6); }
-        .cart-drawer.open { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border-color); font-weight: 800; font-size: 20px; }
-        .cart-items { flex-grow: 1; overflow-y: auto; margin-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; background: var(--bg-color); padding: 15px 18px; border-radius: 12px; border: 1px solid var(--border-color); font-size: 14px; }
-        .cart-close { cursor: pointer; font-size: 24px; color: var(--text-muted); }
-        .cart-close:hover { color: var(--text-color); }
+        /* Features Section */
+        .features { background: var(--feature-bg); padding: 100px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-box { text-align: left; padding: 40px 30px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--border-color); transition: var(--transition); }
+        .feature-box:hover { border-color: var(--accent-color); transform: translateY(-4px); }
+        .feature-icon { width: 60px; height: 60px; background: var(--accent-glow); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-color); margin-bottom: 24px; }
+        .feature-box h4 { font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 700; }
+        .feature-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-        /* Contact */
-        .contact-section { background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 95px 6%; }
-        .contact-container { max-width: 1250px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .contact-text h2 { font-size: 38px; margin-bottom: 14px; font-weight: 800; letter-spacing: -1px; }
-        .contact-text p { color: var(--text-muted); margin-bottom: 30px; font-size: 15px; line-height: 1.75; }
-        .contact-info-item { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; font-size: 15px; font-weight: 600; }
-        .contact-info-item i { color: var(--accent-color); font-size: 18px; width: 26px; }
-        .contact-form-box { background: var(--bg-color); border: 1px solid var(--border-color); padding: 38px; border-radius: var(--radius); }
-        .contact-form-box input, .contact-form-box select, .contact-form-box textarea { width: 100%; padding: 15px 18px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 12px; font-size: 14px; margin-bottom: 18px; outline: none; }
-        .contact-form-box input:focus, .contact-form-box select:focus, .contact-form-box textarea:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
+        /* Reviews Section */
+        .reviews-section { padding: 100px 20px; background: var(--bg-color); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .review-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 16px; transition: var(--transition); }
+        .review-card:hover { border-color: var(--accent-color); }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .review-name { font-weight: 700; font-size: 16px; color: var(--text-color); }
+        .review-stars { color: #fbbf24; font-size: 14px; display: flex; gap: 4px; }
+        .review-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+        
+        .review-form-container { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; max-width: 750px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .star-rating { display: flex; gap: 10px; font-size: 24px; color: var(--text-muted); cursor: pointer; margin-bottom: 20px; }
+        .star-rating .active { color: #fbbf24; }
 
+        /* Contact Section */
+        .contact-section { background: var(--feature-bg); padding: 100px 20px; border-top: 1px solid var(--border-color); }
+        .contact-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
+        .contact-text h2 { font-size: clamp(28px, 3.5vw, 38px); margin-bottom: 20px; color: var(--text-color); font-weight: 800; line-height: 1.2; }
+        .contact-text p { color: var(--text-muted); margin-bottom: 30px; font-size: 15px; line-height: 1.7; }
+        .contact-info-item { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; font-size: 15px; color: var(--text-color); font-weight: 500; }
+        .contact-info-item i { width: 45px; height: 45px; background: var(--accent-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 18px; flex-shrink: 0; }
+        
+        .contact-form-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; color: var(--text-color); font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
+        
         /* Footer */
-        footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 45px 20px; border-top: 1px solid var(--border-color); font-size: 14px; }
-        .footer-logo { font-size: 22px; font-weight: 800; color: var(--text-color); margin-bottom: 10px; }
+        footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); }
+        .footer-logo { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 12px; }
         .footer-logo span { color: var(--accent-color); }
-        .admin-link { color: var(--text-muted); text-decoration: none; display: inline-block; margin-top: 15px; font-weight: 600; }
+        .admin-link { color: var(--text-muted); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
         .admin-link:hover { color: var(--accent-color); }
 
         /* Mobile Bottom Bar */
-        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; }
-        .mob-btn { padding: 16px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
+        .mob-btn { padding: 16px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .call-btn { background: var(--card-bg); color: var(--text-color); }
         .wa-btn { background: #25d366; color: #fff; }
 
-        @media (max-width: 950px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-side-card { display: none; }
-            .calculator-section { grid-template-columns: 1fr; }
-            .contact-container { grid-template-columns: 1fr; }
+        @media (max-width: 968px) {
+            .contact-container { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
             .nav-links, .header-phone { display: none; }
+            .hero { min-height: 75vh; padding: 30px 15px; }
             .mobile-bottom-bar { display: grid; }
-            .hero h1 { font-size: 34px; }
-            .hero-main-card { padding: 40px 25px; }
+            body { padding-bottom: 60px; }
+            .container { margin: 60px auto; }
+            .contact-form-box, .review-form-container { padding: 25px; }
         }
     </style>
 </head>
@@ -196,207 +207,162 @@
             <div>Moble<span>Art</span></div>
         </a>
         <nav class="nav-links">
-            <a href="#" data-tr="Ana Sayfa" data-tk="Baş sahypa">Ana Sayfa</a>
-            <a href="#urunler" data-tr="Koleksiyon" data-tk="Koleksiýa">Koleksiyon</a>
-            <a href="#kalkulator" data-tr="Fiyat Hesapla" data-tk="Baha Hasapla">Fiyat Hesapla</a>
-            <a href="#ustunlukler" data-tr="Neden Biz?" data-tk="Näme üçin biz?">Neden Biz?</a>
-            <a href="#yorumlar" data-tr="Yorumlar" data-tk="Teswirler">Yorumlar</a>
-            <a href="#teklif" data-tr="İletişim" data-tk="Habarlaşmak">İletişim</a>
+            <a href="#">Ana Sayfa</a>
+            <a href="#urunler">Koleksiyon</a>
+            <a href="#ustunlukler">Neden Biz?</a>
+            <a href="#yorumlar">Yorumlar</a>
+            <a href="#teklif">Teklif Al</a>
         </nav>
         <div class="header-controls">
-            <button class="control-btn cart-badge-btn" id="cartToggleBtn" title="Sepet"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
-            <button class="control-btn lang-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TK / TR</span></button>
-            <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+            <button class="control-btn" id="themeToggleBtn" title="Tema Değiştir"><i class="fas fa-moon" id="themeIcon"></i></button>
         </div>
-        <div style="margin-left: 5px;">
+        <div class="header-cta" style="margin-left: 10px;">
             <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-grid">
-            <div class="hero-main-card">
-                <div class="hero-content">
-                    <span class="hero-badge"><i class="fas fa-sparkles"></i> <span data-tr="Lüks ve Kişiselleştirilmiş Mimarlık" data-tk="Lüks we Şahsylaşdyrylan Dizaýn">Lüks ve Kişiselleştirilmiş Mimarlık</span></span>
-                    <h1 data-tr="Evinize Değer Katan Özel Tasarım Mebeller" data-tk="Öýüňüze Baha Goşýan Ýörite Mebeller">Evinize Değer Katan Özel Tasarım Mebeller</h1>
-                    <p data-tr="Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde projeleri birinci sınıf işçilikle hayata geçiriyoruz." data-tk="Aşhanada, ýatjak oturda we myhman oturda isleýän ölçegleriňizde ýörite taslamalary ýokary hilli ussatlyk bilen öndürýäris.">Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde projeleri birinci sınıf işçilikle hayata geçiriyoruz.</p>
-                    <div class="hero-buttons">
-                        <a href="#kalkulator" class="btn"><i class="fas fa-calculator"></i> <span data-tr="Baha Hasapla" data-tk="Baha Hasapla">Baha Hasapla</span></a>
-                        <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Sohbet</a>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-side-card">
-                <div class="hero-side-overlay">
-                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;" data-tr="İstanbul İçi Ücretsiz Keşif" data-tk="Stambul içinde mugt gözegçilik">İstanbul İçi Ücretsiz Keşif</h3>
-                    <p style="font-size: 13px; color: #ddd;" data-tr="Evinde ölçü alıyor, 3D çizimle mekanınıza en uygun projeyi sunuyoruz." data-tk="Öýüňüze gelip ölçeg alyp, iň oňat dizaýny hödürleýäris.">Evinde ölçü alıyor, 3D çizimle mekanınıza en uygun projeyi sunuyoruz.</p>
-                </div>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-star"></i> Lüks ve Kişiselleştirilmiş Tasarım</span>
+            <h1>Evinize Değer Katan Ustalık</h1>
+            <p>Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
+            <div class="hero-buttons">
+                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> Ücretsiz Danışmanlık Al</a>
+                <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Sohbet</a>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
     <div class="container" id="urunler">
         <div class="section-header">
-            <span class="sub-title" data-tr="Koleksiyonumuz" data-tk="Koleksiýamyz">Koleksiyonumuz</span>
-            <h2 class="section-title" data-tr="Özel Üretim Mobilyalar" data-tk="Ýörite Önümçilik Mebeller">Özel Üretim Mobilyalar</h2>
+            <span class="sub-title">Ürünlerimiz</span>
+            <h2 class="section-title">Özel Üretim Koleksiyonlarımız</h2>
         </div>
         <div class="products-grid" id="dynamicProductsGrid">
             <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted);">
-                <i class="fas fa-spinner fa-spin" style="font-size: 26px; margin-bottom: 12px; color: var(--accent-color);"></i>
-                <p data-tr="Ürünler yükleniyor..." data-tk="Harytlar ýüklenýär...">Ürünler yükleniyor...</p>
+                <i class="fas fa-spinner fa-spin" style="font-size: 28px; margin-bottom: 12px; color: var(--accent-color);"></i>
+                <p>Ürünler yükleniyor...</p>
             </div>
         </div>
     </div>
 
-    <!-- Calculator Section -->
-    <div class="container" id="kalkulator" style="padding-top: 0;">
-        <div class="section-header">
-            <span class="sub-title" data-tr="Baha Hasaplaýjy" data-tk="Baha Hasaplaýjy">Baha Hasaplaýjy</span>
-            <h2 class="section-title" data-tr="Mebel Bahasını Takribi Hesaplayın" data-tk="Mebelin bahasyny takmynan tapyň">Mebel Bahasını Takribi Hesaplayın</h2>
-        </div>
-        <div class="calculator-section">
-            <div class="calc-form">
-                <div class="form-group">
-                    <label data-tr="Mebel Görnüşi" data-tk="Mebelin görnüşi">Mebel Görnüşi</label>
-                    <select id="calcType">
-                        <option value="5000" data-tr="Lüks Mutfak Dolabı (Metretül)" data-tk="Lüks aşhana dolaby">Lüks Mutfak Dolabı</option>
-                        <option value="3500" data-tr="Yatak Odası Dolabı" data-tk="Ýatylýan otur dolaby">Yatak Odası Dolabı</option>
-                        <option value="4000" data-tr="TV Ünitesi & Salon Mobilyası" data-tk="TV bölümi we myhman otur">TV Ünitesi & Salon Mobilyası</option>
-                        <option value="6000" data-tr="Giyinme Odası" data-tk="Geýinmek üçin otag">Giyinme Odası</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label data-tr="Ölçeg (Uzunluk / Metre)" data-tk="Ölçeg (Uzunlyk / Metr)">Ölçeg (Uzunluk / Metre)</label>
-                    <input type="number" id="calcSize" value="3" min="1" max="50">
-                </div>
-                <div class="form-group">
-                    <label data-tr="Material Derejesi" data-tk="Material hili">Material Derejesi</label>
-                    <select id="calcQuality">
-                        <option value="1" data-tr="1. Sınıf MDF / Lake" data-tk="1-nji derejeli MDF">1. Sınıf MDF / Lake</option>
-                        <option value="1.3" data-tr="Lüks Masif Ahşap & Aksesuar" data-tk="Lüks agaç / ýörite aksesuarlar">Lüks Masif Ahşap & Aksesuar</option>
-                    </select>
-                </div>
-            </div>
-            <div class="calc-result-box">
-                <span style="font-size: 13px; color: var(--text-muted);" data-tr="Takmynan Baha Aralygy:" data-tk="Takmynan baha aralygy:">Takminî Fiyat Aralığı:</span>
-                <div class="calc-price" id="calcResultText">15.000 TL - 18.000 TL</div>
-                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 25px;" data-tr="*Bu baha takmynandyr. Takyk ölçeg we mugt gözegçilik üçin habarlaşyň." data-tk="*Bu baha takmynandyr. Takyk ölçeg üçin jaň ediň.">*Bu fiyatlar tahmini olup, net ölçü ve keşif sonrası netleşir.</p>
-                <a href="#" id="calcOrderBtn" class="btn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> <span data-tr="Bu Ölçeg Bilen Sargyt Et" data-tk="Bu ölçeg bilen sargyt et">Bu Ölçümle Sipariş Ver</span></a>
-            </div>
-        </div>
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Features -->
-    <section class="container" id="ustunlukler" style="padding-top: 0;">
-        <div class="section-header">
-            <span class="sub-title" data-tr="Neden Biz?" data-tk="Näme üçin biz?">Neden Biz?</span>
-            <h2 class="section-title" data-tr="Bizi Saýlamak Üçin Sebepler" data-tk="Bizi saýlamak üçin sebäpler">Bizi Seçmek İçin Sebepler</h2>
-        </div>
-        <div class="features-grid">
-            <div class="feature-box">
-                <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
-                <h4 data-tr="Ücretsiz Keşif & Ölçü" data-tk="Mugt gözegçilik we ölçeg">Ücretsiz Keşif & Ölçü</h4>
-                <p data-tr="Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz." data-tk="Öýüňüze gelip takyk ölçeg alyp, ýeriňize laýyk dizaýny taýýarlaýarys.">Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi hazırlıyoruz.</p>
+    <section class="features" id="ustunlukler">
+        <div class="container" style="margin: 0 auto; padding: 0 24px;">
+            <div class="section-header">
+                <span class="sub-title">Güven & Kalite</span>
+                <h2 class="section-title">Neden Bizimle Çalışmalısınız?</h2>
             </div>
-            <div class="feature-box">
-                <div class="feature-icon"><i class="fas fa-gem"></i></div>
-                <h4 data-tr="1. Sınıf Malzeme" data-tk="1-nji derejeli material">1. Sınıf Malzeme</h4>
-                <p data-tr="Uzun ömürli, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz." data-tk="Uzyn ömürli, berk we saglyga zyýansyz çig mal ulanýarys.">Uzun ömürli, dayanıklı ve sağlığa zararsız yüksek kaliteli hammadde kullanıyoruz.</p>
-            </div>
-            <div class="feature-box">
-                <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                <h4 data-tr="Zamanında Teslimat" data-tk="Wagtynda gowşuryş">Zamanında Teslimat</h4>
-                <p data-tr="Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz." data-tk="Kesgitlenen wagtda kemçiliksiz gurnama kepilligini berýäris.">Belirlenen sürede kusursuz üretim ve montaj garantisi sunuyoruz.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="container" id="yorumlar" style="padding-top: 0;">
-        <div class="section-header">
-            <span class="sub-title" data-tr="Müşteri Deneyimi" data-tk="Müşderi tejribesi">Müşteri Deneyimi</span>
-            <h2 class="section-title" data-tr="Müşteri Yorumları" data-tk="Müşderi teswirleri">Müşteri Yorumları</h2>
-        </div>
-        <div class="reviews-grid" id="dynamicReviewsGrid">
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
-                <p data-tr="Yorumlar yükleniyor..." data-tk="Teswirler ýüklenýär...">Yorumlar yükleniyor...</p>
-            </div>
-        </div>
-        <div class="review-form-container">
-            <h3 style="font-size: 19px; margin-bottom: 14px; font-weight: 700;" data-tr="Değerlendirme Yapın" data-tk="Teswir ýazyň">Değerlendirme Yapın</h3>
-            <form id="reviewForm">
-                <div class="star-rating" id="starRating">
-                    <i class="fas fa-star active" data-value="1"></i>
-                    <i class="fas fa-star active" data-value="2"></i>
-                    <i class="fas fa-star active" data-value="3"></i>
-                    <i class="fas fa-star active" data-value="4"></i>
-                    <i class="fas fa-star active" data-value="5"></i>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h4>Ücretsiz Keşif & Ölçü</h4>
+                    <p>Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi profesyonelce hazırlıyoruz.</p>
                 </div>
-                <input type="hidden" id="ratingValue" value="5">
-                <input type="text" id="reviewName" placeholder="Adınız Soyadınız" required style="width:100%; padding:15px 18px; background:var(--input-bg); border:1px solid var(--border-color); color:var(--text-color); border-radius:12px; margin-bottom:14px; outline:none;">
-                <textarea id="reviewText" rows="3" placeholder="Yorumunuz..." required style="width:100%; padding:15px 18px; background:var(--input-bg); border:1px solid var(--border-color); color:var(--text-color); border-radius:12px; margin-bottom:18px; outline:none;"></textarea>
-                <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="Yorumu Gönder" data-tk="Teswiri ugrat">Yorumu Gönder</button>
-            </form>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h4>1. Sınıf Kaliteli Malzeme</h4>
+                    <p>Uzun ömürlü, dayanıklı ve sağlığa zararsız birinci sınıf lüks hammadde kullanıyoruz.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Zamanında Teslimat</h4>
+                    <p>Söz verdiğimiz sürede kusursuz üretim, titiz montaj ve anahtar teslim garantisi sunuyoruz.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact -->
+    <section class="reviews-section" id="yorumlar">
+        <div class="container" style="margin: 0 auto; padding: 0 24px;">
+            <div class="section-header">
+                <span class="sub-title">Müşteri Deneyimi</span>
+                <h2 class="section-title">Müşteri Yorumları & Puanlar</h2>
+            </div>
+            
+            <div class="reviews-grid" id="dynamicReviewsGrid">
+                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px;">
+                    <p>Yorumlar yükleniyor...</p>
+                </div>
+            </div>
+
+            <div class="review-form-container">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-color); font-weight: 700;">Değerlendirme Yapın</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label>Puanınız</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="fas fa-star active" data-value="1"></i>
+                            <i class="fas fa-star active" data-value="2"></i>
+                            <i class="fas fa-star active" data-value="3"></i>
+                            <i class="fas fa-star active" data-value="4"></i>
+                            <i class="fas fa-star active" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label>Adınız ve Soyadınız</label>
+                        <input type="text" id="reviewName" placeholder="Adınızı girin" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Yorumunuz</label>
+                        <textarea id="reviewText" rows="4" placeholder="Hizmet hakkındaki düşüncelerinizi yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">Yorumu Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
-                <h2 data-tr="Hayalinizdeki Evi Birlikte Tasarlayalım" data-tk="Arzuw edýän öýüňizi dizaýn edeliň">Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
-                <p data-tr="Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim." data-tr="Formany dolduryň, size derrew jogap berip, baha we taslama barada maglumat bereliň.">Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <span class="sub-title" style="text-align: left; margin-bottom: 10px;">İletişim</span>
+                <h2>Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
+                <p>Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
                 <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
                 <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
             </div>
             <div class="contact-form-box">
                 <form id="quoteForm">
-                    <input type="text" id="name" placeholder="Adınız Soyadınız" required>
-                    <input type="tel" id="phone" placeholder="Telefon Numaranız" required>
-                    <select id="service">
-                        <option data-tr="Lüks Mutfak Dolabı" data-tk="Lüks aşhana dolaby">Lüks Mutfak Dolabı</option>
-                        <option data-tr="Yatak Odası" data-tk="Ýatylýan otur">Yatak Odası</option>
-                        <option data-tr="TV Ünitesi & Salon" data-tk="TV bölümi">TV Ünitesi & Salon</option>
-                        <option data-tr="Kişiye Özel Tasarım" data-tk="Ýörite dizaýn">Kişiye Özel Tasarım</option>
-                    </select>
-                    <button type="submit" class="btn" style="width: 100%; justify-content: center;" data-tr="WhatsApp ile Teklif Al" data-tk="WhatsApp arkaly baha al">WhatsApp ile Teklif Al</button>
+                    <div class="form-group">
+                        <label>Adınız ve Soyadınız</label>
+                        <input type="text" id="name" placeholder="Adınızı yazın" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon Numaranız</label>
+                        <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>İstediğiniz Mobilya Türü</label>
+                        <select id="service">
+                            <option>Lüks Mutfak Dolabı</option>
+                            <option>Yatak Odası</option>
+                            <option>TV Ünitesi & Salon</option>
+                            <option>Kişiye Özel Tasarım</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">Fiyat Teklifi Al (WhatsApp)</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Cart Drawer -->
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <span data-tr="Sepetiniz" data-tk="Saýlanan harytlar">Sepetiniz</span>
-            <i class="fas fa-times cart-close" id="closeCartBtn"></i>
-        </div>
-        <div class="cart-items" id="cartItemsContainer">
-            <p style="text-align:center; color:var(--text-muted); font-size:14px; margin-top:20px;" data-tr="Sepetiniz boş." data-tk="Sebediňiz boş.">Sepetiniz boş.</p>
-        </div>
-        <button id="checkoutCartBtn" class="btn" style="width:100%; justify-content:center; display:none;"><i class="fab fa-whatsapp"></i> <span data-tr="Sepeti WhatsApp ile Sipariş Ver" data-tk="Sebeti ugrat">Sepeti WhatsApp ile Sipariş Ver</span></button>
-    </div>
-
-    <!-- Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImg">
-    </div>
-
-    <!-- Mobile Bottom Bar -->
     <div class="mobile-bottom-bar">
-        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> <span data-tr="Ara" data-tk="Jaň et">Ara</span></a>
+        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> Ara</a>
         <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <footer>
         <div class="footer-logo">Moble<span>Art</span></div>
-        <p>&copy; 2026 MobleArt. <span data-tr="Tüm hakları saklıdır. | İstanbul" data-tk="Ähli hukuklar goralýar. | İstanbul">Tüm hakları saklıdır. | İstanbul</span></p>
-        <div>
-            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> <span data-tr="Yönetim Paneli (Admin)" data-tk="Admin paneli">Yönetim Paneli (Admin)</span></a>
+        <p>&copy; 2026 MobleArt. Tüm hakları saklıdır. | İstanbul</p>
+        <div class="footer-admin" style="margin-top: 15px;">
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Yönetim Paneli (Admin)</a>
         </div>
     </footer>
 
@@ -404,15 +370,10 @@
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const htmlElement = document.documentElement;
-        const langToggleBtn = document.getElementById('langToggleBtn');
-        const langText = document.getElementById('langText');
 
-        let currentLang = localStorage.getItem('mobleart_lang') || 'tr';
         const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
-        
         htmlElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
-        applyLanguage(currentLang);
 
         toggleBtn.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
@@ -422,24 +383,8 @@
             updateThemeIcon(newTheme);
         });
 
-        langToggleBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'tr' ? 'tk' : 'tr';
-            localStorage.setItem('mobleart_lang', currentLang);
-            applyLanguage(currentLang);
-            location.reload();
-        });
-
         function updateThemeIcon(theme) {
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        function applyLanguage(lang) {
-            langText.innerText = lang.toUpperCase() === 'TR' ? 'TK / TR' : 'TR / TK';
-            htmlElement.setAttribute('lang', lang);
-            document.querySelectorAll('[data-tr][data-tk]').forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) el.innerText = text;
-            });
         }
 
         const modal = document.getElementById('imageModal');
@@ -450,33 +395,9 @@
             modal.style.display = "flex";
             modalImg.src = imgSrc;
         }
-        closeModal.onclick = () => modal.style.display = "none";
-        modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
 
-        const calcType = document.getElementById('calcType');
-        const calcSize = document.getElementById('calcSize');
-        const calcQuality = document.getElementById('calcQuality');
-        const calcResultText = document.getElementById('calcResultText');
-        const calcOrderBtn = document.getElementById('calcOrderBtn');
-
-        function updateCalculator() {
-            const basePrice = parseInt(calcType.value);
-            const size = parseFloat(calcSize.value) || 1;
-            const qualityMul = parseFloat(calcQuality.value);
-            
-            const minTotal = Math.round(basePrice * size * qualityMul);
-            const maxTotal = Math.round(minTotal * 1.25);
-            
-            calcResultText.innerText = `${minTotal.toLocaleString()} TL - ${maxTotal.toLocaleString()} TL`;
-            
-            const msg = `Salam, kalkulýator arkaly baha hasapladym. Görnüşi: ${calcType.options[calcType.selectedIndex].text}, Ölçeg: ${size}, Baha aralygy: ${minTotal} TL - ${maxTotal} TL. Maglumat almak isleýärin.`;
-            calcOrderBtn.href = `https://wa.me/905077079354?text=${encodeURIComponent(msg)}`;
-        }
-
-        calcType.addEventListener('change', updateCalculator);
-        calcSize.addEventListener('input', updateCalculator);
-        calcQuality.addEventListener('change', updateCalculator);
-        updateCalculator();
+        closeModal.onclick = function() { modal.style.display = "none"; }
+        modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
 
         const stars = document.querySelectorAll('#starRating i');
         const ratingValueInput = document.getElementById('ratingValue');
@@ -490,65 +411,8 @@
                 });
             });
         });
-
-        let cart = [];
-        const cartDrawer = document.getElementById('cartDrawer');
-        const cartToggleBtn = document.getElementById('cartToggleBtn');
-        const closeCartBtn = document.getElementById('closeCartBtn');
-        const cartItemsContainer = document.getElementById('cartItemsContainer');
-        const cartCount = document.getElementById('cartCount');
-        const checkoutCartBtn = document.getElementById('checkoutCartBtn');
-
-        cartToggleBtn.addEventListener('click', () => cartDrawer.classList.add('open'));
-        closeCartBtn.addEventListener('click', () => cartDrawer.classList.remove('open'));
-
-        window.addToCart = function(title) {
-            cart.push(title);
-            cartCount.innerText = cart.length;
-            renderCart();
-            cartDrawer.classList.add('open');
-        }
-
-        function renderCart() {
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); font-size:14px; margin-top:20px;">Sepetiniz boş.</p>`;
-                checkoutCartBtn.style.display = 'none';
-                return;
-            }
-            cartItemsContainer.innerHTML = '';
-            cart.forEach((item, index) => {
-                cartItemsContainer.innerHTML += `
-                    <div class="cart-item">
-                        <span>${index + 1}. ${item}</span>
-                        <i class="fas fa-trash" style="color: #ef4444; cursor: pointer;" onclick="removeFromCart(${index})"></i>
-                    </div>
-                `;
-            });
-            checkoutCartBtn.style.display = 'flex';
-        }
-
-        window.removeFromCart = function(index) {
-            cart.splice(index, 1);
-            cartCount.innerText = cart.length;
-            renderCart();
-        }
-
-        checkoutCartBtn.addEventListener('click', () => {
-            const msg = `Salam, şu harytlary sargyt etmek isleýärin:\n` + cart.map((i, idx) => `${idx+1}. ${i}`).join('\n');
-            window.open(`https://wa.me/905077079354?text=${encodeURIComponent(msg)}`, '_blank');
-        });
-
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const msg = `Salam, adym ${name}. Tel: ${phone}. Hyzmat: ${service} boýunça habarlaşýaryn.`;
-            window.open(`https://wa.me/905077079354?text=${encodeURIComponent(msg)}`, '_blank');
-        });
     </script>
 
-    <!-- Firebase Dinamik Maglumatlar -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -568,16 +432,15 @@
 
         async function loadProducts() {
             const grid = document.getElementById('dynamicProductsGrid');
-            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "products"));
                 if (querySnapshot.empty) {
                     grid.innerHTML = `
-                        <div style="grid-column: 1/-1; text-align: center; padding: 50px; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: var(--radius);">
-                            <i class="fas fa-box-open" style="font-size: 36px; color: var(--accent-color); margin-bottom: 14px;"></i>
-                            <h3 style="font-size: 17px; margin-bottom: 8px;">${currentLang === 'tk' ? 'Häzirlikçe haryt ýok' : 'Henüz Ürün Eklenmemiş'}</h3>
-                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 18px;">${currentLang === 'tk' ? 'Admin paneline girip haryt goşuň.' : 'Admin panelinden ürün ekleyin.'}</p>
-                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 13px;"><i class="fas fa-plus"></i> ${currentLang === 'tk' ? 'Haryt goş' : 'Ürün Ekle'}</a>
+                        <div style="grid-column: 1/-1; text-align: center; padding: 50px; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 16px;">
+                            <i class="fas fa-box-open" style="font-size: 38px; color: var(--accent-color); margin-bottom: 15px;"></i>
+                            <h3 style="color: var(--text-color); margin-bottom: 8px; font-size: 18px;">Henüz Ürün Eklenmemiş</h3>
+                            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Admin paneline girerek ilk tasarımlarınızı yükleyin.</p>
+                            <a href="admin.html" class="btn" style="padding: 10px 20px; font-size: 14px;"><i class="fas fa-plus"></i> Ürün Ekle</a>
                         </div>
                     `;
                     return;
@@ -586,7 +449,6 @@
                 grid.innerHTML = "";
                 querySnapshot.forEach((doc) => {
                     const prod = doc.data();
-                    const safeTitle = prod.title.replace(/'/g, "\\'");
                     grid.innerHTML += `
                         <div class="product-card">
                             <div class="product-img-container" onclick="openModal('${prod.image}')">
@@ -597,12 +459,9 @@
                                     <h3>${prod.title}</h3>
                                     <p class="product-desc">${prod.description}</p>
                                 </div>
-                                <div class="product-actions">
-                                    <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
-                                        <i class="fab fa-whatsapp"></i> ${currentLang === 'tk' ? 'Sargyt et' : 'Bilgi Al'}
-                                    </a>
-                                    <button class="add-cart-btn" onclick="addToCart('${safeTitle}')" title="Sebete goş"><i class="fas fa-plus"></i></button>
-                                </div>
+                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Bilgi Al
+                                </a>
                             </div>
                         </div>
                     `;
@@ -614,11 +473,10 @@
 
         async function loadReviews() {
             const grid = document.getElementById('dynamicReviewsGrid');
-            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
             try {
                 const querySnapshot = await getDocs(collection(db, "reviews"));
                 if (querySnapshot.empty) {
-                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>${currentLang === 'tk' ? 'Häzirlikçe teswir ýok.' : 'Henüz yorum yapılmamış.'}</p></div>`;
+                    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;"><p>Henüz yorum yapılmamış.</p></div>`;
                     return;
                 }
 
@@ -640,7 +498,7 @@
                     `;
                 });
             } catch (error) {
-                console.error("Yorum hata:", error);
+                console.error("Yorum yükleme hatası:", error);
             }
         }
 
@@ -652,7 +510,6 @@
             const name = document.getElementById('reviewName').value;
             const text = document.getElementById('reviewText').value;
             const rating = parseInt(document.getElementById('ratingValue').value);
-            const currentLang = localStorage.getItem('mobleart_lang') || 'tr';
 
             try {
                 await addDoc(collection(db, "reviews"), {
@@ -661,12 +518,23 @@
                     rating: rating,
                     date: new Date().toISOString()
                 });
-                alert(currentLang === 'tk' ? 'Teswiriňiz goşuldy!' : 'Yorumunuz başarıyla eklendi!');
+                alert('Yorumunuz başarıyla eklendi, teşekkür ederiz!');
                 document.getElementById('reviewForm').reset();
                 loadReviews();
             } catch (error) {
-                alert("Ýalňyşlyk ýüze çykdy.");
+                alert("Hata oluştu.");
             }
+        });
+
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediğim Mobilya:* ${encodeURIComponent(service)}`;
+            
+            window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
         });
     </script>
 </body>
