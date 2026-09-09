@@ -1,0 +1,32 @@
+:root {
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --card-hover: #1c1c1c;
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #222222;
+            --header-bg: rgba(11, 11, 11, 0.85);
+            --accent-color: #c5a059;
+            --accent-hover: #d4af37;
+            --accent-glow: rgba(197, 160, 89, 0.15);
+            --feature-bg: #111111;
+            --footer-bg: #050505;
+            --input-bg: #181818;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --card-hover: #f3f4f6;
+            --text-color: #111827;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --header-bg: rgba(249, 250, 251, 0.85);
+            --accent-color: #b89728;
+            --accent-hover: #997c1d;
+            --accent-glow: rgba(184, 151, 40, 0.1);
+            --feature-bg: #ffffff;
+            --footer-bg: #f3f4f6;
+            --input-bg: #f9fafb;
+        }
