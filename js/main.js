@@ -59,7 +59,6 @@ window.toggleComments = function(productId) {
     section.classList.toggle('active');
 }
 
-// DÜZEDILEN ÝERI: window. arkaly global edildi
 window.sendWhatsAppQuote = function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value;
