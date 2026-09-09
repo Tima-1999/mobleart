@@ -286,7 +286,7 @@
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
             </div>
             <div class="contact-form-box">
-                <form id="quoteForm">
+                <form id="quoteForm" onsubmit="sendWhatsAppQuote(event)">
                     <div class="form-group">
                         <label>Adınız ve Soyadınız</label>
                         <input type="text" id="name" placeholder="Adınızı yazın" required>
@@ -422,8 +422,8 @@
             section.classList.toggle('active');
         }
 
-        // WhatsApp Teklif Formu Düzeldildi (Harplaryň galyň bolmagy we işlemezligi aýryldy)
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        // Global function to ensure WhatsApp trigger works seamlessly
+        window.sendWhatsAppQuote = function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
@@ -432,7 +432,7 @@
             const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİstediğim Mobilya: ${encodeURIComponent(service)}`;
             
             window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
-        });
+        };
     </script>
 
     <!-- FIREBASE İŞLEMLERİ -->
