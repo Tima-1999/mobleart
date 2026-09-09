@@ -78,24 +78,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const section = document.getElementById(`comments-section-${productId}`);
         if (section) section.classList.toggle('active');
     };
-
-    // 5. WhatsApp Teklif Formu İşlemi (Düzeldilen we işleýän görnüşi)
-    const quoteForm = document.getElementById('quoteForm');
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nameEl = document.getElementById('name');
-            const phoneEl = document.getElementById('phone');
-            const serviceEl = document.getElementById('service');
-
-            const name = nameEl ? nameEl.value : '';
-            const phone = phoneEl ? phoneEl.value : '';
-            const service = serviceEl ? serviceEl.value : '';
-            
-            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediğim Mobilya:* ${encodeURIComponent(service)}`;
-            
-            window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
-        });
-    }
 });
+
+// 5. WhatsApp Teklif Formu İşlemi (Global Funksiýa - 100% Işlär)
+window.sendWhatsAppQuote = function(e) {
+    e.preventDefault();
+    
+    const nameEl = document.getElementById('name');
+    const phoneEl = document.getElementById('phone');
+    const serviceEl = document.getElementById('service');
+
+    const name = nameEl ? nameEl.value : '';
+    const phone = phoneEl ? phoneEl.value : '';
+    const service = serviceEl ? serviceEl.value : '';
+    
+    const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediğim Mobilya:* ${encodeURIComponent(service)}`;
+    
+    window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
+};
