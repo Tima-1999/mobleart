@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobleArt | Özel Tasarım Mobilya ve Lüks İç Mimarlık İstanbul</title>
+
+    <link rel="icon" type="image/png" href="./logo.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://mobleart.vercel.app",
+      "logo": "https://mobleart.vercel.app/logo.png"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <img src="./logo.png" alt="MobleArt Logo">
+            <div>Moble<span>Art</span></div>
+        </a>
+        <nav class="nav-links">
+            <a href="#">Ana Sayfa</a>
+            <a href="#urunler">Koleksiyon</a>
+            <a href="#ustunlukler">Neden Biz?</a>
+            <a href="#teklif">Teklif Al</a>
+        </nav>
+        <div class="header-controls">
+            <button class="control-btn" id="themeToggleBtn" title="Tema Değiştir"><i class="fas fa-moon" id="themeIcon"></i></button>
+        </div>
+        <div class="header-cta" style="margin-left: 10px;">
+            <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-star"></i> Lüks ve Kişiselleştirilmiş Tasarım</span>
+            <h1>Evinize Değer Katan Ustalık</h1>
+            <p>Mutfakta, yatak odasında ve oturma odasında dilediğiniz ölçülerde özel projeleri yüksek kaliteli işçilikle üretiyoruz.</p>
+            <div class="hero-buttons">
+                <a href="#teklif" class="btn"><i class="fas fa-comments"></i> Ücretsiz Danışmanlık Al</a>
+                <a href="https://wa.me/905077079354?text=Merhaba,%20özel%20tasarım%20mobilya%20için%20bilgi%20almak%20istiyorum." class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Sohbet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖZEL ÜRETİM KOLEKSİYONLARIMIZ -->
+    <div class="container" id="urunler">
+        <div class="section-header">
+            <span class="sub-title">Koleksiyon</span>
+            <h2 class="section-title">Özel Üretim Tasarımlarımız</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 8px;">Beğendiğiniz ürünleri inceleyebilir, puan verebilir ve yorum yazabilirsiniz.</p>
+        </div>
+        <div class="products-grid" id="dynamicProductsGrid">
+            <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted);">
+                <i class="fas fa-spinner fa-spin" style="font-size: 28px; margin-bottom: 12px; color: var(--accent-color);"></i>
+                <p>Ürünler yükleniyor...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEDEN BİZ? -->
+    <section class="features" id="ustunlukler">
+        <div class="container" style="margin: 0 auto; padding: 0 24px;">
+            <div class="section-header">
+                <span class="sub-title">Güven & Kalite</span>
+                <h2 class="section-title">Neden Bizimle Çalışmalısınız?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h4>Ücretsiz Keşif & Ölçü</h4>
+                    <p>Evinize gelip net ölçü alıyor ve mekanınıza en uygun projeyi profesyonelce hazırlıyoruz.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h4>1. Sınıf Kaliteli Malzeme</h4>
+                    <p>Uzun ömürlü, dayanıklı ve sağlığa zararsız birinci sınıf lüks hammadde kullanıyoruz.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Zamanında Teslimat</h4>
+                    <p>Söz verdiğimiz sürede kusursuz üretim, titiz montaj ve anahtar teslim garantisi sunuyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM / TEKLİF AL -->
+    <section class="contact-section" id="teklif">
+        <div class="contact-container">
+            <div class="contact-text">
+                <span class="sub-title" style="text-align: left; margin-bottom: 10px;">İletişim</span>
+                <h2>Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
+                <p>Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
+                <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
+            </div>
+            <div class="contact-form-box">
+                <form id="quoteForm" onsubmit="sendWhatsAppQuote(event)">
+                    <div class="form-group">
+                        <label>Adınız ve Soyadınız</label>
+                        <input type="text" id="name" placeholder="Adınızı yazın" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon Numaranız</label>
+                        <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>İstediğiniz Mobilya Türü</label>
+                        <select id="service">
+                            <option>Lüks Mutfak Dolabı</option>
+                            <option>Yatak Odası</option>
+                            <option>TV Ünitesi & Salon</option>
+                            <option>Kişiye Özel Tasarım</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">Fiyat Teklifi Al (WhatsApp)</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALLAR -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" id="closeImageModal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <div id="reviewModal" class="modal">
+        <div class="modal-box">
+            <span class="close-modal" id="closeReviewModal" style="top: 15px; right: 20px; font-size: 30px;">&times;</span>
+            <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--text-color); font-weight: 700;"><i class="fas fa-pen" style="color: var(--accent-color);"></i> Bu Ürüne Yorum Yap</h3>
+            <form id="productReviewForm">
+                <input type="hidden" id="modalProductId">
+                <div class="form-group">
+                    <label>Puanınız</label>
+                    <div class="star-rating" id="modalStarRating">
+                        <i class="fas fa-star active" data-value="1"></i>
+                        <i class="fas fa-star active" data-value="2"></i>
+                        <i class="fas fa-star active" data-value="3"></i>
+                        <i class="fas fa-star active" data-value="4"></i>
+                        <i class="fas fa-star active" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="modalRatingValue" value="5">
+                </div>
+                <div class="form-group">
+                    <label>Adınız ve Soyadınız</label>
+                    <input type="text" id="reviewAuthor" placeholder="Adınızı girin" required>
+                </div>
+                <div class="form-group">
+                    <label>Yorumunuz</label>
+                    <textarea id="reviewContent" rows="3" placeholder="Tasarım veya kalite hakkındaki düşünceleriniz..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; justify-content: center;">Yorumu Gönder</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mobile-bottom-bar">
+        <a href="tel:+905077079354" class="mob-btn call-btn"><i class="fas fa-phone-alt"></i> Ara</a>
+        <a href="https://wa.me/905077079354?text=Merhaba,%20web%20sitenizden%20yazıyorum." class="mob-btn wa-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Moble<span>Art</span></div>
+        <p>&copy; 2026 MobleArt. Tüm hakları saklıdır. | İstanbul</p>
+        <div class="footer-admin" style="margin-top: 15px;">
+            <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Yönetim Paneli (Admin)</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIKALARY -->
+    <script src="js/main.js"></script>
+
+    <!-- FIREBASE İŞLEMLERİ -->
+    <script type="module" src="js/firebase.js"></script>
+</body>
+</html>
