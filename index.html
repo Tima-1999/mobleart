@@ -7,15 +7,6 @@
     
     <link rel="icon" type="image/png" href="./logo.png">
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "https://mobleart.vercel.app",
-      "logo": "https://mobleart.vercel.app/logo.png"
-    }
-    </script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -63,7 +54,6 @@
             padding: 18px 6%; 
             background: var(--header-bg); 
             backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color); 
             position: sticky; 
             top: 0; 
@@ -97,22 +87,25 @@
             padding: 40px 20px; 
         }
         .hero-content { max-width: 850px; z-index: 2; }
-        .hero-badge { background: rgba(197, 160, 89, 0.15); border: 1px solid var(--accent-color); padding: 8px 20px; border-radius: 30px; font-size: 13px; color: #f3e5ab; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; font-weight: 500; backdrop-filter: blur(5px); }
-        .hero h1 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 20px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: #fff; }
+        .hero-badge { background: rgba(197, 160, 89, 0.15); border: 1px solid var(--accent-color); padding: 8px 20px; border-radius: 30px; font-size: 13px; color: #f3e5ab; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; font-weight: 500; }
+        .hero h1 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 20px; font-weight: 800; line-height: 1.15; color: #fff; }
         .hero p { font-size: clamp(15px, 2vw, 18px); margin-bottom: 35px; color: #d1d5db; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto; }
         .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         
         .btn { background: var(--accent-color); color: #111; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; font-size: 15px; transition: var(--transition); box-shadow: 0 4px 20px var(--accent-glow); }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(197, 160, 89, 0.3); }
-        .btn-outline { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; backdrop-filter: blur(5px); box-shadow: none; }
-        .btn-outline:hover { background: #fff; color: #111; border-color: #fff; }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; }
+        .btn-outline:hover { background: #fff; color: #111; }
 
         .container { max-width: 1240px; margin: 80px auto; padding: 0 24px; }
-        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
         .sub-title { color: var(--accent-color); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; }
-        .section-title { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-color); letter-spacing: -0.01em; }
+        .section-title { font-size: clamp(28px, 3.5vw, 40px); font-weight: 800; color: var(--text-color); }
         
-        /* Products Grid */
+        .category-filters { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+        .filter-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .filter-btn:hover, .filter-btn.active { background: var(--accent-color); color: #111; border-color: var(--accent-color); }
+
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .product-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); }
         .product-card:hover { border-color: var(--accent-color); box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: var(--card-hover); }
@@ -125,7 +118,7 @@
         .product-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; line-height: 1.6; }
         
         .product-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .product-btn { background: #25d366; color: #fff; flex: 1; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; box-shadow: none; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+        .product-btn { background: #25d366; color: #fff; flex: 1; justify-content: center; font-size: 14px; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
         .product-btn:hover { background: #1ebd5b; }
         
         .comment-toggle-btn { background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
@@ -138,15 +131,11 @@
         .comment-stars { color: #fbbf24; font-size: 11px; }
         .comment-text { color: var(--text-muted); line-height: 1.4; }
 
-        /* Modal Stilleri */
         .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.92); align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
-        .modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; transition: var(--transition); }
-        .close-modal:hover { color: var(--accent-color); }
-        
-        .modal-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 20px; max-width: 500px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
+        .modal-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 12px; }
+        .close-modal { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; }
+        .modal-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 20px; max-width: 500px; width: 100%; position: relative; }
 
-        /* Features Section */
         .features { background: var(--feature-bg); padding: 90px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .feature-box { text-align: left; padding: 40px 30px; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--border-color); transition: var(--transition); }
@@ -155,7 +144,6 @@
         .feature-box h4 { font-size: 20px; margin-bottom: 12px; color: var(--text-color); font-weight: 700; }
         .feature-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
-        /* Contact Section */
         .contact-section { background: var(--feature-bg); padding: 100px 20px; border-top: 1px solid var(--border-color); }
         .contact-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
         .contact-text h2 { font-size: clamp(28px, 3.5vw, 38px); margin-bottom: 20px; color: var(--text-color); font-weight: 800; line-height: 1.2; }
@@ -166,36 +154,30 @@
         .contact-form-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .form-group { margin-bottom: 18px; }
         .form-group label { display: block; font-size: 13px; margin-bottom: 6px; color: var(--text-color); font-weight: 600; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; transition: var(--transition); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 10px; font-size: 14px; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px var(--accent-glow); }
         
         .star-rating { display: flex; gap: 8px; font-size: 22px; color: var(--text-muted); cursor: pointer; }
         .star-rating .active { color: #fbbf24; }
 
-        /* Footer */
         footer { background: var(--footer-bg); color: var(--text-muted); text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-color); }
         .footer-logo { font-size: 24px; font-weight: 800; color: var(--text-color); margin-bottom: 12px; }
         .footer-logo span { color: var(--accent-color); }
-        .admin-link { color: var(--text-muted); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+        .admin-link { color: var(--text-muted); text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 6px; }
         .admin-link:hover { color: var(--accent-color); }
 
-        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); }
+        .mobile-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); border-top: 1px solid var(--border-color); z-index: 1001; grid-template-columns: 1fr 1fr; }
         .mob-btn { padding: 16px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .call-btn { background: var(--card-bg); color: var(--text-color); }
         .wa-btn { background: #25d366; color: #fff; }
 
-        @media (max-width: 968px) {
-            .contact-container { grid-template-columns: 1fr; gap: 40px; }
-        }
-
+        @media (max-width: 968px) { .contact-container { grid-template-columns: 1fr; gap: 40px; } }
         @media (max-width: 768px) {
             header { padding: 15px 20px; }
             .nav-links, .header-phone { display: none; }
             .hero { min-height: 75vh; padding: 30px 15px; }
             .mobile-bottom-bar { display: grid; }
             body { padding-bottom: 60px; }
-            .container { margin: 50px auto; }
-            .contact-form-box, .modal-box { padding: 20px; }
         }
     </style>
 </head>
@@ -232,13 +214,23 @@
         </div>
     </section>
 
-    <!-- ÖZEL ÜRETİM KOLEKSİYONLARIMIZ -->
+    <!-- KOLEKSIYON -->
     <div class="container" id="urunler">
         <div class="section-header">
             <span class="sub-title">Koleksiyon</span>
             <h2 class="section-title">Özel Üretim Tasarımlarımız</h2>
             <p style="color: var(--text-muted); font-size: 14px; margin-top: 8px;">Beğendiğiniz ürünleri inceleyebilir, puan verebilir ve yorum yazabilirsiniz.</p>
         </div>
+
+        <div class="category-filters" id="categoryFilters">
+            <button class="filter-btn active" data-category="Tümü">Tümü</button>
+            <button class="filter-btn" data-category="Mutfak">Mutfak</button>
+            <button class="filter-btn" data-category="Yatak Odası">Yatak Odası</button>
+            <button class="filter-btn" data-category="Oturma Odası">Oturma Odası</button>
+            <button class="filter-btn" data-category="Ofis">Ofis</button>
+            <button class="filter-btn" data-category="Genel">Genel</button>
+        </div>
+
         <div class="products-grid" id="dynamicProductsGrid">
             <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted);">
                 <i class="fas fa-spinner fa-spin" style="font-size: 28px; margin-bottom: 12px; color: var(--accent-color);"></i>
@@ -274,13 +266,13 @@
         </div>
     </section>
 
-    <!-- İLETİŞİM / TEKLİF AL -->
+    <!-- BİZE ULAŞIN / TEKLİF AL -->
     <section class="contact-section" id="teklif">
         <div class="contact-container">
             <div class="contact-text">
                 <span class="sub-title" style="text-align: left; margin-bottom: 10px;">İletişim</span>
                 <h2>Hayalinizdeki Evi Birlikte Tasarlayalım</h2>
-                <p>Formu doldurun, size hemen dönüş yaparak fiyat ve proje hakkında detaylı bilgi verelim.</p>
+                <p>Formu doldurun; mesajınız doğrudan admin panelindeki <b>İletişim Mesajları</b> bölümüne kaydedilecek ve WhatsApp üzerinden bize iletilecektir.</p>
                 <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>İstanbul / Türkiye</span></div>
                 <div class="contact-info-item"><i class="fas fa-phone-alt"></i><span>+90 507 707 93 54</span></div>
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
@@ -292,11 +284,11 @@
                         <input type="text" id="name" placeholder="Adınızı yazın" required>
                     </div>
                     <div class="form-group">
-                        <label>Telefon Numaranız</label>
-                        <input type="tel" id="phone" placeholder="05XX XXX XX XX" required>
+                        <label>Telefon / E-Posta</label>
+                        <input type="text" id="phone" placeholder="Telefon veya E-posta adresiniz" required>
                     </div>
                     <div class="form-group">
-                        <label>İstediğiniz Mobilya Türü</label>
+                        <label>İstediğiniz Mobilya Türü / Hizmet</label>
                         <select id="service">
                             <option>Lüks Mutfak Dolabı</option>
                             <option>Yatak Odası</option>
@@ -304,19 +296,22 @@
                             <option>Kişiye Özel Tasarım</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">Fiyat Teklifi Al (WhatsApp)</button>
+                    <div class="form-group">
+                        <label>Detaylı Açıklama / Mesaj</label>
+                        <textarea id="msgContent" rows="3" placeholder="Projeniz hakkında kısa bilgi..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fab fa-whatsapp"></i> Mesaj Gönder ve Teklif Al</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- SURATY ULYMDURUP GÖRMEK ÜÇIN MODAL -->
+    <!-- MODALLAR -->
     <div id="imageModal" class="modal">
         <span class="close-modal" id="closeImageModal">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- ÖNÜME YORUM ÝAZMAK ÜÇIN MODAL -->
     <div id="reviewModal" class="modal">
         <div class="modal-box">
             <span class="close-modal" id="closeReviewModal" style="top: 15px; right: 20px; font-size: 30px;">&times;</span>
@@ -360,7 +355,6 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIKALARY -->
     <script>
         const toggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
@@ -382,7 +376,6 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Surat Modal
         const imageModal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeImageModal = document.getElementById('closeImageModal');
@@ -395,7 +388,6 @@
         closeImageModal.onclick = function() { imageModal.style.display = "none"; }
         imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
 
-        // Modal Ýyldyz Saýlawy
         const modalStars = document.querySelectorAll('#modalStarRating i');
         const modalRatingValueInput = document.getElementById('modalRatingValue');
         modalStars.forEach(star => {
@@ -409,7 +401,6 @@
             });
         });
 
-        // Yorum Modal Aç / Ýap
         const reviewModal = document.getElementById('reviewModal');
         const closeReviewModal = document.getElementById('closeReviewModal');
 
@@ -421,14 +412,13 @@
         closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
         reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
 
-        // Kommentariýalary açyp-ýapmak üçin funksiýa
         window.toggleComments = function(productId) {
             const section = document.getElementById(`comments-section-${productId}`);
             section.classList.toggle('active');
         }
     </script>
 
-    <!-- FIREBASE IŞLEMLERİ -->
+    <!-- FIREBASE İŞLEMLERİ VE MESAJ KAYDETME -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -446,7 +436,9 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Önümleri we olara degişli yorumlary ýüklemek
+        let allProductsCache = [];
+        let allReviewsCache = [];
+
         async function loadProductsWithReviews() {
             const grid = document.getElementById('dynamicProductsGrid');
             try {
@@ -463,80 +455,109 @@
                     return;
                 }
 
+                allProductsCache = [];
+                querySnapshot.forEach(docSnap => {
+                    allProductsCache.push({ id: docSnap.id, ...docSnap.data() });
+                });
+
                 const reviewsSnapshot = await getDocs(collection(db, "product_reviews"));
-                let allReviews = [];
+                allReviewsCache = [];
                 reviewsSnapshot.forEach(doc => {
-                    allReviews.push({ id: doc.id, ...doc.data() });
+                    allReviewsCache.push({ id: doc.id, ...doc.data() });
                 });
 
-                grid.innerHTML = "";
-                querySnapshot.forEach((docSnap) => {
-                    const prod = docSnap.data();
-                    const prodId = docSnap.id;
-
-                    const prodReviews = allReviews.filter(r => r.productId === prodId);
-
-                    let commentsHtml = '';
-                    if (prodReviews.length === 0) {
-                        commentsHtml = `<p style="color: var(--text-muted); font-size: 12px; text-align: center; padding: 5px;">Henüz bu ürüne yorum yapılmamış.</p>`;
-                    } else {
-                        prodReviews.forEach(rev => {
-                            let stars = '';
-                            for(let i=0; i<5; i++) {
-                                stars += (i < rev.rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-                            }
-                            commentsHtml += `
-                                <div class="comment-item">
-                                    <div class="comment-item-header">
-                                        <span>${rev.author}</span>
-                                        <div class="comment-stars">${stars}</div>
-                                    </div>
-                                    <div class="comment-text">${rev.content}</div>
-                                </div>
-                            `;
-                        });
-                    }
-
-                    grid.innerHTML += `
-                        <div class="product-card">
-                            <div class="product-img-container" onclick="openImageModal('${prod.image}')">
-                                <img src="${prod.image}" alt="${prod.title}" class="product-img">
-                            </div>
-                            <div class="product-info">
-                                <div>
-                                    <h3>${prod.title}</h3>
-                                    <p class="product-desc">${prod.description}</p>
-                                </div>
-                                
-                                <div class="product-actions">
-                                    <button class="comment-toggle-btn" onclick="toggleComments('${prodId}')">
-                                        <i class="fas fa-comments"></i> Yorumlar (${prodReviews.length})
-                                    </button>
-                                    <button class="comment-toggle-btn" onclick="openReviewModal('${prodId}')" style="background: var(--accent-glow); color: var(--accent-color); border-color: var(--accent-color);">
-                                        <i class="fas fa-pen"></i> Yorum Yaz
-                                    </button>
-                                </div>
-
-                                <div class="product-comments-section" id="comments-section-${prodId}">
-                                    <div style="max-height: 150px; overflow-y: auto; margin-bottom: 8px;">
-                                        ${commentsHtml}
-                                    </div>
-                                </div>
-
-                                <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank" style="margin-top: 12px;">
-                                    <i class="fab fa-whatsapp"></i> WhatsApp Bilgi Al
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
+                renderProducts('Tümü');
             } catch (error) {
                 console.error("Hata:", error);
             }
         }
 
+        function renderProducts(selectedCategory) {
+            const grid = document.getElementById('dynamicProductsGrid');
+            const filteredProducts = selectedCategory === 'Tümü' 
+                ? allProductsCache 
+                : allProductsCache.filter(p => (p.category || 'Genel') === selectedCategory);
+
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Bu kategoride henüz ürün bulunmuyor.</div>`;
+                return;
+            }
+
+            grid.innerHTML = "";
+            filteredProducts.forEach(prod => {
+                const prodId = prod.id;
+                const prodReviews = allReviewsCache.filter(r => r.productId === prodId);
+
+                let commentsHtml = '';
+                if (prodReviews.length === 0) {
+                    commentsHtml = `<p style="color: var(--text-muted); font-size: 12px; text-align: center; padding: 5px;">Henüz bu ürüne yorum yapılmamış.</p>`;
+                } else {
+                    prodReviews.forEach(rev => {
+                        let stars = '';
+                        const ratingVal = rev.rating || 5;
+                        for(let i=0; i<5; i++) {
+                            stars += (i < ratingVal) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+                        }
+                        commentsHtml += `
+                            <div class="comment-item">
+                                <div class="comment-item-header">
+                                    <span>${rev.author || rev.name || 'Misafir'}</span>
+                                    <div class="comment-stars">${stars}</div>
+                                </div>
+                                <div class="comment-text">${rev.content || rev.comment || rev.text || ''}</div>
+                            </div>
+                        `;
+                    });
+                }
+
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-img-container" onclick="openImageModal('${prod.image}')">
+                            <img src="${prod.image}" alt="${prod.title}" class="product-img">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <span style="font-size: 11px; font-weight: 700; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px;">${prod.category || 'Genel'}</span>
+                                <h3>${prod.title}</h3>
+                                <p class="product-desc">${prod.description}</p>
+                            </div>
+                            
+                            <div class="product-actions">
+                                <button class="comment-toggle-btn" onclick="toggleComments('${prodId}')">
+                                    <i class="fas fa-comments"></i> Yorumlar (${prodReviews.length})
+                                </button>
+                                <button class="comment-toggle-btn" onclick="openReviewModal('${prodId}')" style="background: var(--accent-glow); color: var(--accent-color); border-color: var(--accent-color);">
+                                    <i class="fas fa-pen"></i> Yorum Yaz
+                                </button>
+                            </div>
+
+                            <div class="product-comments-section" id="comments-section-${prodId}">
+                                <div style="max-height: 150px; overflow-y: auto; margin-bottom: 8px;">
+                                    ${commentsHtml}
+                                </div>
+                            </div>
+
+                            <a href="https://wa.me/905077079354?text=Merhaba,%20${encodeURIComponent(prod.title)}%20modeliniz%20hakkında%20bilgi%20almak%20istiyorum." class="btn product-btn" target="_blank" style="margin-top: 12px;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Bilgi Al
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProducts(this.getAttribute('data-category'));
+            });
+        });
+
         loadProductsWithReviews();
 
+        // Ürün Yorum Ekleme
         document.getElementById('productReviewForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const productId = document.getElementById('modalProductId').value;
@@ -561,15 +582,36 @@
             }
         });
 
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        // BİZE ULAŞIN / TEKLİF AL (Firebase "messages" kolleksiýasyna ýazmak)
+        document.getElementById('quoteForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
+            const message = document.getElementById('msgContent').value;
+
+            try {
+                // Admin panelindäki "İletişim Mesajları" tablosunda görünmegi üçin "messages" kolleksiýasyna goşulýar
+                await addDoc(collection(db, "messages"), {
+                    name: name,
+                    phone: phone,
+                    email: phone,
+                    service: service,
+                    message: message ? `${service} - ${message}` : service,
+                    createdAt: new Date().toISOString()
+                });
+                
+                alert("Mesajınız başarıyla gönderildi ve admin paneline iletildi!");
+            } catch (err) {
+                console.error("Mesaj kaydedilemedi:", err);
+                alert("Mesaj gönderilirken bir hata oluştu.");
+            }
             
-            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediğim Mobilya:* ${encodeURIComponent(service)}`;
-            
+            // Şol bir wagtda WhatsApp arkaly hem habar bermek üçin açmak
+            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*İletişim:* ${encodeURIComponent(phone)}%0A*Mobilya Türü:* ${encodeURIComponent(service)}%0A*Mesaj:* ${encodeURIComponent(message)}`;
             window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
+            
+            document.getElementById('quoteForm').reset();
         });
     </script>
 </body>
