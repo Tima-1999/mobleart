@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MobleArt | Gelişmiş Yönetim Paneli</title>
+    <title>MobleArt | Yönetim Paneli</title>
     
     <link rel="icon" type="image/png" href="./logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,7 +42,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; display: flex; min-height: 100vh; }
         
-        /* Sidebar Styling */
+        /* Dil Seçimine Görünürlük Kontrolleri */
+        body.lang-tr .tk-only { display: none !important; }
+        body.lang-tr .tr-only { display: inline-block !important; }
+        body.lang-tr .tr-block { display: block !important; }
+        
+        body.lang-tk .tr-only { display: none !important; }
+        body.lang-tk .tk-only { display: inline-block !important; }
+        body.lang-tk .tk-block { display: block !important; }
+
+        /* Sidebar */
         .sidebar { width: 260px; background: var(--card-bg); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; z-index: 1001; }
         .sidebar-brand { padding: 22px 20px; font-size: 20px; font-weight: 800; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border-color); color: var(--text-color); }
         .sidebar-brand img { height: 35px; width: 35px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
@@ -53,7 +62,7 @@
         .sidebar-menu li a:hover, .sidebar-menu li a.active { color: var(--accent-color); background: var(--card-hover); border-left-color: var(--accent-color); }
         .sidebar-menu li a i { width: 20px; text-align: center; }
 
-        /* Main Content Wrapper */
+        /* Main Wrapper */
         .main-wrapper { flex: 1; margin-left: 260px; display: flex; flex-direction: column; min-height: 100vh; }
         
         header { 
@@ -116,10 +125,10 @@
         .prod-thumb { width: 100%; height: 100%; object-fit: cover; }
         #statusMessage { margin-top: 12px; font-size: 13px; font-weight: 500; }
 
-        /* Lesson cards for apprentice */
+        /* Şägirt sapaklar */
         .lesson-card { background: var(--input-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; margin-bottom: 15px; }
         .lesson-card h3 { color: var(--accent-color); font-size: 16px; margin-bottom: 8px; font-weight: 700; }
-        .lesson-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .lesson-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; white-space: pre-line; }
 
         #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
@@ -139,28 +148,45 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-tr">
 
     <!-- GIRIŞ EKRANY -->
     <div id="loginOverlay">
         <div class="login-box">
-            <h2>Moble<span>Art</span> <span style="font-size: 14px; color: var(--text-muted); display: block; margin-top: 5px;"><span class="tr-text">Yönetim Paneli</span><span class="tk-text" style="display:none;">Dolandyryş Paneli</span></span></h2>
+            <h2>Moble<span>Art</span> 
+                <span style="font-size: 14px; color: var(--text-muted); display: block; margin-top: 5px;">
+                    <span class="tr-only">Yönetim Paneli</span>
+                    <span class="tk-only">Dolandyryş Paneli</span>
+                </span>
+            </h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label><span class="tr-text">E-Posta Adresi</span><span class="tk-text" style="display:none;">E-Poçta Salgysy</span></label>
+                    <label>
+                        <span class="tr-only">E-Posta Adresi</span>
+                        <span class="tk-only">E-Poçta Salgysy</span>
+                    </label>
                     <input type="email" id="loginEmail" placeholder="admin@mobleart.com" required>
                 </div>
                 <div class="form-group">
-                    <label><span class="tr-text">Şifre</span><span class="tk-text" style="display:none;">Açar sözi</span></label>
+                    <label>
+                        <span class="tr-only">Şifre</span>
+                        <span class="tk-only">Açar sözi</span>
+                    </label>
                     <input type="password" id="loginPassword" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; justify-content: center;" id="loginBtn">
-                    <i class="fas fa-sign-in-alt"></i> <span class="tr-text">Giriş Yap</span><span class="tk-text" style="display:none;">Girmek</span>
+                    <i class="fas fa-sign-in-alt"></i> 
+                    <span class="tr-only">Giriş Yap</span>
+                    <span class="tk-only">Girmek</span>
                 </button>
                 <div id="loginError" style="color: #ef4444; margin-top: 12px; font-size: 13px; text-align: center; font-weight: 500;"></div>
             </form>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="index.html" class="back-home" style="justify-content: center;"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
+                <a href="index.html" class="back-home" style="justify-content: center;">
+                    <i class="fas fa-arrow-left"></i> 
+                    <span class="tr-only">Siteye Dön</span>
+                    <span class="tk-only">Saýta gaýdyp barmak</span>
+                </a>
             </div>
         </div>
     </div>
@@ -172,12 +198,12 @@
             <div>Moble<span>Art</span></div>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#" class="menu-link active" data-target="dashboardSection"><i class="fas fa-chart-pie"></i> <span><span class="tr-text">Genel Bakış</span><span class="tk-text" style="display:none;">Umumy Görnüş</span></span></a></li>
-            <li><a href="#" class="menu-link" data-target="productsSection"><i class="fas fa-box-open"></i> <span><span class="tr-text">Ürün Yönetimi</span><span class="tk-text" style="display:none;">Önüm Dolandyryş</span></span></a></li>
-            <li><a href="#" class="menu-link" data-target="messagesSection"><i class="fas fa-envelope"></i> <span><span class="tr-text">İletişim Mesajları</span><span class="tk-text" style="display:none;">Habarlar</span></span></a></li>
-            <li><a href="#" class="menu-link" data-target="reviewsSection"><i class="fas fa-star"></i> <span><span class="tr-text">Müşteri Yorumları</span><span class="tk-text" style="display:none;">Teswirler</span></span></a></li>
-            <li><a href="#" class="menu-link" data-target="ordersSection"><i class="fas fa-clipboard-list"></i> <span><span class="tr-text">Sipariş Takibi</span><span class="tk-text" style="display:none;">Sargytlar</span></span></a></li>
-            <li><a href="#" class="menu-link" data-target="lessonsSection"><i class="fas fa-graduation-cap"></i> <span><span class="tr-text">Mebel Sapakları (Şägirt)</span><span class="tk-text" style="display:none;">Mebel Sapaklary</span></span></a></li>
+            <li><a href="#" class="menu-link active" data-target="dashboardSection"><i class="fas fa-chart-pie"></i> <span><span class="tr-only">Genel Bakış</span><span class="tk-only">Umumy Görnüş</span></span></a></li>
+            <li><a href="#" class="menu-link" data-target="productsSection"><i class="fas fa-box-open"></i> <span><span class="tr-only">Ürün Yönetimi</span><span class="tk-only">Önüm Dolandyryş</span></span></a></li>
+            <li><a href="#" class="menu-link" data-target="messagesSection"><i class="fas fa-envelope"></i> <span><span class="tr-only">İletişim Mesajları</span><span class="tk-only">Habarlar</span></span></a></li>
+            <li><a href="#" class="menu-link" data-target="reviewsSection"><i class="fas fa-star"></i> <span><span class="tr-only">Müşteri Yorumları</span><span class="tk-only">Teswirler</span></span></a></li>
+            <li><a href="#" class="menu-link" data-target="ordersSection"><i class="fas fa-clipboard-list"></i> <span><span class="tr-only">Sipariş Takibi</span><span class="tk-only">Sargytlar</span></span></a></li>
+            <li><a href="#" class="menu-link" data-target="lessonsSection"><i class="fas fa-graduation-cap"></i> <span><span class="tr-only">Mebel Sapakları (Şägirt)</span><span class="tk-only">Mebel Sapaklary</span></span></a></li>
         </ul>
     </div>
 
@@ -185,55 +211,67 @@
     <div class="main-wrapper">
         <header>
             <div style="font-weight: 700; font-size: 16px;" id="pageTitleHeader">
-                <span class="tr-text">Yönetim Paneli</span><span class="tk-text" style="display:none;">Dolandyryş Paneli</span>
+                <span class="tr-only">Yönetim Paneli</span>
+                <span class="tk-only">Dolandyryş Paneli</span>
             </div>
             <div class="header-actions">
                 <button class="control-btn" id="langToggleBtn"><i class="fas fa-globe"></i> <span id="langText">TÜRKÇE</span></button>
                 <button class="control-btn" id="themeToggleBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
-                <button class="control-btn" id="logoutBtn" style="border-color: rgba(239,68,68,0.3); color: #ef4444;"><i class="fas fa-sign-out-alt"></i> <span class="tr-text">Çıkış</span><span class="tk-text" style="display:none;">Çykmak</span></button>
-                <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span class="tr-text">Siteye Dön</span><span class="tk-text" style="display:none;">Saýta gaýdyp barmak</span></a>
+                <button class="control-btn" id="logoutBtn" style="border-color: rgba(239,68,68,0.3); color: #ef4444;">
+                    <i class="fas fa-sign-out-alt"></i> 
+                    <span class="tr-only">Çıkış</span>
+                    <span class="tk-only">Çykmak</span>
+                </button>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i> 
+                    <span class="tr-only">Siteye Dön</span>
+                    <span class="tk-only">Saýta gaýdyp barmak</span>
+                </a>
             </div>
         </header>
 
         <div class="admin-container">
             
-            <!-- 1. STATISTIKA / DASHBOARD -->
+            <!-- 1. DASHBOARD -->
             <div class="admin-section active" id="dashboardSection">
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-box"></i></div>
                         <div class="stat-info">
-                            <h3><span class="tr-text">Toplam Ürün</span><span class="tk-text" style="display:none;">Jemi Önüm</span></h3>
+                            <h3><span class="tr-only">Toplam Ürün</span><span class="tk-only">Jemi Önüm</span></h3>
                             <p id="statProductsCount">0</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
                         <div class="stat-info">
-                            <h3><span class="tr-text">Toplam Sipariş</span><span class="tk-text" style="display:none;">Jemi Sargyt</span></h3>
+                            <h3><span class="tr-only">Toplam Sipariş</span><span class="tk-only">Jemi Sargyt</span></h3>
                             <p id="statOrdersCount">0</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-comments"></i></div>
                         <div class="stat-info">
-                            <h3><span class="tr-text">Müşteri Yorumları</span><span class="tk-text" style="display:none;">Teswirler</span></h3>
+                            <h3><span class="tr-only">Müşteri Yorumları</span><span class="tk-only">Teswirler</span></h3>
                             <p id="statReviewsCount">0</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-envelope"></i></div>
                         <div class="stat-info">
-                            <h3><span class="tr-text">İletişim Mesajları</span><span class="tk-text" style="display:none;">Habarlar</span></h3>
+                            <h3><span class="tr-only">İletişim Mesajları</span><span class="tk-only">Habarlar</span></h3>
                             <p id="statMessagesCount">0</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-info-circle"></i> <span class="tr-text">Hoş Geldiniz</span><span class="tk-text" style="display:none;">Hoş geldiňiz</span></span></h2>
-                    <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">
-                        Sol tarpdaky menýudan peýdalanyp önümleri dolandyryp, müşderi hatlaryny okap we şägirdiniz üçin ýörite mebel sapaklaryny goşup bilersiňiz[cite: 5].
+                    <h2><span><i class="fas fa-info-circle"></i> <span class="tr-only">Hoş Geldiniz</span><span class="tk-only">Hoş geldiňiz</span></span></h2>
+                    <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;" class="tr-only">
+                        Sol taraftaki menüyü kullanarak ürünleri yönetebilir, müşteri mesajlarını okuyabilir ve şägirdiniz için hazırlanan hızlı mebel yapım derslerini inceleyebilirsiniz.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;" class="tk-only">
+                        Çep tarpdaky menýudan peýdalanyp önümleri dolandyryp, müşderi hatlaryny okap we şägirdiniz üçin ýörite taýýarlanan çalt mebel ýasamak sapaklaryny görüp bilersiňiz.
                     </p>
                 </div>
             </div>
@@ -241,14 +279,14 @@
             <!-- 2. ÜRÜN YÖNETİMİ -->
             <div class="admin-section" id="productsSection">
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Ürün Ekle</span><span class="tk-text" style="display:none;">Täze Önüm Goş</span></span></h2>
+                    <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-only">Yeni Ürün Ekle</span><span class="tk-only">Täze Önüm Goş</span></span></h2>
                     <form id="addProductForm">
                         <div class="form-group">
-                            <label><span class="tr-text">Ürün Başlığı</span><span class="tk-text" style="display:none;">Önüm ady</span></label>
+                            <label><span class="tr-only">Ürün Başlığı</span><span class="tk-only">Önüm ady</span></label>
                             <input type="text" id="prodTitle" placeholder="Örn: Lüks Mutfak Dolabı" required>
                         </div>
                         <div class="form-group">
-                            <label><span class="tr-text">Kategori</span><span class="tk-text" style="display:none;">Kategoriýa</span></label>
+                            <label><span class="tr-only">Kategori</span><span class="tk-only">Kategoriýa</span></label>
                             <select id="prodCategory" required>
                                 <option value="Mutfak">Mutfak</option>
                                 <option value="Yatak Odası">Yatak Odası</option>
@@ -257,34 +295,34 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label><span class="tr-text">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-text" style="display:none;">Surat</span></label>
+                            <label><span class="tr-only">Görsel (URL veya Bilgisayardan Seç)</span><span class="tk-only">Surat (URL ýa-da kompýuterden saýla)</span></label>
                             <div class="image-input-box">
                                 <input type="url" id="prodImage" placeholder="https://..." style="flex: 1;" required>
                                 <label for="imageFile" class="file-upload-btn">
-                                    <i class="fas fa-image"></i> <span class="tr-text">Görsel Seç</span><span class="tk-text" style="display:none;">Surat saýla</span>
+                                    <i class="fas fa-image"></i> <span class="tr-only">Görsel Seç</span><span class="tk-only">Surat saýla</span>
                                 </label>
                                 <input type="file" id="imageFile" accept="image/*">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label><span class="tr-text">Açıklama</span><span class="tk-text" style="display:none;">Düşündiriş</span></label>
+                            <label><span class="tr-only">Açıklama</span><span class="tk-only">Düşündiriş</span></label>
                             <textarea id="prodDesc" rows="3" placeholder="Ürün hakkında kısa bilgi..." required></textarea>
                         </div>
-                        <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-text">Ürünü Yayınla</span><span class="tk-text" style="display:none;">Önümi çap et</span></button>
+                        <button type="submit" class="btn" id="submitBtn"><i class="fas fa-upload"></i> <span class="tr-only">Ürünü Yayınla</span><span class="tk-only">Önümi çap et</span></button>
                         <div id="statusMessage"></div>
                     </form>
                 </div>
 
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-boxes"></i> <span class="tr-text">Mevcut Ürünler</span><span class="tk-text" style="display:none;">Bar bolan önümler</span></span></h2>
+                    <h2><span><i class="fas fa-boxes"></i> <span class="tr-only">Mevcut Ürünler</span><span class="tk-only">Bar bolan önümler</span></span></h2>
                     <div class="table-responsive">
                         <table>
                             <thead>
                                 <tr>
-                                    <th><span class="tr-text">Görsel</span><span class="tk-text" style="display:none;">Surat</span></th>
-                                    <th><span class="tr-text">Başlık</span><span class="tk-text" style="display:none;">Ady</span></th>
-                                    <th><span class="tr-text">Kategori</span><span class="tk-text" style="display:none;">Kategoriýa</span></th>
-                                    <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
+                                    <th><span class="tr-only">Görsel</span><span class="tk-only">Surat</span></th>
+                                    <th><span class="tr-only">Başlık</span><span class="tk-only">Ady</span></th>
+                                    <th><span class="tr-only">Kategori</span><span class="tk-only">Kategoriýa</span></th>
+                                    <th><span class="tr-only">İşlem</span><span class="tk-only">Emeller</span></th>
                                 </tr>
                             </thead>
                             <tbody id="adminProductsList">
@@ -298,15 +336,15 @@
             <!-- 3. İLETİŞİM MESAJLARI -->
             <div class="admin-section" id="messagesSection">
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-envelope-open-text"></i> <span class="tr-text">İletişim Mesajları</span><span class="tk-text" style="display:none;">Habarlar</span></span></h2>
+                    <h2><span><i class="fas fa-envelope-open-text"></i> <span class="tr-only">İletişim Mesajları</span><span class="tk-only">Habarlar</span></span></h2>
                     <div class="table-responsive">
                         <table>
                             <thead>
                                 <tr>
-                                    <th><span class="tr-text">Gönderen</span><span class="tk-text" style="display:none;">Ugradyjy</span></th>
-                                    <th><span class="tr-text">E-Posta / Tel</span><span class="tk-text" style="display:none;">E-Poçta / Tel</span></th>
-                                    <th><span class="tr-text">Mesaj</span><span class="tk-text" style="display:none;">Hat</span></th>
-                                    <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
+                                    <th><span class="tr-only">Gönderen</span><span class="tk-only">Ugradyjy</span></th>
+                                    <th><span class="tr-only">E-Posta / Tel</span><span class="tk-only">E-Poçta / Tel</span></th>
+                                    <th><span class="tr-only">Mesaj</span><span class="tk-only">Hat</span></th>
+                                    <th><span class="tr-only">İşlem</span><span class="tk-only">Emeller</span></th>
                                 </tr>
                             </thead>
                             <tbody id="adminMessagesList">
@@ -320,15 +358,15 @@
             <!-- 4. MÜŞTERİ YORUMLARI -->
             <div class="admin-section" id="reviewsSection">
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-star"></i> <span class="tr-text">Ürün Yorumları ve Değerlendirmeleri</span><span class="tk-text" style="display:none;">Teswirler</span></span></h2>
+                    <h2><span><i class="fas fa-star"></i> <span class="tr-only">Ürün Yorumları ve Değerlendirmeleri</span><span class="tk-only">Teswirler</span></span></h2>
                     <div class="table-responsive">
                         <table>
                             <thead>
                                 <tr>
-                                    <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Müşderi</span></th>
-                                    <th><span class="tr-text">Puan</span><span class="tk-text" style="display:none;">Baha</span></th>
-                                    <th><span class="tr-text">Yorum</span><span class="tk-text" style="display:none;">Teswir</span></th>
-                                    <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
+                                    <th><span class="tr-only">Müşteri</span><span class="tk-only">Müşderi</span></th>
+                                    <th><span class="tr-only">Puan</span><span class="tk-only">Baha</span></th>
+                                    <th><span class="tr-only">Yorum</span><span class="tk-only">Teswir</span></th>
+                                    <th><span class="tr-only">İşlem</span><span class="tk-only">Emeller</span></th>
                                 </tr>
                             </thead>
                             <tbody id="adminReviewsList">
@@ -343,53 +381,53 @@
             <div class="admin-section" id="ordersSection">
                 <div class="admin-card">
                     <h2>
-                        <span><i class="fas fa-clipboard-list"></i> <span class="tr-text">Sipariş ve Müşteri Takibi</span><span class="tk-text" style="display:none;">Sargytlar</span></span>
-                        <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span class="tr-text">Excel'e Aktar</span><span class="tk-text" style="display:none;">Excel</span></button>
+                        <span><i class="fas fa-clipboard-list"></i> <span class="tr-only">Sipariş ve Müşteri Takibi</span><span class="tk-only">Sargytlar</span></span>
+                        <button type="button" class="btn btn-success" id="exportExcelBtn"><i class="fas fa-file-excel"></i> <span class="tr-only">Excel'e Aktar</span><span class="tk-only">Excel</span></button>
                     </h2>
                     
                     <form id="addOrderForm" style="margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 25px;">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group" style="margin-bottom: 10px;">
-                                <label><span class="tr-text">Müşteri Adı</span><span class="tk-text" style="display:none;">Müşderi ady</span></label>
+                                <label><span class="tr-only">Müşteri Adı</span><span class="tk-only">Müşderi ady</span></label>
                                 <input type="text" id="custName" placeholder="Ahmet Yılmaz" required>
                             </div>
                             <div class="form-group" style="margin-bottom: 10px;">
-                                <label><span class="tr-text">Telefon</span><span class="tk-text" style="display:none;">Telefon</span></label>
+                                <label><span class="tr-only">Telefon</span><span class="tk-only">Telefon</span></label>
                                 <input type="text" id="custPhone" placeholder="+90..." required>
                             </div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group" style="margin-bottom: 10px;">
-                                <label><span class="tr-text">Mobilya / Ürün</span><span class="tk-text" style="display:none;">Mebel / Önüm</span></label>
+                                <label><span class="tr-only">Mobilya / Ürün</span><span class="tk-only">Mebel / Önüm</span></label>
                                 <input type="text" id="orderItem" placeholder="Mutfak Dolabı" required>
                             </div>
                             <div class="form-group" style="margin-bottom: 10px;">
-                                <label><span class="tr-text">Toplam Fiyat</span><span class="tk-text" style="display:none;">Jemi Bahasy</span></label>
+                                <label><span class="tr-only">Toplam Fiyat</span><span class="tk-only">Jemi Bahasy</span></label>
                                 <input type="number" id="orderPrice" placeholder="15000" required>
                             </div>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group" style="margin-bottom: 15px;">
-                                <label><span class="tr-text">Ödenen (Kapora)</span><span class="tk-text" style="display:none;">Tölän</span></label>
+                                <label><span class="tr-only">Ödenen (Kapora)</span><span class="tk-only">Tölän (Awans)</span></label>
                                 <input type="number" id="orderPaid" placeholder="10000" required>
                             </div>
                             <div class="form-group" style="margin-bottom: 15px;">
-                                <label><span class="tr-text">Durum</span><span class="tk-text" style="display:none;">Ýagdaýy</span></label>
+                                <label><span class="tr-only">Durum</span><span class="tk-only">Ýagdaýy</span></label>
                                 <input type="text" id="orderStatus" value="Hazırlanıyor" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn"><i class="fas fa-plus"></i> <span class="tr-text">Siparişi Kaydet</span><span class="tk-text" style="display:none;">Sargydy ýazga al</span></button>
+                        <button type="submit" class="btn"><i class="fas fa-plus"></i> <span class="tr-only">Siparişi Kaydet</span><span class="tk-only">Sargydy ýazga al</span></button>
                     </form>
 
                     <div class="table-responsive">
                         <table id="ordersTable">
                             <thead>
                                 <tr>
-                                    <th><span class="tr-text">Müşteri</span><span class="tk-text" style="display:none;">Müşderi</span></th>
-                                    <th><span class="tr-text">Ürün</span><span class="tk-text" style="display:none;">Önüm</span></th>
-                                    <th><span class="tr-text">Toplam / Ödenen / Kalan</span><span class="tk-text" style="display:none;">Jemi / Tölän / Galan</span></th>
-                                    <th><span class="tr-text">Durum</span><span class="tk-text" style="display:none;">Ýagdaýy</span></th>
-                                    <th><span class="tr-text">İşlem</span><span class="tk-text" style="display:none;">Emeller</span></th>
+                                    <th><span class="tr-only">Müşteri</span><span class="tk-only">Müşderi</span></th>
+                                    <th><span class="tr-only">Ürün</span><span class="tk-only">Önüm</span></th>
+                                    <th><span class="tr-only">Toplam / Ödenen / Kalan</span><span class="tk-only">Jemi / Tölän / Galan</span></th>
+                                    <th><span class="tr-only">Durum</span><span class="tk-only">Ýagdaýy</span></th>
+                                    <th><span class="tr-only">İşlem</span><span class="tk-only">Emeller</span></th>
                                 </tr>
                             </thead>
                             <tbody id="adminOrdersList">
@@ -400,25 +438,25 @@
                 </div>
             </div>
 
-            <!-- 6. MEBEL SAPAKLARI (ŞÄGİRT ÜÇİN) -->
+            <!-- 6. MEBEL SAPAKLARI (ŞÄGİRT ÜÇİN - ÇALT ÖWRENİŞ ÝOLY) -->
             <div class="admin-section" id="lessonsSection">
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-text">Yeni Mebel Dersi / Sapak Ekle</span><span class="tk-text" style="display:none;">Täze Sapak Goş</span></span></h2>
+                    <h2><span><i class="fas fa-plus-circle"></i> <span class="tr-only">Yeni Mebel Dersi Ekle</span><span class="tk-only">Täze Sapak Goş</span></span></h2>
                     <form id="addLessonForm">
                         <div class="form-group">
-                            <label><span class="tr-text">Ders Başlığı</span><span class="tk-text" style="display:none;">Sapak Ady</span></label>
-                            <input type="text" id="lessonTitle" placeholder="Örn: 1. Ölçü Almak ve Projelendirme" required>
+                            <label><span class="tr-only">Ders Başlığı</span><span class="tk-only">Sapak Ady</span></label>
+                            <input type="text" id="lessonTitle" placeholder="Örn: 5. Hızlı Kesim ve Bantlama" required>
                         </div>
                         <div class="form-group">
-                            <label><span class="tr-text">Ders İçeriği / Açıklama</span><span class="tk-text" style="display:none;">Sapak Mazmuny</span></label>
-                            <textarea id="lessonContent" rows="4" placeholder="Şägirdin okumasy we öwrenmegi üçin jikme-jik düşündiriş ýazyň..." required></textarea>
+                            <label><span class="tr-only">Ders İçeriği / Açıklama</span><span class="tk-only">Sapak Mazmuny / Düşündiriş</span></label>
+                            <textarea id="lessonContent" rows="4" placeholder="Şägirdin tiz öwrenmegi üçin ädim-ädim düşündiriş ýazyň..." required></textarea>
                         </div>
-                        <button type="submit" class="btn"><i class="fas fa-save"></i> <span class="tr-text">Dersi Kaydet</span><span class="tk-text" style="display:none;">Sapagy ýazga al</span></button>
+                        <button type="submit" class="btn"><i class="fas fa-save"></i> <span class="tr-only">Dersi Kaydet</span><span class="tk-only">Sapagy ýazga al</span></button>
                     </form>
                 </div>
 
                 <div class="admin-card">
-                    <h2><span><i class="fas fa-graduation-cap"></i> <span class="tr-text">Mebel Öwreniş Sapaklary (Şägirt Üçin)</span><span class="tk-text" style="display:none;">Mebel Sapaklary</span></span></h2>
+                    <h2><span><i class="fas fa-graduation-cap"></i> <span class="tr-only">Mebel Yapım Eğitimleri (Şırak / Şâgirdin Hızlı Öğrenim Rehberi)</span><span class="tk-only">Mebel Öwreniş Sapaklary (Şägirdin Tiz Öwreniş Ýoly)</span></span></h2>
                     <div id="lessonsListContainer">
                         <p style="color: var(--text-muted); text-align: center;">Sapaklar ýüklenýär...</p>
                     </div>
@@ -460,17 +498,12 @@
         const langText = document.getElementById('langText');
 
         function setLanguage(lang) {
-            const trElements = document.querySelectorAll('.tr-text');
-            const tkElements = document.querySelectorAll('.tk-text');
-            
             if (lang === 'tk') {
-                trElements.forEach(el => el.style.display = 'none');
-                tkElements.forEach(el => el.style.display = 'inline');
+                document.body.className = "lang-tk";
                 langText.innerText = 'TÜRKMENÇE';
                 localStorage.setItem('mobleart_lang', 'tk');
             } else {
-                trElements.forEach(el => el.style.display = 'inline');
-                tkElements.forEach(el => el.style.display = 'none');
+                document.body.className = "lang-tr";
                 langText.innerText = 'TÜRKÇE';
                 localStorage.setItem('mobleart_lang', 'tr');
             }
@@ -484,7 +517,7 @@
             setLanguage(currentLang === 'tr' ? 'tk' : 'tr');
         });
 
-        // Sidebar Navigation Logic
+        // Sidebar Nav
         const menuLinks = document.querySelectorAll('.menu-link');
         const adminSections = document.querySelectorAll('.admin-section');
         const pageTitleHeader = document.getElementById('pageTitleHeader');
@@ -498,7 +531,11 @@
                 const targetId = this.getAttribute('data-target');
                 adminSections.forEach(sec => sec.classList.remove('active'));
                 document.getElementById(targetId).classList.add('active');
-                pageTitleHeader.innerHTML = this.querySelector('span').innerHTML;
+                
+                const spanEl = this.querySelector('span');
+                if(spanEl) {
+                    pageTitleHeader.innerHTML = spanEl.innerHTML;
+                }
             });
         });
 
@@ -515,10 +552,10 @@
         modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none"; }
     </script>
 
-    <!-- FIREBASE & LOGika -->
+    <!-- FIREBASE & LOGIKA -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
         import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
         const firebaseConfig = {
@@ -563,10 +600,10 @@
                 loginError.innerText = "";
                 loginForm.reset();
             } catch (error) {
-                loginError.innerText = "E-posta veya şifre hatalı!";
+                loginError.innerText = "E-posta veya şifre hatalı / E-poçta ýa-da açar söz ýalňyş!";
             } finally {
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş Yap`;
+                loginBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Giriş Yap / Girmek`;
             }
         });
 
@@ -579,10 +616,10 @@
             fetchAdminOrders();
             fetchAdminReviews();
             fetchAdminMessages();
-            fetchAdminLessons();
+            checkAndInitDefaultLessons();
         }
 
-        // Önüm goşmak we dolandyrmak
+        // Önüm dolandyryş
         const form = document.getElementById('addProductForm');
         const statusMsg = document.getElementById('statusMessage');
         const listContainer = document.getElementById('adminProductsList');
@@ -596,7 +633,7 @@
                 reader.onload = function(event) {
                     prodImageInput.value = event.target.result;
                     statusMsg.style.color = "#22c55e";
-                    statusMsg.innerHTML = "✓ Görsel başarıyla yüklendi!";
+                    statusMsg.innerHTML = "✓ Görsel yüklendi / Surat ýüklendi!";
                 }
                 reader.readAsDataURL(file);
             }
@@ -608,7 +645,7 @@
                 document.getElementById('statProductsCount').innerText = querySnapshot.size;
                 
                 if (querySnapshot.empty) {
-                    listContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Ürün bulunamadı.</td></tr>`;
+                    listContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Ürün bulunamadı / Önüm ýok.</td></tr>`;
                     return;
                 }
 
@@ -626,7 +663,7 @@
                             <td><strong>${prod.title}</strong></td>
                             <td><span style="color: var(--accent-color);">${prod.category || 'Genel'}</span></td>
                             <td>
-                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn btn-danger" onclick="deleteProduct('${id}')"><i class="fas fa-trash"></i> <span class="tr-only">Sil</span><span class="tk-only">Poz</span></button>
                             </td>
                         </tr>
                     `;
@@ -645,7 +682,6 @@
             const submitBtn = document.getElementById('submitBtn');
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> İşleniyor...`;
 
             try {
                 await addDoc(collection(db, "products"), {
@@ -660,12 +696,11 @@
                 statusMsg.innerHTML = "✕ Hata oluştu!";
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<i class="fas fa-upload"></i> Ürünü Yayınla`;
             }
         });
 
         window.deleteProduct = async function(id) {
-            if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+            if (confirm("Silmek isleýärsiňizmi?")) {
                 try {
                     await deleteDoc(doc(db, "products", id));
                     fetchAdminProducts();
@@ -673,7 +708,7 @@
             }
         }
 
-        // Habarlaşyk hatlary
+        // Habarlar
         const messagesListContainer = document.getElementById('adminMessagesList');
         async function fetchAdminMessages() {
             try {
@@ -681,7 +716,7 @@
                 document.getElementById('statMessagesCount').innerText = querySnapshot.size;
 
                 if (querySnapshot.empty) {
-                    messagesListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Mesaj bulunamadı.</td></tr>`;
+                    messagesListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Mesaj yok.</td></tr>`;
                     return;
                 }
 
@@ -694,23 +729,16 @@
                             <td><strong>${msg.name || 'Adsız'}</strong></td>
                             <td>${msg.email || msg.phone || ''}</td>
                             <td>${msg.message || ''}</td>
-                            <td>
-                                <button class="btn btn-danger" onclick="deleteMessage('${id}')"><i class="fas fa-trash"></i> Sil</button>
-                            </td>
+                            <td><button class="btn btn-danger" onclick="deleteMessage('${id}')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     `;
                 });
-            } catch (error) {
-                messagesListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
-            }
+            } catch (e) {}
         }
-
         window.deleteMessage = async function(id) {
-            if (confirm("Bu mesajı silmek istediğinize emin misiniz?")) {
-                try {
-                    await deleteDoc(doc(db, "messages", id));
-                    fetchAdminMessages();
-                } catch (error) { alert("Hata oluştu."); }
+            if (confirm("Pozmak isleýärsiňizmi?")) {
+                await deleteDoc(doc(db, "messages", id));
+                fetchAdminMessages();
             }
         }
 
@@ -722,7 +750,7 @@
                 document.getElementById('statReviewsCount').innerText = querySnapshot.size;
 
                 if (querySnapshot.empty) {
-                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum bulunamadı.</td></tr>`;
+                    reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Yorum yok.</td></tr>`;
                     return;
                 }
 
@@ -735,23 +763,16 @@
                             <td><strong>${rev.author || 'Adsız'}</strong></td>
                             <td><span style="color: var(--accent-color);">${rev.rating || '5'} <i class="fas fa-star"></i></span></td>
                             <td>${rev.content || ''}</td>
-                            <td>
-                                <button class="btn btn-danger" onclick="deleteReview('${id}')"><i class="fas fa-trash"></i> Sil</button>
-                            </td>
+                            <td><button class="btn btn-danger" onclick="deleteReview('${id}')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     `;
                 });
-            } catch (error) {
-                reviewsListContainer.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Hata oluştu.</td></tr>`;
-            }
+            } catch (e) {}
         }
-
         window.deleteReview = async function(id) {
-            if (confirm("Bu yorumu silmek istediğinize emin misiniz?")) {
-                try {
-                    await deleteDoc(doc(db, "product_reviews", id));
-                    fetchAdminReviews();
-                } catch (error) { alert("Hata oluştu."); }
+            if (confirm("Pozmak isleýärsiňizmi?")) {
+                await deleteDoc(doc(db, "product_reviews", id));
+                fetchAdminReviews();
             }
         }
 
@@ -765,7 +786,7 @@
                 document.getElementById('statOrdersCount').innerText = querySnapshot.size;
 
                 if (querySnapshot.empty) {
-                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş bulunamadı.</td></tr>`;
+                    ordersListContainer.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Sipariş yok.</td></tr>`;
                     return;
                 }
 
@@ -781,8 +802,8 @@
                             <td>${ord.item}</td>
                             <td>
                                 <span style="color:var(--accent-color);">${ord.price}</span><br>
-                                <small style="color:#22c55e;">Ödenen: ${ord.paid}</small><br>
-                                <small style="color:#ef4444;">Kalan: ${kalan}</small>
+                                <small style="color:#22c55e;">Tölän: ${ord.paid}</small><br>
+                                <small style="color:#ef4444;">Galan: ${kalan}</small>
                             </td>
                             <td>
                                 <select onchange="updateOrderStatus('${id}', this.value)" style="padding: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); border-radius: 6px; font-size: 12px;">
@@ -791,18 +812,15 @@
                                     <option value="İptal" ${ord.status && ord.status.includes('İptal') ? 'selected' : ''}>İptal</option>
                                 </select>
                             </td>
-                            <td>
-                                <button class="btn btn-danger" onclick="deleteOrder('${id}')"><i class="fas fa-trash"></i></button>
-                            </td>
+                            <td><button class="btn btn-danger" onclick="deleteOrder('${id}')"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     `;
                 });
-            } catch (error) { console.error("Hata:", error); }
+            } catch (e) {}
         }
 
         window.updateOrderStatus = async function(id, newStatus) {
-            try { await updateDoc(doc(db, "orders", id), { status: newStatus }); } 
-            catch (error) { alert("Durum güncellenirken hata oluştu."); }
+            await updateDoc(doc(db, "orders", id), { status: newStatus });
         }
 
         orderForm.addEventListener('submit', async (e) => {
@@ -814,63 +832,81 @@
             const paid = document.getElementById('orderPaid').value;
             const status = document.getElementById('orderStatus').value;
 
-            try {
-                await addDoc(collection(db, "orders"), {
-                    name, phone, item, price, paid, status, createdAt: new Date()
-                });
-                alert("Sipariş başarıyla eklendi!");
-                orderForm.reset();
-                fetchAdminOrders();
-            } catch (error) { alert("Hata oluştu."); }
+            await addDoc(collection(db, "orders"), { name, phone, item, price, paid, status, createdAt: new Date() });
+            alert("Üstünlikli goşuldy!");
+            orderForm.reset();
+            fetchAdminOrders();
         });
 
         window.deleteOrder = async function(id) {
-            if (confirm("Bu siparişi silmek istediğinize emin misiniz?")) {
-                try {
-                    await deleteDoc(doc(db, "orders", id));
-                    fetchAdminOrders();
-                } catch (error) { alert("Hata oluştu."); }
+            if (confirm("Pozmak isleýärsiňizmi?")) {
+                await deleteDoc(doc(db, "orders", id));
+                fetchAdminOrders();
             }
         }
 
         document.getElementById('exportExcelBtn').addEventListener('click', async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "orders"));
-                if (querySnapshot.empty) {
-                    alert('Aktarılacak sipariş yok!');
-                    return;
-                }
+            const querySnapshot = await getDocs(collection(db, "orders"));
+            if (querySnapshot.empty) { alert('Sargyt ýok!'); return; }
 
-                let csv = [];
-                csv.push('"Müşteri";"Telefon";"Ürün";"Toplam";"Ödenen";"Kalan";"Durum"');
+            let csv = ['"Müşteri";"Telefon";"Ürün";"Toplam";"Ödenen";"Kalan";"Durum"'];
+            querySnapshot.forEach((documentSnap) => {
+                const ord = documentSnap.data();
+                const kalan = Number(ord.price) - Number(ord.paid);
+                csv.push(`"${ord.name}";"${ord.phone}";"${ord.item}";"${ord.price}";"${ord.paid}";"${kalan}";"${ord.status}"`);
+            });
 
-                querySnapshot.forEach((documentSnap) => {
-                    const ord = documentSnap.data();
-                    const kalan = Number(ord.price) - Number(ord.paid);
-                    let row = [ord.name || '', ord.phone || '', ord.item || '', ord.price || 0, ord.paid || 0, kalan, ord.status || ''];
-                    let formattedRow = row.map(item => '"' + String(item).replace(/(\r\n|\n|\r)/gm, " ").replace(/;/g, ",") + '"');
-                    csv.push(formattedRow.join(';'));
-                });
-
-                let csvFile = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
-                let downloadLink = document.createElement('a');
-                downloadLink.href = window.URL.createObjectURL(csvFile);
-                downloadLink.download = 'MobleArt_Siparisler.csv';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-            } catch (error) { alert("Excel dosyası oluşturulurken hata oluştu."); }
+            let blob = new Blob(["\uFEFF" + csv.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'MobleArt_Siparisler.csv';
+            link.click();
         });
 
-        // MEBEL SAPAKLARI (ŞÄGİRT ÜÇİN) LOGIKASY
+        // ==========================================
+        // MEBEL SAPAKLARI (ŞÄGİRDİN TIZ ÖWRENIŞ ÝOLY)
+        // ==========================================
         const lessonForm = document.getElementById('addLessonForm');
         const lessonsListContainer = document.getElementById('lessonsListContainer');
+
+        const defaultLessons = [
+            {
+                title: "1. Ädim: Takyk Ölçeg almak we Çyzgy çyzmek",
+                content: "Mebel ýasamagyň ilkinji we iň möhüm ädimi dogry ölçeg almakdyr. Diwaryň dikligini we burçlaryň 90 gradusdygyny gural arkaly barlaň. Aşhana ýa-da şkaf ölçeg alanyňyzda süýnme we turba ýerlerini hökmany belläň."
+            },
+            {
+                title: "2. Ädim: Material saýlamak we Kesim (Kesmek)",
+                content: "MDF, DSP ýa-da agaç görnüşlerini saýlanda çyglylyga garşylygyna üns beriň. Kesim edeniňizde çig maly tygşytly we dogry ýerleşdirmegi öwreniň. Kesim ölçeginden PVJ gyra lentasynyň galyňlygyny (adaty 0.4mm ýa-da 2mm) çykarmaly."
+            },
+            {
+                title: "3. Ädim: Burawlamak (Ders açmak) we Profil Gurnamak",
+                content: "Binýat gurluşyny ýygnamak üçin MINIFIX, KABBEL ýa-da buraw (şurup) ulanylýar. Menekleri (otikleri) dogry ýerden açmak üçin şablon ulanyň. Göni we berk çykmagy üçin gury burçlaýyn gurnalyşy barlaň."
+            },
+            {
+                title: "4. Ädim: Kapsula, Hinge (Miwçe) dakmak we Gurnama (Montaj)",
+                content: "Gapylary we çekdirmeleri (skatly çykberleri) dakanda deňligine göz ýetiriň. Soft-close (ýumşak ýapylýan) miwçeleri dogry sazlamak mebele hil berýär. Ahyrky gurnawda ýerinde berkidip, süpürip tabşyryň."
+            }
+        ];
+
+        async function checkAndInitDefaultLessons() {
+            try {
+                const querySnapshot = await getDocs(collection(db, "lessons"));
+                if (querySnapshot.empty) {
+                    for (let lesson of defaultLessons) {
+                        await addDoc(collection(db, "lessons"), { ...lesson, createdAt: new Date() });
+                    }
+                }
+                fetchAdminLessons();
+            } catch (e) {
+                fetchAdminLessons();
+            }
+        }
 
         async function fetchAdminLessons() {
             try {
                 const querySnapshot = await getDocs(collection(db, "lessons"));
                 if (querySnapshot.empty) {
-                    lessonsListContainer.innerHTML = `<p style="color: var(--text-muted); text-align: center;">Henüz şägirtler üçin sapak goşulmady.</p>`;
+                    lessonsListContainer.innerHTML = `<p style="color: var(--text-muted); text-align: center;">Sapak ýok.</p>`;
                     return;
                 }
 
@@ -882,14 +918,14 @@
                         <div class="lesson-card">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                                 <h3>${lesson.title}</h3>
-                                <button class="btn btn-danger" onclick="deleteLesson('${id}')"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn btn-danger" onclick="deleteLesson('${id}')"><i class="fas fa-trash"></i> <span class="tr-only">Sil</span><span class="tk-only">Poz</span></button>
                             </div>
                             <p>${lesson.content}</p>
                         </div>
                     `;
                 });
             } catch (error) {
-                lessonsListContainer.innerHTML = `<p style="color: #ef4444; text-align: center;">Sapaklar ýüklenende ýalňyşlyk ýüze çykdy.</p>`;
+                lessonsListContainer.innerHTML = `<p style="color: #ef4444; text-align: center;">Ýalňyşlyk ýüze çykdy.</p>`;
             }
         }
 
@@ -898,22 +934,16 @@
             const title = document.getElementById('lessonTitle').value;
             const content = document.getElementById('lessonContent').value;
 
-            try {
-                await addDoc(collection(db, "lessons"), {
-                    title, content, createdAt: new Date()
-                });
-                alert("Täze sapak üstünlikli goşuldy!");
-                lessonForm.reset();
-                fetchAdminLessons();
-            } catch (error) { alert("Hata oluştu."); }
+            await addDoc(collection(db, "lessons"), { title, content, createdAt: new Date() });
+            alert("Sapak üstünlikli goşuldy!");
+            lessonForm.reset();
+            fetchAdminLessons();
         });
 
         window.deleteLesson = async function(id) {
-            if (confirm("Bu sapagy pozmak isleýarsňizmi?")) {
-                try {
-                    await deleteDoc(doc(db, "lessons", id));
-                    fetchAdminLessons();
-                } catch (error) { alert("Hata oluştu."); }
+            if (confirm("Bu sapagy pozmak isleýärsiňizmi?")) {
+                await deleteDoc(doc(db, "lessons", id));
+                fetchAdminLessons();
             }
         }
     </script>
