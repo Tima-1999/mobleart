@@ -1,71 +1,100 @@
-const toggleBtn = document.getElementById('themeToggleBtn');
-const themeIcon = document.getElementById('themeIcon');
-const htmlElement = document.documentElement;
+document.addEventListener('DOMContentLoaded', () => {
+    // Tema çalşmak (Dark / Light)
+    const toggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
 
-const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
-htmlElement.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
+    const savedTheme = localStorage.getItem('mobleart_theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 
-toggleBtn.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('mobleart_theme', newTheme);
-    updateThemeIcon(newTheme);
-});
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mobleart_theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    }
 
-function updateThemeIcon(theme) {
-    themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
-}
+    function updateThemeIcon(theme) {
+        if (themeIcon) {
+            themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
 
-const imageModal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImg');
-const closeImageModal = document.getElementById('closeImageModal');
+    // Surat Modal Açmak
+    const imageModal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeImageModal = document.getElementById('closeImageModal');
 
-function openImageModal(imgSrc) {
-    imageModal.style.display = "flex";
-    modalImg.src = imgSrc;
-}
+    window.openImageModal = function(imgSrc) {
+        if (imageModal && modalImg) {
+            imageModal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+    };
 
-closeImageModal.onclick = function() { imageModal.style.display = "none"; }
-imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
+    if (closeImageModal) {
+        closeImageModal.onclick = function() { imageModal.style.display = "none"; }
+    }
+    if (imageModal) {
+        imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
+    }
 
-const modalStars = document.querySelectorAll('#modalStarRating i');
-const modalRatingValueInput = document.getElementById('modalRatingValue');
-modalStars.forEach(star => {
-    star.addEventListener('click', function() {
-        const val = this.getAttribute('data-value');
-        modalRatingValueInput.value = val;
-        modalStars.forEach(s => {
-            if(s.getAttribute('data-value') <= val) s.classList.add('active');
-            else s.classList.remove('active');
+    // Ýyldyz saýlamak
+    const modalStars = document.querySelectorAll('#modalStarRating i');
+    const modalRatingValueInput = document.getElementById('modalRatingValue');
+    modalStars.forEach(star => {
+        star.addEventListener('click', function() {
+            const val = this.getAttribute('data-value');
+            if (modalRatingValueInput) modalRatingValueInput.value = val;
+            modalStars.forEach(s => {
+                if(s.getAttribute('data-value') <= val) s.classList.add('active');
+                else s.classList.remove('active');
+            });
         });
     });
+
+    // Yorum Modal Açmak
+    const reviewModal = document.getElementById('reviewModal');
+    const closeReviewModal = document.getElementById('closeReviewModal');
+
+    window.openReviewModal = function(productId) {
+        const modalProdId = document.getElementById('modalProductId');
+        if (modalProdId) modalProdId.value = productId;
+        if (reviewModal) reviewModal.style.display = "flex";
+    };
+
+    if (closeReviewModal) {
+        closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
+    }
+    if (reviewModal) {
+        reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
+    }
+
+    window.toggleComments = function(productId) {
+        const section = document.getElementById(`comments-section-${productId}`);
+        if (section) section.classList.toggle('active');
+    };
+
+    // WhatsApp Teklif Formu İşlemi (Esasy düzediş)
+    const quoteForm = document.getElementById('quoteForm');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameEl = document.getElementById('name');
+            const phoneEl = document.getElementById('phone');
+            const serviceEl = document.getElementById('service');
+
+            const name = nameEl ? nameEl.value : '';
+            const phone = phoneEl ? phoneEl.value : '';
+            const service = serviceEl ? serviceEl.value : '';
+            
+            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİstediğim Mobilya: ${encodeURIComponent(service)}`;
+            
+            window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
+        });
+    }
 });
-
-const reviewModal = document.getElementById('reviewModal');
-const closeReviewModal = document.getElementById('closeReviewModal');
-
-function openReviewModal(productId) {
-    document.getElementById('modalProductId').value = productId;
-    reviewModal.style.display = "flex";
-}
-
-closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
-reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
-
-window.toggleComments = function(productId) {
-    const section = document.getElementById(`comments-section-${productId}`);
-    section.classList.toggle('active');
-}
-
-window.sendWhatsAppQuote = function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const service = document.getElementById('service').value;
-    
-    const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİstediğim Mobilya: ${encodeURIComponent(service)}`;
-    
-    window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
-};
