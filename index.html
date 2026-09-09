@@ -310,13 +310,12 @@
         </div>
     </section>
 
-    <!-- SURATY ULYMDURUP GÖRMEK ÜÇIN MODAL -->
+    <!-- MODALLAR -->
     <div id="imageModal" class="modal">
         <span class="close-modal" id="closeImageModal">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- ÖNÜME YORUM ÝAZMAK ÜÇIN MODAL -->
     <div id="reviewModal" class="modal">
         <div class="modal-box">
             <span class="close-modal" id="closeReviewModal" style="top: 15px; right: 20px; font-size: 30px;">&times;</span>
@@ -382,7 +381,6 @@
             themeIcon.className = theme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Surat Modal
         const imageModal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
         const closeImageModal = document.getElementById('closeImageModal');
@@ -395,7 +393,6 @@
         closeImageModal.onclick = function() { imageModal.style.display = "none"; }
         imageModal.onclick = function(e) { if (e.target === imageModal) imageModal.style.display = "none"; }
 
-        // Modal Ýyldyz Saýlawy
         const modalStars = document.querySelectorAll('#modalStarRating i');
         const modalRatingValueInput = document.getElementById('modalRatingValue');
         modalStars.forEach(star => {
@@ -409,7 +406,6 @@
             });
         });
 
-        // Yorum Modal Aç / Ýap
         const reviewModal = document.getElementById('reviewModal');
         const closeReviewModal = document.getElementById('closeReviewModal');
 
@@ -421,14 +417,25 @@
         closeReviewModal.onclick = function() { reviewModal.style.display = "none"; }
         reviewModal.onclick = function(e) { if (e.target === reviewModal) reviewModal.style.display = "none"; }
 
-        // Kommentariýalary açyp-ýapmak üçin funksiýa
         window.toggleComments = function(productId) {
             const section = document.getElementById(`comments-section-${productId}`);
             section.classList.toggle('active');
         }
+
+        // WhatsApp Teklif Formu Düzeldildi (Harplaryň galyň bolmagy we işlemezligi aýryldy)
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            
+            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİstediğim Mobilya: ${encodeURIComponent(service)}`;
+            
+            window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
+        });
     </script>
 
-    <!-- FIREBASE IŞLEMLERİ -->
+    <!-- FIREBASE İŞLEMLERİ -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
         import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
@@ -446,7 +453,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Önümleri we olara degişli yorumlary ýüklemek
         async function loadProductsWithReviews() {
             const grid = document.getElementById('dynamicProductsGrid');
             try {
@@ -559,17 +565,6 @@
             } catch (error) {
                 alert("Yorum eklenirken hata oluştu: " + error.message);
             }
-        });
-
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            
-            const whatsappMessage = `Merhaba, web sitenizden teklif almak istiyorum.%0A*Ad Soyad:* ${encodeURIComponent(name)}%0A*Telefon:* ${encodeURIComponent(phone)}%0A*İstediğim Mobilya:* ${encodeURIComponent(service)}`;
-            
-            window.open(`https://wa.me/905077079354?text=${whatsappMessage}`, '_blank');
         });
     </script>
 </body>
