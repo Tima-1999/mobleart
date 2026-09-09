@@ -108,8 +108,7 @@
                 <div class="contact-info-item"><i class="fab fa-instagram"></i><span>@mobleart.tr</span></div>
             </div>
             <div class="contact-form-box">
-                <!-- DÜZELDILEN YER: onsubmit aýryldy -->
-                <form id="quoteForm">
+                <form id="quoteForm" onsubmit="sendWhatsAppQuote(event)">
                     <div class="form-group">
                         <label>Adınız ve Soyadınız</label>
                         <input type="text" id="name" placeholder="Adınızı yazın" required>
