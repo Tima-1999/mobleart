@@ -175,3 +175,29 @@
             .container { margin: 50px auto; }
             .contact-form-box, .modal-box { padding: 20px; }
         }
+
+
+
+
+
+
+
+/* Önüm kartoçkasynyň içindäki "Yorum Yaz" düwmesini sahypanyň stillerine laýyklaýarys */
+.product-actions .comment-toggle-btn + button,
+.product-actions button[onclick*="openReviewModal"],
+.product-card button,
+.product-info button {
+    background-color: var(--accent-color) !important;
+    color: #111 !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: var(--transition) !important;
+}
+
+.product-actions .comment-toggle-btn + button:hover,
+.product-actions button[onclick*="openReviewModal"]:hover,
+.product-card button:hover,
+.product-info button:hover {
+    background-color: var(--accent-hover) !important;
+    transform: translateY(-2px);
+}
