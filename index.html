@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="tr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Mobil Menýu Üçin Goşmaça Stil */
+        .menu-toggle-btn { display: none; background: none; border: none; font-size: 22px; color: var(--text-color); cursor: pointer; }
+        @media (max-width: 768px) {
+            .menu-toggle-btn { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .nav-links.mobile-active { display: flex; }
+        }
+    </style>
 </head>
 <body>
 
@@ -40,16 +49,17 @@
             <img src="./logo.png" alt="MobleArt Logo">
             <div>Moble<span>Art</span></div>
         </a>
-        <nav class="nav-links">
-            <a href="#">Ana Sayfa</a>
-            <a href="#urunler">Koleksiyon</a>
-            <a href="#ustunlukler">Neden Biz?</a>
-            <a href="#montaj">Montaj Hizmeti</a>
-            <a href="#sss">S.S.S.</a>
-            <a href="#teklif">Teklif Al</a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#" onclick="toggleMobileMenu()">Ana Sayfa</a>
+            <a href="#urunler" onclick="toggleMobileMenu()">Koleksiyon</a>
+            <a href="#ustunlukler" onclick="toggleMobileMenu()">Neden Biz?</a>
+            <a href="#montaj" onclick="toggleMobileMenu()">Montaj Hizmeti</a>
+            <a href="#sss" onclick="toggleMobileMenu()">S.S.S.</a>
+            <a href="#teklif" onclick="toggleMobileMenu()">Teklif Al</a>
         </nav>
         <div class="header-controls">
-            <button class="control-btn" id="themeToggleBtn" title="Tema Değiştir"><i class="fas fa-moon" id="themeIcon"></i></button>
+            <button class="control-btn" id="themeToggleBtn" title="Tema Değiştir"><i class="fas fa-sun" id="themeIcon"></i></button>
+            <button class="menu-toggle-btn" id="menuToggleBtn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
         </div>
         <div class="header-cta" style="margin-left: 10px;">
             <a href="tel:+905077079354" class="header-phone"><i class="fas fa-phone-alt"></i> +90 507 707 93 54</a>
@@ -118,7 +128,7 @@
                 <h2 class="section-title">Hazır Mobilya Kurulum ve Montaj Hizmeti</h2>
             </div>
             <div class="features-grid">
-                <div class="feature-box" style="grid-column: 1 / -1; text-align: left; background: var(--card-bg, rgba(255,255,255,0.03)); border: 1px solid var(--border-color, rgba(255,255,255,0.08)); border-radius: 16px; padding: 30px;">
+                <div class="feature-box" style="grid-column: 1 / -1; text-align: left; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px;">
                     <div class="feature-icon" style="margin-bottom: 20px;"><i class="fas fa-tools"></i></div>
                     <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text-color);">Hazır Mobilya Kurulum ve Montaj Hizmeti</h3>
                     <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 15px;">Mağazalardan veya internetten satın aldığınız tüm hazır mobilyaları (gardırop, yatak odası, TV ünitesi, yemek masası, ofis mobilyaları vb.) evinize veya iş yerinize gelerek profesyonel ekipmanlarla kusursuz bir şekilde kurup monte ediyoruz.</p>
@@ -136,7 +146,7 @@
             </div>
             <div class="faq-grid" style="display: grid; gap: 20px; max-width: 900px; margin: 0 auto;">
                 
-                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; transition: var(--transition);">
+                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
                     <h4 style="font-size: 17px; color: var(--text-color); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-question-circle" style="color: var(--accent-color);"></i> Hazır mobilya kurulum ücreti ne kadar?
                     </h4>
@@ -145,7 +155,7 @@
                     </p>
                 </div>
 
-                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; transition: var(--transition);">
+                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
                     <h4 style="font-size: 17px; color: var(--text-color); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-question-circle" style="color: var(--accent-color);"></i> İstanbul'un hangi ilçelerine hizmet veriyorsunuz?
                     </h4>
@@ -154,7 +164,7 @@
                     </p>
                 </div>
 
-                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; transition: var(--transition);">
+                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
                     <h4 style="font-size: 17px; color: var(--text-color); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-question-circle" style="color: var(--accent-color);"></i> Özel mobilya siparişleri kaç günde teslim edilir?
                     </h4>
@@ -163,7 +173,7 @@
                     </p>
                 </div>
 
-                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; transition: var(--transition);">
+                <div class="faq-item" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
                     <h4 style="font-size: 17px; color: var(--text-color); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-question-circle" style="color: var(--accent-color);"></i> Montaj sırasında garanti veriliyor mu?
                     </h4>
@@ -263,10 +273,15 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT LOGIKALARY -->
+    <!-- JAVASCRIPT KODLARY -->
+    <script>
+        // Mobil menýuny açyp-ýapmak üçin funksiýa
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-active');
+        }
+    </script>
     <script src="js/main.js"></script>
-
-    <!-- FIREBASE İŞLEMLERİ -->
     <script type="module" src="js/firebase.js"></script>
 </body>
 </html>
